@@ -662,9 +662,11 @@ function HomePage({ setPage }) {
             <div className="flex justify-center"><Eyebrow>Why Families Choose Us</Eyebrow></div>
             <h2 className="font-display font-extrabold text-3xl md:text-4xl text-maroon-dark">A School Built Around Every Child</h2>
           </div>
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5 mt-12">
+          <div className="flex flex-wrap justify-center gap-5 mt-12">
             {whyChooseUs.map((f) => (
-              <FeatureCard key={f.title} icon={f.icon} title={f.title} desc={f.desc} />
+              <div key={f.title} style={{ flexBasis: 'calc(25% - 15px)', minWidth: '220px', maxWidth: '280px', flexGrow: 0 }}>
+                <FeatureCard icon={f.icon} title={f.title} desc={f.desc} />
+              </div>
             ))}
           </div>
         </div>
@@ -1007,12 +1009,12 @@ function AboutPage({ setPage }) {
         <div className="max-w-6xl mx-auto px-6 relative">
           <Eyebrow light>Why Families Choose Us</Eyebrow>
           <h2 className="font-display font-extrabold text-3xl md:text-4xl text-white mb-10">What Makes Model Primary School Different</h2>
-          <div ref={whyRef} className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
+          <div ref={whyRef} className="flex flex-wrap justify-center gap-5">
             {features.map((f, i) => (
               <div
                 key={f.title}
                 className={`feature-scale stagger-card bg-white-95 rounded-3xl p-6 shadow-lg ${whyVisible ? 'is-visible' : ''}`}
-                style={{ transitionDelay: whyVisible ? `${i * 0.18}s` : '0s' }}
+                style={{ transitionDelay: whyVisible ? `${i * 0.18}s` : '0s', flexBasis: 'calc(25% - 15px)', minWidth: '220px', maxWidth: '280px', flexGrow: 0 }}
               >
                 <div className="w-11 h-11 rounded-2xl bg-gold flex items-center justify-center mb-3">
                   <f.icon size={20} className="text-maroon-dark" />

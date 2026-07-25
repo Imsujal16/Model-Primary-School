@@ -459,11 +459,11 @@ function Navbar({ page, setPage }) {
   return (
     <header className="sticky top-0 z-50 glass-nav">
       <nav className="max-w-6xl mx-auto px-5 md:px-6 py-3 flex items-center justify-between">
-        <button onClick={() => go("home")} className="focus-ring flex items-center gap-3 text-left">
-          <Emblem size={46} />
-          <span className="leading-tight">
-            <span className="block font-display font-extrabold text-maroon-dark text-base md:text-lg">Model Primary School</span>
-            <span className="block font-body text-xs text-ink-60">Bharsare, Bhadaiyan, Sultanpur</span>
+        <button onClick={() => go("home")} className="focus-ring flex items-center gap-2.5 sm:gap-3 text-left min-w-0">
+          <Emblem size={40} className="shrink-0 sm:w-[46px] sm:h-[46px]" />
+          <span className="leading-tight truncate">
+            <span className="block font-display font-extrabold text-maroon-dark text-sm sm:text-base md:text-lg truncate">Model Primary School</span>
+            <span className="hidden sm:block font-body text-xs text-ink-60 truncate">Bharsare, Bhadaiyan, Sultanpur</span>
           </span>
         </button>
 
@@ -632,13 +632,13 @@ const classLevels = [
   { level: "Class 5", age: "9 – 10 yrs", focus: "Exam readiness for upper primary" },
 ];
 
-function WhyTabs() {
+function WhyTabs({ light = false }) {
   const [activeTab, setActiveTab] = useState('academics');
   const active = whyChooseUsTabs.find((t) => t.id === activeTab);
   return (
-    <div className="flex flex-col md:flex-row gap-6 md:gap-10 items-start">
-      {/* Tab buttons — left column */}
-      <div className="flex flex-row md:flex-col gap-3 md:w-64 shrink-0 overflow-x-auto md:overflow-visible pb-2 md:pb-0">
+    <div className="flex flex-col md:flex-row gap-5 md:gap-10 items-stretch">
+      {/* Tab buttons — left column / mobile top row */}
+      <div className="flex flex-row md:flex-col gap-2.5 w-full md:w-64 shrink-0 overflow-x-auto md:overflow-visible pb-2 md:pb-0 scrollbar-none">
         {whyChooseUsTabs.map((tab) => {
           const TabIcon = tab.icon;
           const isActive = tab.id === activeTab;
@@ -646,19 +646,23 @@ function WhyTabs() {
             <button
               key={tab.id}
               onClick={() => setActiveTab(tab.id)}
-              className={`focus-ring flex items-center gap-3 px-5 py-4 rounded-2xl font-display font-bold text-sm md:text-base text-left transition-all whitespace-nowrap md:whitespace-normal ${
+              className={`focus-ring flex items-center gap-2.5 px-4 py-3 md:px-5 md:py-4 rounded-2xl font-display font-bold text-xs sm:text-sm md:text-base text-left transition-all whitespace-nowrap md:whitespace-normal shrink-0 md:shrink ${
                 isActive
-                  ? 'bg-maroon text-white shadow-lg scale-105'
-                  : 'bg-white text-maroon-dark border-2 border-gold-light hover:border-maroon-light'
+                  ? light
+                    ? 'bg-gold text-maroon-dark shadow-lg scale-[1.02]'
+                    : 'bg-maroon text-white shadow-lg scale-[1.02]'
+                  : light
+                    ? 'bg-white-10 text-white border border-white-20 hover:bg-white-20'
+                    : 'bg-white text-maroon-dark border-2 border-gold-light hover:border-maroon-light'
               }`}
-              style={{ minWidth: '180px' }}
+              style={{ minWidth: '150px' }}
             >
-              <div className={`w-8 h-8 rounded-xl flex items-center justify-center shrink-0 ${
-                isActive ? 'bg-gold' : 'bg-cream2'
+              <div className={`w-7 h-7 md:w-8 md:h-8 rounded-xl flex items-center justify-center shrink-0 ${
+                isActive ? (light ? 'bg-maroon text-white' : 'bg-gold text-maroon-dark') : (light ? 'bg-white-20 text-white' : 'bg-cream2 text-maroon')
               }`}>
-                <TabIcon size={16} className={isActive ? 'text-maroon-dark' : 'text-maroon'} strokeWidth={2} />
+                <TabIcon size={16} strokeWidth={2} />
               </div>
-              {tab.label}
+              <span>{tab.label}</span>
               {isActive && (
                 <ChevronRight size={16} className="ml-auto shrink-0 hidden md:block" />
               )}
@@ -667,21 +671,23 @@ function WhyTabs() {
         })}
       </div>
       {/* Content panel — right side */}
-      <div className="flex-1 bg-white rounded-3xl shadow-lg p-8 border-t-4 border-gold">
-        <div className="flex items-center gap-3 mb-6">
-          <div className="w-12 h-12 rounded-2xl bg-maroon flex items-center justify-center shrink-0">
-            <active.icon size={22} className="text-gold" strokeWidth={2} />
+      <div className={`flex-1 rounded-2xl md:rounded-3xl shadow-lg p-5 md:p-8 border-t-4 ${
+        light ? 'bg-white-95 border-gold text-maroon-dark' : 'bg-white border-gold'
+      }`}>
+        <div className="flex items-center gap-3 mb-5 md:mb-6">
+          <div className="w-10 h-10 md:w-12 md:h-12 rounded-2xl bg-maroon flex items-center justify-center shrink-0">
+            <active.icon size={20} className="text-gold" strokeWidth={2} />
           </div>
-          <h3 className="font-display font-extrabold text-2xl text-maroon-dark">{active.label}</h3>
+          <h3 className="font-display font-extrabold text-xl md:text-2xl text-maroon-dark">{active.label}</h3>
         </div>
-        <div className="grid sm:grid-cols-2 gap-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5 md:gap-4">
           {active.features.map((f) => (
-            <div key={f.title} className="flex gap-4 items-start p-4 rounded-2xl bg-cream2 hover:bg-cream3 transition-colors">
-              <div className="w-10 h-10 rounded-xl bg-maroon flex items-center justify-center shrink-0">
-                <f.icon size={18} className="text-gold" strokeWidth={2} />
+            <div key={f.title} className="flex gap-3.5 items-start p-3.5 md:p-4 rounded-xl md:rounded-2xl bg-cream2 hover:bg-cream3 transition-colors">
+              <div className="w-9 h-9 md:w-10 md:h-10 rounded-xl bg-maroon flex items-center justify-center shrink-0 mt-0.5">
+                <f.icon size={16} className="text-gold" strokeWidth={2} />
               </div>
               <div>
-                <h4 className="font-display font-bold text-maroon-dark text-sm leading-snug">{f.title}</h4>
+                <h4 className="font-display font-bold text-maroon-dark text-xs md:text-sm leading-snug">{f.title}</h4>
                 <p className="font-body text-xs text-ink-60 mt-1 leading-relaxed">{f.desc}</p>
               </div>
             </div>
@@ -710,9 +716,9 @@ function HomePage({ setPage }) {
               Model Primary School is a government-recognized English medium school for LKG to Class 5 in Bharsare,
               Bhadaiyan, Sultanpur — where every child learns, plays & grows.
             </p>
-            <div className="flex flex-wrap gap-4 mt-8">
-              <CTAButton variant="primary" onClick={() => setPage("admissions")}>Enroll Now — Admissions 2026-27</CTAButton>
-              <CTAButton variant="outline" icon={ChevronRight} onClick={() => setPage("about")}>Explore Programs</CTAButton>
+            <div className="flex flex-col sm:flex-row flex-wrap gap-3 mt-8">
+              <CTAButton variant="primary" onClick={() => setPage("admissions")} className="w-full sm:w-auto">Enroll Now — Admissions 2026-27</CTAButton>
+              <CTAButton variant="outline" icon={ChevronRight} onClick={() => setPage("about")} className="w-full sm:w-auto">Explore Programs</CTAButton>
             </div>
             <div className="flex flex-wrap gap-3 mt-8">
               {["English Medium", "Govt. Recognized", "CCTV Campus", "LKG – Class 5"].map((t) => (
@@ -757,29 +763,31 @@ function HomePage({ setPage }) {
             <h2 className="font-display font-extrabold text-3xl md:text-4xl text-maroon-dark">LKG to Class 5</h2>
             <p className="font-body text-ink-60 mt-3 text-sm">A clear learning journey from early play-based discovery to exam-ready foundations.</p>
           </div>
-          {/* Timeline */}
+          {/* Timeline — Responsive: Left-aligned on mobile, alternating on desktop */}
           <div className="relative">
-            {/* Central line */}
-            <div className="absolute left-1/2 top-0 bottom-0 w-0.5 -translate-x-1/2" style={{ background: 'linear-gradient(to bottom, var(--gold), var(--maroon))' }} />
-            <div className="flex flex-col gap-10">
+            {/* Vertical line */}
+            <div className="absolute left-6 md:left-1/2 top-0 bottom-0 w-0.5 md:-translate-x-1/2" style={{ background: 'linear-gradient(to bottom, var(--gold), var(--maroon))' }} />
+            <div className="flex flex-col gap-8 md:gap-10">
               {classLevels.map((c, i) => {
                 const isLeft = i % 2 === 0;
                 return (
-                  <div key={c.level} className={`flex items-center gap-6 ${isLeft ? 'flex-row' : 'flex-row-reverse'}`}>
+                  <div key={c.level} className={`flex items-center gap-4 md:gap-6 ${isLeft ? 'md:flex-row' : 'md:flex-row-reverse'}`}>
+                    {/* Node circle */}
+                    <div className="relative z-10 shrink-0 w-12 h-12 md:w-14 md:h-14 rounded-full flex items-center justify-center shadow-lg border-4 border-white" style={{ background: 'var(--gold)' }}>
+                      <GraduationCap size={20} className="text-maroon-dark md:w-[22px] md:h-[22px]" strokeWidth={2} />
+                    </div>
                     {/* Content card */}
-                    <div className={`flex-1 ${isLeft ? 'text-right' : 'text-left'}`}>
-                      <div className={`inline-block bg-white rounded-2xl px-6 py-4 shadow-md border-2 ${isLeft ? 'border-l-4 border-l-maroon border-t border-r border-b border-gold-light' : 'border-r-4 border-r-maroon border-t border-l border-b border-gold-light'}`}>
-                        <h3 className="font-display font-extrabold text-xl text-maroon-dark">{c.level}</h3>
+                    <div className={`flex-1 ${isLeft ? 'md:text-right' : 'md:text-left'} text-left`}>
+                      <div className={`w-full bg-white rounded-2xl p-4 md:px-6 md:py-4 shadow-md border-2 border-l-4 border-l-maroon border-t border-r border-b border-gold-light md:inline-block ${
+                        isLeft ? 'md:border-l-4 md:border-r border-r-gold-light' : 'md:border-r-4 md:border-l border-l-gold-light'
+                      }`}>
+                        <h3 className="font-display font-extrabold text-lg md:text-xl text-maroon-dark">{c.level}</h3>
                         <p className="font-body text-xs font-bold mt-0.5" style={{ color: 'var(--gold-dark)' }}>{c.age}</p>
-                        <p className="font-body text-sm text-ink-60 mt-1.5 leading-snug">{c.focus}</p>
+                        <p className="font-body text-xs md:text-sm text-ink-60 mt-1.5 leading-snug">{c.focus}</p>
                       </div>
                     </div>
-                    {/* Node */}
-                    <div className="relative z-10 shrink-0 w-14 h-14 rounded-full flex items-center justify-center shadow-lg border-4 border-white" style={{ background: 'var(--gold)' }}>
-                      <GraduationCap size={22} className="text-maroon-dark" strokeWidth={2} />
-                    </div>
-                    {/* Spacer for the other side */}
-                    <div className="flex-1" />
+                    {/* Spacer for alternating desktop layout */}
+                    <div className="hidden md:block md:flex-1" />
                   </div>
                 );
               })}
@@ -1088,7 +1096,7 @@ function AboutPage({ setPage }) {
 
       <PencilDivider />
 
-      {/* 5 ─ WHY CHOOSE US — staggered entrance animation */}
+      {/* 5 ─ WHY CHOOSE US — Interactive Tabs */}
       <section className="bg-maroon py-16 md:py-20 relative overflow-hidden">
         <div className="absolute -right-16 -top-16 opacity-10 animate-spin-slow" aria-hidden="true">
           <Emblem size={320} ring={false} />
@@ -1096,21 +1104,7 @@ function AboutPage({ setPage }) {
         <div className="max-w-6xl mx-auto px-6 relative">
           <Eyebrow light>Why Families Choose Us</Eyebrow>
           <h2 className="font-display font-extrabold text-3xl md:text-4xl text-white mb-10">What Makes Model Primary School Different</h2>
-          <div ref={whyRef} className="flex flex-wrap justify-center items-stretch gap-5">
-            {features.map((f, i) => (
-              <div
-                key={f.title}
-                className={`feature-scale stagger-card bg-white-95 rounded-3xl p-6 shadow-lg flex flex-col gap-3 ${whyVisible ? 'is-visible' : ''}`}
-                style={{ transitionDelay: whyVisible ? `${i * 0.18}s` : '0s', flexBasis: 'calc(25% - 15px)', minWidth: '220px', maxWidth: '280px', flexGrow: 0 }}
-              >
-                <div className="w-11 h-11 rounded-2xl bg-gold flex items-center justify-center mb-3 shrink-0">
-                  <f.icon size={20} className="text-maroon-dark" />
-                </div>
-                <h3 className="font-display font-bold text-maroon-dark">{f.title}</h3>
-                <p className="font-body text-sm text-ink-70 leading-relaxed">{f.desc}</p>
-              </div>
-            ))}
-          </div>
+          <WhyTabs light />
         </div>
       </section>
 

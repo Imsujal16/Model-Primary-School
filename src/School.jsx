@@ -367,10 +367,10 @@ function CTAButton({ children, variant = "primary", onClick, icon: Icon = ArrowR
   );
 }
 
-function FeatureCard({ icon: Icon, title, desc }) {
+function FeatureCard({ icon: Icon, title, desc, className = "" }) {
   return (
-    <div className="hover-lift glass-card rounded-3xl p-6 shadow-md border-t-4 border-gold flex flex-col gap-3">
-      <div className="w-12 h-12 rounded-2xl bg-maroon flex items-center justify-center shadow-sm">
+    <div className={`hover-lift glass-card rounded-3xl p-6 shadow-md border-t-4 border-gold flex flex-col gap-3 h-full w-full ${className}`}>
+      <div className="w-12 h-12 rounded-2xl bg-maroon flex items-center justify-center shadow-sm shrink-0">
         <Icon size={22} className="text-white" strokeWidth={2.2} />
       </div>
       <h3 className="font-display font-bold text-lg text-maroon-dark leading-snug">{title}</h3>
@@ -662,9 +662,9 @@ function HomePage({ setPage }) {
             <div className="flex justify-center"><Eyebrow>Why Families Choose Us</Eyebrow></div>
             <h2 className="font-display font-extrabold text-3xl md:text-4xl text-maroon-dark">A School Built Around Every Child</h2>
           </div>
-          <div className="flex flex-wrap justify-center gap-5 mt-12">
+          <div className="flex flex-wrap justify-center items-stretch gap-5 mt-12">
             {whyChooseUs.map((f) => (
-              <div key={f.title} style={{ flexBasis: 'calc(25% - 15px)', minWidth: '220px', maxWidth: '280px', flexGrow: 0 }}>
+              <div key={f.title} className="flex flex-col" style={{ flexBasis: 'calc(25% - 15px)', minWidth: '220px', maxWidth: '280px', flexGrow: 0 }}>
                 <FeatureCard icon={f.icon} title={f.title} desc={f.desc} />
               </div>
             ))}
@@ -1009,18 +1009,18 @@ function AboutPage({ setPage }) {
         <div className="max-w-6xl mx-auto px-6 relative">
           <Eyebrow light>Why Families Choose Us</Eyebrow>
           <h2 className="font-display font-extrabold text-3xl md:text-4xl text-white mb-10">What Makes Model Primary School Different</h2>
-          <div ref={whyRef} className="flex flex-wrap justify-center gap-5">
+          <div ref={whyRef} className="flex flex-wrap justify-center items-stretch gap-5">
             {features.map((f, i) => (
               <div
                 key={f.title}
-                className={`feature-scale stagger-card bg-white-95 rounded-3xl p-6 shadow-lg ${whyVisible ? 'is-visible' : ''}`}
+                className={`feature-scale stagger-card bg-white-95 rounded-3xl p-6 shadow-lg flex flex-col gap-3 ${whyVisible ? 'is-visible' : ''}`}
                 style={{ transitionDelay: whyVisible ? `${i * 0.18}s` : '0s', flexBasis: 'calc(25% - 15px)', minWidth: '220px', maxWidth: '280px', flexGrow: 0 }}
               >
-                <div className="w-11 h-11 rounded-2xl bg-gold flex items-center justify-center mb-3">
+                <div className="w-11 h-11 rounded-2xl bg-gold flex items-center justify-center mb-3 shrink-0">
                   <f.icon size={20} className="text-maroon-dark" />
                 </div>
                 <h3 className="font-display font-bold text-maroon-dark">{f.title}</h3>
-                <p className="font-body text-sm text-ink-70 mt-2">{f.desc}</p>
+                <p className="font-body text-sm text-ink-70 leading-relaxed">{f.desc}</p>
               </div>
             ))}
           </div>

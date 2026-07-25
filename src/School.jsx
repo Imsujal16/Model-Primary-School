@@ -615,13 +615,13 @@ function HomePage({ setPage }) {
         <div className="absolute -top-10 -right-10 opacity-90 animate-spin-slow hidden md:block" aria-hidden="true">
           <Emblem size={200} ring={false} />
         </div>
-        <div className="max-w-6xl mx-auto px-6 pt-12 pb-16 md:pt-16 md:pb-20 grid md:grid-cols-2 gap-10 items-center relative">
-          <div>
+        <div className="max-w-7xl mx-auto px-6 pt-12 pb-16 md:pt-16 md:pb-24 grid md:grid-cols-12 gap-8 lg:gap-12 items-center relative">
+          <div className="md:col-span-5">
             <SectionLabel>Admissions Open 2026–27</SectionLabel>
             <h1 className="font-display font-extrabold text-4xl md:text-5xl lg:text-6xl text-maroon-dark leading-tight mt-5">
               Nurturing Little Minds, <span className="text-gold-dark">Building Bright Futures</span>
             </h1>
-            <p className="font-body text-ink-70 text-base md:text-lg mt-5 max-w-md">
+            <p className="font-body text-ink-70 text-base md:text-lg mt-5">
               Model Primary School is a government-recognized English medium school for LKG to Class 5 in Bharsare,
               Bhadaiyan, Sultanpur — where every child learns, plays & grows.
             </p>
@@ -637,8 +637,8 @@ function HomePage({ setPage }) {
               ))}
             </div>
           </div>
-          <div className="relative">
-            <ImagePlaceholder src="/hero_home.png" label="School building & entrance" caption="Pencil-and-book branded exterior" ratio="5 / 4" />
+          <div className="relative md:col-span-7 w-full">
+            <ImagePlaceholder src="/hero_home.png" label="School building & entrance" caption="Pencil-and-book branded exterior" ratio="4 / 3" className="w-full shadow-2xl" />
             <div className="absolute -bottom-8 -left-8 hidden sm:block animate-bob">
               <Mascot variant="girl" size={120} />
             </div>

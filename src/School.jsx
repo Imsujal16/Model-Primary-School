@@ -1094,7 +1094,7 @@ function AboutPage({ setPage }) {
 
       <PencilDivider />
 
-      {/* 5 ─ WHY CHOOSE US — Interactive Tabs */}
+      {/* 5 ─ WHY CHOOSE US — staggered entrance animation */}
       <section className="bg-maroon py-16 md:py-20 relative overflow-hidden">
         <div className="absolute -right-16 -top-16 opacity-10 animate-spin-slow" aria-hidden="true">
           <Emblem size={320} ring={false} />
@@ -1102,7 +1102,21 @@ function AboutPage({ setPage }) {
         <div className="max-w-6xl mx-auto px-6 relative">
           <Eyebrow light>Why Families Choose Us</Eyebrow>
           <h2 className="font-display font-extrabold text-3xl md:text-4xl text-white mb-10">What Makes Model Primary School Different</h2>
-          <WhyTabs light />
+          <div ref={whyRef} className="flex flex-wrap justify-center items-stretch gap-5">
+            {features.map((f, i) => (
+              <div
+                key={f.title}
+                className={`feature-scale stagger-card bg-white-95 rounded-3xl p-6 shadow-lg flex flex-col gap-3 ${whyVisible ? 'is-visible' : ''}`}
+                style={{ transitionDelay: whyVisible ? `${i * 0.18}s` : '0s', flexBasis: 'calc(25% - 15px)', minWidth: '220px', maxWidth: '280px', flexGrow: 0 }}
+              >
+                <div className="w-11 h-11 rounded-2xl bg-gold flex items-center justify-center mb-3 shrink-0">
+                  <f.icon size={20} className="text-maroon-dark" />
+                </div>
+                <h3 className="font-display font-bold text-maroon-dark">{f.title}</h3>
+                <p className="font-body text-sm text-ink-70 leading-relaxed">{f.desc}</p>
+              </div>
+            ))}
+          </div>
         </div>
       </section>
 

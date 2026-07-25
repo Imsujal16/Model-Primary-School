@@ -763,31 +763,29 @@ function HomePage({ setPage }) {
             <h2 className="font-display font-extrabold text-3xl md:text-4xl text-maroon-dark">LKG to Class 5</h2>
             <p className="font-body text-ink-60 mt-3 text-sm">A clear learning journey from early play-based discovery to exam-ready foundations.</p>
           </div>
-          {/* Timeline — Responsive: Left-aligned on mobile, alternating on desktop */}
+          {/* Timeline */}
           <div className="relative">
-            {/* Vertical line */}
-            <div className="absolute left-6 md:left-1/2 top-0 bottom-0 w-0.5 md:-translate-x-1/2" style={{ background: 'linear-gradient(to bottom, var(--gold), var(--maroon))' }} />
-            <div className="flex flex-col gap-8 md:gap-10">
+            {/* Central line */}
+            <div className="absolute left-1/2 top-0 bottom-0 w-0.5 -translate-x-1/2" style={{ background: 'linear-gradient(to bottom, var(--gold), var(--maroon))' }} />
+            <div className="flex flex-col gap-10">
               {classLevels.map((c, i) => {
                 const isLeft = i % 2 === 0;
                 return (
-                  <div key={c.level} className={`flex items-center gap-4 md:gap-6 ${isLeft ? 'md:flex-row' : 'md:flex-row-reverse'}`}>
-                    {/* Node circle */}
-                    <div className="relative z-10 shrink-0 w-12 h-12 md:w-14 md:h-14 rounded-full flex items-center justify-center shadow-lg border-4 border-white" style={{ background: 'var(--gold)' }}>
-                      <GraduationCap size={20} className="text-maroon-dark md:w-[22px] md:h-[22px]" strokeWidth={2} />
-                    </div>
+                  <div key={c.level} className={`flex items-center gap-6 ${isLeft ? 'flex-row' : 'flex-row-reverse'}`}>
                     {/* Content card */}
-                    <div className={`flex-1 ${isLeft ? 'md:text-right' : 'md:text-left'} text-left`}>
-                      <div className={`w-full bg-white rounded-2xl p-4 md:px-6 md:py-4 shadow-md border-2 border-l-4 border-l-maroon border-t border-r border-b border-gold-light md:inline-block ${
-                        isLeft ? 'md:border-l-4 md:border-r border-r-gold-light' : 'md:border-r-4 md:border-l border-l-gold-light'
-                      }`}>
-                        <h3 className="font-display font-extrabold text-lg md:text-xl text-maroon-dark">{c.level}</h3>
+                    <div className={`flex-1 ${isLeft ? 'text-right' : 'text-left'}`}>
+                      <div className={`inline-block bg-white rounded-2xl px-6 py-4 shadow-md border-2 ${isLeft ? 'border-l-4 border-l-maroon border-t border-r border-b border-gold-light' : 'border-r-4 border-r-maroon border-t border-l border-b border-gold-light'}`}>
+                        <h3 className="font-display font-extrabold text-xl text-maroon-dark">{c.level}</h3>
                         <p className="font-body text-xs font-bold mt-0.5" style={{ color: 'var(--gold-dark)' }}>{c.age}</p>
-                        <p className="font-body text-xs md:text-sm text-ink-60 mt-1.5 leading-snug">{c.focus}</p>
+                        <p className="font-body text-sm text-ink-60 mt-1.5 leading-snug">{c.focus}</p>
                       </div>
                     </div>
-                    {/* Spacer for alternating desktop layout */}
-                    <div className="hidden md:block md:flex-1" />
+                    {/* Node */}
+                    <div className="relative z-10 shrink-0 w-14 h-14 rounded-full flex items-center justify-center shadow-lg border-4 border-white" style={{ background: 'var(--gold)' }}>
+                      <GraduationCap size={22} className="text-maroon-dark" strokeWidth={2} />
+                    </div>
+                    {/* Spacer for the other side */}
+                    <div className="flex-1" />
                   </div>
                 );
               })}

@@ -587,18 +587,39 @@ function FloatingCall() {
 /* ============================================================
    HOME PAGE
    ============================================================ */
-const whyChooseUs = [
-  { icon: Languages, title: "English Medium Education", desc: "Structured English-medium instruction that builds strong communication skills from the very first year." },
-  { icon: ShieldCheck, title: "Government Recognized Institution", desc: "A fully government-recognized school, so your child's early education stands on solid, certified ground." },
-  { icon: Video, title: "Safe & Secure Campus with CCTV", desc: "The full campus is monitored with CCTV surveillance, giving parents peace of mind through the school day." },
-  { icon: TreePine, title: "Dedicated Outdoor Play Area", desc: "A generous, green outdoor play area where children run, climb and play every single day." },
-  { icon: HeartHandshake, title: "Caring & Experienced Teachers", desc: "Warm, experienced teachers who know each child by name and nurture them like their own." },
-  { icon: Puzzle, title: "Activity-Based & Joyful Learning", desc: "Lessons built around hands-on activities, so children learn by doing, not just by listening." },
-  { icon: Trophy, title: "Co-Curricular & Sports Activities", desc: "Regular sports, games and co-curricular events that build confidence beyond the classroom." },
-  { icon: SmilePlus, title: "Discipline with a Friendly Environment", desc: "A gently disciplined, friendly campus where children feel secure enough to be themselves." },
-  { icon: Bus,          title: "Safe & Reliable Transport",          desc: "Convenient transport facilities available for students to ensure a safe and comfortable commute every day." },
-  { icon: Droplets,     title: "Health & Hygiene First",             desc: "24/7 running water supply and RO water coolers on campus to keep children hydrated and healthy." },
-  { icon: Library,      title: "Well-Stocked Reading Library",       desc: "A curated knowledge hub library with books that spark curiosity and instill a love of reading from an early age." },
+const whyChooseUsTabs = [
+  {
+    id: 'academics',
+    label: 'Academics & Teachers',
+    icon: GraduationCap,
+    features: [
+      { icon: Languages,    title: 'English Medium Education',         desc: 'Structured English-medium instruction that builds strong communication skills from the very first year.' },
+      { icon: HeartHandshake, title: 'Caring & Experienced Teachers',  desc: 'Warm, experienced teachers who know each child by name and nurture them like their own.' },
+      { icon: Puzzle,       title: 'Activity-Based & Joyful Learning', desc: 'Lessons built around hands-on activities, so children learn by doing, not just by listening.' },
+      { icon: Trophy,       title: 'Co-Curricular & Sports Activities',desc: 'Regular sports, games and co-curricular events that build confidence beyond the classroom.' },
+    ],
+  },
+  {
+    id: 'safety',
+    label: 'Campus Safety',
+    icon: ShieldCheck,
+    features: [
+      { icon: ShieldCheck,  title: 'Government Recognized Institution', desc: 'A fully government-recognized school, so your child\'s early education stands on solid, certified ground.' },
+      { icon: Video,        title: 'Safe & Secure Campus with CCTV',    desc: 'The full campus is monitored with CCTV surveillance, giving parents complete peace of mind through the school day.' },
+      { icon: Bus,          title: 'Safe & Reliable Transport',          desc: 'Convenient transport facilities available for students to ensure a safe and comfortable commute every day.' },
+      { icon: SmilePlus,    title: 'Discipline with a Friendly Environment', desc: 'A gently disciplined, friendly campus where children feel secure enough to be themselves.' },
+    ],
+  },
+  {
+    id: 'infrastructure',
+    label: 'Infrastructure',
+    icon: Library,
+    features: [
+      { icon: TreePine,     title: 'Dedicated Outdoor Play Area',       desc: 'A generous, green outdoor play area where children run, climb and play every single day.' },
+      { icon: Droplets,     title: 'Health & Hygiene First',            desc: '24/7 running water supply and RO water coolers on campus to keep children hydrated and healthy.' },
+      { icon: Library,      title: 'Well-Stocked Reading Library',      desc: 'A curated knowledge hub library with books that spark curiosity and instill a love of reading from an early age.' },
+    ],
+  },
 ];
 
 const classLevels = [
@@ -610,6 +631,66 @@ const classLevels = [
   { level: "Class 4", age: "8 – 9 yrs", focus: "Composition, EVS projects, mental Maths" },
   { level: "Class 5", age: "9 – 10 yrs", focus: "Exam readiness for upper primary" },
 ];
+
+function WhyTabs() {
+  const [activeTab, setActiveTab] = useState('academics');
+  const active = whyChooseUsTabs.find((t) => t.id === activeTab);
+  return (
+    <div className="flex flex-col md:flex-row gap-6 md:gap-10 items-start">
+      {/* Tab buttons — left column */}
+      <div className="flex flex-row md:flex-col gap-3 md:w-64 shrink-0 overflow-x-auto md:overflow-visible pb-2 md:pb-0">
+        {whyChooseUsTabs.map((tab) => {
+          const TabIcon = tab.icon;
+          const isActive = tab.id === activeTab;
+          return (
+            <button
+              key={tab.id}
+              onClick={() => setActiveTab(tab.id)}
+              className={`focus-ring flex items-center gap-3 px-5 py-4 rounded-2xl font-display font-bold text-sm md:text-base text-left transition-all whitespace-nowrap md:whitespace-normal ${
+                isActive
+                  ? 'bg-maroon text-white shadow-lg scale-105'
+                  : 'bg-white text-maroon-dark border-2 border-gold-light hover:border-maroon-light'
+              }`}
+              style={{ minWidth: '180px' }}
+            >
+              <div className={`w-8 h-8 rounded-xl flex items-center justify-center shrink-0 ${
+                isActive ? 'bg-gold' : 'bg-cream2'
+              }`}>
+                <TabIcon size={16} className={isActive ? 'text-maroon-dark' : 'text-maroon'} strokeWidth={2} />
+              </div>
+              {tab.label}
+              {isActive && (
+                <ChevronRight size={16} className="ml-auto shrink-0 hidden md:block" />
+              )}
+            </button>
+          );
+        })}
+      </div>
+      {/* Content panel — right side */}
+      <div className="flex-1 bg-white rounded-3xl shadow-lg p-8 border-t-4 border-gold">
+        <div className="flex items-center gap-3 mb-6">
+          <div className="w-12 h-12 rounded-2xl bg-maroon flex items-center justify-center shrink-0">
+            <active.icon size={22} className="text-gold" strokeWidth={2} />
+          </div>
+          <h3 className="font-display font-extrabold text-2xl text-maroon-dark">{active.label}</h3>
+        </div>
+        <div className="grid sm:grid-cols-2 gap-4">
+          {active.features.map((f) => (
+            <div key={f.title} className="flex gap-4 items-start p-4 rounded-2xl bg-cream2 hover:bg-cream3 transition-colors">
+              <div className="w-10 h-10 rounded-xl bg-maroon flex items-center justify-center shrink-0">
+                <f.icon size={18} className="text-gold" strokeWidth={2} />
+              </div>
+              <div>
+                <h4 className="font-display font-bold text-maroon-dark text-sm leading-snug">{f.title}</h4>
+                <p className="font-body text-xs text-ink-60 mt-1 leading-relaxed">{f.desc}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+}
 
 function HomePage({ setPage }) {
   return (
@@ -655,48 +736,54 @@ function HomePage({ setPage }) {
         <PencilDivider />
       </section>
 
-      {/* WHY CHOOSE US */}
+      {/* WHY CHOOSE US — Interactive Tabs */}
       <section className="bg-cream2 py-16 md:py-20">
         <div className="max-w-6xl mx-auto px-6">
-          <div className="text-center max-w-2xl mx-auto">
+          <div className="text-center max-w-2xl mx-auto mb-12">
             <div className="flex justify-center"><Eyebrow>Why Families Choose Us</Eyebrow></div>
             <h2 className="font-display font-extrabold text-3xl md:text-4xl text-maroon-dark">A School Built Around Every Child</h2>
           </div>
-          <div className="flex flex-wrap justify-center items-stretch gap-5 mt-12">
-            {whyChooseUs.map((f) => (
-              <div key={f.title} className="flex flex-col" style={{ flexBasis: 'calc(25% - 15px)', minWidth: '220px', maxWidth: '280px', flexGrow: 0 }}>
-                <FeatureCard icon={f.icon} title={f.title} desc={f.desc} />
-              </div>
-            ))}
-          </div>
+          <WhyTabs />
         </div>
       </section>
 
       <PencilDivider thin />
 
-      {/* CLASSES WE OFFER */}
+      {/* CLASSES WE OFFER — Vertical Timeline */}
       <section className="bg-cream py-16 md:py-20">
-        <div className="max-w-6xl mx-auto px-6">
-          <div className="text-center max-w-2xl mx-auto">
+        <div className="max-w-4xl mx-auto px-6">
+          <div className="text-center max-w-2xl mx-auto mb-16">
             <div className="flex justify-center"><Eyebrow>Classes We Offer</Eyebrow></div>
             <h2 className="font-display font-extrabold text-3xl md:text-4xl text-maroon-dark">LKG to Class 5</h2>
-            <p className="font-body text-ink-60 mt-3 text-sm">Assumption: UKG included as the standard step between LKG and Class 1 — remove if not applicable.</p>
+            <p className="font-body text-ink-60 mt-3 text-sm">A clear learning journey from early play-based discovery to exam-ready foundations.</p>
           </div>
-          <div className="flex flex-wrap justify-center gap-5 mt-12">
-            {classLevels.map((c) => (
-              <div
-                key={c.level}
-                className="hover-lift bg-white rounded-3xl p-6 shadow-md text-center border-b-4 border-maroon"
-                style={{ flexBasis: "calc(25% - 15px)", minWidth: "180px", maxWidth: "280px", flexGrow: 0 }}
-              >
-                <div className="w-14 h-14 mx-auto rounded-full bg-gold-light flex items-center justify-center mb-3">
-                  <GraduationCap size={24} className="text-maroon-dark" />
-                </div>
-                <h3 className="font-display font-extrabold text-xl text-maroon-dark">{c.level}</h3>
-                <p className="font-body text-xs text-gold-dark font-bold mt-1">{c.age}</p>
-                <p className="font-body text-sm text-ink-60 mt-2">{c.focus}</p>
-              </div>
-            ))}
+          {/* Timeline */}
+          <div className="relative">
+            {/* Central line */}
+            <div className="absolute left-1/2 top-0 bottom-0 w-0.5 -translate-x-1/2" style={{ background: 'linear-gradient(to bottom, var(--gold), var(--maroon))' }} />
+            <div className="flex flex-col gap-10">
+              {classLevels.map((c, i) => {
+                const isLeft = i % 2 === 0;
+                return (
+                  <div key={c.level} className={`flex items-center gap-6 ${isLeft ? 'flex-row' : 'flex-row-reverse'}`}>
+                    {/* Content card */}
+                    <div className={`flex-1 ${isLeft ? 'text-right' : 'text-left'}`}>
+                      <div className={`inline-block bg-white rounded-2xl px-6 py-4 shadow-md border-2 ${isLeft ? 'border-l-4 border-l-maroon border-t border-r border-b border-gold-light' : 'border-r-4 border-r-maroon border-t border-l border-b border-gold-light'}`}>
+                        <h3 className="font-display font-extrabold text-xl text-maroon-dark">{c.level}</h3>
+                        <p className="font-body text-xs font-bold mt-0.5" style={{ color: 'var(--gold-dark)' }}>{c.age}</p>
+                        <p className="font-body text-sm text-ink-60 mt-1.5 leading-snug">{c.focus}</p>
+                      </div>
+                    </div>
+                    {/* Node */}
+                    <div className="relative z-10 shrink-0 w-14 h-14 rounded-full flex items-center justify-center shadow-lg border-4 border-white" style={{ background: 'var(--gold)' }}>
+                      <GraduationCap size={22} className="text-maroon-dark" strokeWidth={2} />
+                    </div>
+                    {/* Spacer for the other side */}
+                    <div className="flex-1" />
+                  </div>
+                );
+              })}
+            </div>
           </div>
         </div>
       </section>
@@ -1548,3 +1635,4 @@ export default function App() {
     </div>
   );
 }
+

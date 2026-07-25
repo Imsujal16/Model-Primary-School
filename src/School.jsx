@@ -10,6 +10,7 @@ import {
   CheckCircle2, ArrowRight, Send, Languages, ShieldCheck, Video, TreePine,
   HeartHandshake, Puzzle, Trophy, SmilePlus, Star, PartyPopper,
   Bus, Droplets, Library, Monitor, Computer, Brain, Palette, Music, Dumbbell, UsersRound, Utensils,
+  Award, Medal, Crown,
 } from "lucide-react";
 
 /* ============================================================
@@ -126,8 +127,11 @@ function BrandStyles() {
       .animate-spin-slow{ animation:spin-slow 40s linear infinite; }
       @keyframes bob{ 0%,100%{ transform:translateY(0px); } 50%{ transform:translateY(-10px); } }
       .animate-bob{ animation:bob 4s ease-in-out infinite; }
+      @keyframes marquee-scroll{ 0%{ transform:translateX(0); } 100%{ transform:translateX(-50%); } }
+      .marquee-track{ animation:marquee-scroll 36s linear infinite; }
+      .marquee-track:hover{ animation-play-state:paused; cursor:default; }
       @media (prefers-reduced-motion: reduce){
-        .animate-spin-slow, .animate-bob{ animation:none; }
+        .animate-spin-slow, .animate-bob, .marquee-track{ animation:none; }
       }
 
       .focus-ring:focus-visible{ outline:3px solid var(--maroon); outline-offset:2px; border-radius:8px; }
@@ -1001,6 +1005,104 @@ function AboutPage({ setPage }) {
               <p className="font-body italic text-white text-base">
                 [Principal Name], <span style={{ color: "var(--gold-light)" }}>Principal</span>
               </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* AWARDS & RECOGNITIONS */}
+      <section className="bg-cream py-16 md:py-20">
+        <div className="max-w-6xl mx-auto px-6">
+          {/* Section heading */}
+          <div className="text-center max-w-2xl mx-auto mb-12">
+            <div className="flex justify-center"><Eyebrow>Honours & Awards</Eyebrow></div>
+            <h2 className="font-display font-extrabold text-3xl md:text-4xl text-maroon-dark">Awards &amp; Recognitions</h2>
+            <p className="font-body text-ink-60 mt-3 text-sm">Decades of dedication honoured by the highest offices of the state and nation.</p>
+          </div>
+
+          {/* ── Crown Jewels: 3-column highlight row ── */}
+          <div className="grid sm:grid-cols-3 gap-5 mb-10">
+            {[
+              {
+                icon: Trophy,
+                color: 'bg-gold',
+                textColor: 'text-maroon-dark',
+                title: 'State Teacher Award',
+                body: 'Honored by the Uttar Pradesh Government for outstanding contribution to primary education.',
+                ribbon: 'UP Government',
+              },
+              {
+                icon: Crown,
+                color: 'bg-maroon',
+                textColor: 'text-white',
+                title: "Governor's Excellence",
+                body: 'Awarded by the Governor of Uttar Pradesh for excellence in school leadership and management.',
+                ribbon: 'Governor of UP',
+              },
+              {
+                icon: Award,
+                color: 'bg-gold',
+                textColor: 'text-maroon-dark',
+                title: 'National Recognition',
+                body: 'Awarded by Smt. Maneka Gandhi, Member of Parliament, for exemplary service to child education.',
+                ribbon: 'MP Smt. Maneka Gandhi',
+              },
+            ].map((award) => (
+              <div key={award.title} className="hover-lift relative bg-white rounded-3xl p-7 shadow-lg border-t-4 border-gold flex flex-col items-center text-center gap-4 overflow-hidden">
+                {/* Decorative bg circle */}
+                <div className="absolute -top-8 -right-8 w-28 h-28 rounded-full opacity-5 bg-maroon" />
+                {/* Icon badge */}
+                <div className={`w-16 h-16 rounded-2xl ${award.color} flex items-center justify-center shadow-md shrink-0`}>
+                  <award.icon size={30} className={award.textColor} strokeWidth={1.8} />
+                </div>
+                {/* Title */}
+                <h3 className="font-display font-extrabold text-lg text-maroon-dark leading-snug">{award.title}</h3>
+                <p className="font-body text-sm text-ink-70 leading-relaxed">{award.body}</p>
+                {/* Ribbon tag */}
+                <span className="inline-flex items-center gap-1.5 bg-cream2 border border-gold-light rounded-full px-3 py-1 text-xs font-body font-semibold text-maroon-dark mt-auto">
+                  <Medal size={12} className="text-gold-dark" strokeWidth={2} />
+                  {award.ribbon}
+                </span>
+              </div>
+            ))}
+          </div>
+
+          {/* ── District & Local Honours: Auto-scrolling marquee ── */}
+          <div className="rounded-2xl overflow-hidden shadow-md" style={{ background: 'var(--maroon)' }}>
+            <div className="flex items-center gap-3 px-5 py-3 border-b border-white-20">
+              <Star size={16} className="text-gold shrink-0" strokeWidth={2} />
+              <span className="font-display font-bold text-xs tracking-widest uppercase" style={{ color: 'var(--gold)' }}>District &amp; Local Honours</span>
+            </div>
+            <div className="py-4 px-3 overflow-hidden">
+              <div className="marquee-track whitespace-nowrap inline-block">
+                {[
+                  'Honored by DM C. Indumati, Sultanpur',
+                  'Honored by DM Ravish Gupta, Sultanpur',
+                  'Honored by DM Kritika Jyotsna, Sultanpur',
+                  'Recognized by Basic Shiksha Adhikari Diwan Singh',
+                  'Recognized by Basic Shiksha Adhikari Kaustubh Singh',
+                  'Recognized by Basic Shiksha Adhikari Santosh Saxena',
+                  'Awarded for Nari Sashaktikaran',
+                  'Honored by Local MLAs & SDM Lambhua',
+                  'Recognized by Team Amar Ujala',
+                ].concat([
+                  'Honored by DM C. Indumati, Sultanpur',
+                  'Honored by DM Ravish Gupta, Sultanpur',
+                  'Honored by DM Kritika Jyotsna, Sultanpur',
+                  'Recognized by Basic Shiksha Adhikari Diwan Singh',
+                  'Recognized by Basic Shiksha Adhikari Kaustubh Singh',
+                  'Recognized by Basic Shiksha Adhikari Santosh Saxena',
+                  'Awarded for Nari Sashaktikaran',
+                  'Honored by Local MLAs & SDM Lambhua',
+                  'Recognized by Team Amar Ujala',
+                ]).map((item, idx) => (
+                  <span key={idx} className="inline-flex items-center gap-2 mx-5">
+                    <Trophy size={12} className="text-gold shrink-0" strokeWidth={2} />
+                    <span className="font-body text-sm" style={{ color: 'rgba(255,248,234,0.92)' }}>{item}</span>
+                    <span className="text-gold opacity-40 ml-3">•</span>
+                  </span>
+                ))}
+              </div>
             </div>
           </div>
         </div>

@@ -698,7 +698,7 @@ function HomePage({ setPage }) {
       {/* ABOUT BRIEF */}
       <section className="bg-maroon py-16 md:py-20 relative overflow-hidden">
         <div className="max-w-6xl mx-auto px-6 grid md:grid-cols-2 gap-10 items-center relative">
-          <ImagePlaceholder label="Morning assembly" caption="Students in maroon & pink uniforms" tone="pink" ratio="5 / 4" />
+          <ImagePlaceholder src="/students_assembly.png" label="Morning assembly" caption="Students in maroon & pink uniforms" tone="pink" ratio="5 / 4" />
           <div>
             <Eyebrow light>About Our School</Eyebrow>
             <h2 className="font-display font-extrabold text-3xl md:text-4xl text-white leading-tight">Where Every Child Learns, Plays & Grows</h2>
@@ -1177,7 +1177,7 @@ function AcademicsPage({ setPage }) {
    GALLERY PAGE
    ============================================================ */
 const galleryItems = [
-  { cat: "Assembly", label: "Morning Assembly", caption: "Lines of students in uniform", tone: "gold" },
+  { cat: "Assembly", label: "Morning Assembly", caption: "Lines of students in uniform", tone: "gold", src: "/students_assembly.png" },
   { cat: "Assembly", label: "Prayer & Announcements", caption: "Daily assembly routine", tone: "pink" },
   { cat: "Playground", label: "Slide & Play Area", caption: "Greenery around the playground", tone: "green" },
   { cat: "Playground", label: "Recess Time", caption: "Children at play", tone: "gold" },
@@ -1215,6 +1215,7 @@ function GalleryPage() {
             {items.map((it, idx) => (
               <div key={it.label + idx} className="mb-5 break-inside-avoid">
                 <ImagePlaceholder
+                  src={it.src}
                   label={it.label}
                   caption={it.caption}
                   tone={it.tone}

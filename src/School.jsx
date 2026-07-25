@@ -706,29 +706,39 @@ function HomePage({ setPage }) {
         <div className="absolute -top-10 -right-10 opacity-90 animate-spin-slow hidden md:block" aria-hidden="true">
           <Emblem size={200} ring={false} />
         </div>
-        <div className="max-w-7xl mx-auto px-6 pt-12 pb-16 md:pt-16 md:pb-24 grid md:grid-cols-12 gap-8 lg:gap-12 items-center relative">
-          <div className="md:col-span-5">
-            <SectionLabel>Admissions Open 2026–27</SectionLabel>
-            <h1 className="font-display font-extrabold text-4xl md:text-5xl lg:text-6xl text-maroon-dark leading-tight mt-5">
-              Nurturing Little Minds, <span className="text-gold-dark">Building Bright Futures</span>
-            </h1>
-            <p className="font-body text-ink-70 text-base md:text-lg mt-5">
-              Model Primary School is a government-recognized English medium school for LKG to Class 5 in Bharsare,
-              Bhadaiyan, Sultanpur — where every child learns, plays & grows.
-            </p>
-            <div className="flex flex-col sm:flex-row flex-wrap gap-3 mt-8">
-              <CTAButton variant="primary" onClick={() => setPage("admissions")} className="w-full sm:w-auto">Enroll Now — Admissions 2026-27</CTAButton>
-              <CTAButton variant="outline" icon={ChevronRight} onClick={() => setPage("about")} className="w-full sm:w-auto">Explore Programs</CTAButton>
+        <div className="max-w-7xl mx-auto px-6 pt-10 pb-16 md:pt-16 md:pb-24 flex flex-col gap-6 md:grid md:grid-cols-12 md:gap-8 lg:gap-12 items-center relative">
+          {/* Left Column wrapper: contents on mobile so children participate in main flex container, flex-col on desktop */}
+          <div className="contents md:flex md:flex-col md:col-span-5">
+            {/* 1. Headings & Paragraph text */}
+            <div className="order-1 md:order-1">
+              <SectionLabel>Admissions Open 2026–27</SectionLabel>
+              <h1 className="font-display font-extrabold text-3xl sm:text-4xl md:text-5xl lg:text-6xl text-maroon-dark leading-tight mt-4 md:mt-5">
+                Nurturing Little Minds, <span className="text-gold-dark">Building Bright Futures</span>
+              </h1>
+              <p className="font-body text-ink-70 text-base md:text-lg mt-4 md:mt-5 leading-relaxed">
+                Model Primary School is a government-recognized English medium school for LKG to Class 5 in Bharsare,
+                Bhadaiyan, Sultanpur — where every child learns, plays & grows.
+              </p>
             </div>
-            <div className="flex flex-wrap gap-3 mt-8">
+
+            {/* 3. Facility Tags (Mobile Order 3, Desktop Order 3) */}
+            <div className="order-3 md:order-3 flex flex-wrap gap-2.5 sm:gap-3 mt-1 md:mt-8">
               {["English Medium", "Govt. Recognized", "CCTV Campus", "LKG – Class 5"].map((t) => (
-                <span key={t} className="flex items-center gap-1.5 bg-white-80 border border-gold-light rounded-full px-3.5 py-1.5 text-xs md:text-sm font-body font-semibold text-maroon-dark">
+                <span key={t} className="flex items-center gap-1.5 bg-white-80 border border-gold-light rounded-full px-3.5 py-1.5 text-xs md:text-sm font-body font-semibold text-maroon-dark shadow-sm">
                   <CheckCircle2 size={14} className="text-green" /> {t}
                 </span>
               ))}
             </div>
+
+            {/* 4. Call-to-Action Buttons (Mobile Order 4, Desktop Order 2) */}
+            <div className="order-4 md:order-2 flex flex-col sm:flex-row flex-wrap gap-3 mt-2 md:mt-8">
+              <CTAButton variant="primary" onClick={() => setPage("admissions")} className="w-full sm:w-auto">Enroll Now — Admissions 2026-27</CTAButton>
+              <CTAButton variant="outline" icon={ChevronRight} onClick={() => setPage("about")} className="w-full sm:w-auto">Explore Programs</CTAButton>
+            </div>
           </div>
-          <div className="relative md:col-span-7 w-full">
+
+          {/* 2. School Image (Mobile Order 2, Desktop Right Column) */}
+          <div className="order-2 md:order-none md:col-span-7 relative w-full my-2 md:my-0">
             <ImagePlaceholder src="/hero_home.png" label="School building & entrance" caption="Pencil-and-book branded exterior" ratio="4 / 3" className="w-full shadow-2xl" />
             <div className="absolute -bottom-8 -left-8 hidden sm:block animate-bob">
               <Mascot variant="girl" size={120} />

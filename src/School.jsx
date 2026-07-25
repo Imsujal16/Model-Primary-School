@@ -9,6 +9,7 @@ import {
   Sparkles, GraduationCap, Users, BookOpen, CalendarCheck, FileText,
   CheckCircle2, ArrowRight, Send, Languages, ShieldCheck, Video, TreePine,
   HeartHandshake, Puzzle, Trophy, SmilePlus, Star, PartyPopper,
+  Bus, Droplets, Library, Monitor, Computer, Brain, Palette, Music, Dumbbell, UsersRound, Utensils,
 } from "lucide-react";
 
 /* ============================================================
@@ -595,6 +596,9 @@ const whyChooseUs = [
   { icon: Puzzle, title: "Activity-Based & Joyful Learning", desc: "Lessons built around hands-on activities, so children learn by doing, not just by listening." },
   { icon: Trophy, title: "Co-Curricular & Sports Activities", desc: "Regular sports, games and co-curricular events that build confidence beyond the classroom." },
   { icon: SmilePlus, title: "Discipline with a Friendly Environment", desc: "A gently disciplined, friendly campus where children feel secure enough to be themselves." },
+  { icon: Bus,          title: "Safe & Reliable Transport",          desc: "Convenient transport facilities available for students to ensure a safe and comfortable commute every day." },
+  { icon: Droplets,     title: "Health & Hygiene First",             desc: "24/7 running water supply and RO water coolers on campus to keep children hydrated and healthy." },
+  { icon: Library,      title: "Well-Stocked Reading Library",       desc: "A curated knowledge hub library with books that spark curiosity and instill a love of reading from an early age." },
 ];
 
 const classLevels = [
@@ -771,6 +775,9 @@ function AboutPage({ setPage }) {
     { icon: ShieldCheck, title: 'Govt. Recognized',  desc: "Fully government-recognized, so your child's early education stands on certified ground." },
     { icon: Video,       title: 'CCTV Campus',       desc: 'Full campus CCTV surveillance giving parents peace of mind throughout the school day.' },
     { icon: TreePine,    title: 'Outdoor Play Area', desc: 'A generous green outdoor play area where children run, climb and play every single day.' },
+    { icon: Bus,         title: 'Safe Transport',    desc: 'Reliable transport facilities ensuring a safe and comfortable daily commute for every student.' },
+    { icon: Droplets,    title: 'Health & Hygiene',  desc: '24/7 running water and RO water coolers on campus keep children hydrated and healthy all day.' },
+    { icon: Library,     title: 'Knowledge Hub',     desc: 'A well-stocked reading library that nurtures curiosity and builds a lifelong love of reading.' },
   ];
 
   const teachers = [
@@ -1137,6 +1144,38 @@ function AcademicsPage({ setPage }) {
         </div>
       </section>
 
+      <PencilDivider thin />
+
+      {/* MODERN LEARNING */}
+      <section className="bg-cream py-16 md:py-20">
+        <div className="max-w-6xl mx-auto px-6 grid md:grid-cols-2 gap-12 items-center">
+          <div>
+            <Eyebrow>Modern Learning</Eyebrow>
+            <h2 className="font-display font-extrabold text-3xl md:text-4xl text-maroon-dark mt-2 mb-6">A Future-Ready Classroom Experience</h2>
+            <p className="font-body text-ink-70 mb-8">We combine time-tested teaching with modern infrastructure to give every student the best of both worlds.</p>
+            <div className="grid sm:grid-cols-2 gap-4">
+              {[
+                { icon: Monitor,  title: 'Smart Classrooms',  desc: 'Projector-enabled interactive learning that makes every lesson vivid and engaging.' },
+                { icon: Computer, title: 'Computer Education', desc: 'Dedicated tech-ready labs to introduce students to computers from an early age.' },
+                { icon: Brain,    title: 'GK & Remedial Classes', desc: 'Specialized GK enrichment and remedial support so no child is ever left behind.' },
+                { icon: Star,     title: '360° Holistic Development', desc: 'Equal focus on academics, arts, sports and character for complete student growth.' },
+              ].map((item) => (
+                <div key={item.title} className="flex gap-3 bg-white rounded-2xl p-4 shadow-sm border-l-4 border-gold">
+                  <div className="w-10 h-10 rounded-xl bg-maroon flex items-center justify-center shrink-0">
+                    <item.icon size={18} className="text-gold" strokeWidth={2} />
+                  </div>
+                  <div>
+                    <h3 className="font-display font-bold text-maroon-dark text-sm">{item.title}</h3>
+                    <p className="font-body text-xs text-ink-60 mt-0.5 leading-snug">{item.desc}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+          <ImagePlaceholder label="Smart Classroom" caption="Projector-enabled interactive class" ratio="4 / 3" tone="gold" />
+        </div>
+      </section>
+
       <PencilDivider />
 
       {/* METHODOLOGY */}
@@ -1152,6 +1191,36 @@ function AcademicsPage({ setPage }) {
                 </div>
                 <h3 className="font-display font-bold text-maroon-dark">{m.title}</h3>
                 <p className="font-body text-sm text-ink-70 mt-2">{m.desc}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <PencilDivider thin />
+
+      {/* BEYOND THE BOOKS */}
+      <section className="bg-cream2 py-16 md:py-20">
+        <div className="max-w-6xl mx-auto px-6">
+          <div className="text-center max-w-2xl mx-auto mb-12">
+            <div className="flex justify-center"><Eyebrow>Student Life</Eyebrow></div>
+            <h2 className="font-display font-extrabold text-3xl md:text-4xl text-maroon-dark">Beyond the Books</h2>
+            <p className="font-body text-ink-70 mt-3">Every child at Model Primary School gets to explore, create, move and perform — every single day.</p>
+          </div>
+          <div className="grid sm:grid-cols-3 gap-6">
+            {[
+              { icon: Palette,   title: 'Art & Craft',          desc: 'Dedicated creative sessions where children express themselves through drawing, painting, and crafting.', accent: 'border-gold' },
+              { icon: Music,     title: 'Dance & Cultural Arts', desc: 'Vibrant dance and cultural performances that build confidence and celebrate expression on stage.', accent: 'border-maroon' },
+              { icon: Dumbbell,  title: 'Sports & Physical Education', desc: 'Daily games, sports activities, and outdoor swing areas that build fitness, teamwork and resilience.', accent: 'border-gold' },
+            ].map((item) => (
+              <div key={item.title} className={`hover-lift bg-white rounded-3xl p-7 shadow-md border-b-4 ${item.accent} flex flex-col items-center text-center gap-4`}>
+                <div className="w-16 h-16 rounded-full bg-maroon flex items-center justify-center">
+                  <item.icon size={28} className="text-gold" strokeWidth={1.8} />
+                </div>
+                <div>
+                  <h3 className="font-display font-bold text-xl text-maroon-dark">{item.title}</h3>
+                  <p className="font-body text-sm text-ink-70 mt-2 leading-relaxed">{item.desc}</p>
+                </div>
               </div>
             ))}
           </div>
@@ -1321,6 +1390,35 @@ function AdmissionsPage({ setPage }) {
                 </li>
               ))}
             </ul>
+          </div>
+        </div>
+      </section>
+
+      <PencilDivider thin />
+
+      {/* PARENT PARTNERSHIP & CARE */}
+      <section className="bg-cream2 py-16 md:py-20">
+        <div className="max-w-6xl mx-auto px-6">
+          <div className="text-center max-w-2xl mx-auto mb-12">
+            <div className="flex justify-center"><Eyebrow>Parent Partnership</Eyebrow></div>
+            <h2 className="font-display font-extrabold text-3xl md:text-4xl text-maroon-dark">A Community That Cares Together</h2>
+            <p className="font-body text-ink-70 mt-3">We believe the best education happens when school and family work hand in hand.</p>
+          </div>
+          <div className="grid sm:grid-cols-2 gap-6 max-w-3xl mx-auto">
+            {[
+              { icon: UsersRound, title: 'PTM & MTA Meetings',    desc: 'Regular Parent-Teacher Meetings (PTM) and Mother-Teacher Association (MTA) sessions keep families closely involved in their child\'s progress.' },
+              { icon: Utensils,   title: 'Mid-Day Meal Programme', desc: 'Government-supported, nutritious Mid-Day Meals (MDM) provided daily to ensure every child is nourished and energized to learn.' },
+            ].map((item) => (
+              <div key={item.title} className="hover-lift bg-white rounded-3xl p-7 shadow-md border-l-4 border-maroon flex gap-5 items-start">
+                <div className="w-14 h-14 rounded-2xl bg-maroon flex items-center justify-center shrink-0">
+                  <item.icon size={26} className="text-gold" strokeWidth={1.8} />
+                </div>
+                <div>
+                  <h3 className="font-display font-bold text-lg text-maroon-dark">{item.title}</h3>
+                  <p className="font-body text-sm text-ink-70 mt-2 leading-relaxed">{item.desc}</p>
+                </div>
+              </div>
+            ))}
           </div>
         </div>
       </section>

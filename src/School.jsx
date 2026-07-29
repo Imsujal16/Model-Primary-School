@@ -1729,7 +1729,7 @@ function AcademicsPage({ setPage }) {
             <Eyebrow>A Day at School</Eyebrow>
             <h2 className="font-display font-extrabold text-2xl sm:text-3xl md:text-4xl text-maroon-dark mb-2">Daily Routine</h2>
             <p className="font-body text-ink-60 text-xs sm:text-sm mb-6 sm:mb-8">Sample schedule — actual timings may vary by class.</p>
-            <ol className="relative border-l-2 border-gold-light ml-4 sm:ml-6 pl-6 flex flex-col gap-6 w-full min-w-0">
+            <ol className="relative border-l-2 border-gold-light ml-3 sm:ml-4 md:ml-0 pl-6 flex flex-col gap-6 w-full min-w-0">
               {dailyRoutine.map((r) => (
                 <li key={r.time} className="relative">
                   <span className="absolute -left-8 top-1 w-4 h-4 rounded-full bg-maroon border-2 border-cream shrink-0" />

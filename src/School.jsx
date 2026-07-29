@@ -3,7 +3,7 @@ import Lenis from "lenis";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { Navigation, Pagination } from 'swiper/modules';
+import { Navigation, Pagination, Autoplay } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
@@ -1694,7 +1694,7 @@ function AcademicsPage({ setPage }) {
 
       {/* DAILY ROUTINE */}
       <section className="bg-cream py-16 md:py-20">
-        <div className="max-w-6xl mx-auto px-6 grid md:grid-cols-2 gap-12">
+        <div className="max-w-6xl mx-auto px-6 grid md:grid-cols-2 gap-10 lg:gap-12 items-center">
           <div>
             <Eyebrow>A Day at School</Eyebrow>
             <h2 className="font-display font-extrabold text-3xl md:text-4xl text-maroon-dark mb-2">Daily Routine</h2>
@@ -1709,8 +1709,34 @@ function AcademicsPage({ setPage }) {
               ))}
             </ol>
           </div>
-          <div>
-            <ImagePlaceholder src="/outdoor_fun.png" label="Outdoor Group Activity" caption="Games on the school ground" tone="green" ratio="4 / 5" className="max-w-sm mx-auto" />
+
+          {/* Fixed Image Slider Grid with Pagination Dot Logic */}
+          <div className="w-full max-w-md mx-auto">
+            <Swiper
+              modules={[Pagination, Autoplay]}
+              pagination={{ clickable: true }}
+              autoplay={{ delay: 3500, disableOnInteraction: false }}
+              spaceBetween={16}
+              slidesPerView={1}
+              className="rounded-3xl shadow-xl border-4 border-white overflow-hidden bg-cream3"
+            >
+              {[
+                { src: '/outdoor_fun.png', label: 'Outdoor Activities & Playground' },
+                { src: '/yoga_activity.png', label: 'Morning Yoga & Physical Exercises' },
+                { src: '/students_assembly.png', label: 'Morning Assembly & Prayer' },
+                { src: '/tour.png', label: 'Co-Curricular Learning Tours' },
+              ].map((img, i) => (
+                <SwiperSlide key={i}>
+                  <div className="relative aspect-[4/3] w-full overflow-hidden">
+                    <img src={img.src} alt={img.label} className="w-full h-full object-cover" />
+                    <div className="absolute bottom-0 left-0 right-0 p-3.5 pt-8 bg-gradient-to-t from-maroon-dark/85 via-maroon-dark/40 to-transparent text-white">
+                      <p className="font-display font-bold text-xs md:text-sm text-gold-light">{img.label}</p>
+                    </div>
+                    <div className="absolute top-0 left-0 w-full h-2 pencil-stripe-thin" />
+                  </div>
+                </SwiperSlide>
+              ))}
+            </Swiper>
           </div>
         </div>
       </section>

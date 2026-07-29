@@ -485,14 +485,7 @@ function Navbar({ page, setPage }) {
           ))}
         </div>
 
-        <div className="hidden lg:flex items-center gap-3">
-          <a
-            href="tel:9454826921"
-            className="flex items-center gap-1.5 font-display font-bold text-xs md:text-sm text-maroon-dark bg-white border-2 border-gold-light px-3.5 py-2 rounded-full hover:bg-gold hover:border-gold transition-colors shadow-xs"
-          >
-            <Phone size={14} className="text-maroon shrink-0" />
-            <span>+91 9454826921</span>
-          </a>
+        <div className="hidden lg:block">
           <CTAButton variant="gold" onClick={() => go("admissions")}>
             Enroll Now
           </CTAButton>
@@ -520,14 +513,7 @@ function Navbar({ page, setPage }) {
               {l.label}
             </button>
           ))}
-          <a
-            href="tel:9454826921"
-            className="flex items-center justify-center gap-2 font-display font-bold text-sm text-maroon-dark bg-white border-2 border-gold-light py-2.5 rounded-2xl mt-1"
-          >
-            <Phone size={16} className="text-maroon shrink-0" />
-            <span>Call Us: +91 9454826921</span>
-          </a>
-          <CTAButton variant="primary" onClick={() => go("admissions")} className="mt-1 w-full">
+          <CTAButton variant="primary" onClick={() => go("admissions")} className="mt-2 w-full">
             Enroll Now
           </CTAButton>
         </div>
@@ -593,11 +579,11 @@ function FloatingCall() {
   return (
     <a
       href="tel:9454826921"
-      className="focus-ring fixed bottom-5 right-5 z-40 flex items-center gap-2 bg-gold text-maroon-dark font-display font-bold px-4 py-3 rounded-full shadow-2xl hover-lift border-2 border-white"
-      title="Call +91 9454826921"
+      className="focus-ring fixed bottom-5 right-5 z-40 flex items-center gap-2 bg-gold text-maroon-dark font-display font-bold px-4 py-3 rounded-full shadow-2xl hover-lift"
+      title="Call 9454826921"
     >
       <Phone size={18} />
-      <span className="text-sm">Call Us (+91 9454826921)</span>
+      <span className="hidden sm:inline text-sm">Call Us</span>
     </a>
   );
 }

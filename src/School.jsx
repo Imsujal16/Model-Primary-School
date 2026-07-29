@@ -1745,10 +1745,10 @@ function AcademicsPage({ setPage }) {
             <Eyebrow>A Day at School</Eyebrow>
             <h2 className="font-display font-extrabold text-2xl sm:text-3xl md:text-4xl text-maroon-dark mb-2">Daily Routine</h2>
             <p className="font-body text-ink-60 text-xs sm:text-sm mb-6 sm:mb-8">Sample schedule — actual timings may vary by class.</p>
-            <ol className="relative border-l-2 border-gold-light ml-3 sm:ml-4 pl-6 flex flex-col gap-6 w-full min-w-0">
+            <ol className="relative border-l-2 border-gold-light ml-4 sm:ml-6 pl-6 flex flex-col gap-6 w-full min-w-0">
               {dailyRoutine.map((r) => (
                 <li key={r.time} className="relative">
-                  <span className="absolute -left-[9px] top-0.5 w-4 h-4 rounded-full bg-maroon border-2 border-cream shrink-0" />
+                  <span className="absolute -left-8 top-1 w-4 h-4 rounded-full bg-maroon border-2 border-cream shrink-0" />
                   <span className="font-display font-bold text-gold-dark text-xs sm:text-sm block">{r.time}</span>
                   <p className="font-body text-ink-80 text-sm md:text-base mt-0.5">{r.activity}</p>
                 </li>
@@ -1757,7 +1757,7 @@ function AcademicsPage({ setPage }) {
           </div>
 
           {/* Mobile-Optimized Image Slider Container */}
-          <div className="w-full min-w-0 max-w-full md:max-w-md mx-auto mt-6 md:mt-0 overflow-hidden">
+          <div className="w-full min-w-0 max-w-full md:max-w-md lg:max-w-lg mx-auto mt-6 md:mt-0 overflow-hidden">
             <div className="w-full min-w-0 max-w-full relative rounded-2xl sm:rounded-3xl shadow-xl border-2 sm:border-4 border-white overflow-hidden bg-cream3">
               <Swiper
                 modules={[Pagination, Autoplay]}

@@ -1728,8 +1728,8 @@ function AcademicsPage({ setPage }) {
 
       {/* DAILY ROUTINE */}
       <section className="bg-cream py-12 md:py-20 overflow-hidden w-full max-w-full">
-        <div className="max-w-6xl mx-auto px-5 sm:px-6 grid grid-cols-1 md:grid-cols-12 gap-8 lg:gap-12 items-center w-full min-w-0 max-w-full overflow-hidden">
-          <div className="w-full min-w-0 max-w-full md:col-span-6 lg:col-span-6">
+        <div className="max-w-6xl mx-auto px-5 sm:px-6 grid grid-cols-1 md:grid-cols-12 gap-6 md:gap-8 lg:gap-10 items-start w-full min-w-0 max-w-full overflow-hidden">
+          <div className="w-full min-w-0 max-w-full md:col-span-6 lg:col-span-5">
             <Eyebrow>A Day at School</Eyebrow>
             <h2 className="font-display font-extrabold text-2xl sm:text-3xl md:text-4xl text-maroon-dark mb-2">Daily Routine</h2>
             <p className="font-body text-ink-60 text-xs sm:text-sm mb-6 sm:mb-8">Sample schedule — actual timings may vary by class.</p>
@@ -1744,9 +1744,9 @@ function AcademicsPage({ setPage }) {
             </ol>
           </div>
 
-          {/* Image Slider Container */}
-          <div className="w-full min-w-0 max-w-full md:col-span-6 lg:col-span-6 flex justify-center md:justify-end mt-6 md:mt-0">
-            <div className="w-full max-w-md sm:max-w-lg relative rounded-2xl sm:rounded-3xl shadow-xl border-2 sm:border-4 border-white overflow-hidden bg-cream3">
+          {/* Image Slider Container - Top-Aligned with Tight Gap */}
+          <div className="w-full min-w-0 max-w-full md:col-span-6 lg:col-span-7 flex justify-center md:justify-start mt-6 md:mt-0">
+            <div className="w-full max-w-md sm:max-w-lg lg:max-w-xl relative rounded-2xl sm:rounded-3xl shadow-xl border-2 sm:border-4 border-white overflow-hidden bg-cream3">
               <Swiper
                 modules={[Pagination, Autoplay]}
                 pagination={{ clickable: true }}

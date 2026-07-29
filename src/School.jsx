@@ -485,7 +485,14 @@ function Navbar({ page, setPage }) {
           ))}
         </div>
 
-        <div className="hidden lg:block">
+        <div className="hidden lg:flex items-center gap-3">
+          <a
+            href="tel:9454826921"
+            className="flex items-center gap-1.5 font-display font-bold text-xs md:text-sm text-maroon-dark bg-white border-2 border-gold-light px-3.5 py-2 rounded-full hover:bg-gold hover:border-gold transition-colors shadow-xs"
+          >
+            <Phone size={14} className="text-maroon shrink-0" />
+            <span>+91 9454826921</span>
+          </a>
           <CTAButton variant="gold" onClick={() => go("admissions")}>
             Enroll Now
           </CTAButton>
@@ -513,7 +520,14 @@ function Navbar({ page, setPage }) {
               {l.label}
             </button>
           ))}
-          <CTAButton variant="primary" onClick={() => go("admissions")} className="mt-2 w-full">
+          <a
+            href="tel:9454826921"
+            className="flex items-center justify-center gap-2 font-display font-bold text-sm text-maroon-dark bg-white border-2 border-gold-light py-2.5 rounded-2xl mt-1"
+          >
+            <Phone size={16} className="text-maroon shrink-0" />
+            <span>Call Us: +91 9454826921</span>
+          </a>
+          <CTAButton variant="primary" onClick={() => go("admissions")} className="mt-1 w-full">
             Enroll Now
           </CTAButton>
         </div>
@@ -563,7 +577,7 @@ function Footer({ setPage }) {
           <h4 className="font-display font-bold text-gold mb-3 text-sm uppercase tracking-wide">Reach Us</h4>
           <ul className="flex flex-col gap-3 font-body text-sm text-gold-light-85">
             <li className="flex gap-2"><MapPin size={18} className="shrink-0 mt-0.5" /><span>Bharsare, Bhadaiyan, Sultanpur, Uttar Pradesh</span></li>
-            <li className="flex gap-2"><Phone size={18} className="shrink-0 mt-0.5" /><span className="italic text-gold-light-60">[Add phone number]</span></li>
+            <li className="flex gap-2"><Phone size={18} className="shrink-0 mt-0.5" /><a href="tel:9454826921" className="hover:underline text-gold-light-90 font-medium">+91 9454826921</a></li>
             <li className="flex gap-2"><Clock size={18} className="shrink-0 mt-0.5" /><span>Mon – Sat, 8:00 AM – 2:00 PM</span></li>
           </ul>
         </div>
@@ -578,12 +592,12 @@ function Footer({ setPage }) {
 function FloatingCall() {
   return (
     <a
-      href="tel:"
-      className="focus-ring fixed bottom-5 right-5 z-40 flex items-center gap-2 bg-gold text-maroon-dark font-display font-bold px-4 py-3 rounded-full shadow-2xl hover-lift"
-      title="[Add phone number]"
+      href="tel:9454826921"
+      className="focus-ring fixed bottom-5 right-5 z-40 flex items-center gap-2 bg-gold text-maroon-dark font-display font-bold px-4 py-3 rounded-full shadow-2xl hover-lift border-2 border-white"
+      title="Call +91 9454826921"
     >
       <Phone size={18} />
-      <span className="hidden sm:inline text-sm">Call Us</span>
+      <span className="text-sm">Call Us (+91 9454826921)</span>
     </a>
   );
 }
@@ -2038,7 +2052,7 @@ function ContactPage() {
               <h3 className="font-display font-bold text-lg mb-4 flex items-center gap-2"><Emblem size={30} ring={false} /> School Details</h3>
               <ul className="flex flex-col gap-4 font-body text-sm text-gold-light-90">
                 <li className="flex gap-3"><MapPin size={20} className="shrink-0" /><span>Model Primary School, Bharsare, Bhadaiyan, Sultanpur, Uttar Pradesh</span></li>
-                <li className="flex gap-3"><Phone size={20} className="shrink-0" /><span className="italic text-gold-light-60 border border-dashed border-gold-light-40 rounded-lg px-2 py-0.5">[Add phone number]</span></li>
+                <li className="flex gap-3"><Phone size={20} className="shrink-0 text-gold" /><a href="tel:9454826921" className="hover:underline font-semibold text-white">+91 9454826921</a></li>
                 <li className="flex gap-3"><Mail size={20} className="shrink-0" /><span className="italic text-gold-light-60 border border-dashed border-gold-light-40 rounded-lg px-2 py-0.5">[Add email address]</span></li>
                 <li className="flex gap-3"><Clock size={20} className="shrink-0" /><span>Mon – Sat, 8:00 AM – 2:00 PM</span></li>
               </ul>

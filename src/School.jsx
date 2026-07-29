@@ -1406,11 +1406,11 @@ function AboutPage({ setPage }) {
         <div className="max-w-6xl mx-auto px-6 relative">
           <Eyebrow light>Why Families Choose Us</Eyebrow>
           <h2 className="font-display font-extrabold text-3xl md:text-4xl text-white mb-10">What Makes Model Primary School Different</h2>
-          <div ref={whyRef} className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3.5 sm:gap-5">
+          <div ref={whyRef} className="flex flex-wrap justify-center items-stretch gap-3.5 sm:gap-5">
             {features.map((f, i) => (
               <div
                 key={f.title}
-                className={`feature-scale stagger-card bg-white-95 rounded-2xl md:rounded-3xl p-4 md:p-6 shadow-lg flex flex-row sm:flex-col gap-3.5 sm:gap-3 items-center sm:items-start ${whyVisible ? 'is-visible' : ''}`}
+                className={`feature-scale stagger-card bg-white-95 rounded-2xl md:rounded-3xl p-4 md:p-6 shadow-lg flex flex-row sm:flex-col gap-3.5 sm:gap-3 items-center sm:items-start w-full sm:w-[calc(50%-12px)] lg:w-[calc(25%-16px)] sm:max-w-[270px] ${whyVisible ? 'is-visible' : ''}`}
                 style={{ transitionDelay: whyVisible ? `${i * 0.1}s` : '0s' }}
               >
                 <div className="w-10 h-10 md:w-11 md:h-11 rounded-xl md:rounded-2xl bg-gold flex items-center justify-center shrink-0 shadow-sm">

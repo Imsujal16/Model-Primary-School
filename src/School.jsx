@@ -1729,7 +1729,7 @@ function AcademicsPage({ setPage }) {
       {/* DAILY ROUTINE */}
       <section className="bg-cream py-14 md:py-20 w-full overflow-hidden">
         <div className="max-w-[1140px] mx-auto px-5 sm:px-8 md:px-10 w-full min-w-0">
-          <div className="flex flex-col md:flex-row items-start gap-8 md:gap-12 lg:gap-14 w-full min-w-0">
+          <div className="flex flex-col md:flex-row items-center gap-8 md:gap-12 lg:gap-14 w-full min-w-0">
             {/* Left Timeline Column (40% width) */}
             <div className="w-full md:w-[40%] lg:w-[38%] shrink-0 min-w-0">
               <Eyebrow>A Day at School</Eyebrow>

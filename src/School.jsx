@@ -488,8 +488,11 @@ function SectionLabel({ children }) {
 function PageHero({ eyebrow, title, subtitle }) {
   return (
     <section className="relative bg-maroon overflow-hidden w-full max-w-full">
-      <div className="absolute -right-6 -top-6 md:-right-16 md:-top-16 opacity-20 animate-spin-slow pointer-events-none" aria-hidden="true">
-        <Emblem size={180} className="w-[140px] h-[140px] md:w-[260px] md:h-[260px]" ring={false} />
+      <div className="absolute -right-6 -top-6 md:hidden opacity-20 animate-spin-slow pointer-events-none" aria-hidden="true">
+        <Emblem size={180} ring={false} />
+      </div>
+      <div className="absolute hidden md:block -right-10 -top-10 opacity-20 animate-spin-slow pointer-events-none" aria-hidden="true">
+        <Emblem size={300} ring={false} />
       </div>
       <div className="max-w-6xl mx-auto px-5 sm:px-6 py-10 sm:py-14 md:py-24 relative">
         <Eyebrow light>{eyebrow}</Eyebrow>
@@ -862,8 +865,11 @@ function HomePage({ setPage }) {
     <div>
       {/* HERO */}
       <section className="relative bg-cream overflow-hidden">
-        <div className="absolute -top-6 -right-6 md:-top-10 md:-right-10 opacity-70 md:opacity-90 animate-spin-slow pointer-events-none" aria-hidden="true">
-          <Emblem size={160} className="w-[140px] h-[140px] md:w-[200px] md:h-[200px]" ring={false} />
+        <div className="absolute -top-6 -right-6 md:hidden opacity-70 animate-spin-slow pointer-events-none" aria-hidden="true">
+          <Emblem size={160} ring={false} />
+        </div>
+        <div className="absolute hidden md:block -top-8 -right-8 opacity-90 animate-spin-slow pointer-events-none" aria-hidden="true">
+          <Emblem size={240} ring={false} />
         </div>
         <div className="max-w-7xl mx-auto px-6 pt-10 pb-16 md:pt-16 md:pb-24 flex flex-col gap-6 md:grid md:grid-cols-12 md:gap-8 lg:gap-12 items-center relative">
           {/* Left Column wrapper: contents on mobile so children participate in main flex container, flex-col on desktop */}

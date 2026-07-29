@@ -29,13 +29,16 @@ import {
 function BrandStyles() {
   return (
     <style>{`
-      html, body {
-        overflow-x: hidden !important;
+      html {
+        max-width: 100vw;
+        width: 100%;
+      }
+      body {
+        overflow-x: clip;
         max-width: 100vw;
         width: 100%;
       }
       #root {
-        overflow-x: hidden;
         max-width: 100vw;
         width: 100%;
       }
@@ -135,10 +138,11 @@ function BrandStyles() {
       }
 
       .glass-nav{
-        background:rgba(255,248,234,0.72);
-        backdrop-filter:blur(14px);
-        -webkit-backdrop-filter:blur(14px);
-        border-bottom:1px solid rgba(240,168,40,0.35);
+        background:rgba(255,248,234,0.82) !important;
+        backdrop-filter:blur(16px) saturate(180%) !important;
+        -webkit-backdrop-filter:blur(16px) saturate(180%) !important;
+        border-bottom:1px solid rgba(240,168,40,0.3);
+        box-shadow:0 4px 20px rgba(58,42,30,0.06);
       }
       .glass-card{
         background:rgba(255,255,255,0.6);

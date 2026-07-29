@@ -930,7 +930,7 @@ function AboutPage({ setPage }) {
               <p className="font-body text-sm text-ink-80"><strong className="text-maroon-dark">Government-Recognized Institution</strong> — verified and compliant with state education norms.</p>
             </div>
           </div>
-          <ImagePlaceholder label="Entrance Gate &amp; Signage" caption="Model Primary School main entrance" ratio="4 / 5" />
+          <ImagePlaceholder src="/entrance_gate.png" label="Entrance Gate &amp; Signage" caption="Model Primary School main entrance" ratio="4 / 5" />
         </div>
       </section>
 
@@ -1460,7 +1460,7 @@ const galleryItems = [
   { cat: "Events", label: "Prize Distribution", caption: "Annual event under the tent", tone: "pink", src: "/annual_event.png" },
   { cat: "Events", label: "Cultural Program", caption: "Stage event under canopy", tone: "gold" },
   { cat: "Campus", label: "School Building", caption: "Pencil-and-book branded exterior", tone: "gold" },
-  { cat: "Campus", label: "Entrance Gate", caption: "Main gate & signage", tone: "green" },
+  { cat: "Campus", label: "Entrance Gate", caption: "Main gate & signage", tone: "green", src: "/entrance_gate.png" },
   { cat: "Activity", label: "Outdoor Group Activity", caption: "Games on the ground", tone: "green", src: "/outdoor_fun.png" },
   { cat: "Activity", label: "Sports Day", caption: "Co-curricular activity", tone: "pink" },
 ];

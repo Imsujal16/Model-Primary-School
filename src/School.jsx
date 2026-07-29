@@ -55,22 +55,6 @@ function BrandStyles() {
         pointer-events: none;
       }
 
-      .routine-swiper {
-        width: 100% !important;
-        max-width: 100% !important;
-        overflow: hidden !important;
-      }
-      .routine-swiper .swiper-wrapper {
-        width: 100% !important;
-        max-width: 100% !important;
-        box-sizing: border-box !important;
-      }
-      .routine-swiper .swiper-slide {
-        width: 100% !important;
-        max-width: 100% !important;
-        box-sizing: border-box !important;
-        overflow: hidden !important;
-      }
       .routine-swiper .swiper-pagination-bullet {
         background: #FBD98A !important;
         opacity: 0.6;
@@ -1756,16 +1740,16 @@ function AcademicsPage({ setPage }) {
             </ol>
           </div>
 
-          {/* Mobile-Optimized Image Slider Container */}
-          <div className="w-full min-w-0 max-w-full md:max-w-md lg:max-w-lg mx-auto mt-6 md:mt-0 overflow-hidden">
-            <div className="w-full min-w-0 max-w-full relative rounded-2xl sm:rounded-3xl shadow-xl border-2 sm:border-4 border-white overflow-hidden bg-cream3">
+          {/* Image Slider Container */}
+          <div className="w-full min-w-0 max-w-md mx-auto mt-6 md:mt-0">
+            <div className="relative rounded-2xl sm:rounded-3xl shadow-xl border-2 sm:border-4 border-white overflow-hidden bg-cream3">
               <Swiper
                 modules={[Pagination, Autoplay]}
                 pagination={{ clickable: true }}
                 autoplay={{ delay: 3500, disableOnInteraction: false }}
                 spaceBetween={0}
                 slidesPerView={1}
-                className="w-full min-w-0 max-w-full !overflow-hidden routine-swiper"
+                className="w-full routine-swiper"
               >
                 {[
                   { src: '/outdoor_fun.png', label: 'Outdoor Activities & Playground' },
@@ -1773,11 +1757,11 @@ function AcademicsPage({ setPage }) {
                   { src: '/students_assembly.png', label: 'Morning Assembly & Prayer' },
                   { src: '/tour.png', label: 'Co-Curricular Learning Tours' },
                 ].map((img, i) => (
-                  <SwiperSlide key={i} className="w-full min-w-0 max-w-full !overflow-hidden">
-                    <div className="relative aspect-[4/3] w-full min-w-0 max-w-full overflow-hidden">
-                      <img src={img.src} alt={img.label} className="w-full h-full object-cover max-w-full block" />
-                      <div className="absolute bottom-0 left-0 right-0 p-3 sm:p-4 pt-10 pb-8 bg-gradient-to-t from-maroon-dark/95 via-maroon-dark/60 to-transparent text-white w-full max-w-full">
-                        <p className="font-display font-bold text-xs sm:text-sm text-gold-light tracking-wide truncate sm:whitespace-normal">{img.label}</p>
+                  <SwiperSlide key={i}>
+                    <div className="relative aspect-[4/3] w-full overflow-hidden">
+                      <img src={img.src} alt={img.label} className="w-full h-full object-cover block" />
+                      <div className="absolute bottom-0 left-0 right-0 p-3.5 sm:p-4 pt-10 pb-8 bg-gradient-to-t from-maroon-dark/95 via-maroon-dark/60 to-transparent text-white">
+                        <p className="font-display font-bold text-xs sm:text-sm text-gold-light tracking-wide">{img.label}</p>
                       </div>
                       <div className="absolute top-0 left-0 w-full h-1.5 sm:h-2 pencil-stripe-thin" />
                     </div>

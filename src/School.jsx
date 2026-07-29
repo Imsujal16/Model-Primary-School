@@ -640,7 +640,7 @@ function WhyTabs({ light = false }) {
   const [activeTab, setActiveTab] = useState('academics');
   const active = whyChooseUsTabs.find((t) => t.id === activeTab);
   return (
-    <div className="flex flex-col md:flex-row gap-4 md:gap-10 items-stretch">
+    <div className="flex flex-col md:flex-row gap-4 md:gap-8 items-stretch">
       {/* 📱 Mobile Segmented Control (< md) */}
       <div className="md:hidden flex bg-cream3 p-1.5 rounded-full mb-1 border border-gold-light shadow-inner w-full">
         {whyChooseUsTabs.map((tab) => {
@@ -667,7 +667,7 @@ function WhyTabs({ light = false }) {
       </div>
 
       {/* 💻 Desktop Tab list (>= md) */}
-      <div className="hidden md:flex flex-col gap-2.5 w-64 shrink-0">
+      <div className="hidden md:flex flex-col gap-3 w-64 md:w-72 shrink-0">
         {whyChooseUsTabs.map((tab) => {
           const TabIcon = tab.icon;
           const isActive = tab.id === activeTab;
@@ -675,48 +675,58 @@ function WhyTabs({ light = false }) {
             <button
               key={tab.id}
               onClick={() => setActiveTab(tab.id)}
-              className={`focus-ring flex items-center gap-2.5 px-5 py-4 rounded-2xl font-display font-bold text-base text-left transition-all shrink-0 ${
+              className={`focus-ring flex items-center gap-3 px-5 py-4 rounded-2xl font-display font-bold text-base text-left transition-all shrink-0 ${
                 isActive
                   ? light
                     ? 'bg-gold text-maroon-dark shadow-lg scale-[1.02]'
                     : 'bg-maroon text-white shadow-lg scale-[1.02]'
                   : light
                     ? 'bg-white-10 text-white border border-white-20 hover:bg-white-20'
-                    : 'bg-white text-maroon-dark border-2 border-gold-light hover:border-maroon-light'
+                    : 'bg-white text-maroon-dark border-2 border-gold-light hover:border-maroon-light shadow-sm hover:shadow-md'
               }`}
             >
-              <div className={`w-8 h-8 rounded-xl flex items-center justify-center shrink-0 ${
+              <div className={`w-9 h-9 rounded-xl flex items-center justify-center shrink-0 ${
                 isActive ? (light ? 'bg-maroon text-white' : 'bg-gold text-maroon-dark') : (light ? 'bg-white-20 text-white' : 'bg-cream2 text-maroon')
               }`}>
-                <TabIcon size={16} strokeWidth={2} />
+                <TabIcon size={18} strokeWidth={2} />
               </div>
               <span>{tab.label}</span>
               {isActive && (
-                <ChevronRight size={16} className="ml-auto shrink-0" />
+                <ChevronRight size={18} className="ml-auto shrink-0" />
               )}
             </button>
           );
         })}
       </div>
+
       {/* Content panel — right side */}
-      <div className={`flex-1 rounded-2xl md:rounded-3xl shadow-lg p-4 sm:p-6 md:p-8 border-t-4 ${
+      <div className={`flex-1 rounded-3xl shadow-xl p-6 md:p-8 border-t-4 transition-all duration-300 ${
         light ? 'bg-white-95 border-gold text-maroon-dark' : 'bg-white border-gold'
       }`}>
-        <div className="flex items-center gap-3 mb-4 md:mb-6">
-          <div className="w-9 h-9 md:w-12 md:h-12 rounded-2xl bg-maroon flex items-center justify-center shrink-0 shadow-sm">
-            <active.icon size={18} className="text-gold" strokeWidth={2} />
+        <div className="flex items-center gap-3.5 mb-6 md:mb-8 pb-4 border-b border-cream2">
+          <div className="w-12 h-12 md:w-14 md:h-14 rounded-2xl bg-maroon flex items-center justify-center shrink-0 shadow-md">
+            <active.icon size={24} className="text-gold" strokeWidth={2} />
           </div>
-          <h3 className="font-display font-extrabold text-lg md:text-2xl text-maroon-dark">{active.label}</h3>
+          <div>
+            <span className="font-display font-bold uppercase tracking-widest text-[10px] md:text-xs text-gold-dark block">
+              Feature Highlights
+            </span>
+            <h3 className="font-display font-extrabold text-xl md:text-2xl text-maroon-dark">{active.label}</h3>
+          </div>
         </div>
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 md:gap-4">
+
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 md:gap-5">
           {active.features.map((f) => (
-            <div key={f.title} className="flex gap-3 items-start p-3 md:p-4 rounded-xl md:rounded-2xl bg-cream2 hover:bg-cream3 transition-colors">
-              <div className="w-8 h-8 md:w-10 md:h-10 rounded-xl bg-maroon flex items-center justify-center shrink-0 mt-0.5 shadow-xs">
-                <f.icon size={15} className="text-gold" strokeWidth={2} />
+            <div
+              key={f.title}
+              className="flex gap-4 items-start p-4 md:p-5 rounded-2xl bg-cream border border-gold-light/60 hover:border-gold hover:shadow-md transition-all duration-200"
+            >
+              <div className="w-10 h-10 md:w-11 md:h-11 rounded-2xl bg-maroon flex items-center justify-center shrink-0 mt-0.5 shadow-sm">
+                <f.icon size={20} className="text-gold" strokeWidth={2} />
               </div>
               <div>
-                <h4 className="font-display font-bold text-maroon-dark text-xs md:text-sm leading-snug">{f.title}</h4>
-                <p className="font-body text-[11px] md:text-xs text-ink-60 mt-0.5 leading-relaxed">{f.desc}</p>
+                <h4 className="font-display font-bold text-maroon-dark text-sm md:text-base leading-snug">{f.title}</h4>
+                <p className="font-body text-xs md:text-sm text-ink-80 mt-1 leading-relaxed">{f.desc}</p>
               </div>
             </div>
           ))}

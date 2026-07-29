@@ -1263,7 +1263,11 @@ function AboutPage({ setPage }) {
       role: 'Class Teacher — Primary',
       src: '/teacher-2.png',
     },
-    { name: '[Teacher Name]', role: 'Class Teacher — Primary', src: '' },
+    {
+      name: 'Janki Devi',
+      role: 'Class Teacher — Primary',
+      src: '/teacher-3.png',
+    },
   ];
 
   return (

@@ -839,7 +839,7 @@ function HomePage({ setPage }) {
           </div>
           <div className="grid sm:grid-cols-3 gap-6 mt-10">
             <ImagePlaceholder src="/annual_event.png" label="Prize Distribution" caption="Annual event under the tent canopy" />
-            <ImagePlaceholder label="Outdoor Group Activity" caption="Games on the school ground" tone="green" />
+            <ImagePlaceholder src="/outdoor_fun.png" label="Outdoor Group Activity" caption="Games on the school ground" tone="green" />
             <ImagePlaceholder label="Playground Fun" caption="Slide & greenery play area" tone="pink" />
           </div>
         </div>
@@ -1346,7 +1346,7 @@ function AcademicsPage({ setPage }) {
             </ol>
           </div>
           <div>
-            <ImagePlaceholder label="Outdoor Group Activity" caption="Games on the school ground" tone="green" ratio="4 / 5" className="max-w-sm mx-auto" />
+            <ImagePlaceholder src="/outdoor_fun.png" label="Outdoor Group Activity" caption="Games on the school ground" tone="green" ratio="4 / 5" className="max-w-sm mx-auto" />
           </div>
         </div>
       </section>
@@ -1461,7 +1461,7 @@ const galleryItems = [
   { cat: "Events", label: "Cultural Program", caption: "Stage event under canopy", tone: "gold" },
   { cat: "Campus", label: "School Building", caption: "Pencil-and-book branded exterior", tone: "gold" },
   { cat: "Campus", label: "Entrance Gate", caption: "Main gate & signage", tone: "green" },
-  { cat: "Activity", label: "Outdoor Group Activity", caption: "Games on the ground", tone: "green" },
+  { cat: "Activity", label: "Outdoor Group Activity", caption: "Games on the ground", tone: "green", src: "/outdoor_fun.png" },
   { cat: "Activity", label: "Sports Day", caption: "Co-curricular activity", tone: "pink" },
 ];
 

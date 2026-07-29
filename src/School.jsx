@@ -1258,7 +1258,11 @@ function AboutPage({ setPage }) {
       award: 'State ICT Awarded ★',
       src: '/teacher-1.png',
     },
-    { name: '[Teacher Name]', role: 'Class Teacher — Primary', src: '' },
+    {
+      name: 'Sunil Singh',
+      role: 'Class Teacher — Primary',
+      src: '/teacher-2.png',
+    },
     { name: '[Teacher Name]', role: 'Class Teacher — Primary', src: '' },
   ];
 

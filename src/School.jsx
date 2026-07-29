@@ -897,6 +897,8 @@ function HomePage({ setPage }) {
         </div>
       </section>
 
+      <PencilDivider thin />
+
       {/* ABOUT BRIEF */}
       <section className="bg-maroon py-16 md:py-20 relative overflow-hidden">
         <div className="max-w-6xl mx-auto px-6 grid md:grid-cols-2 gap-10 items-center relative">
@@ -913,6 +915,8 @@ function HomePage({ setPage }) {
           </div>
         </div>
       </section>
+
+      <PencilDivider thin />
 
       {/* EVENT HIGHLIGHTS */}
       <section className="bg-cream2 py-16 md:py-20">
@@ -933,6 +937,8 @@ function HomePage({ setPage }) {
           </div>
         </div>
       </section>
+
+      <PencilDivider thin />
 
       {/* FINAL CTA BANNER */}
       <section className="bg-gold py-14">
@@ -1295,6 +1301,8 @@ function AboutPage({ setPage }) {
         </div>
       </section>
 
+      <PencilDivider thin />
+
       {/* AWARDS & RECOGNITIONS */}
       <section className="bg-cream py-16 md:py-20">
         <div className="max-w-6xl mx-auto px-6">
@@ -1574,6 +1582,8 @@ function AcademicsPage({ setPage }) {
         </div>
       </section>
 
+      <PencilDivider thin />
+
       {/* DAILY ROUTINE */}
       <section className="bg-cream py-16 md:py-20">
         <div className="max-w-6xl mx-auto px-6 grid md:grid-cols-2 gap-12">
@@ -1795,6 +1805,8 @@ function AdmissionsPage({ setPage }) {
         </div>
       </section>
 
+      <PencilDivider thin />
+
       {/* STEPS */}
       <section className="bg-cream py-16 md:py-20">
         <div className="max-w-6xl mx-auto px-6">
@@ -1875,6 +1887,8 @@ function AdmissionsPage({ setPage }) {
           </div>
         </div>
       </section>
+
+      <PencilDivider thin />
 
       {/* CTA */}
       <section className="bg-maroon py-16">

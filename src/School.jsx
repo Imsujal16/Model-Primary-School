@@ -1728,10 +1728,10 @@ function AcademicsPage({ setPage }) {
 
       {/* DAILY ROUTINE */}
       <section className="bg-cream py-14 md:py-20 w-full overflow-hidden">
-        <div className="max-w-6xl mx-auto px-6 sm:px-8 md:px-12 w-full min-w-0">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 lg:gap-16 items-start w-full min-w-0">
-            {/* Left Column: Timeline */}
-            <div className="w-full min-w-0">
+        <div className="max-w-[1140px] mx-auto px-5 sm:px-8 md:px-10 w-full min-w-0">
+          <div className="flex flex-col md:flex-row items-start gap-8 md:gap-12 lg:gap-14 w-full min-w-0">
+            {/* Left Timeline Column (40% width) */}
+            <div className="w-full md:w-[40%] lg:w-[38%] shrink-0 min-w-0">
               <Eyebrow>A Day at School</Eyebrow>
               <h2 className="font-display font-extrabold text-2xl sm:text-3xl md:text-4xl text-maroon-dark mb-2">Daily Routine</h2>
               <p className="font-body text-ink-60 text-xs sm:text-sm mb-6 sm:mb-8">Sample schedule — actual timings may vary by class.</p>
@@ -1746,9 +1746,9 @@ function AcademicsPage({ setPage }) {
               </ol>
             </div>
 
-            {/* Right Column: Image Slider */}
-            <div className="w-full min-w-0 flex justify-center md:justify-end mt-6 md:mt-0">
-              <div className="w-full max-w-md sm:max-w-lg relative rounded-2xl sm:rounded-3xl shadow-xl border-2 sm:border-4 border-white overflow-hidden bg-cream3">
+            {/* Right Image Column (60% width) */}
+            <div className="w-full md:w-[60%] lg:w-[62%] min-w-0 mt-6 md:mt-0">
+              <div className="w-full relative rounded-2xl sm:rounded-3xl shadow-xl border-2 sm:border-4 border-white overflow-hidden bg-cream3">
                 <Swiper
                   modules={[Pagination, Autoplay]}
                   pagination={{ clickable: true }}

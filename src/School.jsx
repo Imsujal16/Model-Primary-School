@@ -783,12 +783,14 @@ function HomePage({ setPage }) {
           {/* 2. School Image (Mobile Order 2, Desktop Right Column) */}
           <div className="order-2 md:order-none md:col-span-7 relative w-full my-2 md:my-0">
             <ImagePlaceholder src="/hero_home.png" label="School building & entrance" caption="Pencil-and-book branded exterior" ratio="4 / 3" className="w-full shadow-2xl" />
-            <div className="absolute -bottom-8 -left-8 hidden sm:block animate-bob">
-              <Mascot variant="girl" size={120} />
+            {/* Mascot illustration — visible on mobile & desktop */}
+            <div className="absolute -bottom-4 -left-3 sm:-bottom-8 sm:-left-8 z-10 animate-bob">
+              <Mascot variant="girl" size={90} className="w-20 sm:w-28" />
             </div>
-            <div className="absolute -top-6 -right-6 hidden sm:flex bg-white glass-card rounded-2xl shadow-xl px-4 py-3 items-center gap-2">
-              <Emblem size={30} ring={false} />
-              <span className="font-display font-bold text-maroon-dark text-xs leading-tight">Model in<br />Education</span>
+            {/* Model in Education floating badge — visible on mobile & desktop */}
+            <div className="absolute -top-4 -right-2 sm:-top-6 sm:-right-6 flex bg-white glass-card rounded-2xl shadow-xl px-3 py-2 sm:px-4 sm:py-3 items-center gap-1.5 sm:gap-2 z-10 border border-gold-light">
+              <Emblem size={28} ring={false} />
+              <span className="font-display font-bold text-maroon-dark text-[11px] sm:text-xs leading-tight">Model in<br />Education</span>
             </div>
           </div>
         </div>

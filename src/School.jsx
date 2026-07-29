@@ -735,9 +735,22 @@ function HomePage({ setPage }) {
             </div>
 
             {/* 4. Call-to-Action Buttons (Mobile Order 4, Desktop Order 2) */}
-            <div className="order-4 md:order-2 flex flex-col sm:flex-row flex-wrap gap-3 mt-2 md:mt-8">
-              <CTAButton variant="primary" onClick={() => setPage("admissions")} className="w-full sm:w-auto">Enroll Now — Admissions 2026-27</CTAButton>
-              <CTAButton variant="outline" icon={ChevronRight} onClick={() => setPage("about")} className="w-full sm:w-auto">Explore Programs</CTAButton>
+            <div className="order-4 md:order-2 flex flex-row items-center gap-2.5 sm:gap-4 mt-3 md:mt-8 w-full">
+              <CTAButton
+                variant="primary"
+                onClick={() => setPage("admissions")}
+                className="flex-1 sm:flex-none px-3.5 sm:px-6 py-3 text-xs sm:text-base whitespace-nowrap justify-center"
+              >
+                Enroll Now
+              </CTAButton>
+              <CTAButton
+                variant="outline"
+                icon={ChevronRight}
+                onClick={() => setPage("about")}
+                className="flex-1 sm:flex-none px-3.5 sm:px-6 py-3 text-xs sm:text-base whitespace-nowrap justify-center"
+              >
+                Explore Programs
+              </CTAButton>
             </div>
           </div>
 

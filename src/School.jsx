@@ -1252,9 +1252,14 @@ function AboutPage({ setPage }) {
   ];
 
   const teachers = [
-    { name: '[Teacher Name]', role: 'Class Teacher — Primary' },
-    { name: '[Teacher Name]', role: 'Class Teacher — Primary' },
-    { name: '[Teacher Name]', role: 'Class Teacher — Primary' },
+    {
+      name: 'Diksha Shrivastav',
+      role: 'Class Teacher — Primary',
+      award: 'State ICT Awarded ★',
+      src: '/teacher-1.png',
+    },
+    { name: '[Teacher Name]', role: 'Class Teacher — Primary', src: '' },
+    { name: '[Teacher Name]', role: 'Class Teacher — Primary', src: '' },
   ];
 
   return (
@@ -1500,10 +1505,16 @@ function AboutPage({ setPage }) {
               >
                 {/* Large Portrait Photo Container */}
                 <div className="relative w-full aspect-[4/5] rounded-2xl overflow-hidden shadow-md bg-cream3 border-2 border-gold-light flex flex-col items-center justify-center group-hover:scale-[1.02] transition-transform duration-300">
-                  <Camera size={44} className="text-maroon-dark-50 mb-2" strokeWidth={1.5} />
-                  <span className="font-display font-bold text-sm text-maroon-dark-60 uppercase tracking-wider">Teacher Photo</span>
+                  {teacher.src ? (
+                    <img src={teacher.src} alt={teacher.name} className="w-full h-full object-cover" />
+                  ) : (
+                    <>
+                      <Camera size={44} className="text-maroon-dark-50 mb-2" strokeWidth={1.5} />
+                      <span className="font-display font-bold text-sm text-maroon-dark-60 uppercase tracking-wider">Teacher Photo</span>
+                    </>
+                  )}
                   <div className="absolute top-3 right-3 bg-maroon text-white font-display text-[10px] font-bold px-3 py-1 rounded-full shadow-md border border-gold">
-                    Educator {idx + 1}
+                    {teacher.award || `Educator ${idx + 1}`}
                   </div>
                   <div className="absolute bottom-0 left-0 right-0 h-1.5 pencil-stripe-thin" />
                 </div>

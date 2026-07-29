@@ -640,9 +640,34 @@ function WhyTabs({ light = false }) {
   const [activeTab, setActiveTab] = useState('academics');
   const active = whyChooseUsTabs.find((t) => t.id === activeTab);
   return (
-    <div className="flex flex-col md:flex-row gap-5 md:gap-10 items-stretch">
-      {/* Tab buttons — left column / mobile top row */}
-      <div className="flex flex-row md:flex-col gap-2.5 w-full md:w-64 shrink-0 overflow-x-auto md:overflow-visible pb-2 md:pb-0 scrollbar-none">
+    <div className="flex flex-col md:flex-row gap-4 md:gap-10 items-stretch">
+      {/* 📱 Mobile Segmented Control (< md) */}
+      <div className="md:hidden flex bg-cream3 p-1.5 rounded-full mb-1 border border-gold-light shadow-inner w-full">
+        {whyChooseUsTabs.map((tab) => {
+          const isActive = tab.id === activeTab;
+          return (
+            <button
+              key={tab.id}
+              onClick={() => setActiveTab(tab.id)}
+              className={`flex-1 py-2.5 px-2 rounded-full font-display font-bold text-xs sm:text-sm text-center transition-all duration-300 flex items-center justify-center gap-1.5 ${
+                isActive
+                  ? light
+                    ? 'bg-gold text-maroon-dark shadow-md scale-[1.02]'
+                    : 'bg-maroon text-white shadow-md scale-[1.02]'
+                  : light
+                    ? 'text-white opacity-70 hover:opacity-100'
+                    : 'text-maroon-dark opacity-75 hover:opacity-100'
+              }`}
+            >
+              <tab.icon size={15} className={isActive ? (light ? 'text-maroon-dark' : 'text-gold') : (light ? 'text-white' : 'text-maroon')} strokeWidth={2} />
+              <span>{tab.label.split(' ')[0]}</span>
+            </button>
+          );
+        })}
+      </div>
+
+      {/* 💻 Desktop Tab list (>= md) */}
+      <div className="hidden md:flex flex-col gap-2.5 w-64 shrink-0">
         {whyChooseUsTabs.map((tab) => {
           const TabIcon = tab.icon;
           const isActive = tab.id === activeTab;
@@ -650,7 +675,7 @@ function WhyTabs({ light = false }) {
             <button
               key={tab.id}
               onClick={() => setActiveTab(tab.id)}
-              className={`focus-ring flex items-center gap-2.5 px-4 py-3 md:px-5 md:py-4 rounded-2xl font-display font-bold text-xs sm:text-sm md:text-base text-left transition-all whitespace-nowrap md:whitespace-normal shrink-0 md:shrink ${
+              className={`focus-ring flex items-center gap-2.5 px-5 py-4 rounded-2xl font-display font-bold text-base text-left transition-all shrink-0 ${
                 isActive
                   ? light
                     ? 'bg-gold text-maroon-dark shadow-lg scale-[1.02]'
@@ -659,40 +684,39 @@ function WhyTabs({ light = false }) {
                     ? 'bg-white-10 text-white border border-white-20 hover:bg-white-20'
                     : 'bg-white text-maroon-dark border-2 border-gold-light hover:border-maroon-light'
               }`}
-              style={{ minWidth: '150px' }}
             >
-              <div className={`w-7 h-7 md:w-8 md:h-8 rounded-xl flex items-center justify-center shrink-0 ${
+              <div className={`w-8 h-8 rounded-xl flex items-center justify-center shrink-0 ${
                 isActive ? (light ? 'bg-maroon text-white' : 'bg-gold text-maroon-dark') : (light ? 'bg-white-20 text-white' : 'bg-cream2 text-maroon')
               }`}>
                 <TabIcon size={16} strokeWidth={2} />
               </div>
               <span>{tab.label}</span>
               {isActive && (
-                <ChevronRight size={16} className="ml-auto shrink-0 hidden md:block" />
+                <ChevronRight size={16} className="ml-auto shrink-0" />
               )}
             </button>
           );
         })}
       </div>
       {/* Content panel — right side */}
-      <div className={`flex-1 rounded-2xl md:rounded-3xl shadow-lg p-5 md:p-8 border-t-4 ${
+      <div className={`flex-1 rounded-2xl md:rounded-3xl shadow-lg p-4 sm:p-6 md:p-8 border-t-4 ${
         light ? 'bg-white-95 border-gold text-maroon-dark' : 'bg-white border-gold'
       }`}>
-        <div className="flex items-center gap-3 mb-5 md:mb-6">
-          <div className="w-10 h-10 md:w-12 md:h-12 rounded-2xl bg-maroon flex items-center justify-center shrink-0">
-            <active.icon size={20} className="text-gold" strokeWidth={2} />
+        <div className="flex items-center gap-3 mb-4 md:mb-6">
+          <div className="w-9 h-9 md:w-12 md:h-12 rounded-2xl bg-maroon flex items-center justify-center shrink-0 shadow-sm">
+            <active.icon size={18} className="text-gold" strokeWidth={2} />
           </div>
-          <h3 className="font-display font-extrabold text-xl md:text-2xl text-maroon-dark">{active.label}</h3>
+          <h3 className="font-display font-extrabold text-lg md:text-2xl text-maroon-dark">{active.label}</h3>
         </div>
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5 md:gap-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 md:gap-4">
           {active.features.map((f) => (
-            <div key={f.title} className="flex gap-3.5 items-start p-3.5 md:p-4 rounded-xl md:rounded-2xl bg-cream2 hover:bg-cream3 transition-colors">
-              <div className="w-9 h-9 md:w-10 md:h-10 rounded-xl bg-maroon flex items-center justify-center shrink-0 mt-0.5">
-                <f.icon size={16} className="text-gold" strokeWidth={2} />
+            <div key={f.title} className="flex gap-3 items-start p-3 md:p-4 rounded-xl md:rounded-2xl bg-cream2 hover:bg-cream3 transition-colors">
+              <div className="w-8 h-8 md:w-10 md:h-10 rounded-xl bg-maroon flex items-center justify-center shrink-0 mt-0.5 shadow-xs">
+                <f.icon size={15} className="text-gold" strokeWidth={2} />
               </div>
               <div>
                 <h4 className="font-display font-bold text-maroon-dark text-xs md:text-sm leading-snug">{f.title}</h4>
-                <p className="font-body text-xs text-ink-60 mt-1 leading-relaxed">{f.desc}</p>
+                <p className="font-body text-[11px] md:text-xs text-ink-60 mt-0.5 leading-relaxed">{f.desc}</p>
               </div>
             </div>
           ))}
@@ -1382,18 +1406,20 @@ function AboutPage({ setPage }) {
         <div className="max-w-6xl mx-auto px-6 relative">
           <Eyebrow light>Why Families Choose Us</Eyebrow>
           <h2 className="font-display font-extrabold text-3xl md:text-4xl text-white mb-10">What Makes Model Primary School Different</h2>
-          <div ref={whyRef} className="flex flex-wrap justify-center items-stretch gap-5">
+          <div ref={whyRef} className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3.5 sm:gap-5">
             {features.map((f, i) => (
               <div
                 key={f.title}
-                className={`feature-scale stagger-card bg-white-95 rounded-3xl p-6 shadow-lg flex flex-col gap-3 ${whyVisible ? 'is-visible' : ''}`}
-                style={{ transitionDelay: whyVisible ? `${i * 0.18}s` : '0s', flexBasis: 'calc(25% - 15px)', minWidth: '220px', maxWidth: '280px', flexGrow: 0 }}
+                className={`feature-scale stagger-card bg-white-95 rounded-2xl md:rounded-3xl p-4 md:p-6 shadow-lg flex flex-row sm:flex-col gap-3.5 sm:gap-3 items-center sm:items-start ${whyVisible ? 'is-visible' : ''}`}
+                style={{ transitionDelay: whyVisible ? `${i * 0.1}s` : '0s' }}
               >
-                <div className="w-11 h-11 rounded-2xl bg-gold flex items-center justify-center mb-3 shrink-0">
-                  <f.icon size={20} className="text-maroon-dark" />
+                <div className="w-10 h-10 md:w-11 md:h-11 rounded-xl md:rounded-2xl bg-gold flex items-center justify-center shrink-0 shadow-sm">
+                  <f.icon size={18} className="text-maroon-dark" strokeWidth={2} />
                 </div>
-                <h3 className="font-display font-bold text-maroon-dark">{f.title}</h3>
-                <p className="font-body text-sm text-ink-70 leading-relaxed">{f.desc}</p>
+                <div>
+                  <h3 className="font-display font-bold text-maroon-dark text-sm md:text-base leading-snug">{f.title}</h3>
+                  <p className="font-body text-xs md:text-sm text-ink-70 leading-relaxed mt-0.5 md:mt-1">{f.desc}</p>
+                </div>
               </div>
             ))}
           </div>

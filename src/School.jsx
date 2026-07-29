@@ -840,7 +840,7 @@ function HomePage({ setPage }) {
           <div className="grid sm:grid-cols-3 gap-6 mt-10">
             <ImagePlaceholder src="/annual_event.png" label="Prize Distribution" caption="Annual event under the tent canopy" />
             <ImagePlaceholder src="/outdoor_fun.png" label="Outdoor Group Activity" caption="Games on the school ground" tone="green" />
-            <ImagePlaceholder src="/yoga_activity.png" label="Playground Fun" caption="Slide & greenery play area" tone="pink" />
+            <ImagePlaceholder src="/tour.png" label="Educational Tour" caption="Outing & school excursion" tone="pink" />
           </div>
         </div>
       </section>
@@ -1455,7 +1455,7 @@ function AcademicsPage({ setPage }) {
 const galleryItems = [
   { cat: "Assembly", label: "Morning Assembly", caption: "Lines of students in uniform", tone: "gold", src: "/students_assembly.png" },
   { cat: "Assembly", label: "Prayer & Announcements", caption: "Daily assembly routine", tone: "pink" },
-  { cat: "Playground", label: "Slide & Play Area", caption: "Greenery around the playground", tone: "green", src: "/yoga_activity.png" },
+  { cat: "Events", label: "Educational Tour", caption: "Outing & school excursion", tone: "green", src: "/tour.png" },
   { cat: "Playground", label: "Recess Time", caption: "Children at play", tone: "gold" },
   { cat: "Events", label: "Prize Distribution", caption: "Annual event under the tent", tone: "pink", src: "/annual_event.png" },
   { cat: "Events", label: "Cultural Program", caption: "Stage event under canopy", tone: "gold" },

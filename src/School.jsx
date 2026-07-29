@@ -1783,33 +1783,40 @@ function AcademicsPage({ setPage }) {
       <PencilDivider thin />
 
       {/* MODERN LEARNING */}
-      <section className="bg-cream py-12 md:py-20 overflow-hidden w-full max-w-full">
-        <div className="max-w-6xl mx-auto px-5 sm:px-6 grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 items-center w-full min-w-0 max-w-full overflow-hidden">
-          <div className="w-full min-w-0 max-w-full">
-            <Eyebrow>Modern Learning</Eyebrow>
-            <h2 className="font-display font-extrabold text-2xl sm:text-3xl md:text-4xl text-maroon-dark mt-1.5 md:mt-2 mb-4 md:mb-6">A Future-Ready Classroom Experience</h2>
-            <p className="font-body text-ink-70 text-xs sm:text-sm md:text-base mb-6 md:mb-8">We combine time-tested teaching with modern infrastructure to give every student the best of both worlds.</p>
-            <div className="grid sm:grid-cols-2 gap-3.5 sm:gap-4 w-full min-w-0">
-              {[
-                { icon: Monitor,  title: 'Smart Classrooms',  desc: 'Projector-enabled interactive learning that makes every lesson vivid and engaging.' },
-                { icon: Computer, title: 'Computer Education', desc: 'Dedicated tech-ready labs to introduce students to computers from an early age.' },
-                { icon: Brain,    title: 'GK & Remedial Classes', desc: 'Specialized GK enrichment and remedial support so no child is ever left behind.' },
-                { icon: Star,     title: '360° Holistic Development', desc: 'Equal focus on academics, arts, sports and character for complete student growth.' },
-              ].map((item) => (
-                <div key={item.title} className="flex gap-3 bg-white rounded-2xl p-3.5 sm:p-4 shadow-sm border-l-4 border-gold items-center sm:items-start w-full min-w-0">
-                  <div className="w-10 h-10 rounded-xl bg-maroon flex items-center justify-center shrink-0">
-                    <item.icon size={18} className="text-gold" strokeWidth={2} />
+      <section className="bg-cream py-14 md:py-20 w-full overflow-hidden">
+        <div className="max-w-6xl mx-auto px-6 sm:px-8 md:px-12 w-full min-w-0">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 lg:gap-16 items-start w-full min-w-0">
+            {/* Left Column: Content & Features */}
+            <div className="w-full min-w-0">
+              <Eyebrow>Modern Learning</Eyebrow>
+              <h2 className="font-display font-extrabold text-2xl sm:text-3xl md:text-4xl text-maroon-dark mt-1.5 md:mt-2 mb-4 md:mb-6">A Future-Ready Classroom Experience</h2>
+              <p className="font-body text-ink-70 text-xs sm:text-sm md:text-base mb-6 md:mb-8">We combine time-tested teaching with modern infrastructure to give every student the best of both worlds.</p>
+              <div className="grid sm:grid-cols-2 gap-3.5 sm:gap-4 w-full min-w-0">
+                {[
+                  { icon: Monitor,  title: 'Smart Classrooms',  desc: 'Projector-enabled interactive learning that makes every lesson vivid and engaging.' },
+                  { icon: Computer, title: 'Computer Education', desc: 'Dedicated tech-ready labs to introduce students to computers from an early age.' },
+                  { icon: Brain,    title: 'GK & Remedial Classes', desc: 'Specialized GK enrichment and remedial support so no child is ever left behind.' },
+                  { icon: Star,     title: '360° Holistic Development', desc: 'Equal focus on academics, arts, sports and character for complete student growth.' },
+                ].map((item) => (
+                  <div key={item.title} className="flex gap-3 bg-white rounded-2xl p-3.5 sm:p-4 shadow-sm border-l-4 border-gold items-start w-full min-w-0">
+                    <div className="w-10 h-10 rounded-xl bg-maroon flex items-center justify-center shrink-0">
+                      <item.icon size={18} className="text-gold" strokeWidth={2} />
+                    </div>
+                    <div className="min-w-0">
+                      <h3 className="font-display font-bold text-maroon-dark text-xs sm:text-sm">{item.title}</h3>
+                      <p className="font-body text-[11px] sm:text-xs text-ink-60 mt-0.5 leading-snug">{item.desc}</p>
+                    </div>
                   </div>
-                  <div className="min-w-0">
-                    <h3 className="font-display font-bold text-maroon-dark text-xs sm:text-sm">{item.title}</h3>
-                    <p className="font-body text-[11px] sm:text-xs text-ink-60 mt-0.5 leading-snug">{item.desc}</p>
-                  </div>
-                </div>
-              ))}
+                ))}
+              </div>
             </div>
-          </div>
-          <div className="w-full min-w-0 max-w-full md:max-w-md mx-auto mt-6 md:mt-0 overflow-hidden">
-            <ImagePlaceholder label="Smart Classroom" caption="Projector-enabled interactive class" ratio="4 / 3" tone="gold" className="w-full min-w-0 max-w-full !overflow-hidden" />
+
+            {/* Right Column: Image */}
+            <div className="w-full min-w-0 flex justify-center md:justify-end mt-6 md:mt-0">
+              <div className="w-full max-w-md sm:max-w-lg relative">
+                <ImagePlaceholder label="Smart Classroom" caption="Projector-enabled interactive class" ratio="4 / 3" tone="gold" />
+              </div>
+            </div>
           </div>
         </div>
       </section>

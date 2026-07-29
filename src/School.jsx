@@ -838,7 +838,7 @@ function HomePage({ setPage }) {
             </button>
           </div>
           <div className="grid sm:grid-cols-3 gap-6 mt-10">
-            <ImagePlaceholder label="Prize Distribution" caption="Annual event under the tent canopy" />
+            <ImagePlaceholder src="/annual_event.png" label="Prize Distribution" caption="Annual event under the tent canopy" />
             <ImagePlaceholder label="Outdoor Group Activity" caption="Games on the school ground" tone="green" />
             <ImagePlaceholder label="Playground Fun" caption="Slide & greenery play area" tone="pink" />
           </div>
@@ -1457,7 +1457,7 @@ const galleryItems = [
   { cat: "Assembly", label: "Prayer & Announcements", caption: "Daily assembly routine", tone: "pink" },
   { cat: "Playground", label: "Slide & Play Area", caption: "Greenery around the playground", tone: "green" },
   { cat: "Playground", label: "Recess Time", caption: "Children at play", tone: "gold" },
-  { cat: "Events", label: "Prize Distribution", caption: "Annual event under the tent", tone: "pink" },
+  { cat: "Events", label: "Prize Distribution", caption: "Annual event under the tent", tone: "pink", src: "/annual_event.png" },
   { cat: "Events", label: "Cultural Program", caption: "Stage event under canopy", tone: "gold" },
   { cat: "Campus", label: "School Building", caption: "Pencil-and-book branded exterior", tone: "gold" },
   { cat: "Campus", label: "Entrance Gate", caption: "Main gate & signage", tone: "green" },

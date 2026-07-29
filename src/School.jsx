@@ -55,6 +55,21 @@ function BrandStyles() {
         pointer-events: none;
       }
 
+      .routine-swiper .swiper-pagination-bullet {
+        background: #FBD98A !important;
+        opacity: 0.6;
+      }
+      .routine-swiper .swiper-pagination-bullet-active {
+        background: #F0A828 !important;
+        opacity: 1;
+        width: 20px !important;
+        border-radius: 6px !important;
+        transition: all 0.3s ease;
+      }
+      .routine-swiper .swiper-pagination {
+        bottom: 10px !important;
+      }
+
       :root{
         --cream:#FFF8EA; --cream2:#FBEEDA; --cream3:#F6E4C4;
         --gold:#F0A828; --gold-light:#FBD98A; --gold-dark:#C97F0E;
@@ -1719,33 +1734,35 @@ function AcademicsPage({ setPage }) {
             </ol>
           </div>
 
-          {/* Fixed Image Slider Grid with Pagination Dot Logic */}
-          <div className="w-full max-w-md mx-auto">
-            <Swiper
-              modules={[Pagination, Autoplay]}
-              pagination={{ clickable: true }}
-              autoplay={{ delay: 3500, disableOnInteraction: false }}
-              spaceBetween={16}
-              slidesPerView={1}
-              className="rounded-3xl shadow-xl border-4 border-white overflow-hidden bg-cream3"
-            >
-              {[
-                { src: '/outdoor_fun.png', label: 'Outdoor Activities & Playground' },
-                { src: '/yoga_activity.png', label: 'Morning Yoga & Physical Exercises' },
-                { src: '/students_assembly.png', label: 'Morning Assembly & Prayer' },
-                { src: '/tour.png', label: 'Co-Curricular Learning Tours' },
-              ].map((img, i) => (
-                <SwiperSlide key={i}>
-                  <div className="relative aspect-[4/3] w-full overflow-hidden">
-                    <img src={img.src} alt={img.label} className="w-full h-full object-cover" />
-                    <div className="absolute bottom-0 left-0 right-0 p-3.5 pt-8 bg-gradient-to-t from-maroon-dark/85 via-maroon-dark/40 to-transparent text-white">
-                      <p className="font-display font-bold text-xs md:text-sm text-gold-light">{img.label}</p>
+          {/* Mobile-Optimized Image Slider Container */}
+          <div className="w-full max-w-md mx-auto mt-6 md:mt-0">
+            <div className="relative rounded-2xl sm:rounded-3xl shadow-xl border-2 sm:border-4 border-white overflow-hidden bg-cream3">
+              <Swiper
+                modules={[Pagination, Autoplay]}
+                pagination={{ clickable: true }}
+                autoplay={{ delay: 3500, disableOnInteraction: false }}
+                spaceBetween={0}
+                slidesPerView={1}
+                className="w-full h-full routine-swiper"
+              >
+                {[
+                  { src: '/outdoor_fun.png', label: 'Outdoor Activities & Playground' },
+                  { src: '/yoga_activity.png', label: 'Morning Yoga & Physical Exercises' },
+                  { src: '/students_assembly.png', label: 'Morning Assembly & Prayer' },
+                  { src: '/tour.png', label: 'Co-Curricular Learning Tours' },
+                ].map((img, i) => (
+                  <SwiperSlide key={i}>
+                    <div className="relative aspect-[4/3] w-full overflow-hidden">
+                      <img src={img.src} alt={img.label} className="w-full h-full object-cover" />
+                      <div className="absolute bottom-0 left-0 right-0 p-3.5 sm:p-4 pt-10 pb-9 bg-gradient-to-t from-maroon-dark/95 via-maroon-dark/60 to-transparent text-white">
+                        <p className="font-display font-bold text-xs sm:text-sm text-gold-light tracking-wide">{img.label}</p>
+                      </div>
+                      <div className="absolute top-0 left-0 w-full h-1.5 sm:h-2 pencil-stripe-thin" />
                     </div>
-                    <div className="absolute top-0 left-0 w-full h-2 pencil-stripe-thin" />
-                  </div>
-                </SwiperSlide>
-              ))}
-            </Swiper>
+                  </SwiperSlide>
+                ))}
+              </Swiper>
+            </div>
           </div>
         </div>
       </section>

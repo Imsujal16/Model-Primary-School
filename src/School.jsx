@@ -55,6 +55,22 @@ function BrandStyles() {
         pointer-events: none;
       }
 
+      .routine-swiper {
+        width: 100% !important;
+        max-width: 100% !important;
+        overflow: hidden !important;
+      }
+      .routine-swiper .swiper-wrapper {
+        width: 100% !important;
+        max-width: 100% !important;
+        box-sizing: border-box !important;
+      }
+      .routine-swiper .swiper-slide {
+        width: 100% !important;
+        max-width: 100% !important;
+        box-sizing: border-box !important;
+        overflow: hidden !important;
+      }
       .routine-swiper .swiper-pagination-bullet {
         background: #FBD98A !important;
         opacity: 0.6;
@@ -1717,33 +1733,33 @@ function AcademicsPage({ setPage }) {
       <PencilDivider thin />
 
       {/* DAILY ROUTINE */}
-      <section className="bg-cream py-16 md:py-20">
-        <div className="max-w-6xl mx-auto px-6 grid md:grid-cols-2 gap-10 lg:gap-12 items-center">
-          <div>
+      <section className="bg-cream py-12 md:py-20 overflow-hidden w-full max-w-full">
+        <div className="max-w-6xl mx-auto px-5 sm:px-6 grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 items-center w-full min-w-0 max-w-full overflow-hidden">
+          <div className="w-full min-w-0 max-w-full">
             <Eyebrow>A Day at School</Eyebrow>
-            <h2 className="font-display font-extrabold text-3xl md:text-4xl text-maroon-dark mb-2">Daily Routine</h2>
-            <p className="font-body text-ink-60 text-sm mb-8">Sample schedule — actual timings may vary by class.</p>
-            <ol className="relative border-l-2 border-gold-light pl-6 flex flex-col gap-6">
+            <h2 className="font-display font-extrabold text-2xl sm:text-3xl md:text-4xl text-maroon-dark mb-2">Daily Routine</h2>
+            <p className="font-body text-ink-60 text-xs sm:text-sm mb-6 sm:mb-8">Sample schedule — actual timings may vary by class.</p>
+            <ol className="relative border-l-2 border-gold-light ml-3 sm:ml-4 pl-6 flex flex-col gap-6 w-full min-w-0">
               {dailyRoutine.map((r) => (
                 <li key={r.time} className="relative">
-                  <span className="absolute -left-8 top-0.5 w-4 h-4 rounded-full bg-maroon border-2 border-cream" />
-                  <span className="font-display font-bold text-gold-dark text-sm">{r.time}</span>
-                  <p className="font-body text-ink-80 text-sm md:text-base">{r.activity}</p>
+                  <span className="absolute -left-[9px] top-0.5 w-4 h-4 rounded-full bg-maroon border-2 border-cream shrink-0" />
+                  <span className="font-display font-bold text-gold-dark text-xs sm:text-sm block">{r.time}</span>
+                  <p className="font-body text-ink-80 text-sm md:text-base mt-0.5">{r.activity}</p>
                 </li>
               ))}
             </ol>
           </div>
 
           {/* Mobile-Optimized Image Slider Container */}
-          <div className="w-full max-w-md mx-auto mt-6 md:mt-0">
-            <div className="relative rounded-2xl sm:rounded-3xl shadow-xl border-2 sm:border-4 border-white overflow-hidden bg-cream3">
+          <div className="w-full min-w-0 max-w-full md:max-w-md mx-auto mt-6 md:mt-0 overflow-hidden">
+            <div className="w-full min-w-0 max-w-full relative rounded-2xl sm:rounded-3xl shadow-xl border-2 sm:border-4 border-white overflow-hidden bg-cream3">
               <Swiper
                 modules={[Pagination, Autoplay]}
                 pagination={{ clickable: true }}
                 autoplay={{ delay: 3500, disableOnInteraction: false }}
                 spaceBetween={0}
                 slidesPerView={1}
-                className="w-full h-full routine-swiper"
+                className="w-full min-w-0 max-w-full !overflow-hidden routine-swiper"
               >
                 {[
                   { src: '/outdoor_fun.png', label: 'Outdoor Activities & Playground' },
@@ -1751,11 +1767,11 @@ function AcademicsPage({ setPage }) {
                   { src: '/students_assembly.png', label: 'Morning Assembly & Prayer' },
                   { src: '/tour.png', label: 'Co-Curricular Learning Tours' },
                 ].map((img, i) => (
-                  <SwiperSlide key={i}>
-                    <div className="relative aspect-[4/3] w-full overflow-hidden">
-                      <img src={img.src} alt={img.label} className="w-full h-full object-cover" />
-                      <div className="absolute bottom-0 left-0 right-0 p-3.5 sm:p-4 pt-10 pb-9 bg-gradient-to-t from-maroon-dark/95 via-maroon-dark/60 to-transparent text-white">
-                        <p className="font-display font-bold text-xs sm:text-sm text-gold-light tracking-wide">{img.label}</p>
+                  <SwiperSlide key={i} className="w-full min-w-0 max-w-full !overflow-hidden">
+                    <div className="relative aspect-[4/3] w-full min-w-0 max-w-full overflow-hidden">
+                      <img src={img.src} alt={img.label} className="w-full h-full object-cover max-w-full block" />
+                      <div className="absolute bottom-0 left-0 right-0 p-3 sm:p-4 pt-10 pb-8 bg-gradient-to-t from-maroon-dark/95 via-maroon-dark/60 to-transparent text-white w-full max-w-full">
+                        <p className="font-display font-bold text-xs sm:text-sm text-gold-light tracking-wide truncate sm:whitespace-normal">{img.label}</p>
                       </div>
                       <div className="absolute top-0 left-0 w-full h-1.5 sm:h-2 pencil-stripe-thin" />
                     </div>
@@ -1770,33 +1786,33 @@ function AcademicsPage({ setPage }) {
       <PencilDivider thin />
 
       {/* MODERN LEARNING */}
-      <section className="bg-cream py-16 md:py-20">
-        <div className="max-w-6xl mx-auto px-6 grid md:grid-cols-2 gap-12 items-center">
-          <div>
+      <section className="bg-cream py-12 md:py-20 overflow-hidden w-full max-w-full">
+        <div className="max-w-6xl mx-auto px-5 sm:px-6 grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 items-center w-full min-w-0 max-w-full overflow-hidden">
+          <div className="w-full min-w-0 max-w-full">
             <Eyebrow>Modern Learning</Eyebrow>
-            <h2 className="font-display font-extrabold text-3xl md:text-4xl text-maroon-dark mt-2 mb-6">A Future-Ready Classroom Experience</h2>
-            <p className="font-body text-ink-70 mb-8">We combine time-tested teaching with modern infrastructure to give every student the best of both worlds.</p>
-            <div className="grid sm:grid-cols-2 gap-4">
+            <h2 className="font-display font-extrabold text-2xl sm:text-3xl md:text-4xl text-maroon-dark mt-1.5 md:mt-2 mb-4 md:mb-6">A Future-Ready Classroom Experience</h2>
+            <p className="font-body text-ink-70 text-xs sm:text-sm md:text-base mb-6 md:mb-8">We combine time-tested teaching with modern infrastructure to give every student the best of both worlds.</p>
+            <div className="grid sm:grid-cols-2 gap-3.5 sm:gap-4 w-full min-w-0">
               {[
                 { icon: Monitor,  title: 'Smart Classrooms',  desc: 'Projector-enabled interactive learning that makes every lesson vivid and engaging.' },
                 { icon: Computer, title: 'Computer Education', desc: 'Dedicated tech-ready labs to introduce students to computers from an early age.' },
                 { icon: Brain,    title: 'GK & Remedial Classes', desc: 'Specialized GK enrichment and remedial support so no child is ever left behind.' },
                 { icon: Star,     title: '360° Holistic Development', desc: 'Equal focus on academics, arts, sports and character for complete student growth.' },
               ].map((item) => (
-                <div key={item.title} className="flex gap-3 bg-white rounded-2xl p-4 shadow-sm border-l-4 border-gold">
+                <div key={item.title} className="flex gap-3 bg-white rounded-2xl p-3.5 sm:p-4 shadow-sm border-l-4 border-gold items-center sm:items-start w-full min-w-0">
                   <div className="w-10 h-10 rounded-xl bg-maroon flex items-center justify-center shrink-0">
                     <item.icon size={18} className="text-gold" strokeWidth={2} />
                   </div>
-                  <div>
-                    <h3 className="font-display font-bold text-maroon-dark text-sm">{item.title}</h3>
-                    <p className="font-body text-xs text-ink-60 mt-0.5 leading-snug">{item.desc}</p>
+                  <div className="min-w-0">
+                    <h3 className="font-display font-bold text-maroon-dark text-xs sm:text-sm">{item.title}</h3>
+                    <p className="font-body text-[11px] sm:text-xs text-ink-60 mt-0.5 leading-snug">{item.desc}</p>
                   </div>
                 </div>
               ))}
             </div>
           </div>
-          <div className="w-full max-w-md mx-auto mt-6 md:mt-0">
-            <ImagePlaceholder label="Smart Classroom" caption="Projector-enabled interactive class" ratio="4 / 3" tone="gold" />
+          <div className="w-full min-w-0 max-w-full md:max-w-md mx-auto mt-6 md:mt-0 overflow-hidden">
+            <ImagePlaceholder label="Smart Classroom" caption="Projector-enabled interactive class" ratio="4 / 3" tone="gold" className="w-full min-w-0 max-w-full !overflow-hidden" />
           </div>
         </div>
       </section>

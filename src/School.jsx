@@ -417,11 +417,11 @@ function ImagePlaceholder({ src, label, caption, ratio = "4 / 3", tone = "gold",
   if (src) {
     return (
       <div
-        className={`relative rounded-3xl overflow-hidden shadow-lg border-4 border-white ${className}`}
+        className={`relative rounded-2xl sm:rounded-3xl overflow-hidden shadow-lg border-2 sm:border-4 border-white w-full max-w-full ${className}`}
         style={{ aspectRatio: ratio }}
       >
         <img src={src} alt={label || "School Image"} className="w-full h-full object-cover" />
-        <div className="absolute top-0 left-0 w-full h-2 pencil-stripe-thin" />
+        <div className="absolute top-0 left-0 w-full h-1.5 sm:h-2 pencil-stripe-thin" />
       </div>
     );
   }
@@ -433,15 +433,15 @@ function ImagePlaceholder({ src, label, caption, ratio = "4 / 3", tone = "gold",
       : "linear-gradient(135deg, var(--cream3) 0%, var(--pink) 100%)";
   return (
     <div
-      className={`relative rounded-3xl overflow-hidden shadow-lg border-4 border-white ${className}`}
+      className={`relative rounded-2xl sm:rounded-3xl overflow-hidden shadow-lg border-2 sm:border-4 border-white w-full max-w-full ${className}`}
       style={{ aspectRatio: ratio }}
     >
       <div className="absolute inset-0 flex flex-col items-center justify-center gap-2 px-4 text-center" style={{ backgroundImage: grad }}>
-        <Camera size={30} className="text-maroon-dark-50" strokeWidth={1.6} />
-        <span className="font-display font-bold text-maroon-dark-70 text-sm md:text-base">{label}</span>
-        {caption && <span className="font-body text-xs text-maroon-dark-50">{caption}</span>}
+        <Camera size={30} className="text-maroon-dark-50 shrink-0" strokeWidth={1.6} />
+        <span className="font-display font-bold text-maroon-dark-70 text-xs sm:text-sm md:text-base leading-snug">{label}</span>
+        {caption && <span className="font-body text-[11px] sm:text-xs text-maroon-dark-50 leading-snug">{caption}</span>}
       </div>
-      <div className="absolute top-0 left-0 w-full h-2 pencil-stripe-thin" />
+      <div className="absolute top-0 left-0 w-full h-1.5 sm:h-2 pencil-stripe-thin" />
     </div>
   );
 }
@@ -1778,7 +1778,9 @@ function AcademicsPage({ setPage }) {
               ))}
             </div>
           </div>
-          <ImagePlaceholder label="Smart Classroom" caption="Projector-enabled interactive class" ratio="4 / 3" tone="gold" />
+          <div className="w-full max-w-md mx-auto mt-6 md:mt-0">
+            <ImagePlaceholder label="Smart Classroom" caption="Projector-enabled interactive class" ratio="4 / 3" tone="gold" />
+          </div>
         </div>
       </section>
 

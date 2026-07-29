@@ -804,8 +804,8 @@ function HomePage({ setPage }) {
     <div>
       {/* HERO */}
       <section className="relative bg-cream overflow-hidden">
-        <div className="absolute -top-10 -right-10 opacity-90 animate-spin-slow hidden md:block" aria-hidden="true">
-          <Emblem size={200} ring={false} />
+        <div className="absolute -top-6 -right-6 md:-top-10 md:-right-10 opacity-70 md:opacity-90 animate-spin-slow pointer-events-none" aria-hidden="true">
+          <Emblem size={160} className="w-[140px] h-[140px] md:w-[200px] md:h-[200px]" ring={false} />
         </div>
         <div className="max-w-7xl mx-auto px-6 pt-10 pb-16 md:pt-16 md:pb-24 flex flex-col gap-6 md:grid md:grid-cols-12 md:gap-8 lg:gap-12 items-center relative">
           {/* Left Column wrapper: contents on mobile so children participate in main flex container, flex-col on desktop */}

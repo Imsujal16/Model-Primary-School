@@ -726,6 +726,8 @@ function WhyTabs({ light = false }) {
   );
 }
 
+
+
 function HomePage({ setPage }) {
   return (
     <div>
@@ -814,8 +816,56 @@ function HomePage({ setPage }) {
             <h2 className="font-display font-extrabold text-3xl md:text-4xl text-maroon-dark">LKG to Class 5</h2>
             <p className="font-body text-ink-60 mt-3 text-sm">A clear learning journey from early play-based discovery to exam-ready foundations.</p>
           </div>
-          {/* Timeline */}
-          <div className="relative">
+          {/* 📱 MOBILE VIEW: Premium Left-Aligned Vertical Educational Stepper (< md) */}
+          <div className="md:hidden relative pl-2 pr-1">
+            {/* Left vertical connector line */}
+            <div
+              className="absolute left-[21px] top-6 bottom-6 w-1.5 rounded-full shadow-xs"
+              style={{ background: 'linear-gradient(to bottom, var(--gold) 0%, var(--maroon) 100%)' }}
+            />
+            <div className="flex flex-col gap-6">
+              {classLevels.map((c, i) => {
+                const stepIcons = [Palette, BookOpen, Languages, TreePine, Sparkles, Trophy, GraduationCap];
+                const StepIcon = stepIcons[i % stepIcons.length];
+                const isMaroonNode = i % 2 !== 0;
+
+                return (
+                  <div key={c.level} className="relative flex items-start gap-4">
+                    {/* Node Badge on Left Line */}
+                    <div
+                      className={`relative z-10 shrink-0 w-11 h-11 rounded-2xl flex items-center justify-center shadow-md border-2 border-white mt-0.5 ${
+                        isMaroonNode ? 'bg-maroon' : 'bg-gold'
+                      }`}
+                    >
+                      <StepIcon size={20} className={isMaroonNode ? 'text-gold' : 'text-maroon-dark'} strokeWidth={2.2} />
+                    </div>
+
+                    {/* Timeline Content Card */}
+                    <div className="flex-1 bg-white rounded-3xl p-5 shadow-lg border-2 border-gold-light border-l-4 border-l-maroon relative overflow-hidden">
+                      <div className="flex items-center justify-between gap-2 mb-2">
+                        <div>
+                          <span className="font-display font-bold uppercase tracking-widest text-[9px] text-gold-dark block">
+                            Stage {i + 1} of 7
+                          </span>
+                          <h3 className="font-display font-extrabold text-xl text-maroon-dark">{c.level}</h3>
+                        </div>
+                        <span className="bg-cream2 border border-gold-light text-maroon-dark font-body text-xs font-bold px-3 py-1 rounded-full shrink-0 shadow-xs">
+                          {c.age}
+                        </span>
+                      </div>
+                      
+                      <p className="font-body text-xs text-ink-80 leading-relaxed bg-cream p-3 rounded-2xl border border-cream2 font-medium">
+                        {c.focus}
+                      </p>
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+
+          {/* 💻 DESKTOP VIEW: Alternating Centered Timeline (>= md) */}
+          <div className="hidden md:block relative">
             {/* Central line */}
             <div className="absolute left-1/2 top-0 bottom-0 w-0.5 -translate-x-1/2" style={{ background: 'linear-gradient(to bottom, var(--gold), var(--maroon))' }} />
             <div className="flex flex-col gap-10">

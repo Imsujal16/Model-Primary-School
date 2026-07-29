@@ -29,6 +29,16 @@ import {
 function BrandStyles() {
   return (
     <style>{`
+      html, body {
+        overflow-x: hidden !important;
+        max-width: 100vw;
+        width: 100%;
+      }
+      #root {
+        overflow-x: hidden;
+        max-width: 100vw;
+        width: 100%;
+      }
       html.lenis, html.lenis body {
         height: auto;
       }
@@ -446,14 +456,14 @@ function SectionLabel({ children }) {
 
 function PageHero({ eyebrow, title, subtitle }) {
   return (
-    <section className="relative bg-maroon overflow-hidden">
-      <div className="absolute -right-16 -top-16 opacity-20 animate-spin-slow" aria-hidden="true">
-        <Emblem size={260} ring={false} />
+    <section className="relative bg-maroon overflow-hidden w-full max-w-full">
+      <div className="absolute -right-6 -top-6 md:-right-16 md:-top-16 opacity-20 animate-spin-slow pointer-events-none" aria-hidden="true">
+        <Emblem size={180} className="w-[140px] h-[140px] md:w-[260px] md:h-[260px]" ring={false} />
       </div>
-      <div className="max-w-6xl mx-auto px-6 py-16 md:py-24 relative">
+      <div className="max-w-6xl mx-auto px-5 sm:px-6 py-10 sm:py-14 md:py-24 relative">
         <Eyebrow light>{eyebrow}</Eyebrow>
-        <h1 className="font-display font-extrabold text-3xl md:text-5xl text-white leading-tight max-w-2xl">{title}</h1>
-        {subtitle && <p className="font-body text-gold-light-90 mt-4 max-w-xl text-base md:text-lg">{subtitle}</p>}
+        <h1 className="font-display font-extrabold text-2xl sm:text-4xl md:text-5xl text-white leading-tight max-w-2xl mt-1.5 md:mt-3">{title}</h1>
+        {subtitle && <p className="font-body text-gold-light-90 mt-2.5 sm:mt-4 max-w-xl text-xs sm:text-base md:text-lg leading-relaxed">{subtitle}</p>}
       </div>
       <PencilDivider />
     </section>
@@ -1646,16 +1656,16 @@ function AcademicsPage({ setPage }) {
       />
 
       {/* CURRICULUM */}
-      <section className="bg-cream py-16 md:py-20">
-        <div className="max-w-6xl mx-auto px-6">
+      <section className="bg-cream py-12 md:py-20">
+        <div className="max-w-6xl mx-auto px-5 sm:px-6">
           <Eyebrow>Curriculum</Eyebrow>
-          <h2 className="font-display font-extrabold text-3xl md:text-4xl text-maroon-dark">What Children Learn, Stage by Stage</h2>
-          <p className="font-body text-ink-60 mt-2 mb-10">Our curriculum follows government-prescribed syllabi, enriched with activity-based learning at every level.</p>
-          <div className="grid gap-5">
+          <h2 className="font-display font-extrabold text-2xl sm:text-3xl md:text-4xl text-maroon-dark">What Children Learn, Stage by Stage</h2>
+          <p className="font-body text-ink-60 mt-1.5 md:mt-2 text-xs sm:text-sm mb-6 md:mb-10">Our curriculum follows government-prescribed syllabi, enriched with activity-based learning at every level.</p>
+          <div className="grid gap-3.5 sm:gap-5">
             {curriculumSubjects.map((c) => (
-              <div key={c.stage} className="bg-white rounded-3xl p-6 md:p-7 shadow-md flex flex-col md:flex-row md:items-center gap-3 md:gap-8 border-l-4 border-gold">
-                <span className="font-display font-extrabold text-maroon-dark text-lg md:w-40 shrink-0">{c.stage}</span>
-                <p className="font-body text-ink-70 text-sm md:text-base">{c.subjects}</p>
+              <div key={c.stage} className="bg-white rounded-2xl sm:rounded-3xl p-4 sm:p-6 md:p-7 shadow-md flex flex-col md:flex-row md:items-center gap-2 sm:gap-3 md:gap-8 border-l-4 border-gold">
+                <span className="font-display font-extrabold text-maroon-dark text-base sm:text-lg md:w-40 shrink-0">{c.stage}</span>
+                <p className="font-body text-ink-70 text-xs sm:text-sm md:text-base leading-relaxed">{c.subjects}</p>
               </div>
             ))}
           </div>
@@ -1665,25 +1675,24 @@ function AcademicsPage({ setPage }) {
       <PencilDivider thin />
 
       {/* CLASSES OFFERED */}
-      <section className="bg-cream2 py-16 md:py-20">
-        <div className="max-w-6xl mx-auto px-6">
-          <div className="text-center max-w-2xl mx-auto mb-12">
+      <section className="bg-cream2 py-12 md:py-20">
+        <div className="max-w-6xl mx-auto px-5 sm:px-6">
+          <div className="text-center max-w-2xl mx-auto mb-8 md:mb-12">
             <div className="flex justify-center"><Eyebrow>Classes We Offer</Eyebrow></div>
-            <h2 className="font-display font-extrabold text-3xl md:text-4xl text-maroon-dark">LKG to Class 5</h2>
+            <h2 className="font-display font-extrabold text-2xl sm:text-3xl md:text-4xl text-maroon-dark">LKG to Class 5</h2>
           </div>
-          <div className="flex flex-wrap justify-center gap-5">
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-7 gap-3 sm:gap-4 md:gap-5 justify-center">
             {classLevels.map((c) => (
               <div
                 key={c.level}
-                className="hover-lift bg-white rounded-3xl p-6 shadow-md text-center border-b-4 border-maroon"
-                style={{ flexBasis: "calc(25% - 15px)", minWidth: "180px", maxWidth: "280px", flexGrow: 0 }}
+                className="hover-lift bg-white rounded-2xl sm:rounded-3xl p-4 sm:p-5 shadow-md text-center border-b-4 border-maroon flex flex-col items-center justify-between"
               >
-                <div className="w-14 h-14 mx-auto rounded-full bg-gold-light flex items-center justify-center mb-3">
-                  <GraduationCap size={24} className="text-maroon-dark" />
+                <div className="w-11 h-11 sm:w-14 sm:h-14 mx-auto rounded-full bg-gold-light flex items-center justify-center mb-2 sm:mb-3 shrink-0">
+                  <GraduationCap size={20} className="text-maroon-dark sm:w-6 sm:h-6" />
                 </div>
-                <h3 className="font-display font-extrabold text-xl text-maroon-dark">{c.level}</h3>
-                <p className="font-body text-xs text-gold-dark font-bold mt-1">{c.age}</p>
-                <p className="font-body text-sm text-ink-60 mt-2">{c.focus}</p>
+                <h3 className="font-display font-extrabold text-base sm:text-xl text-maroon-dark">{c.level}</h3>
+                <p className="font-body text-[11px] sm:text-xs text-gold-dark font-bold mt-0.5 sm:mt-1">{c.age}</p>
+                <p className="font-body text-xs sm:text-sm text-ink-60 mt-1 sm:mt-2 leading-snug">{c.focus}</p>
               </div>
             ))}
           </div>

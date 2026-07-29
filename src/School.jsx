@@ -725,17 +725,8 @@ function HomePage({ setPage }) {
               </p>
             </div>
 
-            {/* 3. Facility Tags (Mobile Order 3, Desktop Order 3) */}
-            <div className="order-3 md:order-3 flex flex-wrap gap-2.5 sm:gap-3 mt-1 md:mt-8">
-              {["English Medium", "Govt. Recognized", "CCTV Campus", "LKG – Class 5"].map((t) => (
-                <span key={t} className="flex items-center gap-1.5 bg-white-80 border border-gold-light rounded-full px-3.5 py-1.5 text-xs md:text-sm font-body font-semibold text-maroon-dark shadow-sm">
-                  <CheckCircle2 size={14} className="text-green" /> {t}
-                </span>
-              ))}
-            </div>
-
-            {/* 4. Call-to-Action Buttons (Mobile Order 4, Desktop Order 2) */}
-            <div className="order-4 md:order-2 flex flex-row items-center gap-2.5 sm:gap-4 mt-3 md:mt-8 w-full">
+            {/* Call-to-Action Buttons (Mobile Order 3, Desktop Order 2) */}
+            <div className="order-3 md:order-2 flex flex-row items-center gap-2.5 sm:gap-4 mt-3 md:mt-8 w-full">
               <CTAButton
                 variant="primary"
                 onClick={() => setPage("admissions")}
@@ -751,6 +742,15 @@ function HomePage({ setPage }) {
               >
                 Explore Programs
               </CTAButton>
+            </div>
+
+            {/* Facility Tags (Mobile Order 4, Desktop Order 3) */}
+            <div className="order-4 md:order-3 flex flex-wrap gap-2.5 sm:gap-3 mt-1 md:mt-8">
+              {["English Medium", "Govt. Recognized", "CCTV Campus", "LKG – Class 5"].map((t) => (
+                <span key={t} className="flex items-center gap-1.5 bg-white-80 border border-gold-light rounded-full px-3.5 py-1.5 text-xs md:text-sm font-body font-semibold text-maroon-dark shadow-sm">
+                  <CheckCircle2 size={14} className="text-green" /> {t}
+                </span>
+              ))}
             </div>
           </div>
 

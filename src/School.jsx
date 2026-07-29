@@ -1338,11 +1338,12 @@ function AboutPage({ setPage }) {
         <div className="max-w-6xl mx-auto px-6 grid md:grid-cols-2 gap-12 items-center relative">
           <div>
             <ImagePlaceholder
+              src="/principal.png"
               label="Principal — Model Primary School"
               caption="Photo of the Principal"
               ratio="4 / 5"
               tone="pink"
-              className="max-w-sm mx-auto"
+              className="max-w-sm mx-auto shadow-2xl rounded-3xl"
             />
           </div>
           <div>

@@ -1339,8 +1339,8 @@ function AboutPage({ setPage }) {
           <div>
             <ImagePlaceholder
               src="/principal.png"
-              label="Principal — Model Primary School"
-              caption="Photo of the Principal"
+              label="Smt. Vandana Yadav — Principal"
+              caption="Principal of Model Primary School"
               ratio="4 / 5"
               tone="pink"
               className="max-w-sm mx-auto shadow-2xl rounded-3xl"
@@ -1366,7 +1366,7 @@ function AboutPage({ setPage }) {
             <div className="mt-8 flex items-center gap-4">
               <div className="w-12 h-0.5 bg-gold rounded-full" />
               <p className="font-body italic text-white text-base">
-                [Principal Name], <span style={{ color: "var(--gold-light)" }}>Principal</span>
+                Smt. Vandana Yadav, <span style={{ color: "var(--gold-light)" }}>Principal</span>
               </p>
             </div>
           </div>

@@ -1382,7 +1382,9 @@ function AboutPage({ setPage }) {
           <div className="text-center max-w-2xl mx-auto mb-12">
             <div className="flex justify-center"><Eyebrow>Honours & Awards</Eyebrow></div>
             <h2 className="font-display font-extrabold text-3xl md:text-4xl text-maroon-dark">Awards &amp; Recognitions</h2>
-            <p className="font-body text-ink-60 mt-3 text-sm">Decades of dedication honoured by the highest offices of the state and nation.</p>
+            <p className="font-body text-maroon-dark font-semibold mt-3 text-sm md:text-base">
+              Prestige and national honours conferred upon our Principal, <span className="text-gold-dark font-bold underline decoration-gold">Smt. Vandana Yadav</span>, for decades of educational excellence.
+            </p>
           </div>
 
           {/* ── Crown Jewels: 3-column highlight row ── */}
@@ -1393,7 +1395,7 @@ function AboutPage({ setPage }) {
                 color: 'bg-gold',
                 textColor: 'text-maroon-dark',
                 title: 'State Teacher Award',
-                body: 'Honored by the Uttar Pradesh Government for outstanding contribution to primary education.',
+                body: 'Conferred upon Principal Smt. Vandana Yadav by the Uttar Pradesh Government for outstanding contribution to primary education.',
                 ribbon: 'UP Government',
               },
               {
@@ -1401,7 +1403,7 @@ function AboutPage({ setPage }) {
                 color: 'bg-maroon',
                 textColor: 'text-white',
                 title: "Governor's Excellence",
-                body: 'Awarded by the Governor of Uttar Pradesh for excellence in school leadership and management.',
+                body: 'Conferred upon Principal Smt. Vandana Yadav by the Governor of Uttar Pradesh for excellence in educational leadership.',
                 ribbon: 'Governor of UP',
               },
               {
@@ -1409,7 +1411,7 @@ function AboutPage({ setPage }) {
                 color: 'bg-gold',
                 textColor: 'text-maroon-dark',
                 title: 'National Recognition',
-                body: 'Awarded by Smt. Maneka Gandhi, Member of Parliament, for exemplary service to child education.',
+                body: 'Conferred upon Principal Smt. Vandana Yadav by Smt. Maneka Gandhi, MP, for exemplary service to child education.',
                 ribbon: 'MP Smt. Maneka Gandhi',
               },
             ].map((award) => (
@@ -1422,7 +1424,7 @@ function AboutPage({ setPage }) {
                 </div>
                 {/* Title */}
                 <h3 className="font-display font-extrabold text-lg text-maroon-dark leading-snug">{award.title}</h3>
-                <p className="font-body text-sm text-ink-70 leading-relaxed">{award.body}</p>
+                <p className="font-body text-xs md:text-sm text-ink-80 leading-relaxed">{award.body}</p>
                 {/* Ribbon tag */}
                 <span className="inline-flex items-center gap-1.5 bg-cream2 border border-gold-light rounded-full px-3 py-1 text-xs font-body font-semibold text-maroon-dark mt-auto">
                   <Medal size={12} className="text-gold-dark" strokeWidth={2} />
@@ -1436,7 +1438,9 @@ function AboutPage({ setPage }) {
           <div className="rounded-2xl overflow-hidden shadow-md" style={{ background: 'var(--maroon)' }}>
             <div className="flex items-center gap-3 px-5 py-3 border-b border-white-20">
               <Star size={16} className="text-gold shrink-0" strokeWidth={2} />
-              <span className="font-display font-bold text-xs tracking-widest uppercase" style={{ color: 'var(--gold)' }}>District &amp; Local Honours</span>
+              <span className="font-display font-bold text-xs tracking-widest uppercase" style={{ color: 'var(--gold)' }}>
+                District &amp; Local Honours Conferred Upon Principal Smt. Vandana Yadav
+              </span>
             </div>
             <div className="py-4 px-3 overflow-hidden">
               <div className="marquee-track whitespace-nowrap inline-block">

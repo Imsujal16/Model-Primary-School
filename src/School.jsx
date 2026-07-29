@@ -859,6 +859,202 @@ function HomePage({ setPage }) {
 }
 
 /* ============================================================
+   VISION & MISSION COMPONENT (Mobile-Optimized)
+   ============================================================ */
+function VisionMissionSection() {
+  const [activeTab, setActiveTab] = useState("vision");
+
+  return (
+    <section className="bg-cream2 py-16 md:py-28 relative overflow-hidden">
+      <div className="max-w-6xl mx-auto px-6">
+        <div className="text-center max-w-2xl mx-auto mb-8 md:mb-16">
+          <div className="flex justify-center"><Eyebrow>Our Purpose</Eyebrow></div>
+          <h2 className="font-display font-extrabold text-3xl md:text-4xl text-maroon-dark">Vision &amp; Mission</h2>
+          <p className="font-body text-ink-60 text-sm mt-2 hidden md:block">The guiding principles behind everything we do at Model Primary School.</p>
+        </div>
+
+        {/* 📱 MOBILE VIEW: Interactive Segmented Control & Rich Card Deck */}
+        <div className="md:hidden">
+          {/* Segmented Control Pill */}
+          <div className="flex bg-cream3 p-1.5 rounded-full mb-6 border border-gold-light shadow-inner">
+            <button
+              onClick={() => setActiveTab("vision")}
+              className={`flex-1 py-3 px-4 rounded-full font-display font-bold text-sm transition-all duration-300 flex items-center justify-center gap-2 ${
+                activeTab === "vision"
+                  ? "bg-maroon text-white shadow-md scale-[1.02]"
+                  : "text-maroon-dark opacity-75 hover:opacity-100"
+              }`}
+            >
+              <Star size={18} className={activeTab === "vision" ? "text-gold" : "text-maroon"} strokeWidth={2.2} />
+              Our Vision
+            </button>
+            <button
+              onClick={() => setActiveTab("mission")}
+              className={`flex-1 py-3 px-4 rounded-full font-display font-bold text-sm transition-all duration-300 flex items-center justify-center gap-2 ${
+                activeTab === "mission"
+                  ? "bg-gold text-maroon-dark shadow-md scale-[1.02]"
+                  : "text-maroon-dark opacity-75 hover:opacity-100"
+              }`}
+            >
+              <HeartHandshake size={18} className="text-maroon-dark" strokeWidth={2.2} />
+              Our Mission
+            </button>
+          </div>
+
+          {/* Dynamic Mobile Card */}
+          <div className="relative">
+            {activeTab === "vision" ? (
+              <div className="bg-white rounded-3xl p-6 shadow-xl border-2 border-maroon relative overflow-hidden transition-all duration-300">
+                <div className="absolute -top-8 -right-8 w-28 h-28 rounded-full bg-cream2 opacity-60 flex items-center justify-center pointer-events-none">
+                  <Star size={60} className="text-gold opacity-25" />
+                </div>
+                
+                <div className="flex items-center justify-between mb-4">
+                  <div className="flex items-center gap-3">
+                    <div className="w-11 h-11 rounded-2xl bg-maroon flex items-center justify-center shadow-md">
+                      <Star size={22} className="text-gold" strokeWidth={2.2} />
+                    </div>
+                    <div>
+                      <span className="font-display font-bold uppercase tracking-widest text-[10px] text-gold-dark">Destination</span>
+                      <h3 className="font-display font-extrabold text-xl text-maroon-dark">Our Vision</h3>
+                    </div>
+                  </div>
+                  <span className="bg-cream2 border border-gold-light text-maroon-dark font-body text-xs font-bold px-3 py-1 rounded-full">
+                    Future-Focused
+                  </span>
+                </div>
+
+                <p className="font-body text-ink-80 text-sm leading-relaxed mb-5">
+                  To be the most trusted primary school in Sultanpur — a place where every child from Bharsare,
+                  Bhadaiyan and the surrounding villages can access quality English-medium education and grow
+                  into a confident, curious and responsible individual.
+                </p>
+
+                {/* Scannable Pillars */}
+                <div className="pt-4 border-t border-cream3 space-y-2">
+                  <span className="font-display font-bold text-[11px] uppercase tracking-wider text-ink-50 block mb-1.5">Key Vision Pillars:</span>
+                  {[
+                    { icon: Sparkles, text: "Quality English-Medium Access in Rural UP" },
+                    { icon: Users, text: "Serving Children from Bharsare & Bhadaiyan" },
+                    { icon: GraduationCap, text: "Building Confident, Curious Individuals" }
+                  ].map((p, i) => (
+                    <div key={i} className="flex items-center gap-2.5 bg-cream px-3 py-2 rounded-xl border border-cream2">
+                      <p.icon size={15} className="text-maroon shrink-0" strokeWidth={2} />
+                      <span className="font-body text-xs font-semibold text-maroon-dark">{p.text}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            ) : (
+              <div className="bg-white rounded-3xl p-6 shadow-xl border-2 border-gold relative overflow-hidden transition-all duration-300">
+                <div className="absolute -top-8 -right-8 w-28 h-28 rounded-full bg-cream2 opacity-60 flex items-center justify-center pointer-events-none">
+                  <HeartHandshake size={60} className="text-maroon opacity-20" />
+                </div>
+
+                <div className="flex items-center justify-between mb-4">
+                  <div className="flex items-center gap-3">
+                    <div className="w-11 h-11 rounded-2xl bg-gold flex items-center justify-center shadow-md">
+                      <HeartHandshake size={22} className="text-maroon-dark" strokeWidth={2.2} />
+                    </div>
+                    <div>
+                      <span className="font-display font-bold uppercase tracking-widest text-[10px] text-gold-dark">Our Commitment</span>
+                      <h3 className="font-display font-extrabold text-xl text-maroon-dark">Our Mission</h3>
+                    </div>
+                  </div>
+                  <span className="bg-gold-light text-maroon-dark font-body text-xs font-bold px-3 py-1 rounded-full">
+                    Action-Driven
+                  </span>
+                </div>
+
+                <p className="font-body text-ink-80 text-sm leading-relaxed mb-5">
+                  To nurture every child's potential through joyful, activity-based learning in a safe, disciplined
+                  and loving environment — building strong academic foundations while celebrating each child's
+                  unique strengths.
+                </p>
+
+                {/* Scannable Pillars */}
+                <div className="pt-4 border-t border-cream3 space-y-2">
+                  <span className="font-display font-bold text-[11px] uppercase tracking-wider text-ink-50 block mb-1.5">Key Mission Pillars:</span>
+                  {[
+                    { icon: Puzzle, text: "Joyful & Activity-Based Learning" },
+                    { icon: ShieldCheck, text: "Safe, Loving & Disciplined Campus" },
+                    { icon: Trophy, text: "Nurturing Unique Individual Potential" }
+                  ].map((p, i) => (
+                    <div key={i} className="flex items-center gap-2.5 bg-cream px-3 py-2 rounded-xl border border-cream2">
+                      <p.icon size={15} className="text-gold-dark shrink-0" strokeWidth={2} />
+                      <span className="font-body text-xs font-semibold text-maroon-dark">{p.text}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )}
+          </div>
+        </div>
+
+        {/* 💻 DESKTOP VIEW: Asymmetric Overlapping Cards Grid */}
+        <div className="hidden md:block relative">
+          <div
+            className="absolute bg-maroon rounded-full opacity-10"
+            style={{ width: '320px', height: '320px', top: '-60px', left: '-80px', zIndex: 0 }}
+            aria-hidden="true"
+          />
+          <div className="grid md:grid-cols-2 gap-8 items-start relative" style={{ zIndex: 1 }}>
+            {/* Vision — shifted UP */}
+            <div className="vision-card bg-white rounded-3xl p-8 shadow-xl border-t-4 border-maroon" style={{ marginTop: 0 }}>
+              <div className="w-12 h-12 rounded-2xl bg-maroon flex items-center justify-center mb-4">
+                <Star size={22} className="text-gold" strokeWidth={2.2} />
+              </div>
+              <h3 className="font-display font-bold text-xl text-maroon-dark mb-3">Our Vision</h3>
+              <p className="font-body text-ink-70 leading-relaxed mb-6">
+                To be the most trusted primary school in Sultanpur — a place where every child from Bharsare,
+                Bhadaiyan and the surrounding villages can access quality English-medium education and grow
+                into a confident, curious and responsible individual.
+              </p>
+              <div className="pt-4 border-t border-cream3 space-y-2">
+                {[
+                  { icon: Sparkles, text: "Quality English-Medium Access in Rural UP" },
+                  { icon: Users, text: "Serving Children from Bharsare & Bhadaiyan" },
+                  { icon: GraduationCap, text: "Building Confident, Curious Individuals" }
+                ].map((p, i) => (
+                  <div key={i} className="flex items-center gap-2.5 bg-cream px-3.5 py-2 rounded-xl border border-cream2">
+                    <p.icon size={15} className="text-maroon shrink-0" strokeWidth={2} />
+                    <span className="font-body text-xs font-semibold text-maroon-dark">{p.text}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+            {/* Mission — shifted DOWN for asymmetric feel */}
+            <div className="mission-card bg-white rounded-3xl p-8 shadow-xl border-t-4 border-gold md:mt-16">
+              <div className="w-12 h-12 rounded-2xl bg-gold flex items-center justify-center mb-4">
+                <HeartHandshake size={22} className="text-maroon-dark" strokeWidth={2.2} />
+              </div>
+              <h3 className="font-display font-bold text-xl text-maroon-dark mb-3">Our Mission</h3>
+              <p className="font-body text-ink-70 leading-relaxed mb-6">
+                To nurture every child's potential through joyful, activity-based learning in a safe, disciplined
+                and loving environment — building strong academic foundations while celebrating each child's
+                unique strengths.
+              </p>
+              <div className="pt-4 border-t border-cream3 space-y-2">
+                {[
+                  { icon: Puzzle, text: "Joyful & Activity-Based Learning" },
+                  { icon: ShieldCheck, text: "Safe, Loving & Disciplined Campus" },
+                  { icon: Trophy, text: "Nurturing Unique Individual Potential" }
+                ].map((p, i) => (
+                  <div key={i} className="flex items-center gap-2.5 bg-cream px-3.5 py-2 rounded-xl border border-cream2">
+                    <p.icon size={15} className="text-gold-dark shrink-0" strokeWidth={2} />
+                    <span className="font-body text-xs font-semibold text-maroon-dark">{p.text}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* ============================================================
    ABOUT US PAGE
    ============================================================ */
 function AboutPage({ setPage }) {
@@ -1160,49 +1356,8 @@ function AboutPage({ setPage }) {
 
       <PencilDivider thin />
 
-      {/* 4 ─ VISION & MISSION — asymmetric overlapping layout */}
-      <section className="bg-cream2 py-20 md:py-28 relative">
-        <div className="max-w-6xl mx-auto px-6">
-          <div className="text-center max-w-2xl mx-auto mb-16">
-            <div className="flex justify-center"><Eyebrow>Our Purpose</Eyebrow></div>
-            <h2 className="font-display font-extrabold text-3xl md:text-4xl text-maroon-dark">Vision &amp; Mission</h2>
-          </div>
-          {/* Decorative blob behind Vision card */}
-          <div className="relative">
-            <div
-              className="absolute bg-maroon rounded-full opacity-10 hidden md:block"
-              style={{ width: '320px', height: '320px', top: '-60px', left: '-80px', zIndex: 0 }}
-              aria-hidden="true"
-            />
-            <div className="grid md:grid-cols-2 gap-8 items-start relative" style={{ zIndex: 1 }}>
-              {/* Vision — shifted UP */}
-              <div className="vision-card bg-white rounded-3xl p-8 shadow-xl border-t-4 border-maroon" style={{ marginTop: 0 }}>
-                <div className="w-12 h-12 rounded-2xl bg-maroon flex items-center justify-center mb-4">
-                  <Star size={22} className="text-gold" strokeWidth={2.2} />
-                </div>
-                <h3 className="font-display font-bold text-xl text-maroon-dark mb-3">Our Vision</h3>
-                <p className="font-body text-ink-70 leading-relaxed">
-                  To be the most trusted primary school in Sultanpur — a place where every child from Bharsare,
-                  Bhadaiyan and the surrounding villages can access quality English-medium education and grow
-                  into a confident, curious and responsible individual.
-                </p>
-              </div>
-              {/* Mission — shifted DOWN for asymmetric feel */}
-              <div className="mission-card bg-white rounded-3xl p-8 shadow-xl border-t-4 border-gold md:mt-16">
-                <div className="w-12 h-12 rounded-2xl bg-gold flex items-center justify-center mb-4">
-                  <HeartHandshake size={22} className="text-maroon-dark" strokeWidth={2.2} />
-                </div>
-                <h3 className="font-display font-bold text-xl text-maroon-dark mb-3">Our Mission</h3>
-                <p className="font-body text-ink-70 leading-relaxed">
-                  To nurture every child's potential through joyful, activity-based learning in a safe, disciplined
-                  and loving environment — building strong academic foundations while celebrating each child's
-                  unique strengths.
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+      {/* 4 ─ VISION & MISSION — interactive mobile tab switcher + desktop asymmetric layout */}
+      <VisionMissionSection />
 
       <PencilDivider />
 

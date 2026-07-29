@@ -1255,7 +1255,6 @@ function AboutPage({ setPage }) {
     { name: '[Teacher Name]', role: 'Class Teacher — Primary' },
     { name: '[Teacher Name]', role: 'Class Teacher — Primary' },
     { name: '[Teacher Name]', role: 'Class Teacher — Primary' },
-    { name: '[Teacher Name]', role: 'Class Teacher — Primary' },
   ];
 
   return (
@@ -1479,51 +1478,48 @@ function AboutPage({ setPage }) {
 
       <PencilDivider thin />
 
-      {/* 3 ─ MEET OUR FACULTY — Swiper draggable carousel */}
-      <section className="bg-cream py-16 md:py-20">
+      {/* 3 ─ MEET OUR FACULTY — Portrait Photo Spotlight (3 Teachers) */}
+      <section className="bg-cream py-16 md:py-24">
         <div className="max-w-6xl mx-auto px-6">
-          <div className="text-center max-w-2xl mx-auto mb-12">
-            <span className="font-display font-bold uppercase tracking-widest text-xs md:text-sm" style={{ color: 'var(--gold-dark)' }}>
-              Our Team
-            </span>
+          <div className="text-center max-w-2xl mx-auto mb-16">
+            <div className="flex justify-center"><Eyebrow>Our Faculty Team</Eyebrow></div>
             <h2 className="font-display font-extrabold text-3xl md:text-4xl text-maroon-dark mt-2">
               The Pillars of Model Primary School
             </h2>
-            <p className="font-body text-ink-70 mt-3">
-              Our close-knit team of 4 expert educators ensures every child gets the personal attention they deserve.
+            <p className="font-body text-ink-70 mt-3 text-sm md:text-base">
+              Our dedicated team of 3 expert educators ensuring personal care and quality learning for every child.
             </p>
           </div>
-          <Swiper
-            modules={[Navigation, Pagination]}
-            slidesPerView={1.2}
-            spaceBetween={20}
-            navigation
-            pagination={{ clickable: true }}
-            breakpoints={{
-              640:  { slidesPerView: 2,   spaceBetween: 20 },
-              1024: { slidesPerView: 2.5, spaceBetween: 24 },
-            }}
-            className="faculty-swiper"
-          >
+
+          {/* 3 Photo Portrait Cards Grid */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 items-stretch max-w-5xl mx-auto">
             {teachers.map((teacher, idx) => (
-              <SwiperSlide key={idx}>
-                <div className="bg-white rounded-3xl p-7 shadow-md text-center flex flex-col items-center gap-4 border-t-4 border-gold h-full">
-                  <div
-                    className="w-28 h-28 rounded-full border-4 border-gold-light shadow-md flex flex-col items-center justify-center overflow-hidden"
-                    style={{ background: 'linear-gradient(135deg, var(--cream3) 0%, var(--gold-light) 100%)' }}
-                  >
-                    <Camera size={30} className="text-maroon-dark-50" strokeWidth={1.5} />
-                    <span className="font-body text-xs text-maroon-dark-50 mt-1">Photo</span>
+              <div
+                key={idx}
+                className="hover-lift bg-white rounded-3xl p-4 sm:p-5 shadow-xl border-2 border-gold-light/60 hover:border-gold hover:shadow-2xl transition-all duration-300 flex flex-col justify-between group"
+              >
+                {/* Large Portrait Photo Container */}
+                <div className="relative w-full aspect-[4/5] rounded-2xl overflow-hidden shadow-md bg-cream3 border-2 border-gold-light flex flex-col items-center justify-center group-hover:scale-[1.02] transition-transform duration-300">
+                  <Camera size={44} className="text-maroon-dark-50 mb-2" strokeWidth={1.5} />
+                  <span className="font-display font-bold text-sm text-maroon-dark-60 uppercase tracking-wider">Teacher Photo</span>
+                  <div className="absolute top-3 right-3 bg-maroon text-white font-display text-[10px] font-bold px-3 py-1 rounded-full shadow-md border border-gold">
+                    Educator {idx + 1}
                   </div>
-                  <div>
-                    <p className="font-display font-bold text-maroon-dark text-base">{teacher.name}</p>
-                    <p className="font-body text-xs font-semibold mt-1" style={{ color: 'var(--gold-dark)' }}>{teacher.role}</p>
-                    <p className="font-body text-sm text-ink-60 mt-2 leading-snug">Focused on interactive and joyful learning.</p>
-                  </div>
+                  <div className="absolute bottom-0 left-0 right-0 h-1.5 pencil-stripe-thin" />
                 </div>
-              </SwiperSlide>
+
+                {/* Teacher Name & Role */}
+                <div className="text-center pt-5 pb-2 flex flex-col items-center gap-2">
+                  <h3 className="font-display font-extrabold text-2xl text-maroon-dark leading-snug">
+                    {teacher.name}
+                  </h3>
+                  <span className="bg-cream2 text-maroon-dark font-display text-xs sm:text-sm font-bold px-4 py-1.5 rounded-full border border-gold-light shadow-xs">
+                    {teacher.role}
+                  </span>
+                </div>
+              </div>
             ))}
-          </Swiper>
+          </div>
         </div>
       </section>
 

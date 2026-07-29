@@ -10,7 +10,7 @@ import {
   CheckCircle2, ArrowRight, Send, Languages, ShieldCheck, Video, TreePine,
   HeartHandshake, Puzzle, Trophy, SmilePlus, Star, PartyPopper,
   Bus, Droplets, Library, Monitor, Computer, Brain, Palette, Music, Dumbbell, UsersRound, Utensils,
-  Award, Medal, Crown,
+  Award, Medal, Crown, Building2,
 } from "lucide-react";
 
 /* ============================================================
@@ -636,101 +636,162 @@ const classLevels = [
   { level: "Class 5", age: "9 – 10 yrs", focus: "Exam readiness for upper primary" },
 ];
 
+const whyChooseUsPillars = [
+  {
+    icon: GraduationCap,
+    title: "Academic Excellence",
+    tagline: "Foundations for Bright Futures",
+    color: "bg-maroon",
+    highlights: [
+      "Structured English Medium Curriculum",
+      "Caring & Experienced Faculty",
+      "Activity-Based & Joyful Learning",
+      "GK Enrichment & Remedial Support",
+    ],
+  },
+  {
+    icon: ShieldCheck,
+    title: "Campus Safety & Care",
+    tagline: "Zero Compromise Security",
+    color: "bg-gold",
+    highlights: [
+      "24/7 CCTV Campus Monitoring",
+      "Gated Entry & Visitor Verification",
+      "Trained & Verified Support Staff",
+      "First-Aid & Emergency Readiness",
+    ],
+  },
+  {
+    icon: Building2,
+    title: "Modern Infrastructure",
+    tagline: "Equipped for Modern Learning",
+    color: "bg-maroon",
+    highlights: [
+      "Smart Projector Classrooms",
+      "Computer Education Lab",
+      "Safe Outdoor Swing & Play Area",
+      "Clean & Hygienic Sanitation",
+    ],
+  },
+  {
+    icon: Award,
+    title: "Holistic Growth",
+    tagline: "Nurturing Beyond Textbooks",
+    color: "bg-gold",
+    highlights: [
+      "Art, Craft & Creative Expression",
+      "Dance & Cultural Performances",
+      "Daily Sports & Athletic Games",
+      "Nutritious Mid-Day Meal (MDM)",
+    ],
+  },
+];
+
 function WhyTabs({ light = false }) {
-  const [activeTab, setActiveTab] = useState('academics');
-  const active = whyChooseUsTabs.find((t) => t.id === activeTab);
+  const [activeMobileTab, setActiveMobileTab] = useState('academics');
+
   return (
-    <div className="flex flex-col md:flex-row gap-4 md:gap-8 items-stretch">
-      {/* 📱 Mobile Segmented Control (< md) */}
-      <div className="md:hidden flex bg-cream3 p-1.5 rounded-full mb-1 border border-gold-light shadow-inner w-full">
-        {whyChooseUsTabs.map((tab) => {
-          const isActive = tab.id === activeTab;
-          return (
-            <button
-              key={tab.id}
-              onClick={() => setActiveTab(tab.id)}
-              className={`flex-1 py-2.5 px-2 rounded-full font-display font-bold text-xs sm:text-sm text-center transition-all duration-300 flex items-center justify-center gap-1.5 ${
-                isActive
-                  ? light
-                    ? 'bg-gold text-maroon-dark shadow-md scale-[1.02]'
-                    : 'bg-maroon text-white shadow-md scale-[1.02]'
-                  : light
-                    ? 'text-white opacity-70 hover:opacity-100'
+    <div>
+      {/* 📱 MOBILE VIEW (< md): Segmented Tab Control + Active Content Card */}
+      <div className="md:hidden flex flex-col gap-4">
+        {/* Mobile Pill Tabs */}
+        <div className="flex bg-cream3 p-1.5 rounded-full border border-gold-light shadow-inner w-full">
+          {whyChooseUsTabs.map((tab) => {
+            const isActive = tab.id === activeMobileTab;
+            return (
+              <button
+                key={tab.id}
+                onClick={() => setActiveMobileTab(tab.id)}
+                className={`flex-1 py-2.5 px-2 rounded-full font-display font-bold text-xs text-center transition-all duration-300 flex items-center justify-center gap-1.5 ${
+                  isActive
+                    ? 'bg-maroon text-white shadow-md scale-[1.02]'
                     : 'text-maroon-dark opacity-75 hover:opacity-100'
-              }`}
-            >
-              <tab.icon size={15} className={isActive ? (light ? 'text-maroon-dark' : 'text-gold') : (light ? 'text-white' : 'text-maroon')} strokeWidth={2} />
-              <span>{tab.label.split(' ')[0]}</span>
-            </button>
-          );
-        })}
-      </div>
-
-      {/* 💻 Desktop Tab list (>= md) */}
-      <div className="hidden md:flex flex-col gap-3 w-64 md:w-72 shrink-0">
-        {whyChooseUsTabs.map((tab) => {
-          const TabIcon = tab.icon;
-          const isActive = tab.id === activeTab;
-          return (
-            <button
-              key={tab.id}
-              onClick={() => setActiveTab(tab.id)}
-              className={`focus-ring flex items-center gap-3 px-5 py-4 rounded-2xl font-display font-bold text-base text-left transition-all shrink-0 ${
-                isActive
-                  ? light
-                    ? 'bg-gold text-maroon-dark shadow-lg scale-[1.02]'
-                    : 'bg-maroon text-white shadow-lg scale-[1.02]'
-                  : light
-                    ? 'bg-white-10 text-white border border-white-20 hover:bg-white-20'
-                    : 'bg-white text-maroon-dark border-2 border-gold-light hover:border-maroon-light shadow-sm hover:shadow-md'
-              }`}
-            >
-              <div className={`w-9 h-9 rounded-xl flex items-center justify-center shrink-0 ${
-                isActive ? (light ? 'bg-maroon text-white' : 'bg-gold text-maroon-dark') : (light ? 'bg-white-20 text-white' : 'bg-cream2 text-maroon')
-              }`}>
-                <TabIcon size={18} strokeWidth={2} />
-              </div>
-              <span>{tab.label}</span>
-              {isActive && (
-                <ChevronRight size={18} className="ml-auto shrink-0" />
-              )}
-            </button>
-          );
-        })}
-      </div>
-
-      {/* Content panel — right side */}
-      <div className={`flex-1 rounded-3xl shadow-xl p-6 md:p-8 border-t-4 transition-all duration-300 ${
-        light ? 'bg-white-95 border-gold text-maroon-dark' : 'bg-white border-gold'
-      }`}>
-        <div className="flex items-center gap-3.5 mb-6 md:mb-8 pb-4 border-b border-cream2">
-          <div className="w-12 h-12 md:w-14 md:h-14 rounded-2xl bg-maroon flex items-center justify-center shrink-0 shadow-md">
-            <active.icon size={24} className="text-gold" strokeWidth={2} />
-          </div>
-          <div>
-            <span className="font-display font-bold uppercase tracking-widest text-[10px] md:text-xs text-gold-dark block">
-              Feature Highlights
-            </span>
-            <h3 className="font-display font-extrabold text-xl md:text-2xl text-maroon-dark">{active.label}</h3>
-          </div>
+                }`}
+              >
+                <tab.icon size={15} className={isActive ? 'text-gold' : 'text-maroon'} strokeWidth={2} />
+                <span>{tab.label.split(' ')[0]}</span>
+              </button>
+            );
+          })}
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 md:gap-5">
-          {active.features.map((f) => (
-            <div
-              key={f.title}
-              className="flex gap-4 items-start p-4 md:p-5 rounded-2xl bg-cream border border-gold-light/60 hover:border-gold hover:shadow-md transition-all duration-200"
-            >
-              <div className="w-10 h-10 md:w-11 md:h-11 rounded-2xl bg-maroon flex items-center justify-center shrink-0 mt-0.5 shadow-sm">
-                <f.icon size={20} className="text-gold" strokeWidth={2} />
+        {/* Mobile Active Showcase Card */}
+        {whyChooseUsTabs.map((tab) => {
+          if (tab.id !== activeMobileTab) return null;
+          return (
+            <div key={tab.id} className="bg-white rounded-3xl p-5 shadow-xl border-t-4 border-gold">
+              <div className="flex items-center gap-3 mb-4 pb-3 border-b border-cream2">
+                <div className="w-11 h-11 rounded-2xl bg-maroon flex items-center justify-center shrink-0 shadow-md">
+                  <tab.icon size={22} className="text-gold" strokeWidth={2} />
+                </div>
+                <div>
+                  <span className="font-display font-bold uppercase tracking-widest text-[9px] text-gold-dark block">Pillar Category</span>
+                  <h3 className="font-display font-extrabold text-xl text-maroon-dark">{tab.label}</h3>
+                </div>
               </div>
-              <div>
-                <h4 className="font-display font-bold text-maroon-dark text-sm md:text-base leading-snug">{f.title}</h4>
-                <p className="font-body text-xs md:text-sm text-ink-80 mt-1 leading-relaxed">{f.desc}</p>
+              <div className="grid grid-cols-1 gap-3">
+                {tab.features.map((f) => (
+                  <div key={f.title} className="flex gap-3 items-start p-3.5 rounded-2xl bg-cream border border-cream2">
+                    <div className="w-9 h-9 rounded-xl bg-maroon flex items-center justify-center shrink-0 mt-0.5 shadow-xs">
+                      <f.icon size={17} className="text-gold" strokeWidth={2} />
+                    </div>
+                    <div>
+                      <h4 className="font-display font-bold text-maroon-dark text-sm leading-snug">{f.title}</h4>
+                      <p className="font-body text-xs text-ink-80 mt-0.5 leading-relaxed">{f.desc}</p>
+                    </div>
+                  </div>
+                ))}
               </div>
             </div>
-          ))}
-        </div>
+          );
+        })}
+      </div>
+
+      {/* 💻 DESKTOP VIEW (>= md): 4-Column Feature Cards Deck */}
+      <div className="hidden md:grid md:grid-cols-4 gap-5 lg:gap-6 items-stretch">
+        {whyChooseUsPillars.map((p) => {
+          const Icon = p.icon;
+          const isGoldHeader = p.color === "bg-gold";
+
+          return (
+            <div
+              key={p.title}
+              className="hover-lift bg-white rounded-3xl p-6 shadow-md border-t-4 border-gold border-x border-b border-gold-light/60 flex flex-col justify-between hover:shadow-2xl transition-all duration-300 relative overflow-hidden group"
+            >
+              {/* Header Badge & Titles */}
+              <div>
+                <div className="flex items-center justify-between mb-4">
+                  <div className={`w-14 h-14 rounded-2xl ${p.color} flex items-center justify-center shadow-md group-hover:scale-105 transition-transform`}>
+                    <Icon size={26} className={isGoldHeader ? "text-maroon-dark" : "text-gold"} strokeWidth={2} />
+                  </div>
+                  <span className="bg-cream2 text-maroon-dark font-body text-[10px] font-bold px-2.5 py-1 rounded-full border border-gold-light">
+                    Pillar
+                  </span>
+                </div>
+                <h3 className="font-display font-extrabold text-xl text-maroon-dark leading-tight">{p.title}</h3>
+                <p className="font-body text-xs font-bold text-gold-dark mt-1">{p.tagline}</p>
+
+                <div className="my-4 border-b border-cream2" />
+
+                {/* Highlights List */}
+                <div className="flex flex-col gap-2.5">
+                  {p.highlights.map((h) => (
+                    <div key={h} className="flex items-start gap-2.5 font-body text-xs md:text-sm text-ink-80 font-medium">
+                      <CheckCircle2 size={16} className="text-green shrink-0 mt-0.5" strokeWidth={2.2} />
+                      <span className="leading-snug">{h}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              {/* Footer Assurance */}
+              <div className="mt-6 pt-3 border-t border-cream2 flex items-center justify-between text-[11px] font-display font-bold text-maroon-dark">
+                <span>Model School Standard</span>
+                <Star size={14} className="text-gold fill-gold shrink-0" />
+              </div>
+            </div>
+          );
+        })}
       </div>
     </div>
   );

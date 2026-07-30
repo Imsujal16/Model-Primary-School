@@ -1306,18 +1306,18 @@ function AboutPage({ setPage }) {
   const teachers = [
     {
       name: 'Diksha Shrivastav',
-      role: 'Class Teacher — Primary',
+      role: 'Assistant Teacher',
       award: 'State ICT Awarded ★',
       src: '/teacher-1.png',
     },
     {
       name: 'Sunil Singh',
-      role: 'Class Teacher — Primary',
+      role: 'Assistant Teacher',
       src: '/teacher-2.png',
     },
     {
       name: 'Janki Devi',
-      role: 'Class Teacher — Primary',
+      role: 'Shiksha Mitra',
       src: '/teacher-3.png',
     },
   ];

@@ -1935,14 +1935,21 @@ function AcademicsPage({ setPage }) {
         <div className="max-w-6xl mx-auto px-6">
           <Eyebrow light>Teaching Methodology</Eyebrow>
           <h2 className="font-display font-extrabold text-3xl md:text-4xl text-white">Joyful Learning, Real Habits</h2>
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5 mt-10">
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-x-4 gap-y-6 sm:gap-6 mt-8 md:mt-10">
             {methodologyPillars.map((m) => (
-              <div key={m.title} className="hover-lift bg-white-95 rounded-3xl p-6 shadow-lg">
-                <div className="w-11 h-11 rounded-2xl bg-gold flex items-center justify-center mb-3">
-                  <m.icon size={20} className="text-maroon-dark" />
+              <div
+                key={m.title}
+                className="bg-transparent md:bg-white-95 p-2 sm:p-4 md:p-6 rounded-none md:rounded-3xl shadow-none md:shadow-lg flex flex-col items-center md:items-start text-center md:text-left transition-all"
+              >
+                <div className="w-12 h-12 rounded-2xl bg-gold flex items-center justify-center mb-3 shrink-0 shadow-md md:shadow-none border border-gold-light/40 md:border-none">
+                  <m.icon size={22} className="text-maroon-dark" strokeWidth={2.2} />
                 </div>
-                <h3 className="font-display font-bold text-maroon-dark">{m.title}</h3>
-                <p className="font-body text-sm text-ink-70 mt-2">{m.desc}</p>
+                <h3 className="font-display font-extrabold md:font-bold text-sm sm:text-base md:text-lg text-white md:text-maroon-dark leading-snug">
+                  {m.title}
+                </h3>
+                <p className="font-body text-xs md:text-sm text-gold-light-85 md:text-ink-70 mt-1.5 md:mt-2 leading-relaxed font-medium md:font-normal">
+                  {m.desc}
+                </p>
               </div>
             ))}
           </div>

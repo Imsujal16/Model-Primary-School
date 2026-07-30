@@ -1784,10 +1784,10 @@ function AcademicsPage({ setPage }) {
 
       {/* MODERN LEARNING */}
       <section className="bg-cream py-14 md:py-20 w-full overflow-hidden">
-        <div className="max-w-6xl mx-auto px-6 sm:px-8 md:px-12 w-full min-w-0">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 lg:gap-16 items-start w-full min-w-0">
-            {/* Left Column: Content & Features */}
-            <div className="w-full min-w-0">
+        <div className="max-w-[1140px] mx-auto px-5 sm:px-8 md:px-10 w-full min-w-0">
+          <div className="flex flex-col md:flex-row items-center gap-8 md:gap-12 lg:gap-14 w-full min-w-0">
+            {/* Left Column: Text & 2x2 Cards Grid */}
+            <div className="w-full md:w-[48%] lg:w-[46%] shrink-0 min-w-0">
               <Eyebrow>Modern Learning</Eyebrow>
               <h2 className="font-display font-extrabold text-2xl sm:text-3xl md:text-4xl text-maroon-dark mt-1.5 md:mt-2 mb-4 md:mb-6">A Future-Ready Classroom Experience</h2>
               <p className="font-body text-ink-70 text-xs sm:text-sm md:text-base mb-6 md:mb-8">We combine time-tested teaching with modern infrastructure to give every student the best of both worlds.</p>
@@ -1811,9 +1811,9 @@ function AcademicsPage({ setPage }) {
               </div>
             </div>
 
-            {/* Right Column: Image */}
-            <div className="w-full min-w-0 flex justify-center md:justify-end mt-6 md:mt-0">
-              <div className="w-full max-w-md sm:max-w-lg relative">
+            {/* Right Column: Image - Directly Beside Left Column */}
+            <div className="w-full md:w-[52%] lg:w-[54%] min-w-0 mt-6 md:mt-0">
+              <div className="w-full relative rounded-2xl sm:rounded-3xl overflow-hidden shadow-xl border-2 sm:border-4 border-white bg-cream3">
                 <ImagePlaceholder label="Smart Classroom" caption="Projector-enabled interactive class" ratio="4 / 3" tone="gold" />
               </div>
             </div>

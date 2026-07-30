@@ -1139,8 +1139,8 @@ function VisionMissionSection() {
                       <h3 className="font-display font-extrabold text-xl text-maroon-dark">Our Vision</h3>
                     </div>
                   </div>
-                  <span className="bg-gold-light border border-gold text-maroon-dark font-body text-xs font-bold px-3 py-1 rounded-full relative z-10 shadow-xs shrink-0">
-                    Action-Driven
+                  <span className="bg-cream2 border border-gold-light text-maroon-dark font-body text-xs font-bold px-3 py-1 rounded-full relative z-10 shadow-xs shrink-0">
+                    Future-Focused
                   </span>
                 </div>
 
@@ -1231,8 +1231,8 @@ function VisionMissionSection() {
                     <h3 className="font-display font-bold text-xl text-maroon-dark">Our Vision</h3>
                   </div>
                 </div>
-                <span className="bg-gold-light border border-gold text-maroon-dark font-body text-xs font-bold px-3 py-1 rounded-full relative z-10 shadow-xs shrink-0">
-                  Action-Driven
+                <span className="bg-cream2 border border-gold-light text-maroon-dark font-body text-xs font-bold px-3 py-1 rounded-full relative z-10 shadow-xs shrink-0">
+                  Future-Focused
                 </span>
               </div>
               <p className="font-body text-ink-70 leading-relaxed mb-6">

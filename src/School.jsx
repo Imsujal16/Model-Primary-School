@@ -72,6 +72,20 @@ function BrandStyles() {
       .routine-swiper .swiper-pagination {
         bottom: 10px !important;
       }
+      .hide-scrollbar {
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+      }
+      .hide-scrollbar::-webkit-scrollbar {
+        display: none;
+      }
+      .scroll-snap-x-mandatory {
+        scroll-snap-type: x mandatory;
+        -webkit-overflow-scrolling: touch;
+      }
+      .scroll-snap-center {
+        scroll-snap-align: center;
+      }
 
       :root{
         --cream:#FFF8EA; --cream2:#FBEEDA; --cream3:#F6E4C4;
@@ -941,52 +955,51 @@ function HomePage({ setPage }) {
             <h2 className="font-display font-extrabold text-3xl md:text-4xl text-maroon-dark">LKG to Class 5</h2>
             <p className="font-body text-ink-60 mt-3 text-sm">A clear learning journey from early play-based discovery to exam-ready foundations.</p>
           </div>
-          {/* 📱 MOBILE VIEW: Premium Left-Aligned Vertical Educational Stepper (< md) */}
-          <div className="md:hidden relative pl-2 pr-1">
-            {/* Left vertical connector line */}
-            <div
-              className="absolute left-[21px] top-6 bottom-6 w-1.5 rounded-full shadow-xs"
-              style={{ background: 'linear-gradient(to bottom, var(--gold) 0%, var(--maroon) 100%)' }}
-            />
-            <div className="flex flex-col gap-6">
-              {classLevels.map((c, i) => {
-                const stepIcons = [Palette, BookOpen, Languages, TreePine, Sparkles, Trophy, GraduationCap];
-                const StepIcon = stepIcons[i % stepIcons.length];
-                const isMaroonNode = i % 2 !== 0;
+          {/* 📱 MOBILE VIEW: Swipeable Horizontal Carousel (< md) */}
+          <div
+            className="md:hidden -mx-6 px-6 flex gap-4 pb-4 overflow-x-auto hide-scrollbar scroll-snap-x-mandatory"
+            style={{ overflowX: 'auto', display: 'flex', scrollSnapType: 'x mandatory' }}
+          >
+            {classLevels.map((c, i) => {
+              const stepIcons = [Palette, BookOpen, Languages, TreePine, Sparkles, Trophy, GraduationCap];
+              const StepIcon = stepIcons[i % stepIcons.length];
+              const isMaroonNode = i % 2 !== 0;
 
-                return (
-                  <div key={c.level} className="relative flex items-start gap-4">
-                    {/* Node Badge on Left Line */}
-                    <div
-                      className={`relative z-10 shrink-0 w-11 h-11 rounded-2xl flex items-center justify-center shadow-md border-2 border-white mt-0.5 ${
-                        isMaroonNode ? 'bg-maroon' : 'bg-gold'
-                      }`}
-                    >
-                      <StepIcon size={20} className={isMaroonNode ? 'text-gold' : 'text-maroon-dark'} strokeWidth={2.2} />
-                    </div>
-
-                    {/* Timeline Content Card */}
-                    <div className="flex-1 bg-white rounded-3xl p-5 shadow-lg border-2 border-gold-light border-l-4 border-l-maroon relative overflow-hidden">
-                      <div className="flex items-center justify-between gap-2 mb-2">
+              return (
+                <div
+                  key={c.level}
+                  className="shrink-0 bg-white rounded-3xl p-5 shadow-lg border-2 border-gold-light border-l-4 border-l-maroon relative overflow-hidden flex flex-col justify-between scroll-snap-center"
+                  style={{ flex: '0 0 80%', scrollSnapAlign: 'center' }}
+                >
+                  <div>
+                    <div className="flex items-center justify-between gap-2 mb-3">
+                      <div className="flex items-center gap-3">
+                        <div
+                          className={`shrink-0 w-11 h-11 rounded-2xl flex items-center justify-center shadow-md border-2 border-white ${
+                            isMaroonNode ? 'bg-maroon' : 'bg-gold'
+                          }`}
+                        >
+                          <StepIcon size={20} className={isMaroonNode ? 'text-gold' : 'text-maroon-dark'} strokeWidth={2.2} />
+                        </div>
                         <div>
                           <span className="font-display font-bold uppercase tracking-widest text-[9px] text-gold-dark block">
                             Stage {i + 1} of 7
                           </span>
                           <h3 className="font-display font-extrabold text-xl text-maroon-dark">{c.level}</h3>
                         </div>
-                        <span className="bg-cream2 border border-gold-light text-maroon-dark font-body text-xs font-bold px-3 py-1 rounded-full shrink-0 shadow-xs">
-                          {c.age}
-                        </span>
                       </div>
-                      
-                      <p className="font-body text-xs text-ink-80 leading-relaxed bg-cream p-3 rounded-2xl border border-cream2 font-medium">
-                        {c.focus}
-                      </p>
+                      <span className="bg-cream2 border border-gold-light text-maroon-dark font-body text-xs font-bold px-3 py-1 rounded-full shrink-0 shadow-xs">
+                        {c.age}
+                      </span>
                     </div>
+                    
+                    <p className="font-body text-xs text-ink-80 leading-relaxed bg-cream p-3.5 rounded-2xl border border-cream2 font-medium">
+                      {c.focus}
+                    </p>
                   </div>
-                );
-              })}
-            </div>
+                </div>
+              );
+            })}
           </div>
 
           {/* 💻 DESKTOP VIEW: Alternating Centered Timeline (>= md) */}
@@ -1706,7 +1719,34 @@ function AcademicsPage({ setPage }) {
             <div className="flex justify-center"><Eyebrow>Classes We Offer</Eyebrow></div>
             <h2 className="font-display font-extrabold text-2xl sm:text-3xl md:text-4xl text-maroon-dark">LKG to Class 5</h2>
           </div>
-          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-7 gap-3 sm:gap-4 md:gap-5 justify-center">
+          {/* 📱 MOBILE VIEW: Swipeable Horizontal Carousel (< md) */}
+          <div
+            className="md:hidden -mx-5 px-5 sm:-mx-6 sm:px-6 flex gap-4 pb-4 overflow-x-auto hide-scrollbar scroll-snap-x-mandatory"
+            style={{ overflowX: 'auto', display: 'flex', scrollSnapType: 'x mandatory' }}
+          >
+            {classLevels.map((c) => (
+              <div
+                key={c.level}
+                className="shrink-0 bg-white rounded-3xl p-5 shadow-lg text-center border-2 border-gold-light border-b-4 border-b-maroon flex flex-col items-center justify-between scroll-snap-center"
+                style={{ flex: '0 0 78%', scrollSnapAlign: 'center' }}
+              >
+                <div>
+                  <div className="w-12 h-12 mx-auto rounded-full bg-gold-light flex items-center justify-center mb-3 shadow-md shrink-0 border-2 border-white">
+                    <GraduationCap size={22} className="text-maroon-dark" />
+                  </div>
+                  <h3 className="font-display font-extrabold text-xl text-maroon-dark">{c.level}</h3>
+                  <div className="my-2 flex justify-center">
+                    <span className="bg-cream2 border border-gold-light text-maroon-dark font-body text-xs font-bold px-3 py-1 rounded-full shrink-0 shadow-xs inline-block">
+                      {c.age}
+                    </span>
+                  </div>
+                  <p className="font-body text-xs text-ink-80 mt-2 leading-relaxed bg-cream p-3 rounded-2xl border border-cream2 font-medium">{c.focus}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+          {/* 💻 DESKTOP VIEW: Grid Layout (>= md) */}
+          <div className="hidden md:grid md:grid-cols-3 lg:grid-cols-7 gap-4 md:gap-5 justify-center">
             {classLevels.map((c) => (
               <div
                 key={c.level}

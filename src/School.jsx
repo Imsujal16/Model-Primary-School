@@ -1125,11 +1125,11 @@ function VisionMissionSection() {
           <div className="relative">
             {activeTab === "vision" ? (
               <div className="bg-white rounded-3xl p-6 shadow-xl border-2 border-maroon relative overflow-hidden transition-all duration-300">
-                <div className="absolute -top-8 -right-8 w-28 h-28 rounded-full bg-cream2 opacity-60 flex items-center justify-center pointer-events-none">
+                <div className="absolute -top-8 -right-8 w-28 h-28 rounded-full bg-cream2 opacity-60 flex items-center justify-center pointer-events-none z-0">
                   <Star size={60} className="text-gold opacity-25" />
                 </div>
                 
-                <div className="flex items-center justify-between mb-4">
+                <div className="flex items-center justify-between mb-4 relative z-10">
                   <div className="flex items-center gap-3">
                     <div className="w-11 h-11 rounded-2xl bg-maroon flex items-center justify-center shadow-md">
                       <Star size={22} className="text-gold" strokeWidth={2.2} />
@@ -1139,8 +1139,8 @@ function VisionMissionSection() {
                       <h3 className="font-display font-extrabold text-xl text-maroon-dark">Our Vision</h3>
                     </div>
                   </div>
-                  <span className="bg-cream2 border border-gold-light text-maroon-dark font-body text-xs font-bold px-3 py-1 rounded-full">
-                    Future-Focused
+                  <span className="bg-gold-light border border-gold text-maroon-dark font-body text-xs font-bold px-3 py-1 rounded-full relative z-10 shadow-xs shrink-0">
+                    Action-Driven
                   </span>
                 </div>
 
@@ -1167,11 +1167,11 @@ function VisionMissionSection() {
               </div>
             ) : (
               <div className="bg-white rounded-3xl p-6 shadow-xl border-2 border-gold relative overflow-hidden transition-all duration-300">
-                <div className="absolute -top-8 -right-8 w-28 h-28 rounded-full bg-cream2 opacity-60 flex items-center justify-center pointer-events-none">
+                <div className="absolute -top-8 -right-8 w-28 h-28 rounded-full bg-cream2 opacity-60 flex items-center justify-center pointer-events-none z-0">
                   <HeartHandshake size={60} className="text-maroon opacity-20" />
                 </div>
 
-                <div className="flex items-center justify-between mb-4">
+                <div className="flex items-center justify-between mb-4 relative z-10">
                   <div className="flex items-center gap-3">
                     <div className="w-11 h-11 rounded-2xl bg-gold flex items-center justify-center shadow-md">
                       <HeartHandshake size={22} className="text-maroon-dark" strokeWidth={2.2} />
@@ -1181,7 +1181,7 @@ function VisionMissionSection() {
                       <h3 className="font-display font-extrabold text-xl text-maroon-dark">Our Mission</h3>
                     </div>
                   </div>
-                  <span className="bg-gold-light text-maroon-dark font-body text-xs font-bold px-3 py-1 rounded-full">
+                  <span className="bg-gold-light border border-gold text-maroon-dark font-body text-xs font-bold px-3 py-1 rounded-full relative z-10 shadow-xs shrink-0">
                     Action-Driven
                   </span>
                 </div>
@@ -1220,11 +1220,21 @@ function VisionMissionSection() {
           />
           <div className="grid md:grid-cols-2 gap-8 items-start relative" style={{ zIndex: 1 }}>
             {/* Vision — shifted UP */}
-            <div className="vision-card bg-white rounded-3xl p-8 shadow-xl border-t-4 border-maroon" style={{ marginTop: 0 }}>
-              <div className="w-12 h-12 rounded-2xl bg-maroon flex items-center justify-center mb-4">
-                <Star size={22} className="text-gold" strokeWidth={2.2} />
+            <div className="vision-card bg-white rounded-3xl p-8 shadow-xl border-t-4 border-maroon relative overflow-hidden" style={{ marginTop: 0 }}>
+              <div className="flex items-center justify-between mb-4 relative z-10">
+                <div className="flex items-center gap-3">
+                  <div className="w-12 h-12 rounded-2xl bg-maroon flex items-center justify-center shadow-md">
+                    <Star size={22} className="text-gold" strokeWidth={2.2} />
+                  </div>
+                  <div>
+                    <span className="font-display font-bold uppercase tracking-widest text-[10px] text-gold-dark block">Destination</span>
+                    <h3 className="font-display font-bold text-xl text-maroon-dark">Our Vision</h3>
+                  </div>
+                </div>
+                <span className="bg-gold-light border border-gold text-maroon-dark font-body text-xs font-bold px-3 py-1 rounded-full relative z-10 shadow-xs shrink-0">
+                  Action-Driven
+                </span>
               </div>
-              <h3 className="font-display font-bold text-xl text-maroon-dark mb-3">Our Vision</h3>
               <p className="font-body text-ink-70 leading-relaxed mb-6">
                 To be the most trusted primary school in Sultanpur — a place where every child from Bharsare,
                 Bhadaiyan and the surrounding villages can access quality English-medium education and grow
@@ -1244,11 +1254,21 @@ function VisionMissionSection() {
               </div>
             </div>
             {/* Mission — shifted DOWN for asymmetric feel */}
-            <div className="mission-card bg-white rounded-3xl p-8 shadow-xl border-t-4 border-gold md:mt-16">
-              <div className="w-12 h-12 rounded-2xl bg-gold flex items-center justify-center mb-4">
-                <HeartHandshake size={22} className="text-maroon-dark" strokeWidth={2.2} />
+            <div className="mission-card bg-white rounded-3xl p-8 shadow-xl border-t-4 border-gold md:mt-16 relative overflow-hidden">
+              <div className="flex items-center justify-between mb-4 relative z-10">
+                <div className="flex items-center gap-3">
+                  <div className="w-12 h-12 rounded-2xl bg-gold flex items-center justify-center shadow-md">
+                    <HeartHandshake size={22} className="text-maroon-dark" strokeWidth={2.2} />
+                  </div>
+                  <div>
+                    <span className="font-display font-bold uppercase tracking-widest text-[10px] text-gold-dark block">Our Commitment</span>
+                    <h3 className="font-display font-bold text-xl text-maroon-dark">Our Mission</h3>
+                  </div>
+                </div>
+                <span className="bg-gold-light border border-gold text-maroon-dark font-body text-xs font-bold px-3 py-1 rounded-full relative z-10 shadow-xs shrink-0">
+                  Action-Driven
+                </span>
               </div>
-              <h3 className="font-display font-bold text-xl text-maroon-dark mb-3">Our Mission</h3>
               <p className="font-body text-ink-70 leading-relaxed mb-6">
                 To nurture every child's potential through joyful, activity-based learning in a safe, disciplined
                 and loving environment — building strong academic foundations while celebrating each child's

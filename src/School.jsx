@@ -176,8 +176,10 @@ function BrandStyles() {
       @keyframes marquee-scroll{ 0%{ transform:translateX(0); } 100%{ transform:translateX(-50%); } }
       .marquee-track{ animation:marquee-scroll 36s linear infinite; }
       .marquee-track:hover{ animation-play-state:paused; cursor:default; }
+      @keyframes slide-up-bottom{ from{ transform:translateY(100%); } to{ transform:translateY(0); } }
+      .animate-slide-up{ animation:slide-up-bottom 0.3s cubic-bezier(0.16, 1, 0.3, 1); }
       @media (prefers-reduced-motion: reduce){
-        .animate-spin-slow, .animate-bob, .marquee-track{ animation:none; }
+        .animate-spin-slow, .animate-bob, .marquee-track, .animate-slide-up{ animation:none; }
       }
 
       .focus-ring:focus-visible{ outline:3px solid var(--maroon); outline-offset:2px; border-radius:8px; }
@@ -1672,6 +1674,8 @@ const methodologyPillars = [
 ];
 
 function AcademicsPage({ setPage }) {
+  const [selectedClass, setSelectedClass] = useState(null);
+
   return (
     <div>
       <PageHero
@@ -1706,7 +1710,98 @@ function AcademicsPage({ setPage }) {
             <div className="flex justify-center"><Eyebrow>Classes We Offer</Eyebrow></div>
             <h2 className="font-display font-extrabold text-2xl sm:text-3xl md:text-4xl text-maroon-dark">LKG to Class 5</h2>
           </div>
-          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-7 gap-3 sm:gap-4 md:gap-5 justify-center">
+          {/* 📱 MOBILE VIEW: Compact App Icon Grid (< md) */}
+          <div className="grid grid-cols-3 gap-3 md:hidden">
+            {classLevels.map((c, i) => {
+              const stepIcons = [Palette, BookOpen, Languages, TreePine, Sparkles, Trophy, GraduationCap];
+              const StepIcon = stepIcons[i % stepIcons.length];
+              return (
+                <button
+                  key={c.level}
+                  type="button"
+                  onClick={() => setSelectedClass(c)}
+                  className="bg-white rounded-2xl p-3 shadow-sm border-2 border-gold-light/70 flex flex-col items-center justify-center text-center transition-all active:scale-95 hover:border-gold hover:shadow-md cursor-pointer group"
+                >
+                  <div className="w-12 h-12 rounded-2xl bg-gold-light flex items-center justify-center mb-2 shadow-xs group-hover:scale-105 transition-transform shrink-0 border border-gold">
+                    <StepIcon size={24} className="text-maroon-dark" strokeWidth={2.2} />
+                  </div>
+                  <span className="font-display font-extrabold text-xs sm:text-sm text-maroon-dark leading-tight">{c.level}</span>
+                  <span className="text-[10px] font-bold text-gold-dark mt-0.5">{c.age}</span>
+                </button>
+              );
+            })}
+          </div>
+
+          {/* 📱 MOBILE BOTTOM SHEET MODAL */}
+          {selectedClass && (
+            <div className="fixed inset-0 z-50 flex items-end justify-center md:hidden">
+              <div
+                className="fixed inset-0 bg-maroon-dark/60 backdrop-blur-xs transition-opacity"
+                onClick={() => setSelectedClass(null)}
+              />
+              
+              <div className="relative w-full bg-white rounded-t-3xl border-t-4 border-maroon p-6 shadow-2xl z-10 animate-slide-up max-h-[85vh] overflow-y-auto">
+                <div className="flex justify-center mb-3">
+                  <div
+                    className="w-12 h-1.5 bg-cream3 rounded-full cursor-pointer hover:bg-gold-light transition-colors"
+                    onClick={() => setSelectedClass(null)}
+                  />
+                </div>
+
+                <div className="flex items-start justify-between gap-3 pb-4 border-b border-cream2">
+                  <div className="flex items-center gap-3">
+                    <div className="w-12 h-12 rounded-2xl bg-gold flex items-center justify-center shadow-md border-2 border-white shrink-0">
+                      <GraduationCap size={24} className="text-maroon-dark" strokeWidth={2.2} />
+                    </div>
+                    <div>
+                      <span className="font-display font-bold uppercase tracking-wider text-[10px] text-gold-dark block">
+                        Class Details
+                      </span>
+                      <h3 className="font-display font-extrabold text-2xl text-maroon-dark leading-tight">{selectedClass.level}</h3>
+                    </div>
+                  </div>
+
+                  <button
+                    type="button"
+                    onClick={() => setSelectedClass(null)}
+                    className="w-8 h-8 rounded-full bg-cream2 hover:bg-gold-light text-maroon-dark flex items-center justify-center transition-colors shrink-0"
+                    aria-label="Close"
+                  >
+                    <X size={18} />
+                  </button>
+                </div>
+
+                <div className="mt-4 space-y-3.5">
+                  <div className="flex items-center justify-between bg-cream2 p-3.5 rounded-2xl border border-gold-light/60">
+                    <span className="font-display font-bold text-xs text-maroon-dark uppercase tracking-wide">Age Group</span>
+                    <span className="bg-white border border-gold text-maroon-dark font-body text-xs font-extrabold px-3 py-1 rounded-full shadow-xs">
+                      {selectedClass.age}
+                    </span>
+                  </div>
+
+                  <div>
+                    <span className="font-display font-bold text-xs text-gold-dark uppercase tracking-wider block mb-1.5">
+                      Learning & Activity Focus
+                    </span>
+                    <div className="bg-cream p-4 rounded-2xl border border-cream2">
+                      <p className="font-body text-xs sm:text-sm text-ink-80 leading-relaxed font-medium">{selectedClass.focus}</p>
+                    </div>
+                  </div>
+                </div>
+
+                <button
+                  type="button"
+                  onClick={() => setSelectedClass(null)}
+                  className="w-full mt-5 py-3 bg-maroon hover:bg-maroon-dark text-white font-display font-bold text-sm rounded-2xl shadow-md transition-colors"
+                >
+                  Close Details
+                </button>
+              </div>
+            </div>
+          )}
+
+          {/* 💻 DESKTOP VIEW: 7-Column Grid Layout (>= md) */}
+          <div className="hidden md:grid md:grid-cols-3 lg:grid-cols-7 gap-3 sm:gap-4 md:gap-5 justify-center">
             {classLevels.map((c) => (
               <div
                 key={c.level}

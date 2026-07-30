@@ -1814,7 +1814,7 @@ function AcademicsPage({ setPage }) {
             {/* Right Column: Image - Directly Beside Left Column */}
             <div className="w-full md:w-[52%] lg:w-[54%] min-w-0 mt-6 md:mt-0">
               <div className="w-full relative rounded-2xl sm:rounded-3xl overflow-hidden shadow-xl border-2 sm:border-4 border-white bg-cream3">
-                <ImagePlaceholder label="Smart Classroom" caption="Projector-enabled interactive class" ratio="4 / 3" tone="gold" />
+                <ImagePlaceholder src="/Smart-classroom.png" label="Smart Classroom" caption="Projector-enabled interactive class" ratio="4 / 3" tone="gold" />
               </div>
             </div>
           </div>

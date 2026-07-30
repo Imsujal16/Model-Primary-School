@@ -1710,23 +1710,35 @@ function AcademicsPage({ setPage }) {
             <div className="flex justify-center"><Eyebrow>Classes We Offer</Eyebrow></div>
             <h2 className="font-display font-extrabold text-2xl sm:text-3xl md:text-4xl text-maroon-dark">LKG to Class 5</h2>
           </div>
-          {/* 📱 MOBILE VIEW: Compact App Icon Grid (< md) */}
-          <div className="grid grid-cols-3 gap-3 md:hidden">
+          {/* 📱 MOBILE VIEW: 2-Column App Icon Grid (< md) with Full-Width 7th Item */}
+          <div className="grid grid-cols-2 gap-3 md:hidden">
             {classLevels.map((c, i) => {
               const stepIcons = [Palette, BookOpen, Languages, TreePine, Sparkles, Trophy, GraduationCap];
               const StepIcon = stepIcons[i % stepIcons.length];
+              const isLast = i === classLevels.length - 1;
+
               return (
                 <button
                   key={c.level}
                   type="button"
                   onClick={() => setSelectedClass(c)}
-                  className="bg-white rounded-2xl p-3 shadow-sm border-2 border-gold-light/70 flex flex-col items-center justify-center text-center transition-all active:scale-95 hover:border-gold hover:shadow-md cursor-pointer group"
+                  className={`bg-white rounded-2xl p-3.5 shadow-sm border-2 transition-all active:scale-95 hover:border-gold hover:shadow-md cursor-pointer group flex ${
+                    isLast
+                      ? 'col-span-2 flex-row items-center justify-center gap-3.5 border-gold bg-cream/50'
+                      : 'flex-col items-center justify-center text-center border-gold-light/70'
+                  }`}
                 >
-                  <div className="w-12 h-12 rounded-2xl bg-gold-light flex items-center justify-center mb-2 shadow-xs group-hover:scale-105 transition-transform shrink-0 border border-gold">
+                  <div
+                    className={`rounded-2xl bg-gold-light flex items-center justify-center shadow-xs group-hover:scale-105 transition-transform shrink-0 border border-gold ${
+                      isLast ? 'w-11 h-11' : 'w-12 h-12 mb-2'
+                    }`}
+                  >
                     <StepIcon size={24} className="text-maroon-dark" strokeWidth={2.2} />
                   </div>
-                  <span className="font-display font-extrabold text-xs sm:text-sm text-maroon-dark leading-tight">{c.level}</span>
-                  <span className="text-[10px] font-bold text-gold-dark mt-0.5">{c.age}</span>
+                  <div className={isLast ? 'text-left' : 'text-center'}>
+                    <span className="font-display font-extrabold text-xs sm:text-sm text-maroon-dark leading-tight block">{c.level}</span>
+                    <span className="text-[10px] font-bold text-gold-dark mt-0.5 block">{c.age}</span>
+                  </div>
                 </button>
               );
             })}

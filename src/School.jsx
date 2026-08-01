@@ -2397,8 +2397,8 @@ const galleryItems = [
   { cat: "Art & Craft", label: "Art Exhibition & Honors", caption: "Displaying award-winning student art pieces", tone: "green", src: "/art_craft_gallery_15.jpg" },
   { cat: "Art & Craft", label: "Creative Handcraft Project", caption: "Students expressing themselves through art", tone: "gold", src: "/art_craft_1.png" },
 
-  // Assembly Category
-  { cat: "Assembly", label: "Morning Assembly & Prayer", caption: "Lines of students in uniform at assembly", tone: "gold", src: "/students_assembly.png" },
+  // Assembly item under Campus
+  { cat: "Campus", label: "Morning Assembly & Prayer", caption: "Lines of students in uniform at assembly", tone: "gold", src: "/students_assembly.png" },
 
   // Events Category
   { cat: "Events", label: "Dance Performance", caption: "Vibrant cultural dance stage act", tone: "gold", src: "/dance_cultural_1.jpg" },
@@ -2408,8 +2408,8 @@ const galleryItems = [
   { cat: "Tours & Trips", label: "Educational Excursion", caption: "Outing & school learning tour", tone: "green", src: "/tour.png" },
   { cat: "Events", label: "Prize Distribution & Function", caption: "Annual event under the canopy tent", tone: "pink", src: "/annual_event.png" },
 
-  // Playground Category
-  { cat: "Playground", label: "Outdoor Recess & Games", caption: "Children playing on school grounds", tone: "gold", src: "/outdoor_fun.png" },
+  // Playground item under Campus
+  { cat: "Campus", label: "Outdoor Recess & Games", caption: "Children playing on school grounds", tone: "gold", src: "/outdoor_fun.png" },
 
   // Campus Category
   { cat: "Campus", label: "School Main Building", caption: "Pencil-and-book painted exterior wall", tone: "gold", src: "/hero_home.png" },
@@ -2453,8 +2453,8 @@ const galleryItems = [
   { cat: "Village Awareness", label: "Community Awareness Conclusion", caption: "Successful wrap-up of student village awareness program", tone: "pink", src: "/village_awareness_gallery_14.jpg" },
   { cat: "Village Awareness", label: "Health & Literacy Awareness", caption: "Community outreach program for village residents", tone: "pink", src: "/tour_awareness_2.jpg" },
 
-  // Activity Category
-  { cat: "Activity", label: "Morning Yoga & Exercises", caption: "Daily fitness and mindfulness session", tone: "green", src: "/yoga_activity.png" },
+  // Yoga item under Campus
+  { cat: "Campus", label: "Morning Yoga & Exercises", caption: "Daily fitness and mindfulness session", tone: "green", src: "/yoga_activity.png" },
 
   // Awards & Recognition Category
   { cat: "Awards & Recognition", label: "Best School Leadership Honor", caption: "Principal receiving prestige leadership award for educational excellence", tone: "gold", src: "/principal_award_1.jpg" },
@@ -2472,7 +2472,7 @@ const galleryItems = [
 ];
 
 function GalleryPage() {
-  const cats = ["All", "Awards & Recognition", "Tours & Trips", "Village Awareness", "Art & Craft", "Assembly", "Playground", "Events", "Campus", "Activity"];
+  const cats = ["All", "Awards & Recognition", "Tours & Trips", "Village Awareness", "Art & Craft", "Events", "Campus"];
   const [filter, setFilter] = useState("All");
   const [selectedIdx, setSelectedIdx] = useState(null);
 

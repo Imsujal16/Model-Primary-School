@@ -2234,10 +2234,10 @@ function AcademicsPage({ setPage }) {
                 tag: '🚌 Outdoor Discovery & Community Outreach',
                 desc: 'Educational field trips to cultural sites, alongside student-led community awareness rallies for local village residents.',
                 images: [
-                  '/tour_awareness_1.jpg',
-                  '/tour_awareness_2.jpg',
-                  '/tour_awareness_3.jpg',
-                  '/tour_awareness_4.jpg',
+                  '/tour_trip_1.jpg',
+                  '/tour_trip_2.jpg',
+                  '/tour_trip_11.jpg',
+                  '/tour_trip_15.jpg',
                 ],
               },
             ];
@@ -2408,7 +2408,21 @@ const galleryItems = [
   { cat: "Campus", label: "Principal Office & Mentorship", caption: "Dedicated guidance and leadership", tone: "gold", src: "/principal.png" },
 
   // Tours & Trips Category
-  { cat: "Tours & Trips", label: "Educational Field Tour", caption: "Students on educational learning trip", tone: "green", src: "/tour_awareness_3.jpg" },
+  { cat: "Tours & Trips", label: "Educational Field Tour", caption: "Students exploring cultural sites and historical landmarks", tone: "green", src: "/tour_trip_1.jpg" },
+  { cat: "Tours & Trips", label: "Group Learning Excursion", caption: "Interactive outdoor group discovery session", tone: "gold", src: "/tour_trip_2.jpg" },
+  { cat: "Tours & Trips", label: "Heritage Site Visit", caption: "Students learning local history and architecture", tone: "pink", src: "/tour_trip_3.jpg" },
+  { cat: "Tours & Trips", label: "Student Bus Journey", caption: "Exciting travel experience with teachers and classmates", tone: "green", src: "/tour_trip_4.jpg" },
+  { cat: "Tours & Trips", label: "Nature & Park Exploration", caption: "Observing plants, wildlife and natural ecosystems", tone: "gold", src: "/tour_trip_5.jpg" },
+  { cat: "Tours & Trips", label: "Museum & Science Exhibit", caption: "Hands-on learning outside the classroom walls", tone: "pink", src: "/tour_trip_6.jpg" },
+  { cat: "Tours & Trips", label: "Cultural Landmark Tour", caption: "Group photo at famous historical monument", tone: "green", src: "/tour_trip_7.jpg" },
+  { cat: "Tours & Trips", label: "Outdoor Picnic & Bonding", caption: "Sharing meals and playing team games outdoors", tone: "gold", src: "/tour_trip_8.jpg" },
+  { cat: "Tours & Trips", label: "Guided Site Orientation", caption: "Teachers explaining historical significance", tone: "pink", src: "/tour_trip_9.jpg" },
+  { cat: "Tours & Trips", label: "Environmental Discovery", caption: "Learning environmental conservation firsthand", tone: "green", src: "/tour_trip_10.jpg" },
+  { cat: "Tours & Trips", label: "Adventure Excursion", caption: "Fun team building activities during school trip", tone: "gold", src: "/tour_trip_11.jpg" },
+  { cat: "Tours & Trips", label: "Educational Landmark Study", caption: "Studying architecture and local culture", tone: "pink", src: "/tour_trip_12.jpg" },
+  { cat: "Tours & Trips", label: "Student Group Reflection", caption: "Sharing key takeaways from the field trip", tone: "green", src: "/tour_trip_13.jpg" },
+  { cat: "Tours & Trips", label: "Scenic Outdoor Gathering", caption: "Unwinding amidst nature after educational tours", tone: "gold", src: "/tour_trip_14.jpg" },
+  { cat: "Tours & Trips", label: "Memorable Tour Farewell", caption: "Group celebration wrapping up an unforgettable trip", tone: "pink", src: "/tour_trip_15.jpg" },
   { cat: "Tours & Trips", label: "Nature & Cultural Excursion", caption: "Outdoor discovery and field excursion", tone: "gold", src: "/tour_awareness_4.jpg" },
 
   // Village Awareness Category

@@ -1955,19 +1955,26 @@ function AcademicsPage({ setPage }) {
         <div className="max-w-6xl mx-auto px-6">
           <Eyebrow light>Teaching Methodology</Eyebrow>
           <h2 className="font-display font-extrabold text-3xl md:text-4xl text-white">Joyful Learning, Real Habits</h2>
-          {/* 📱 MOBILE VIEW: Seamless 2x2 Dashboard (< md) */}
-          <div className="grid grid-cols-2 gap-4 mt-8 md:hidden text-center">
+          {/* 📱 MOBILE VIEW: Glassmorphic Translucent 2x2 Cards (< md) */}
+          <div className="grid grid-cols-2 gap-3.5 sm:gap-4 mt-8 md:hidden text-center">
             {methodologyPillars.map((m) => (
-              <div key={m.title} className="bg-transparent p-2 flex flex-col items-center">
-                <div className="w-12 h-12 rounded-2xl bg-gold flex items-center justify-center mb-3 shrink-0 shadow-md border border-gold-light/40">
-                  <m.icon size={22} className="text-maroon-dark" strokeWidth={2.2} />
+              <div
+                key={m.title}
+                className="bg-maroon-dark/45 border border-gold-light/30 rounded-2xl p-4 sm:p-5 shadow-md flex flex-col items-center justify-between text-center relative overflow-hidden backdrop-blur-xs"
+              >
+                {/* Top subtle golden accent bar */}
+                <div className="w-8 h-1 bg-gold/60 rounded-full mb-3" />
+                <div className="flex flex-col items-center">
+                  <div className="w-12 h-12 rounded-2xl bg-gold flex items-center justify-center mb-3 shrink-0 shadow-md border-2 border-white/20">
+                    <m.icon size={22} className="text-maroon-dark" strokeWidth={2.2} />
+                  </div>
+                  <h3 className="font-display font-extrabold text-sm sm:text-base text-white leading-tight mb-1.5">
+                    {m.title}
+                  </h3>
+                  <p className="font-body text-xs text-gold-light-90 leading-relaxed font-medium">
+                    {m.desc}
+                  </p>
                 </div>
-                <h3 className="font-display font-extrabold text-sm sm:text-base text-white leading-snug">
-                  {m.title}
-                </h3>
-                <p className="font-body text-xs text-gold-light-85 mt-1.5 leading-relaxed font-medium">
-                  {m.desc}
-                </p>
               </div>
             ))}
           </div>

@@ -653,6 +653,7 @@ function Footer({ setPage }) {
           <ul className="flex flex-col gap-2.5 font-body text-xs sm:text-sm text-gold-light-85">
             <li className="flex gap-2.5"><MapPin size={16} className="shrink-0 mt-0.5 text-gold" /><span>Bharsare, Bhadaiyan, Sultanpur, Uttar Pradesh</span></li>
             <li className="flex gap-2.5"><Phone size={16} className="shrink-0 mt-0.5 text-gold" /><a href="tel:9454826921" className="hover:underline text-gold-light-90 font-semibold">+91 9454826921</a></li>
+            <li className="flex gap-2.5"><Mail size={16} className="shrink-0 mt-0.5 text-gold" /><a href="mailto:psbharsare@gmail.com" className="hover:underline text-gold-light-90 font-semibold">psbharsare@gmail.com</a></li>
             <li className="flex gap-2.5"><Clock size={16} className="shrink-0 mt-0.5 text-gold" /><span>Mon – Sat, 8:00 AM – 2:00 PM</span></li>
           </ul>
         </div>
@@ -2809,7 +2810,7 @@ function ContactPage() {
               <ul className="flex flex-col gap-4 font-body text-sm text-gold-light-90">
                 <li className="flex gap-3"><MapPin size={20} className="shrink-0" /><span>Model Primary School, Bharsare, Bhadaiyan, Sultanpur, Uttar Pradesh</span></li>
                 <li className="flex gap-3"><Phone size={20} className="shrink-0 text-gold" /><a href="tel:9454826921" className="hover:underline font-semibold text-white">+91 9454826921</a></li>
-                <li className="flex gap-3"><Mail size={20} className="shrink-0" /><span className="italic text-gold-light-60 border border-dashed border-gold-light-40 rounded-lg px-2 py-0.5">[Add email address]</span></li>
+                <li className="flex gap-3"><Mail size={20} className="shrink-0 text-gold" /><a href="mailto:psbharsare@gmail.com" className="hover:underline font-semibold text-white">psbharsare@gmail.com</a></li>
                 <li className="flex gap-3"><Clock size={20} className="shrink-0" /><span>Mon – Sat, 8:00 AM – 2:00 PM</span></li>
               </ul>
             </div>

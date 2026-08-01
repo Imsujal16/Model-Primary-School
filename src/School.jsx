@@ -550,11 +550,11 @@ function Navbar({ page, setPage }) {
   return (
     <header className="sticky top-0 z-50 glass-nav">
       <nav className="max-w-6xl mx-auto px-5 md:px-6 py-3 flex items-center justify-between">
-        <button onClick={() => go("home")} className="focus-ring flex items-center gap-2.5 sm:gap-3 text-left min-w-0">
-          <Emblem size={40} className="shrink-0 sm:w-[46px] sm:h-[46px]" />
+        <button onClick={() => go("home")} className="focus-ring flex items-center gap-2 sm:gap-3 text-left min-w-0">
+          <Emblem size={38} className="shrink-0 sm:w-[46px] sm:h-[46px]" />
           <span className="leading-tight truncate">
-            <span className="block font-display font-extrabold text-maroon-dark text-sm sm:text-base md:text-lg truncate">Model Primary School</span>
-            <span className="hidden sm:block font-body text-xs text-ink-60 truncate">Bharsare, Bhadaiyan, Sultanpur</span>
+            <span className="block font-display font-extrabold text-maroon-dark text-xs sm:text-base md:text-lg truncate">Model Primary School</span>
+            <span className="block font-body text-[10px] sm:text-xs text-ink-60 truncate">Bharsare, Bhadaiyan, Sultanpur</span>
           </span>
         </button>
 

@@ -13,7 +13,7 @@ import {
   CheckCircle2, ArrowRight, Send, Languages, ShieldCheck, Video, TreePine,
   HeartHandshake, Puzzle, Trophy, SmilePlus, Star, PartyPopper,
   Bus, Droplets, Library, Monitor, Computer, Brain, Palette, Music, Dumbbell, UsersRound, Utensils,
-  Award, Medal, Crown, Building2,
+  Award, Medal, Crown, Building2, Compass, Megaphone,
 } from "lucide-react";
 
 /* ============================================================
@@ -2297,8 +2297,8 @@ function AcademicsPage({ setPage }) {
                   ))}
                 </div>
 
-                {/* 💻 DESKTOP VIEW: 3-Card Full-Bleed Media Deck (>= md) */}
-                <div className="hidden md:grid md:grid-cols-3 gap-6 lg:gap-8">
+                {/* 💻 DESKTOP VIEW: 4-Card Full-Bleed Media Deck (>= md) */}
+                <div className="hidden md:grid md:grid-cols-2 lg:grid-cols-4 gap-5 lg:gap-6">
                   {studentLifeItems.map((item, cardIdx) => (
                     <div
                       key={item.title}

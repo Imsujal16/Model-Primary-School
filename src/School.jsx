@@ -614,22 +614,23 @@ function Navbar({ page, setPage }) {
    ============================================================ */
 function Footer({ setPage }) {
   return (
-    <footer className="bg-maroon-dark text-cream">
+    <footer className="bg-maroon-dark text-cream relative">
       <PencilDivider />
-      <div className="max-w-6xl mx-auto px-6 py-12 grid grid-cols-1 md:grid-cols-4 gap-10">
-        <div className="md:col-span-2">
-          <div className="flex items-center gap-3 mb-4">
-            <Emblem size={48} />
-            <span className="font-display font-extrabold text-lg text-white">Model Primary School</span>
+      <div className="max-w-6xl mx-auto px-5 sm:px-6 py-10 md:py-14 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8 md:gap-10">
+        <div className="sm:col-span-2 md:col-span-2">
+          <div className="flex items-center gap-3 mb-3 md:mb-4">
+            <Emblem size={44} className="sm:w-[48px] sm:h-[48px]" />
+            <span className="font-display font-extrabold text-base sm:text-lg text-white">Model Primary School</span>
           </div>
-          <p className="font-body text-sm text-gold-light-80 max-w-sm leading-relaxed">
+          <p className="font-body text-xs sm:text-sm text-gold-light-80 max-w-sm leading-relaxed">
             A government-recognized English medium school for LKG to Class 5, proudly serving the children of
             Bharsare, Bhadaiyan and the wider Sultanpur community — Model in Education.
           </p>
         </div>
+
         <div>
-          <h4 className="font-display font-bold text-gold mb-3 text-sm uppercase tracking-wide">Quick Links</h4>
-          <ul className="flex flex-col gap-2 font-body text-sm text-gold-light-85">
+          <h4 className="font-display font-bold text-gold mb-3 text-xs sm:text-sm uppercase tracking-wide">Quick Links</h4>
+          <ul className="grid grid-cols-2 sm:grid-cols-1 gap-2 font-body text-xs sm:text-sm text-gold-light-85">
             {[
               { id: "home", label: "Home" },
               { id: "about", label: "About Us" },
@@ -639,23 +640,25 @@ function Footer({ setPage }) {
               { id: "contact", label: "Contact" },
             ].map(({ id, label }) => (
               <li key={id}>
-                <button onClick={() => setPage(id)} className="focus-ring footer-link">
+                <button onClick={() => setPage(id)} className="focus-ring footer-link text-left">
                   {label}
                 </button>
               </li>
             ))}
           </ul>
         </div>
+
         <div>
-          <h4 className="font-display font-bold text-gold mb-3 text-sm uppercase tracking-wide">Reach Us</h4>
-          <ul className="flex flex-col gap-3 font-body text-sm text-gold-light-85">
-            <li className="flex gap-2"><MapPin size={18} className="shrink-0 mt-0.5" /><span>Bharsare, Bhadaiyan, Sultanpur, Uttar Pradesh</span></li>
-            <li className="flex gap-2"><Phone size={18} className="shrink-0 mt-0.5" /><a href="tel:9454826921" className="hover:underline text-gold-light-90 font-medium">+91 9454826921</a></li>
-            <li className="flex gap-2"><Clock size={18} className="shrink-0 mt-0.5" /><span>Mon – Sat, 8:00 AM – 2:00 PM</span></li>
+          <h4 className="font-display font-bold text-gold mb-3 text-xs sm:text-sm uppercase tracking-wide">Reach Us</h4>
+          <ul className="flex flex-col gap-2.5 font-body text-xs sm:text-sm text-gold-light-85">
+            <li className="flex gap-2.5"><MapPin size={16} className="shrink-0 mt-0.5 text-gold" /><span>Bharsare, Bhadaiyan, Sultanpur, Uttar Pradesh</span></li>
+            <li className="flex gap-2.5"><Phone size={16} className="shrink-0 mt-0.5 text-gold" /><a href="tel:9454826921" className="hover:underline text-gold-light-90 font-semibold">+91 9454826921</a></li>
+            <li className="flex gap-2.5"><Clock size={16} className="shrink-0 mt-0.5 text-gold" /><span>Mon – Sat, 8:00 AM – 2:00 PM</span></li>
           </ul>
         </div>
       </div>
-      <div className="border-t border-white-10 py-5 text-center font-body text-xs text-gold-light-60">
+
+      <div className="border-t border-white-10 py-5 pb-20 sm:pb-5 text-center font-body text-[11px] sm:text-xs text-gold-light-60 px-4">
         © {new Date().getFullYear()} Model Primary School — Model in Education. All rights reserved.
       </div>
     </footer>

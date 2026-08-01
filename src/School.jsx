@@ -221,6 +221,27 @@ function BrandStyles() {
       .faculty-swiper .swiper-button-next::after{ font-size:15px !important; font-weight:900; }
       .faculty-swiper .swiper-pagination-bullet{ background:var(--gold); opacity:0.5; }
       .faculty-swiper .swiper-pagination-bullet-active{ background:var(--maroon); opacity:1; }
+      /* ── iPhone-style Liquid Glass ── */
+      .liquid-glass{
+        background: rgba(255,255,255,0.12);
+        -webkit-backdrop-filter: saturate(180%) blur(28px);
+        backdrop-filter: saturate(180%) blur(28px);
+        border: 1px solid rgba(255,255,255,0.45);
+        box-shadow: 0 4px 24px rgba(0,0,0,0.10), inset 0 1px 0 rgba(255,255,255,0.45);
+        transition: background 0.4s ease, border-color 0.4s ease, box-shadow 0.4s ease;
+      }
+      .liquid-glass:hover{
+        background: rgba(255,255,255,0.22);
+        border-color: rgba(255,255,255,0.75);
+        box-shadow: 0 8px 36px rgba(0,0,0,0.14), inset 0 1px 0 rgba(255,255,255,0.65);
+      }
+      .liquid-glass-pill{
+        background: rgba(255,255,255,0.20);
+        -webkit-backdrop-filter: saturate(180%) blur(20px);
+        backdrop-filter: saturate(180%) blur(20px);
+        border: 1px solid rgba(255,255,255,0.50);
+        box-shadow: inset 0 1px 0 rgba(255,255,255,0.50);
+      }
     `}</style>
   );
 }
@@ -2047,29 +2068,28 @@ function AcademicsPage({ setPage }) {
                         alt={item.title}
                         className="w-full h-full object-cover object-center"
                       />
-                      {/* Subtle vignette gradient overlay */}
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent pointer-events-none" />
+                      {/* NO full overlay — keep photo bright and vivid */}
                       <div className="absolute top-0 left-0 w-full h-1.5 pencil-stripe-thin z-10" />
 
-                      {/* Top-Right Liquid Glass Pill Badge */}
+                      {/* Liquid Glass Pill Badge */}
                       <div className="absolute top-4 right-4 z-20">
-                        <span className="inline-flex items-center gap-1.5 bg-white/75 backdrop-blur-xl text-maroon-dark font-display font-extrabold text-xs px-3.5 py-1.5 rounded-full shadow-lg border border-white/60">
+                        <span className="liquid-glass-pill inline-flex items-center gap-1.5 text-white font-display font-extrabold text-xs px-3.5 py-1.5 rounded-full" style={{textShadow:'0 1px 5px rgba(0,0,0,0.55)'}}>
                           {item.tag}
                         </span>
                       </div>
 
-                      {/* Completely Transparent Crystal Glass Bottom Drawer */}
-                      <div className="absolute bottom-4 left-4 right-4 bg-white/10 backdrop-blur-md border border-white/50 rounded-2xl p-4 shadow-2xl text-white">
+                      {/* iPhone-Style Liquid Glass Bottom Drawer */}
+                      <div className="liquid-glass absolute bottom-4 left-4 right-4 rounded-2xl p-4 text-white">
                         <div className="flex items-center gap-3 mb-2">
-                          <div className="w-10 h-10 rounded-xl bg-gold text-maroon-dark flex items-center justify-center shrink-0 shadow-md border border-white/60">
+                          <div className="w-10 h-10 rounded-xl bg-gold text-maroon-dark flex items-center justify-center shrink-0 shadow-md border-2 border-white/70">
                             <item.icon size={20} strokeWidth={2.2} />
                           </div>
                           <div>
-                            <h3 className="font-display font-extrabold text-lg text-white leading-tight drop-shadow-lg">{item.title}</h3>
-                            <span className="font-body text-[10px] font-bold text-gold-light uppercase tracking-wider block drop-shadow-md">Daily Activity</span>
+                            <h3 className="font-display font-extrabold text-lg text-white leading-tight" style={{textShadow:'0 1px 6px rgba(0,0,0,0.65)'}}>{item.title}</h3>
+                            <span className="font-body text-[10px] font-bold text-gold-light uppercase tracking-wider block" style={{textShadow:'0 1px 4px rgba(0,0,0,0.55)'}}>Daily Activity</span>
                           </div>
                         </div>
-                        <p className="font-body text-xs text-white leading-relaxed font-semibold drop-shadow-lg">
+                        <p className="font-body text-xs text-white leading-relaxed font-semibold" style={{textShadow:'0 1px 5px rgba(0,0,0,0.6)'}}>
                           {item.desc}
                         </p>
                       </div>
@@ -2089,29 +2109,28 @@ function AcademicsPage({ setPage }) {
                         alt={item.title}
                         className="w-full h-full object-cover object-center group-hover:scale-108 transition-transform duration-700 ease-out"
                       />
-                      {/* Subtle vignette gradient overlay */}
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent pointer-events-none" />
+                      {/* NO full overlay — keep photo bright and vivid */}
                       <div className="absolute top-0 left-0 w-full h-2 pencil-stripe-thin z-10" />
 
-                      {/* Top-Right Liquid Glass Pill Badge */}
+                      {/* Liquid Glass Pill Badge */}
                       <div className="absolute top-5 right-5 z-20">
-                        <span className="inline-flex items-center gap-1.5 bg-white/80 backdrop-blur-xl text-maroon-dark font-display font-extrabold text-xs px-4 py-2 rounded-full shadow-lg border border-white/70 group-hover:bg-white group-hover:scale-105 transition-all">
+                        <span className="liquid-glass-pill inline-flex items-center gap-1.5 text-white font-display font-extrabold text-xs px-4 py-2 rounded-full" style={{textShadow:'0 1px 5px rgba(0,0,0,0.55)'}}>
                           {item.tag}
                         </span>
                       </div>
 
-                      {/* Completely Transparent Crystal Glass Bottom Drawer */}
-                      <div className="absolute bottom-5 left-5 right-5 bg-white/10 backdrop-blur-md border border-white/60 rounded-3xl p-5 shadow-[0_8px_32px_0_rgba(0,0,0,0.3)] text-white transition-all duration-500 group-hover:bg-white/20 group-hover:border-white/90 group-hover:shadow-[0_12px_40px_0_rgba(255,255,255,0.3)]">
+                      {/* iPhone-Style Liquid Glass Bottom Drawer */}
+                      <div className="liquid-glass absolute bottom-5 left-5 right-5 rounded-3xl p-5 text-white">
                         <div className="flex items-center gap-3.5 mb-2.5">
-                          <div className="w-11 h-11 rounded-2xl bg-gold text-maroon-dark flex items-center justify-center shrink-0 shadow-md border border-white/70 group-hover:scale-110 group-hover:shadow-[0_0_15px_rgba(240,168,40,0.6)] transition-all duration-300">
+                          <div className="w-11 h-11 rounded-2xl bg-gold text-maroon-dark flex items-center justify-center shrink-0 shadow-md border-2 border-white/70 group-hover:scale-110 group-hover:shadow-[0_0_15px_rgba(240,168,40,0.7)] transition-all duration-300">
                             <item.icon size={22} strokeWidth={2.2} />
                           </div>
                           <div>
-                            <h3 className="font-display font-extrabold text-xl text-white leading-tight drop-shadow-lg">{item.title}</h3>
-                            <span className="font-body text-[10px] font-bold text-gold-light uppercase tracking-wider block mt-0.5 drop-shadow-md">Daily Co-Curricular</span>
+                            <h3 className="font-display font-extrabold text-xl text-white leading-tight" style={{textShadow:'0 1px 6px rgba(0,0,0,0.65)'}}>{item.title}</h3>
+                            <span className="font-body text-[10px] font-bold text-gold-light uppercase tracking-wider block mt-0.5" style={{textShadow:'0 1px 4px rgba(0,0,0,0.55)'}}>Daily Co-Curricular</span>
                           </div>
                         </div>
-                        <p className="font-body text-xs sm:text-sm text-white leading-relaxed font-semibold drop-shadow-lg">
+                        <p className="font-body text-xs sm:text-sm text-white leading-relaxed font-semibold" style={{textShadow:'0 1px 5px rgba(0,0,0,0.6)'}}>
                           {item.desc}
                         </p>
                       </div>

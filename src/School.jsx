@@ -1996,31 +1996,129 @@ function AcademicsPage({ setPage }) {
 
       <PencilDivider thin />
 
-      {/* BEYOND THE BOOKS */}
-      <section className="bg-cream2 py-16 md:py-20">
-        <div className="max-w-6xl mx-auto px-6">
-          <div className="text-center max-w-2xl mx-auto mb-12">
+      {/* BEYOND THE BOOKS — Concept 1: Full-Bleed Photo Cards with Floating Glass Drawers */}
+      <section className="bg-cream2 py-16 md:py-24 w-full overflow-hidden">
+        <div className="max-w-6xl mx-auto px-5 sm:px-8 md:px-10">
+          <div className="text-center max-w-2xl mx-auto mb-10 md:mb-14">
             <div className="flex justify-center"><Eyebrow>Student Life</Eyebrow></div>
-            <h2 className="font-display font-extrabold text-3xl md:text-4xl text-maroon-dark">Beyond the Books</h2>
-            <p className="font-body text-ink-70 mt-3">Every child at Model Primary School gets to explore, create, move and perform — every single day.</p>
+            <h2 className="font-display font-extrabold text-3xl sm:text-4xl md:text-5xl text-maroon-dark mt-2 mb-3">Beyond the Books</h2>
+            <p className="font-body text-ink-70 text-xs sm:text-sm md:text-base leading-relaxed">
+              Every child at Model Primary School gets to explore, create, move and perform — every single day.
+            </p>
           </div>
-          <div className="grid sm:grid-cols-3 gap-6">
-            {[
-              { icon: Palette,   title: 'Art & Craft',          desc: 'Dedicated creative sessions where children express themselves through drawing, painting, and crafting.', accent: 'border-gold' },
-              { icon: Music,     title: 'Dance & Cultural Arts', desc: 'Vibrant dance and cultural performances that build confidence and celebrate expression on stage.', accent: 'border-maroon' },
-              { icon: Dumbbell,  title: 'Sports & Physical Education', desc: 'Daily games, sports activities, and outdoor swing areas that build fitness, teamwork and resilience.', accent: 'border-gold' },
-            ].map((item) => (
-              <div key={item.title} className={`hover-lift bg-white rounded-3xl p-7 shadow-md border-b-4 ${item.accent} flex flex-col items-center text-center gap-4`}>
-                <div className="w-16 h-16 rounded-full bg-maroon flex items-center justify-center">
-                  <item.icon size={28} className="text-gold" strokeWidth={1.8} />
+
+          {/* Data Array & Layout */}
+          {(() => {
+            const studentLifeItems = [
+              {
+                icon: Palette,
+                title: 'Art & Craft',
+                tag: '🎨 Creative Expression',
+                desc: 'Dedicated creative sessions where children express themselves through drawing, painting, and handcrafting.',
+                image: '/outdoor_fun.png'
+              },
+              {
+                icon: Music,
+                title: 'Dance & Cultural Arts',
+                tag: '🎭 Stage Performance',
+                desc: 'Vibrant dance and cultural performances that build confidence and celebrate expression on stage.',
+                image: '/students_assembly.png'
+              },
+              {
+                icon: Dumbbell,
+                title: 'Sports & PE',
+                tag: '⚽ Fitness & Athletics',
+                desc: 'Daily games, sports activities, and outdoor swing areas that build fitness, teamwork and resilience.',
+                image: '/yoga_activity.png'
+              },
+            ];
+
+            return (
+              <>
+                {/* 📱 MOBILE VIEW: Horizontal Snap-Swipe Carousel (< md) */}
+                <div className="flex overflow-x-auto snap-x snap-mandatory gap-4 -mx-5 px-5 hide-scrollbar md:hidden pb-4">
+                  {studentLifeItems.map((item) => (
+                    <div
+                      key={item.title}
+                      className="flex-none w-[84vw] snap-center aspect-[4/5] rounded-3xl overflow-hidden shadow-xl relative border-2 border-white bg-cream3 group"
+                    >
+                      <img
+                        src={item.image}
+                        alt={item.title}
+                        className="w-full h-full object-cover object-center"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-maroon-dark/95 via-maroon-dark/30 to-black/20 pointer-events-none" />
+                      <div className="absolute top-0 left-0 w-full h-1.5 pencil-stripe-thin z-10" />
+
+                      {/* Top-Right Badge Tag */}
+                      <div className="absolute top-4 right-4 z-20">
+                        <span className="inline-flex items-center gap-1.5 bg-maroon-dark/90 text-gold-light backdrop-blur-md font-display font-bold text-xs px-3.5 py-1.5 rounded-full shadow-lg border border-gold-light/40">
+                          {item.tag}
+                        </span>
+                      </div>
+
+                      {/* Floating Glass Bottom Drawer */}
+                      <div className="absolute bottom-4 left-4 right-4 bg-maroon-dark/85 backdrop-blur-md border border-gold-light/40 rounded-2xl p-4 shadow-2xl text-white">
+                        <div className="flex items-center gap-3 mb-2">
+                          <div className="w-10 h-10 rounded-xl bg-gold text-maroon-dark flex items-center justify-center shrink-0 shadow-md">
+                            <item.icon size={20} strokeWidth={2.2} />
+                          </div>
+                          <div>
+                            <h3 className="font-display font-extrabold text-lg text-white leading-tight">{item.title}</h3>
+                            <span className="font-body text-[10px] font-bold text-gold-light uppercase tracking-wider block">Daily Activity</span>
+                          </div>
+                        </div>
+                        <p className="font-body text-xs text-gold-light-90 leading-relaxed font-normal">
+                          {item.desc}
+                        </p>
+                      </div>
+                    </div>
+                  ))}
                 </div>
-                <div>
-                  <h3 className="font-display font-bold text-xl text-maroon-dark">{item.title}</h3>
-                  <p className="font-body text-sm text-ink-70 mt-2 leading-relaxed">{item.desc}</p>
+
+                {/* 💻 DESKTOP VIEW: 3-Card Full-Bleed Media Deck (>= md) */}
+                <div className="hidden md:grid md:grid-cols-3 gap-6 lg:gap-8">
+                  {studentLifeItems.map((item) => (
+                    <div
+                      key={item.title}
+                      className="aspect-[3/4] rounded-3xl overflow-hidden shadow-2xl relative group border-4 border-white bg-cream3 cursor-pointer"
+                    >
+                      <img
+                        src={item.image}
+                        alt={item.title}
+                        className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700 ease-out"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-maroon-dark/95 via-maroon-dark/30 to-black/20 pointer-events-none" />
+                      <div className="absolute top-0 left-0 w-full h-2 pencil-stripe-thin z-10" />
+
+                      {/* Top-Right Badge Tag */}
+                      <div className="absolute top-5 right-5 z-20">
+                        <span className="inline-flex items-center gap-1.5 bg-maroon-dark/90 text-gold-light backdrop-blur-md font-display font-bold text-xs px-3.5 py-1.5 rounded-full shadow-lg border border-gold-light/40 group-hover:border-gold transition-colors">
+                          {item.tag}
+                        </span>
+                      </div>
+
+                      {/* Floating Glass Bottom Drawer */}
+                      <div className="absolute bottom-5 left-5 right-5 bg-maroon-dark/85 backdrop-blur-md border border-gold-light/40 rounded-2xl p-5 shadow-2xl text-white transition-all duration-300 group-hover:bg-maroon-dark/95 group-hover:border-gold">
+                        <div className="flex items-center gap-3.5 mb-2.5">
+                          <div className="w-11 h-11 rounded-2xl bg-gold text-maroon-dark flex items-center justify-center shrink-0 shadow-md group-hover:scale-110 transition-transform">
+                            <item.icon size={22} strokeWidth={2.2} />
+                          </div>
+                          <div>
+                            <h3 className="font-display font-extrabold text-xl text-white leading-tight">{item.title}</h3>
+                            <span className="font-body text-[10px] font-bold text-gold-light uppercase tracking-wider block mt-0.5">Daily Co-Curricular</span>
+                          </div>
+                        </div>
+                        <p className="font-body text-xs sm:text-sm text-gold-light-90 leading-relaxed font-normal">
+                          {item.desc}
+                        </p>
+                      </div>
+                    </div>
+                  ))}
                 </div>
-              </div>
-            ))}
-          </div>
+              </>
+            );
+          })()}
         </div>
       </section>
 

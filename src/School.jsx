@@ -1691,10 +1691,58 @@ function AboutPage({ setPage }) {
 /* ============================================================
    ACADEMICS PAGE
    ============================================================ */
-const curriculumSubjects = [
-  { stage: "LKG – UKG", subjects: "Rhymes & Stories, Phonics, Pre-Writing, Number Sense, Art & Craft, Free Play" },
-  { stage: "Class 1 – 2", subjects: "English, Hindi, Mathematics, EVS, GK, Art & Craft, Physical Education" },
-  { stage: "Class 3 – 5", subjects: "English, Hindi, Mathematics, EVS/Science, GK, Computer Basics, Art, Physical Education" },
+const curriculumStages = [
+  {
+    stage: 'LKG – UKG',
+    shortName: 'LKG – UKG',
+    badge: 'Stage 01 • Pre-Primary',
+    age: 'Ages 3 – 5 Years',
+    headline: 'Foundational Play, Phonics & Pre-Writing',
+    desc: 'A joyful, activity-based introduction to school life focusing on language development, motor skills, and creative play.',
+    outcome: '✨ 100% Activity & Story-Based Foundation',
+    subjects: [
+      { name: 'Rhymes & Stories', icon: Music },
+      { name: 'Phonics & Speech', icon: BookOpen },
+      { name: 'Pre-Writing Skills', icon: Sparkles },
+      { name: 'Number Sense', icon: Brain },
+      { name: 'Art & Craft', icon: Palette },
+      { name: 'Free Play & Games', icon: SmilePlus },
+    ],
+  },
+  {
+    stage: 'Class 1 – 2',
+    shortName: 'Class 1 – 2',
+    badge: 'Stage 02 • Primary I',
+    age: 'Ages 6 – 7 Years',
+    headline: 'Core Literacy, Numeracy & General Knowledge',
+    desc: 'Building confident reading, structured writing, basic mathematics, and environmental curiosity in young learners.',
+    outcome: '📚 Strong Academic Reading & Math Habits',
+    subjects: [
+      { name: 'English Literature', icon: BookOpen },
+      { name: 'Hindi Language', icon: Languages },
+      { name: 'Mathematics', icon: Brain },
+      { name: 'Environmental Studies', icon: TreePine },
+      { name: 'General Knowledge', icon: Sparkles },
+      { name: 'Art & Physical Ed', icon: Palette },
+    ],
+  },
+  {
+    stage: 'Class 3 – 5',
+    shortName: 'Class 3 – 5',
+    badge: 'Stage 03 • Primary II',
+    age: 'Ages 8 – 10 Years',
+    headline: 'Advanced Concepts, Science & Computer Basics',
+    desc: 'Preparing students for middle school with structured science, computer education, analytical math, and leadership.',
+    outcome: '🚀 Computer-Ready & Exam-Prepared Minds',
+    subjects: [
+      { name: 'English Grammar', icon: BookOpen },
+      { name: 'Hindi Literature', icon: Languages },
+      { name: 'Advanced Mathematics', icon: Brain },
+      { name: 'EVS / Science', icon: TreePine },
+      { name: 'Computer Basics', icon: Computer },
+      { name: 'GK, Art & Sports', icon: Trophy },
+    ],
+  },
 ];
 
 const dailyRoutine = [
@@ -1716,6 +1764,8 @@ const methodologyPillars = [
 
 function AcademicsPage({ setPage }) {
   const [selectedClass, setSelectedClass] = useState(null);
+  const [activeStageIndex, setActiveStageIndex] = useState(0);
+  const activeStage = curriculumStages[activeStageIndex];
 
   return (
     <div>
@@ -1725,14 +1775,99 @@ function AcademicsPage({ setPage }) {
         subtitle="From playful phonics in LKG to exam-ready foundations in Class 5 — every stage is purposefully designed."
       />
 
-      {/* CURRICULUM */}
-      <section className="bg-cream py-12 md:py-20">
-        <div className="max-w-6xl mx-auto px-5 sm:px-6">
-          <Eyebrow>Curriculum</Eyebrow>
-          <h2 className="font-display font-extrabold text-2xl sm:text-3xl md:text-4xl text-maroon-dark">What Children Learn, Stage by Stage</h2>
-          <p className="font-body text-ink-60 mt-1.5 md:mt-2 text-xs sm:text-sm mb-6 md:mb-10">Our curriculum follows government-prescribed syllabi, enriched with activity-based learning at every level.</p>
-          <div className="grid gap-3.5 sm:gap-5">
-            {curriculumSubjects.map((c) => (
+      {/* CURRICULUM — Concept 1: Interactive Segmented Stage Switcher & Dynamic Canvas */}
+      <section className="bg-cream py-14 md:py-24 w-full overflow-hidden">
+        <div className="max-w-6xl mx-auto px-5 sm:px-8 md:px-10">
+          <div className="text-center max-w-2xl mx-auto mb-8 md:mb-12">
+            <div className="flex justify-center"><Eyebrow>Curriculum</Eyebrow></div>
+            <h2 className="font-display font-extrabold text-3xl sm:text-4xl md:text-5xl text-maroon-dark mt-2 mb-3">
+              What Children Learn, Stage by Stage
+            </h2>
+            <p className="font-body text-ink-70 text-xs sm:text-sm md:text-base leading-relaxed">
+              Our curriculum follows government-prescribed syllabi, enriched with activity-based learning at every level.
+            </p>
+          </div>
+
+          {/* 📱 MOBILE VIEW: Segmented Stage Switcher & Dynamic Active Stage Canvas (< md) */}
+          <div className="md:hidden">
+            {/* Segmented Stage Switcher Pill Bar */}
+            <div className="flex p-1.5 bg-maroon-dark/95 backdrop-blur-md rounded-full shadow-lg border border-gold-light/40 gap-1.5 mb-6">
+              {curriculumStages.map((stg, idx) => (
+                <button
+                  key={stg.stage}
+                  type="button"
+                  onClick={() => setActiveStageIndex(idx)}
+                  className={`flex-1 py-2.5 px-3 rounded-full font-display font-extrabold text-xs transition-all duration-300 flex items-center justify-center gap-1.5 cursor-pointer ${
+                    activeStageIndex === idx
+                      ? 'bg-gold text-maroon-dark shadow-md scale-102'
+                      : 'text-gold-light hover:bg-white/10'
+                  }`}
+                >
+                  <span>{stg.shortName}</span>
+                </button>
+              ))}
+            </div>
+
+            {/* Dynamic Active Stage Canvas Card */}
+            <div key={activeStage.stage} className="bg-maroon-dark text-white rounded-3xl p-6 border-2 border-gold-light/50 shadow-2xl relative overflow-hidden animate-slide-up">
+              {/* Top Pencil Stripe Accent */}
+              <div className="absolute top-0 left-0 w-full h-2 pencil-stripe-thin z-10" />
+
+              {/* Stage Pill & Age */}
+              <div className="flex items-center justify-between gap-2 mb-4">
+                <span className="bg-maroon/90 border border-gold-light/40 text-gold-light font-body text-[11px] font-extrabold px-3.5 py-1 rounded-full shadow-xs">
+                  {activeStage.badge}
+                </span>
+                <span className="text-gold-light font-body font-bold text-xs">
+                  {activeStage.age}
+                </span>
+              </div>
+
+              {/* Headline & Description */}
+              <h3 className="font-display font-extrabold text-xl text-white mb-2 leading-tight">
+                {activeStage.headline}
+              </h3>
+              <p className="font-body text-xs text-gold-light-90 leading-relaxed mb-6">
+                {activeStage.desc}
+              </p>
+
+              {/* Subject Tag Cloud Grid */}
+              <div className="mb-6">
+                <span className="font-display font-extrabold text-[11px] text-gold uppercase tracking-wider block mb-3">
+                  Key Subjects & Learning Focus
+                </span>
+                <div className="grid grid-cols-2 gap-2.5">
+                  {activeStage.subjects.map((sub) => (
+                    <div
+                      key={sub.name}
+                      className="bg-white/10 border border-gold-light/30 rounded-2xl p-3 flex items-center gap-2.5 backdrop-blur-xs shadow-xs"
+                    >
+                      <div className="w-8 h-8 rounded-xl bg-gold text-maroon-dark flex items-center justify-center shrink-0 shadow-sm">
+                        <sub.icon size={16} strokeWidth={2.2} />
+                      </div>
+                      <span className="font-display font-bold text-xs text-white leading-tight">
+                        {sub.name}
+                      </span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              {/* Outcome Footer */}
+              <div className="pt-4 border-t border-white/20 flex items-center justify-between text-xs font-display font-extrabold text-gold-light">
+                <span>{activeStage.outcome}</span>
+                <Sparkles size={16} className="text-gold animate-pulse" />
+              </div>
+            </div>
+          </div>
+
+          {/* 💻 DESKTOP VIEW: 100% Original Layout Restored (>= md) */}
+          <div className="hidden md:grid gap-3.5 sm:gap-5">
+            {[
+              { stage: "LKG – UKG", subjects: "Rhymes & Stories, Phonics, Pre-Writing, Number Sense, Art & Craft, Free Play" },
+              { stage: "Class 1 – 2", subjects: "English, Hindi, Mathematics, EVS, GK, Art & Craft, Physical Education" },
+              { stage: "Class 3 – 5", subjects: "English, Hindi, Mathematics, EVS/Science, GK, Computer Basics, Art, Physical Education" },
+            ].map((c) => (
               <div key={c.stage} className="bg-white rounded-2xl sm:rounded-3xl p-4 sm:p-6 md:p-7 shadow-md flex flex-col md:flex-row md:items-center gap-2 sm:gap-3 md:gap-8 border-l-4 border-gold">
                 <span className="font-display font-extrabold text-maroon-dark text-base sm:text-lg md:w-40 shrink-0">{c.stage}</span>
                 <p className="font-body text-ink-70 text-xs sm:text-sm md:text-base leading-relaxed">{c.subjects}</p>

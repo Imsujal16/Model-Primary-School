@@ -2379,7 +2379,7 @@ const galleryItems = [
   { cat: "Playground", label: "Recess Time", caption: "Children at play", tone: "gold" },
   { cat: "Events", label: "Prize Distribution", caption: "Annual event under the tent", tone: "pink", src: "/annual_event.png" },
   { cat: "Events", label: "Cultural Program", caption: "Stage event under canopy", tone: "gold" },
-  { cat: "Campus", label: "School Building", caption: "Pencil-and-book branded exterior", tone: "gold" },
+  { cat: "Campus", label: "School Building", caption: "Pencil-and-book branded exterior", tone: "gold", src: "/hero_home.png" },
   { cat: "Campus", label: "Entrance Gate", caption: "Main gate & signage", tone: "green", src: "/school_gate.jpg" },
   { cat: "Activity", label: "School Gate & Entrance", caption: "Main entrance and campus gate", tone: "gold", src: "/school_gate.jpg" },
   { cat: "Activity", label: "Outdoor Group Activity", caption: "Games on the ground", tone: "green", src: "/outdoor_fun.png" },

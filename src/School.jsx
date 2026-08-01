@@ -2365,25 +2365,35 @@ function AcademicsPage({ setPage }) {
    GALLERY PAGE
    ============================================================ */
 const galleryItems = [
+  // Art & Craft Category
   { cat: "Art & Craft", label: "Creative Handcraft", caption: "Students expressing themselves through art", tone: "gold", src: "/art_craft_1.png" },
   { cat: "Art & Craft", label: "Art Workshop", caption: "Hands-on drawing and craft activities", tone: "pink", src: "/art_craft_2.jpg" },
   { cat: "Art & Craft", label: "Creative Expression", caption: "Young artists creating artwork", tone: "green", src: "/art_craft_3.jpg" },
   { cat: "Art & Craft", label: "Student Masterpiece", caption: "Craft projects and drawings", tone: "gold", src: "/art_craft_4.jpg" },
-  { cat: "Assembly", label: "Morning Assembly", caption: "Lines of students in uniform", tone: "gold", src: "/students_assembly.png" },
-  { cat: "Assembly", label: "Prayer & Announcements", caption: "Daily assembly routine", tone: "pink" },
+
+  // Assembly Category
+  { cat: "Assembly", label: "Morning Assembly & Prayer", caption: "Lines of students in uniform at assembly", tone: "gold", src: "/students_assembly.png" },
+
+  // Events Category
   { cat: "Events", label: "Dance Performance", caption: "Vibrant cultural dance stage act", tone: "gold", src: "/dance_cultural_1.jpg" },
   { cat: "Events", label: "Cultural Arts Show", caption: "Stage performance by students", tone: "pink", src: "/dance_cultural_2.jpg" },
   { cat: "Events", label: "Traditional Drama", caption: "Annual day cultural event", tone: "green", src: "/dance_cultural_3.jpg" },
   { cat: "Events", label: "Stage Celebration", caption: "Students performing on stage", tone: "gold", src: "/dance_cultural_4.jpg" },
-  { cat: "Events", label: "Educational Tour", caption: "Outing & school excursion", tone: "green", src: "/tour.png" },
-  { cat: "Playground", label: "Recess Time", caption: "Children at play", tone: "gold" },
-  { cat: "Events", label: "Prize Distribution", caption: "Annual event under the tent", tone: "pink", src: "/annual_event.png" },
-  { cat: "Events", label: "Cultural Program", caption: "Stage event under canopy", tone: "gold" },
-  { cat: "Campus", label: "School Building", caption: "Pencil-and-book branded exterior", tone: "gold", src: "/hero_home.png" },
-  { cat: "Campus", label: "Entrance Gate", caption: "Main gate & signage", tone: "green", src: "/school_gate.jpg" },
-  { cat: "Activity", label: "School Gate & Entrance", caption: "Main entrance and campus gate", tone: "gold", src: "/school_gate.jpg" },
-  { cat: "Activity", label: "Outdoor Group Activity", caption: "Games on the ground", tone: "green", src: "/outdoor_fun.png" },
-  { cat: "Activity", label: "Sports Day", caption: "Co-curricular activity", tone: "pink" },
+  { cat: "Events", label: "Educational Excursion", caption: "Outing & school learning tour", tone: "green", src: "/tour.png" },
+  { cat: "Events", label: "Prize Distribution & Function", caption: "Annual event under the canopy tent", tone: "pink", src: "/annual_event.png" },
+
+  // Playground Category
+  { cat: "Playground", label: "Outdoor Recess & Games", caption: "Children playing on school grounds", tone: "gold", src: "/outdoor_fun.png" },
+
+  // Campus Category
+  { cat: "Campus", label: "School Main Building", caption: "Pencil-and-book painted exterior wall", tone: "gold", src: "/hero_home.png" },
+  { cat: "Campus", label: "School Entrance Gate", caption: "Pencil-topped main gate & signage", tone: "green", src: "/school_gate.jpg" },
+  { cat: "Campus", label: "Smart Classroom Lab", caption: "Interactive tech-enabled classroom", tone: "gold", src: "/Smart-classroom.png" },
+  { cat: "Campus", label: "Front Entrance View", caption: "Pencil-style campus entrance", tone: "pink", src: "/entrance_gate.png" },
+  { cat: "Campus", label: "Principal Office & Mentorship", caption: "Dedicated guidance and leadership", tone: "gold", src: "/principal.png" },
+
+  // Activity Category
+  { cat: "Activity", label: "Morning Yoga & Exercises", caption: "Daily fitness and mindfulness session", tone: "green", src: "/yoga_activity.png" },
 ];
 
 function GalleryPage() {

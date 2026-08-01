@@ -2302,7 +2302,7 @@ function AcademicsPage({ setPage }) {
                   {studentLifeItems.map((item, cardIdx) => (
                     <div
                       key={item.title}
-                      className="aspect-[3/4] rounded-3xl overflow-hidden shadow-2xl relative group border-4 border-white bg-cream3 cursor-pointer"
+                      className="h-[480px] lg:h-[500px] rounded-3xl overflow-hidden shadow-xl relative group border-4 border-white bg-cream3 cursor-pointer"
                     >
                       {/* Inner 4-Image Slideshow */}
                       <Swiper
@@ -2329,24 +2329,24 @@ function AcademicsPage({ setPage }) {
                       <div className="absolute top-0 left-0 w-full h-2 pencil-stripe-thin z-10 pointer-events-none" />
 
                       {/* Liquid Glass Pill Badge */}
-                      <div className="absolute top-5 right-5 z-20 pointer-events-none">
-                        <span className="liquid-glass-pill inline-flex items-center gap-1.5 text-white font-display font-extrabold text-xs px-4 py-2 rounded-full" style={{textShadow:'0 1px 5px rgba(0,0,0,0.55)'}}>
+                      <div className="absolute top-3.5 right-3.5 z-20 pointer-events-none">
+                        <span className="liquid-glass-pill inline-flex items-center gap-1 text-white font-display font-extrabold text-[11px] px-3 py-1 rounded-full shadow-md" style={{textShadow:'0 1px 5px rgba(0,0,0,0.55)'}}>
                           {item.tag}
                         </span>
                       </div>
 
                       {/* iPhone-Style Liquid Glass Bottom Drawer */}
-                      <div className="liquid-glass absolute bottom-5 left-5 right-5 rounded-3xl p-5 text-white z-20 pointer-events-none">
-                        <div className="flex items-center gap-3.5 mb-2.5">
-                          <div className="w-11 h-11 rounded-2xl bg-gold text-maroon-dark flex items-center justify-center shrink-0 shadow-md border-2 border-white/70 group-hover:scale-110 group-hover:shadow-[0_0_15px_rgba(240,168,40,0.7)] transition-all duration-300">
-                            <item.icon size={22} strokeWidth={2.2} />
+                      <div className="liquid-glass absolute bottom-3.5 left-3.5 right-3.5 rounded-2xl p-3.5 text-white z-20 pointer-events-none">
+                        <div className="flex items-center gap-2.5 mb-1.5">
+                          <div className="w-9 h-9 rounded-xl bg-gold text-maroon-dark flex items-center justify-center shrink-0 shadow-md border-2 border-white/70 group-hover:scale-110 transition-transform duration-300">
+                            <item.icon size={18} strokeWidth={2.2} />
                           </div>
-                          <div>
-                            <h3 className="font-display font-extrabold text-xl text-white leading-tight" style={{textShadow:'0 1px 6px rgba(0,0,0,0.65)'}}>{item.title}</h3>
-                            <span className="font-body text-[10px] font-bold text-gold-light uppercase tracking-wider block mt-0.5" style={{textShadow:'0 1px 4px rgba(0,0,0,0.55)'}}>Daily Co-Curricular</span>
+                          <div className="min-w-0">
+                            <h3 className="font-display font-extrabold text-sm sm:text-base text-white leading-tight truncate" style={{textShadow:'0 1px 6px rgba(0,0,0,0.65)'}}>{item.title}</h3>
+                            <span className="font-body text-[9px] font-bold text-gold-light uppercase tracking-wider block" style={{textShadow:'0 1px 4px rgba(0,0,0,0.55)'}}>Daily Co-Curricular</span>
                           </div>
                         </div>
-                        <p className="font-body text-xs sm:text-sm text-white leading-relaxed font-semibold" style={{textShadow:'0 1px 5px rgba(0,0,0,0.6)'}}>
+                        <p className="font-body text-xs text-white leading-snug font-medium line-clamp-3" style={{textShadow:'0 1px 5px rgba(0,0,0,0.6)'}}>
                           {item.desc}
                         </p>
                       </div>

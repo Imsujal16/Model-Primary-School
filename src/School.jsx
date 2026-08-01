@@ -2421,17 +2421,68 @@ const galleryItems = [
 function GalleryPage() {
   const cats = ["All", "Tours & Trips", "Village Awareness", "Art & Craft", "Assembly", "Playground", "Events", "Campus", "Activity"];
   const [filter, setFilter] = useState("All");
+  const [selectedIdx, setSelectedIdx] = useState(null);
+
   const items = filter === "All" ? galleryItems : galleryItems.filter((i) => i.cat === filter);
+  const activeItem = selectedIdx !== null ? items[selectedIdx] : null;
+
+  // Touch & Mouse Drag Swipe State
+  const touchStartX = useRef(null);
+
+  const handleTouchStart = (e) => {
+    touchStartX.current = e.touches ? e.touches[0].clientX : e.clientX;
+  };
+
+  const handleTouchEnd = (e) => {
+    if (touchStartX.current === null) return;
+    const endX = e.changedTouches ? e.changedTouches[0].clientX : e.clientX;
+    const diffX = touchStartX.current - endX;
+    const threshold = 40; // min swipe distance in px
+
+    if (diffX > threshold) {
+      handleNext();
+    } else if (diffX < -threshold) {
+      handlePrev();
+    }
+    touchStartX.current = null;
+  };
+
+  const handlePrev = (e) => {
+    e?.stopPropagation();
+    if (selectedIdx === null) return;
+    setSelectedIdx((prev) => (prev > 0 ? prev - 1 : items.length - 1));
+  };
+
+  const handleNext = (e) => {
+    e?.stopPropagation();
+    if (selectedIdx === null) return;
+    setSelectedIdx((prev) => (prev < items.length - 1 ? prev + 1 : 0));
+  };
+
+  useEffect(() => {
+    const handleKeyDown = (e) => {
+      if (selectedIdx === null) return;
+      if (e.key === "Escape") setSelectedIdx(null);
+      if (e.key === "ArrowLeft") setSelectedIdx((prev) => (prev > 0 ? prev - 1 : items.length - 1));
+      if (e.key === "ArrowRight") setSelectedIdx((prev) => (prev < items.length - 1 ? prev + 1 : 0));
+    };
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, [selectedIdx, items.length]);
+
   return (
     <div>
-      <PageHero eyebrow="Gallery" title="Life at Model Primary School" subtitle="Assemblies, play, events and campus moments from around the school." />
+      <PageHero eyebrow="Gallery" title="Life at Model Primary School" subtitle="Tap any photo to view in full screen. Swipe left or right to switch images." />
       <section className="bg-cream py-14 md:py-20">
         <div className="max-w-6xl mx-auto px-6">
           <div className="flex flex-wrap gap-2 mb-10 justify-center">
             {cats.map((c) => (
               <button
                 key={c}
-                onClick={() => setFilter(c)}
+                onClick={() => {
+                  setFilter(c);
+                  setSelectedIdx(null);
+                }}
                 className={`focus-ring font-display font-semibold text-sm px-5 py-2 rounded-full border-2 transition-colors ${
                   filter === c ? "bg-maroon border-maroon text-white" : "bg-white border-gold-light text-maroon-dark filter-btn-inactive"
                 }`}
@@ -2442,7 +2493,11 @@ function GalleryPage() {
           </div>
           <div className="columns-1 sm:columns-2 lg:columns-3 gap-5">
             {items.map((it, idx) => (
-              <div key={it.label + idx} className="mb-5 break-inside-avoid">
+              <div
+                key={it.label + idx}
+                onClick={() => setSelectedIdx(idx)}
+                className="mb-5 break-inside-avoid cursor-pointer group hover:scale-[1.02] transition-transform duration-300 relative"
+              >
                 <ImagePlaceholder
                   src={it.src}
                   label={it.label}
@@ -2450,11 +2505,101 @@ function GalleryPage() {
                   tone={it.tone}
                   ratio={idx % 3 === 0 ? "3 / 4" : "4 / 3"}
                 />
+                {/* Hover / Tap to View Overlay */}
+                <div className="absolute inset-0 bg-maroon-dark/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-2xl sm:rounded-3xl flex items-center justify-center pointer-events-none">
+                  <span className="bg-maroon text-white font-display font-bold text-xs px-3.5 py-1.5 rounded-full shadow-lg flex items-center gap-1.5">
+                    <Camera size={14} className="text-gold" /> Tap to View
+                  </span>
+                </div>
               </div>
             ))}
           </div>
         </div>
       </section>
+
+      {/* 🖼️ FULLSCREEN LIGHTBOX MODAL WITH SWIPE GESTURES */}
+      {activeItem && (
+        <div
+          onClick={() => setSelectedIdx(null)}
+          className="fixed inset-0 z-50 bg-black/90 backdrop-blur-md flex flex-col items-center justify-between p-4 sm:p-6 animate-slide-up select-none"
+        >
+          {/* Top Bar: Counter & Close Button */}
+          <div className="w-full max-w-5xl flex items-center justify-between z-20 text-white pt-2">
+            <span className="font-display font-bold text-xs sm:text-sm bg-white/10 border border-white/20 px-3.5 py-1.5 rounded-full">
+              Photo {selectedIdx + 1} of {items.length} (Swipe ↔)
+            </span>
+            <button
+              onClick={() => setSelectedIdx(null)}
+              className="p-2.5 rounded-full bg-white/20 hover:bg-white/30 text-white transition-colors cursor-pointer"
+              aria-label="Close viewer"
+            >
+              <X size={22} />
+            </button>
+          </div>
+
+          {/* Main Image View + Navigation Arrows */}
+          <div className="relative w-full max-w-5xl flex-1 flex items-center justify-center my-4 overflow-hidden">
+            {/* Prev Button */}
+            {items.length > 1 && (
+              <button
+                onClick={handlePrev}
+                className="absolute left-2 sm:left-4 z-30 p-3 rounded-full bg-black/50 hover:bg-maroon text-white transition-colors cursor-pointer border border-white/20"
+                aria-label="Previous photo"
+              >
+                <ChevronRight size={24} className="rotate-180" />
+              </button>
+            )}
+
+            {/* Main Photo with Swipe & Drag handlers */}
+            <div
+              onClick={(e) => e.stopPropagation()}
+              onTouchStart={handleTouchStart}
+              onTouchEnd={handleTouchEnd}
+              onMouseDown={handleTouchStart}
+              onMouseUp={handleTouchEnd}
+              className="max-h-[75vh] max-w-full rounded-2xl overflow-hidden border-2 border-white/30 shadow-2xl relative flex items-center justify-center bg-black cursor-grab active:cursor-grabbing select-none"
+            >
+              {activeItem.src ? (
+                <img
+                  src={activeItem.src}
+                  alt={activeItem.label}
+                  className="max-h-[75vh] max-w-full object-contain pointer-events-none"
+                />
+              ) : (
+                <div className="p-12 text-center text-white">
+                  <Camera size={48} className="mx-auto mb-3 text-gold" />
+                  <p className="font-display font-bold text-lg">{activeItem.label}</p>
+                </div>
+              )}
+            </div>
+
+            {/* Next Button */}
+            {items.length > 1 && (
+              <button
+                onClick={handleNext}
+                className="absolute right-2 sm:right-4 z-30 p-3 rounded-full bg-black/50 hover:bg-maroon text-white transition-colors cursor-pointer border border-white/20"
+                aria-label="Next photo"
+              >
+                <ChevronRight size={24} />
+              </button>
+            )}
+          </div>
+
+          {/* Bottom Info Bar */}
+          <div
+            onClick={(e) => e.stopPropagation()}
+            className="w-full max-w-xl bg-white/15 border border-white/20 rounded-2xl p-4 text-center text-white backdrop-blur-md z-20 mb-2"
+          >
+            <span className="bg-gold text-maroon-dark font-display font-extrabold text-[10px] uppercase tracking-wider px-3 py-0.5 rounded-full inline-block mb-1.5">
+              {activeItem.cat}
+            </span>
+            <h3 className="font-display font-extrabold text-base sm:text-lg leading-tight">{activeItem.label}</h3>
+            {activeItem.caption && (
+              <p className="font-body text-xs text-gold-light-90 mt-1 font-medium">{activeItem.caption}</p>
+            )}
+          </div>
+        </div>
+      )}
     </div>
   );
 }

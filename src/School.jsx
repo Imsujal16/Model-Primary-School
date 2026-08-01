@@ -72,6 +72,21 @@ function BrandStyles() {
       .routine-swiper .swiper-pagination {
         bottom: 10px !important;
       }
+      .card-inner-swiper .swiper-pagination {
+        bottom: 120px !important;
+        z-index: 25 !important;
+      }
+      .card-inner-swiper .swiper-pagination-bullet {
+        background: rgba(255, 255, 255, 0.7) !important;
+        opacity: 0.7;
+      }
+      .card-inner-swiper .swiper-pagination-bullet-active {
+        background: #F0A828 !important;
+        opacity: 1;
+        width: 18px !important;
+        border-radius: 6px !important;
+        transition: all 0.3s ease;
+      }
 
       :root{
         --cream:#FFF8EA; --cream2:#FBEEDA; --cream3:#F6E4C4;
@@ -2171,21 +2186,36 @@ function AcademicsPage({ setPage }) {
                 title: 'Art & Craft',
                 tag: '🎨 Creative Expression',
                 desc: 'Dedicated creative sessions where children express themselves through drawing, painting, and handcrafting.',
-                image: '/outdoor_fun.png'
+                images: [
+                  '/outdoor_fun.png',
+                  '/annual_event.png',
+                  '/tour.png',
+                  '/Smart-classroom.png',
+                ],
               },
               {
                 icon: Music,
                 title: 'Dance & Cultural Arts',
                 tag: '🎭 Stage Performance',
                 desc: 'Vibrant dance and cultural performances that build confidence and celebrate expression on stage.',
-                image: '/students_assembly.png'
+                images: [
+                  '/students_assembly.png',
+                  '/annual_event.png',
+                  '/hero_home.png',
+                  '/tour.png',
+                ],
               },
               {
                 icon: Dumbbell,
                 title: 'Sports & PE',
                 tag: '⚽ Fitness & Athletics',
                 desc: 'Daily games, sports activities, and outdoor swing areas that build fitness, teamwork and resilience.',
-                image: '/yoga_activity.png'
+                images: [
+                  '/yoga_activity.png',
+                  '/outdoor_fun.png',
+                  '/entrance_gate.png',
+                  '/students_assembly.png',
+                ],
               },
             ];
 
@@ -2193,28 +2223,44 @@ function AcademicsPage({ setPage }) {
               <>
                 {/* 📱 MOBILE VIEW: Horizontal Snap-Swipe Carousel (< md) */}
                 <div className="flex overflow-x-auto snap-x snap-mandatory gap-4 -mx-5 px-5 hide-scrollbar md:hidden pb-4">
-                  {studentLifeItems.map((item) => (
+                  {studentLifeItems.map((item, cardIdx) => (
                     <div
                       key={item.title}
                       className="flex-none w-[84vw] snap-center aspect-[4/5] rounded-3xl overflow-hidden shadow-xl relative border-2 border-white bg-cream3 group"
                     >
-                      <img
-                        src={item.image}
-                        alt={item.title}
-                        className="w-full h-full object-cover object-center"
-                      />
+                      {/* Inner 4-Image Slideshow */}
+                      <Swiper
+                        modules={[Pagination, Autoplay]}
+                        pagination={{ clickable: true }}
+                        autoplay={{ delay: 3200 + cardIdx * 800, disableOnInteraction: false }}
+                        spaceBetween={0}
+                        slidesPerView={1}
+                        loop={true}
+                        className="w-full h-full card-inner-swiper"
+                      >
+                        {item.images.map((imgSrc, imgIdx) => (
+                          <SwiperSlide key={imgIdx} className="w-full h-full">
+                            <img
+                              src={imgSrc}
+                              alt={`${item.title} ${imgIdx + 1}`}
+                              className="w-full h-full object-cover object-center"
+                            />
+                          </SwiperSlide>
+                        ))}
+                      </Swiper>
+
                       {/* NO full overlay — keep photo bright and vivid */}
-                      <div className="absolute top-0 left-0 w-full h-1.5 pencil-stripe-thin z-10" />
+                      <div className="absolute top-0 left-0 w-full h-1.5 pencil-stripe-thin z-10 pointer-events-none" />
 
                       {/* Liquid Glass Pill Badge */}
-                      <div className="absolute top-4 right-4 z-20">
+                      <div className="absolute top-4 right-4 z-20 pointer-events-none">
                         <span className="liquid-glass-pill inline-flex items-center gap-1.5 text-white font-display font-extrabold text-xs px-3.5 py-1.5 rounded-full" style={{textShadow:'0 1px 5px rgba(0,0,0,0.55)'}}>
                           {item.tag}
                         </span>
                       </div>
 
                       {/* iPhone-Style Liquid Glass Bottom Drawer */}
-                      <div className="liquid-glass absolute bottom-4 left-4 right-4 rounded-2xl p-4 text-white">
+                      <div className="liquid-glass absolute bottom-4 left-4 right-4 rounded-2xl p-4 text-white z-20 pointer-events-none">
                         <div className="flex items-center gap-3 mb-2">
                           <div className="w-10 h-10 rounded-xl bg-gold text-maroon-dark flex items-center justify-center shrink-0 shadow-md border-2 border-white/70">
                             <item.icon size={20} strokeWidth={2.2} />
@@ -2234,28 +2280,44 @@ function AcademicsPage({ setPage }) {
 
                 {/* 💻 DESKTOP VIEW: 3-Card Full-Bleed Media Deck (>= md) */}
                 <div className="hidden md:grid md:grid-cols-3 gap-6 lg:gap-8">
-                  {studentLifeItems.map((item) => (
+                  {studentLifeItems.map((item, cardIdx) => (
                     <div
                       key={item.title}
                       className="aspect-[3/4] rounded-3xl overflow-hidden shadow-2xl relative group border-4 border-white bg-cream3 cursor-pointer"
                     >
-                      <img
-                        src={item.image}
-                        alt={item.title}
-                        className="w-full h-full object-cover object-center group-hover:scale-108 transition-transform duration-700 ease-out"
-                      />
+                      {/* Inner 4-Image Slideshow */}
+                      <Swiper
+                        modules={[Pagination, Autoplay]}
+                        pagination={{ clickable: true }}
+                        autoplay={{ delay: 3200 + cardIdx * 800, disableOnInteraction: false }}
+                        spaceBetween={0}
+                        slidesPerView={1}
+                        loop={true}
+                        className="w-full h-full card-inner-swiper"
+                      >
+                        {item.images.map((imgSrc, imgIdx) => (
+                          <SwiperSlide key={imgIdx} className="w-full h-full">
+                            <img
+                              src={imgSrc}
+                              alt={`${item.title} ${imgIdx + 1}`}
+                              className="w-full h-full object-cover object-center group-hover:scale-108 transition-transform duration-700 ease-out"
+                            />
+                          </SwiperSlide>
+                        ))}
+                      </Swiper>
+
                       {/* NO full overlay — keep photo bright and vivid */}
-                      <div className="absolute top-0 left-0 w-full h-2 pencil-stripe-thin z-10" />
+                      <div className="absolute top-0 left-0 w-full h-2 pencil-stripe-thin z-10 pointer-events-none" />
 
                       {/* Liquid Glass Pill Badge */}
-                      <div className="absolute top-5 right-5 z-20">
+                      <div className="absolute top-5 right-5 z-20 pointer-events-none">
                         <span className="liquid-glass-pill inline-flex items-center gap-1.5 text-white font-display font-extrabold text-xs px-4 py-2 rounded-full" style={{textShadow:'0 1px 5px rgba(0,0,0,0.55)'}}>
                           {item.tag}
                         </span>
                       </div>
 
                       {/* iPhone-Style Liquid Glass Bottom Drawer */}
-                      <div className="liquid-glass absolute bottom-5 left-5 right-5 rounded-3xl p-5 text-white">
+                      <div className="liquid-glass absolute bottom-5 left-5 right-5 rounded-3xl p-5 text-white z-20 pointer-events-none">
                         <div className="flex items-center gap-3.5 mb-2.5">
                           <div className="w-11 h-11 rounded-2xl bg-gold text-maroon-dark flex items-center justify-center shrink-0 shadow-md border-2 border-white/70 group-hover:scale-110 group-hover:shadow-[0_0_15px_rgba(240,168,40,0.7)] transition-all duration-300">
                             <item.icon size={22} strokeWidth={2.2} />

@@ -2047,28 +2047,29 @@ function AcademicsPage({ setPage }) {
                         alt={item.title}
                         className="w-full h-full object-cover object-center"
                       />
-                      <div className="absolute inset-0 bg-gradient-to-t from-maroon-dark/95 via-maroon-dark/30 to-black/20 pointer-events-none" />
+                      {/* Subtle vignette gradient overlay */}
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent pointer-events-none" />
                       <div className="absolute top-0 left-0 w-full h-1.5 pencil-stripe-thin z-10" />
 
-                      {/* Top-Right Badge Tag */}
+                      {/* Top-Right Liquid Glass Pill Badge */}
                       <div className="absolute top-4 right-4 z-20">
-                        <span className="inline-flex items-center gap-1.5 bg-maroon-dark/90 text-gold-light backdrop-blur-md font-display font-bold text-xs px-3.5 py-1.5 rounded-full shadow-lg border border-gold-light/40">
+                        <span className="inline-flex items-center gap-1.5 bg-white/75 backdrop-blur-xl text-maroon-dark font-display font-extrabold text-xs px-3.5 py-1.5 rounded-full shadow-lg border border-white/60">
                           {item.tag}
                         </span>
                       </div>
 
-                      {/* Floating Glass Bottom Drawer */}
-                      <div className="absolute bottom-4 left-4 right-4 bg-maroon-dark/85 backdrop-blur-md border border-gold-light/40 rounded-2xl p-4 shadow-2xl text-white">
+                      {/* Liquid Glass Bottom Drawer */}
+                      <div className="absolute bottom-4 left-4 right-4 bg-maroon-dark/40 backdrop-blur-xl border border-white/30 rounded-2xl p-4 shadow-2xl text-white">
                         <div className="flex items-center gap-3 mb-2">
-                          <div className="w-10 h-10 rounded-xl bg-gold text-maroon-dark flex items-center justify-center shrink-0 shadow-md">
+                          <div className="w-10 h-10 rounded-xl bg-gold text-maroon-dark flex items-center justify-center shrink-0 shadow-md border border-white/40">
                             <item.icon size={20} strokeWidth={2.2} />
                           </div>
                           <div>
-                            <h3 className="font-display font-extrabold text-lg text-white leading-tight">{item.title}</h3>
-                            <span className="font-body text-[10px] font-bold text-gold-light uppercase tracking-wider block">Daily Activity</span>
+                            <h3 className="font-display font-extrabold text-lg text-white leading-tight drop-shadow-md">{item.title}</h3>
+                            <span className="font-body text-[10px] font-bold text-gold-light uppercase tracking-wider block drop-shadow-xs">Daily Activity</span>
                           </div>
                         </div>
-                        <p className="font-body text-xs text-gold-light-90 leading-relaxed font-normal">
+                        <p className="font-body text-xs text-white/95 leading-relaxed font-medium drop-shadow-md">
                           {item.desc}
                         </p>
                       </div>
@@ -2086,30 +2087,31 @@ function AcademicsPage({ setPage }) {
                       <img
                         src={item.image}
                         alt={item.title}
-                        className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700 ease-out"
+                        className="w-full h-full object-cover object-center group-hover:scale-108 transition-transform duration-700 ease-out"
                       />
-                      <div className="absolute inset-0 bg-gradient-to-t from-maroon-dark/95 via-maroon-dark/30 to-black/20 pointer-events-none" />
+                      {/* Subtle vignette gradient overlay */}
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent pointer-events-none" />
                       <div className="absolute top-0 left-0 w-full h-2 pencil-stripe-thin z-10" />
 
-                      {/* Top-Right Badge Tag */}
+                      {/* Top-Right Liquid Glass Pill Badge */}
                       <div className="absolute top-5 right-5 z-20">
-                        <span className="inline-flex items-center gap-1.5 bg-maroon-dark/90 text-gold-light backdrop-blur-md font-display font-bold text-xs px-3.5 py-1.5 rounded-full shadow-lg border border-gold-light/40 group-hover:border-gold transition-colors">
+                        <span className="inline-flex items-center gap-1.5 bg-white/75 backdrop-blur-xl text-maroon-dark font-display font-extrabold text-xs px-4 py-2 rounded-full shadow-lg border border-white/60 group-hover:bg-white/90 group-hover:scale-105 transition-all">
                           {item.tag}
                         </span>
                       </div>
 
-                      {/* Floating Glass Bottom Drawer */}
-                      <div className="absolute bottom-5 left-5 right-5 bg-maroon-dark/85 backdrop-blur-md border border-gold-light/40 rounded-2xl p-5 shadow-2xl text-white transition-all duration-300 group-hover:bg-maroon-dark/95 group-hover:border-gold">
+                      {/* Liquid Glass Bottom Drawer */}
+                      <div className="absolute bottom-5 left-5 right-5 bg-maroon-dark/40 backdrop-blur-xl border border-white/35 rounded-3xl p-5 shadow-[0_8px_32px_0_rgba(0,0,0,0.3)] text-white transition-all duration-500 group-hover:bg-maroon-dark/60 group-hover:border-white/60 group-hover:shadow-[0_12px_40px_0_rgba(0,0,0,0.4)]">
                         <div className="flex items-center gap-3.5 mb-2.5">
-                          <div className="w-11 h-11 rounded-2xl bg-gold text-maroon-dark flex items-center justify-center shrink-0 shadow-md group-hover:scale-110 transition-transform">
+                          <div className="w-11 h-11 rounded-2xl bg-gold text-maroon-dark flex items-center justify-center shrink-0 shadow-md border border-white/50 group-hover:scale-110 group-hover:shadow-[0_0_15px_rgba(240,168,40,0.6)] transition-all duration-300">
                             <item.icon size={22} strokeWidth={2.2} />
                           </div>
                           <div>
-                            <h3 className="font-display font-extrabold text-xl text-white leading-tight">{item.title}</h3>
-                            <span className="font-body text-[10px] font-bold text-gold-light uppercase tracking-wider block mt-0.5">Daily Co-Curricular</span>
+                            <h3 className="font-display font-extrabold text-xl text-white leading-tight drop-shadow-md">{item.title}</h3>
+                            <span className="font-body text-[10px] font-bold text-gold-light uppercase tracking-wider block mt-0.5 drop-shadow-xs">Daily Co-Curricular</span>
                           </div>
                         </div>
-                        <p className="font-body text-xs sm:text-sm text-gold-light-90 leading-relaxed font-normal">
+                        <p className="font-body text-xs sm:text-sm text-white/95 leading-relaxed font-medium drop-shadow-md">
                           {item.desc}
                         </p>
                       </div>

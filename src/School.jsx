@@ -2058,18 +2058,18 @@ function AcademicsPage({ setPage }) {
                         </span>
                       </div>
 
-                      {/* Liquid Glass Bottom Drawer */}
-                      <div className="absolute bottom-4 left-4 right-4 bg-maroon-dark/40 backdrop-blur-xl border border-white/30 rounded-2xl p-4 shadow-2xl text-white">
+                      {/* Completely Transparent Crystal Glass Bottom Drawer */}
+                      <div className="absolute bottom-4 left-4 right-4 bg-white/10 backdrop-blur-md border border-white/50 rounded-2xl p-4 shadow-2xl text-white">
                         <div className="flex items-center gap-3 mb-2">
-                          <div className="w-10 h-10 rounded-xl bg-gold text-maroon-dark flex items-center justify-center shrink-0 shadow-md border border-white/40">
+                          <div className="w-10 h-10 rounded-xl bg-gold text-maroon-dark flex items-center justify-center shrink-0 shadow-md border border-white/60">
                             <item.icon size={20} strokeWidth={2.2} />
                           </div>
                           <div>
-                            <h3 className="font-display font-extrabold text-lg text-white leading-tight drop-shadow-md">{item.title}</h3>
-                            <span className="font-body text-[10px] font-bold text-gold-light uppercase tracking-wider block drop-shadow-xs">Daily Activity</span>
+                            <h3 className="font-display font-extrabold text-lg text-white leading-tight drop-shadow-lg">{item.title}</h3>
+                            <span className="font-body text-[10px] font-bold text-gold-light uppercase tracking-wider block drop-shadow-md">Daily Activity</span>
                           </div>
                         </div>
-                        <p className="font-body text-xs text-white/95 leading-relaxed font-medium drop-shadow-md">
+                        <p className="font-body text-xs text-white leading-relaxed font-semibold drop-shadow-lg">
                           {item.desc}
                         </p>
                       </div>
@@ -2095,23 +2095,23 @@ function AcademicsPage({ setPage }) {
 
                       {/* Top-Right Liquid Glass Pill Badge */}
                       <div className="absolute top-5 right-5 z-20">
-                        <span className="inline-flex items-center gap-1.5 bg-white/75 backdrop-blur-xl text-maroon-dark font-display font-extrabold text-xs px-4 py-2 rounded-full shadow-lg border border-white/60 group-hover:bg-white/90 group-hover:scale-105 transition-all">
+                        <span className="inline-flex items-center gap-1.5 bg-white/80 backdrop-blur-xl text-maroon-dark font-display font-extrabold text-xs px-4 py-2 rounded-full shadow-lg border border-white/70 group-hover:bg-white group-hover:scale-105 transition-all">
                           {item.tag}
                         </span>
                       </div>
 
-                      {/* Liquid Glass Bottom Drawer */}
-                      <div className="absolute bottom-5 left-5 right-5 bg-maroon-dark/40 backdrop-blur-xl border border-white/35 rounded-3xl p-5 shadow-[0_8px_32px_0_rgba(0,0,0,0.3)] text-white transition-all duration-500 group-hover:bg-maroon-dark/60 group-hover:border-white/60 group-hover:shadow-[0_12px_40px_0_rgba(0,0,0,0.4)]">
+                      {/* Completely Transparent Crystal Glass Bottom Drawer */}
+                      <div className="absolute bottom-5 left-5 right-5 bg-white/10 backdrop-blur-md border border-white/60 rounded-3xl p-5 shadow-[0_8px_32px_0_rgba(0,0,0,0.3)] text-white transition-all duration-500 group-hover:bg-white/20 group-hover:border-white/90 group-hover:shadow-[0_12px_40px_0_rgba(255,255,255,0.3)]">
                         <div className="flex items-center gap-3.5 mb-2.5">
-                          <div className="w-11 h-11 rounded-2xl bg-gold text-maroon-dark flex items-center justify-center shrink-0 shadow-md border border-white/50 group-hover:scale-110 group-hover:shadow-[0_0_15px_rgba(240,168,40,0.6)] transition-all duration-300">
+                          <div className="w-11 h-11 rounded-2xl bg-gold text-maroon-dark flex items-center justify-center shrink-0 shadow-md border border-white/70 group-hover:scale-110 group-hover:shadow-[0_0_15px_rgba(240,168,40,0.6)] transition-all duration-300">
                             <item.icon size={22} strokeWidth={2.2} />
                           </div>
                           <div>
-                            <h3 className="font-display font-extrabold text-xl text-white leading-tight drop-shadow-md">{item.title}</h3>
-                            <span className="font-body text-[10px] font-bold text-gold-light uppercase tracking-wider block mt-0.5 drop-shadow-xs">Daily Co-Curricular</span>
+                            <h3 className="font-display font-extrabold text-xl text-white leading-tight drop-shadow-lg">{item.title}</h3>
+                            <span className="font-body text-[10px] font-bold text-gold-light uppercase tracking-wider block mt-0.5 drop-shadow-md">Daily Co-Curricular</span>
                           </div>
                         </div>
-                        <p className="font-body text-xs sm:text-sm text-white/95 leading-relaxed font-medium drop-shadow-md">
+                        <p className="font-body text-xs sm:text-sm text-white leading-relaxed font-semibold drop-shadow-lg">
                           {item.desc}
                         </p>
                       </div>

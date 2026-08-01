@@ -2393,7 +2393,7 @@ const galleryItems = [
   { cat: "Events", label: "Cultural Arts Show", caption: "Stage performance by students", tone: "pink", src: "/dance_cultural_2.jpg" },
   { cat: "Events", label: "Traditional Drama", caption: "Annual day cultural event", tone: "green", src: "/dance_cultural_3.jpg" },
   { cat: "Events", label: "Stage Celebration", caption: "Students performing on stage", tone: "gold", src: "/dance_cultural_4.jpg" },
-  { cat: "Events", label: "Educational Excursion", caption: "Outing & school learning tour", tone: "green", src: "/tour.png" },
+  { cat: "Tours & Trips", label: "Educational Excursion", caption: "Outing & school learning tour", tone: "green", src: "/tour.png" },
   { cat: "Events", label: "Prize Distribution & Function", caption: "Annual event under the canopy tent", tone: "pink", src: "/annual_event.png" },
 
   // Playground Category

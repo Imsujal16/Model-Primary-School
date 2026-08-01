@@ -2233,10 +2233,10 @@ function AcademicsPage({ setPage }) {
                 tag: '🚌 Outdoor Discovery & Community Outreach',
                 desc: 'Educational field trips to cultural sites, alongside student-led community awareness rallies for local village residents.',
                 images: [
-                  '/tour.png',
-                  '/students_assembly.png',
-                  '/outdoor_fun.png',
-                  '/hero_home.png',
+                  '/tour_awareness_1.jpg',
+                  '/tour_awareness_2.jpg',
+                  '/tour_awareness_3.jpg',
+                  '/tour_awareness_4.jpg',
                 ],
               },
             ];
@@ -2408,12 +2408,20 @@ const galleryItems = [
   { cat: "Campus", label: "Front Entrance View", caption: "Pencil-style campus entrance", tone: "pink", src: "/entrance_gate.png" },
   { cat: "Campus", label: "Principal Office & Mentorship", caption: "Dedicated guidance and leadership", tone: "gold", src: "/principal.png" },
 
+  // Tours & Trips Category
+  { cat: "Tours & Trips", label: "Educational Field Tour", caption: "Students on educational learning trip", tone: "green", src: "/tour_awareness_3.jpg" },
+  { cat: "Tours & Trips", label: "Nature & Cultural Excursion", caption: "Outdoor discovery and field excursion", tone: "gold", src: "/tour_awareness_4.jpg" },
+
+  // Village Awareness Category
+  { cat: "Village Awareness", label: "Village Rally & Community Drive", caption: "Students and staff conducting awareness rally in village", tone: "gold", src: "/tour_awareness_1.jpg" },
+  { cat: "Village Awareness", label: "Health & Literacy Awareness", caption: "Community outreach program for village residents", tone: "pink", src: "/tour_awareness_2.jpg" },
+
   // Activity Category
   { cat: "Activity", label: "Morning Yoga & Exercises", caption: "Daily fitness and mindfulness session", tone: "green", src: "/yoga_activity.png" },
 ];
 
 function GalleryPage() {
-  const cats = ["All", "Art & Craft", "Assembly", "Playground", "Events", "Campus", "Activity"];
+  const cats = ["All", "Tours & Trips", "Village Awareness", "Art & Craft", "Assembly", "Playground", "Events", "Campus", "Activity"];
   const [filter, setFilter] = useState("All");
   const items = filter === "All" ? galleryItems : galleryItems.filter((i) => i.cat === filter);
   return (

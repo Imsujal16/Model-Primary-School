@@ -2625,17 +2625,6 @@ function GalleryPage() {
               </button>
             )}
           </div>
-
-          {/* Bottom Info Bar */}
-          <div
-            onClick={(e) => e.stopPropagation()}
-            className="w-full max-w-xl bg-white/15 border border-white/20 rounded-2xl p-3 sm:p-4 text-center text-white backdrop-blur-md z-20 mb-2"
-          >
-            <span className="bg-gold text-maroon-dark font-display font-extrabold text-[10px] uppercase tracking-wider px-3 py-0.5 rounded-full inline-block mb-1">
-              {activeItem.cat}
-            </span>
-            <h3 className="font-display font-extrabold text-base sm:text-lg leading-tight">{activeItem.label}</h3>
-          </div>
         </div>
       )}
     </div>

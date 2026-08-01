@@ -496,7 +496,6 @@ function ImagePlaceholder({ src, label, caption, ratio = "4 / 3", tone = "gold",
       <div className="absolute inset-0 flex flex-col items-center justify-center gap-2 px-4 text-center" style={{ backgroundImage: grad }}>
         <Camera size={30} className="text-maroon-dark-50 shrink-0" strokeWidth={1.6} />
         <span className="font-display font-bold text-maroon-dark-70 text-xs sm:text-sm md:text-base leading-snug">{label}</span>
-        {caption && <span className="font-body text-[11px] sm:text-xs text-maroon-dark-50 leading-snug">{caption}</span>}
       </div>
       <div className="absolute top-0 left-0 w-full h-1.5 sm:h-2 pencil-stripe-thin" />
     </div>
@@ -2630,15 +2629,12 @@ function GalleryPage() {
           {/* Bottom Info Bar */}
           <div
             onClick={(e) => e.stopPropagation()}
-            className="w-full max-w-xl bg-white/15 border border-white/20 rounded-2xl p-4 text-center text-white backdrop-blur-md z-20 mb-2"
+            className="w-full max-w-xl bg-white/15 border border-white/20 rounded-2xl p-3 sm:p-4 text-center text-white backdrop-blur-md z-20 mb-2"
           >
-            <span className="bg-gold text-maroon-dark font-display font-extrabold text-[10px] uppercase tracking-wider px-3 py-0.5 rounded-full inline-block mb-1.5">
+            <span className="bg-gold text-maroon-dark font-display font-extrabold text-[10px] uppercase tracking-wider px-3 py-0.5 rounded-full inline-block mb-1">
               {activeItem.cat}
             </span>
             <h3 className="font-display font-extrabold text-base sm:text-lg leading-tight">{activeItem.label}</h3>
-            {activeItem.caption && (
-              <p className="font-body text-xs text-gold-light-90 mt-1 font-medium">{activeItem.caption}</p>
-            )}
           </div>
         </div>
       )}

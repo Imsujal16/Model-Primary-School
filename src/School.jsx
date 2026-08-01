@@ -2431,10 +2431,24 @@ const galleryItems = [
 
   // Activity Category
   { cat: "Activity", label: "Morning Yoga & Exercises", caption: "Daily fitness and mindfulness session", tone: "green", src: "/yoga_activity.png" },
+
+  // Awards & Recognition Category
+  { cat: "Awards & Recognition", label: "Best School Leadership Honor", caption: "Principal receiving prestige leadership award for educational excellence", tone: "gold", src: "/principal_award_1.jpg" },
+  { cat: "Awards & Recognition", label: "District Educational Excellence Award", caption: "Honored by district education officials for outstanding academic contribution", tone: "pink", src: "/principal_award_2.jpg" },
+  { cat: "Awards & Recognition", label: "Model Educator Felicitation", caption: "Special recognition for innovative primary teaching methodologies", tone: "green", src: "/principal_award_3.jpg" },
+  { cat: "Awards & Recognition", label: "Community Service Recognition", caption: "Felicitation for student welfare & village literacy outreach", tone: "gold", src: "/principal_award_4.jpg" },
+  { cat: "Awards & Recognition", label: "State Education Board Honor", caption: "Principal recognized for exemplary school administration", tone: "pink", src: "/principal_award_5.jpg" },
+  { cat: "Awards & Recognition", label: "Academic Distinction Trophy", caption: "Awarded trophy for high literacy rates & student development", tone: "green", src: "/principal_award_6.jpg" },
+  { cat: "Awards & Recognition", label: "Primary Education Leadership Award", caption: "Honoring dedication towards foundational child education", tone: "gold", src: "/principal_award_7.jpg" },
+  { cat: "Awards & Recognition", label: "Special Certificate of Appreciation", caption: "Certificate awarded by district magistrate & education board", tone: "pink", src: "/principal_award_8.jpg" },
+  { cat: "Awards & Recognition", label: "Inspirational Educator Shield", caption: "Receiving commemorative shield for outstanding school governance", tone: "green", src: "/principal_award_9.jpg" },
+  { cat: "Awards & Recognition", label: "Child Welfare & Care Honor", caption: "Recognizing efforts in student nutrition and health awareness", tone: "gold", src: "/principal_award_10.jpg" },
+  { cat: "Awards & Recognition", label: "Excellence in Co-Curricular Management", caption: "Award for holistic student growth & sports promotion", tone: "pink", src: "/principal_award_11.jpg" },
+  { cat: "Awards & Recognition", label: "Distinguished Principal Felicitation", caption: "Honoring years of selfless service in rural education", tone: "green", src: "/principal_award_12.jpg" },
 ];
 
 function GalleryPage() {
-  const cats = ["All", "Tours & Trips", "Village Awareness", "Art & Craft", "Assembly", "Playground", "Events", "Campus", "Activity"];
+  const cats = ["All", "Awards & Recognition", "Tours & Trips", "Village Awareness", "Art & Craft", "Assembly", "Playground", "Events", "Campus", "Activity"];
   const [filter, setFilter] = useState("All");
   const [selectedIdx, setSelectedIdx] = useState(null);
 

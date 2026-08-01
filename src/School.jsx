@@ -2197,10 +2197,10 @@ function AcademicsPage({ setPage }) {
                 tag: '🎨 Creative Expression',
                 desc: 'Dedicated creative sessions where children express themselves through drawing, painting, and handcrafting.',
                 images: [
-                  '/art_craft_1.png',
-                  '/art_craft_2.jpg',
-                  '/art_craft_3.jpg',
-                  '/art_craft_4.jpg',
+                  '/art_craft_gallery_1.jpg',
+                  '/art_craft_gallery_2.jpg',
+                  '/art_craft_gallery_3.jpg',
+                  '/art_craft_gallery_4.jpg',
                 ],
               },
               {
@@ -2380,10 +2380,22 @@ function AcademicsPage({ setPage }) {
    ============================================================ */
 const galleryItems = [
   // Art & Craft Category
-  { cat: "Art & Craft", label: "Creative Handcraft", caption: "Students expressing themselves through art", tone: "gold", src: "/art_craft_1.png" },
-  { cat: "Art & Craft", label: "Art Workshop", caption: "Hands-on drawing and craft activities", tone: "pink", src: "/art_craft_2.jpg" },
-  { cat: "Art & Craft", label: "Creative Expression", caption: "Young artists creating artwork", tone: "green", src: "/art_craft_3.jpg" },
-  { cat: "Art & Craft", label: "Student Masterpiece", caption: "Craft projects and drawings", tone: "gold", src: "/art_craft_4.jpg" },
+  { cat: "Art & Craft", label: "Creative Handcraft", caption: "Students expressing themselves through art", tone: "gold", src: "/art_craft_gallery_1.jpg" },
+  { cat: "Art & Craft", label: "Paper Craft & Origami", caption: "Hands-on creative paper folding activity", tone: "pink", src: "/art_craft_gallery_2.jpg" },
+  { cat: "Art & Craft", label: "Drawing & Painting Workshop", caption: "Young artists sketching and coloring", tone: "green", src: "/art_craft_gallery_3.jpg" },
+  { cat: "Art & Craft", label: "Clay Modeling & Sculpting", caption: "Expressive clay modeling by primary students", tone: "gold", src: "/art_craft_gallery_4.jpg" },
+  { cat: "Art & Craft", label: "Festival Decor & Craft", caption: "Designing handmade decorations for school events", tone: "pink", src: "/art_craft_gallery_5.jpg" },
+  { cat: "Art & Craft", label: "Canvas Painting Project", caption: "Students experimenting with vibrant colors", tone: "green", src: "/art_craft_gallery_6.jpg" },
+  { cat: "Art & Craft", label: "Handmade Card Creation", caption: "Greeting card making activity", tone: "gold", src: "/art_craft_gallery_7.jpg" },
+  { cat: "Art & Craft", label: "Student Artwork Display", caption: "Exhibiting creative student crafts", tone: "pink", src: "/art_craft_gallery_8.jpg" },
+  { cat: "Art & Craft", label: "Recycled Art Creation", caption: "Best out of waste craft projects", tone: "green", src: "/art_craft_gallery_9.jpg" },
+  { cat: "Art & Craft", label: "Poster Making Competition", caption: "Creative poster designing on social themes", tone: "gold", src: "/art_craft_gallery_10.jpg" },
+  { cat: "Art & Craft", label: "Pattern & Mask Craft", caption: "Designing colorful paper masks and hats", tone: "pink", src: "/art_craft_gallery_11.jpg" },
+  { cat: "Art & Craft", label: "Guided Art Session", caption: "Teacher guiding students in drawing techniques", tone: "green", src: "/art_craft_gallery_12.jpg" },
+  { cat: "Art & Craft", label: "Finger Painting & Sketching", caption: "Tactile artistic expression for primary classes", tone: "gold", src: "/art_craft_gallery_13.jpg" },
+  { cat: "Art & Craft", label: "Cultural Craft Showcase", caption: "Traditional folk art & craft creations", tone: "pink", src: "/art_craft_gallery_14.jpg" },
+  { cat: "Art & Craft", label: "Art Exhibition & Honors", caption: "Displaying award-winning student art pieces", tone: "green", src: "/art_craft_gallery_15.jpg" },
+  { cat: "Art & Craft", label: "Creative Handcraft Project", caption: "Students expressing themselves through art", tone: "gold", src: "/art_craft_1.png" },
 
   // Assembly Category
   { cat: "Assembly", label: "Morning Assembly & Prayer", caption: "Lines of students in uniform at assembly", tone: "gold", src: "/students_assembly.png" },

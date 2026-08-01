@@ -687,7 +687,8 @@ const whyChooseUsTabs = [
       { icon: Languages,    title: 'English Medium Education',         desc: 'Structured English-medium instruction that builds strong communication skills from the very first year.' },
       { icon: HeartHandshake, title: 'Caring & Experienced Teachers',  desc: 'Warm, experienced teachers who know each child by name and nurture them like their own.' },
       { icon: Puzzle,       title: 'Activity-Based & Joyful Learning', desc: 'Lessons built around hands-on activities, so children learn by doing, not just by listening.' },
-      { icon: Trophy,       title: 'Co-Curricular & Sports Activities',desc: 'Regular sports, games and co-curricular events that build confidence beyond the classroom.' },
+      { icon: Compass,      title: 'Educational Tour Trips',           desc: 'Guided educational field excursions to historical, cultural and nature sites for experiential learning.' },
+      { icon: Megaphone,    title: 'Village Awareness Programmes',    desc: 'Student & staff rallies raising community awareness on health, sanitation, literacy and environment in local villages.' },
     ],
   },
   {
@@ -767,9 +768,9 @@ const whyChooseUsPillars = [
     color: "bg-gold",
     highlights: [
       "Art, Craft & Creative Expression",
-      "Dance & Cultural Performances",
+      "Educational Tour Trips & Excursions",
+      "Village Community Awareness Rallies",
       "Daily Sports & Athletic Games",
-      "Nutritious Mid-Day Meal (MDM)",
     ],
   },
 ];
@@ -2221,6 +2222,18 @@ function AcademicsPage({ setPage }) {
                   '/outdoor_fun.png',
                   '/school_gate.jpg',
                   '/students_assembly.png',
+                ],
+              },
+              {
+                icon: Compass,
+                title: 'Tours & Village Awareness',
+                tag: '🚌 Outdoor Discovery & Community Outreach',
+                desc: 'Educational field trips to cultural sites, alongside student-led community awareness rallies for local village residents.',
+                images: [
+                  '/tour.png',
+                  '/students_assembly.png',
+                  '/outdoor_fun.png',
+                  '/hero_home.png',
                 ],
               },
             ];

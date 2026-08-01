@@ -2426,7 +2426,20 @@ const galleryItems = [
   { cat: "Tours & Trips", label: "Nature & Cultural Excursion", caption: "Outdoor discovery and field excursion", tone: "gold", src: "/tour_awareness_4.jpg" },
 
   // Village Awareness Category
-  { cat: "Village Awareness", label: "Village Rally & Community Drive", caption: "Students and staff conducting awareness rally in village", tone: "gold", src: "/tour_awareness_1.jpg" },
+  { cat: "Village Awareness", label: "Village Rally & Community Drive", caption: "Students and staff conducting awareness rally in village", tone: "gold", src: "/village_awareness_gallery_1.jpg" },
+  { cat: "Village Awareness", label: "Health & Hygiene Campaign", caption: "Educating local villagers on health and clean living habits", tone: "pink", src: "/village_awareness_gallery_2.jpg" },
+  { cat: "Village Awareness", label: "Literacy & Education Drive", caption: "Spreading awareness on the importance of child education", tone: "green", src: "/village_awareness_gallery_3.jpg" },
+  { cat: "Village Awareness", label: "Student Slogan Rally", caption: "Students holding banners and chanting positive social messages", tone: "gold", src: "/village_awareness_gallery_4.jpg" },
+  { cat: "Village Awareness", label: "Cleanliness & Environment March", caption: "Community clean-up and environmental protection rally", tone: "pink", src: "/village_awareness_gallery_5.jpg" },
+  { cat: "Village Awareness", label: "Village Elders Interaction", caption: "Students engaging with village elders and residents", tone: "green", src: "/village_awareness_gallery_6.jpg" },
+  { cat: "Village Awareness", label: "Social Harmony Outreach", caption: "Promoting unity, respect, and social harmony in the village", tone: "gold", src: "/village_awareness_gallery_7.jpg" },
+  { cat: "Village Awareness", label: "Girl Child Education Drive", caption: "Banners promoting equal education rights for young girls", tone: "pink", src: "/village_awareness_gallery_8.jpg" },
+  { cat: "Village Awareness", label: "Community Health Demonstration", caption: "Demonstrating proper handwashing and sanitation practices", tone: "green", src: "/village_awareness_gallery_9.jpg" },
+  { cat: "Village Awareness", label: "Village Street Procession", caption: "Colorful parade through village streets spreading positivity", tone: "gold", src: "/village_awareness_gallery_10.jpg" },
+  { cat: "Village Awareness", label: "Parental Guidance & Outreach", caption: "Encouraging parents to send children regularly to school", tone: "pink", src: "/village_awareness_gallery_11.jpg" },
+  { cat: "Village Awareness", label: "Student Civic Engagement", caption: "Fostering civic responsibility from a young primary age", tone: "green", src: "/village_awareness_gallery_12.jpg" },
+  { cat: "Village Awareness", label: "Village Rally Assembly", caption: "Staff and students preparing for community march", tone: "gold", src: "/village_awareness_gallery_13.jpg" },
+  { cat: "Village Awareness", label: "Community Awareness Conclusion", caption: "Successful wrap-up of student village awareness program", tone: "pink", src: "/village_awareness_gallery_14.jpg" },
   { cat: "Village Awareness", label: "Health & Literacy Awareness", caption: "Community outreach program for village residents", tone: "pink", src: "/tour_awareness_2.jpg" },
 
   // Activity Category

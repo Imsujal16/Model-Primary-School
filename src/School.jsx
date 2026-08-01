@@ -2187,10 +2187,10 @@ function AcademicsPage({ setPage }) {
                 tag: '🎨 Creative Expression',
                 desc: 'Dedicated creative sessions where children express themselves through drawing, painting, and handcrafting.',
                 images: [
-                  '/outdoor_fun.png',
-                  '/annual_event.png',
-                  '/tour.png',
-                  '/Smart-classroom.png',
+                  '/art_craft_1.png',
+                  '/art_craft_2.jpg',
+                  '/art_craft_3.jpg',
+                  '/art_craft_4.jpg',
                 ],
               },
               {
@@ -2359,6 +2359,10 @@ function AcademicsPage({ setPage }) {
    GALLERY PAGE
    ============================================================ */
 const galleryItems = [
+  { cat: "Art & Craft", label: "Creative Handcraft", caption: "Students expressing themselves through art", tone: "gold", src: "/art_craft_1.png" },
+  { cat: "Art & Craft", label: "Art Workshop", caption: "Hands-on drawing and craft activities", tone: "pink", src: "/art_craft_2.jpg" },
+  { cat: "Art & Craft", label: "Creative Expression", caption: "Young artists creating artwork", tone: "green", src: "/art_craft_3.jpg" },
+  { cat: "Art & Craft", label: "Student Masterpiece", caption: "Craft projects and drawings", tone: "gold", src: "/art_craft_4.jpg" },
   { cat: "Assembly", label: "Morning Assembly", caption: "Lines of students in uniform", tone: "gold", src: "/students_assembly.png" },
   { cat: "Assembly", label: "Prayer & Announcements", caption: "Daily assembly routine", tone: "pink" },
   { cat: "Events", label: "Educational Tour", caption: "Outing & school excursion", tone: "green", src: "/tour.png" },
@@ -2372,7 +2376,7 @@ const galleryItems = [
 ];
 
 function GalleryPage() {
-  const cats = ["All", "Assembly", "Playground", "Events", "Campus", "Activity"];
+  const cats = ["All", "Art & Craft", "Assembly", "Playground", "Events", "Campus", "Activity"];
   const [filter, setFilter] = useState("All");
   const items = filter === "All" ? galleryItems : galleryItems.filter((i) => i.cat === filter);
   return (

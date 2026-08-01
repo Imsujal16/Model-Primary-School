@@ -2289,7 +2289,6 @@ function AcademicsPage({ setPage }) {
                           </div>
                           <div>
                             <h3 className="font-display font-extrabold text-lg text-white leading-tight" style={{textShadow:'0 1px 6px rgba(0,0,0,0.65)'}}>{item.title}</h3>
-                            <span className="font-body text-[10px] font-bold text-gold-light uppercase tracking-wider block" style={{textShadow:'0 1px 4px rgba(0,0,0,0.55)'}}>Daily Activity</span>
                           </div>
                         </div>
                         <p className="font-body text-xs text-white leading-relaxed font-semibold" style={{textShadow:'0 1px 5px rgba(0,0,0,0.6)'}}>
@@ -2346,7 +2345,6 @@ function AcademicsPage({ setPage }) {
                           </div>
                           <div className="min-w-0">
                             <h3 className="font-display font-extrabold text-sm sm:text-base text-white leading-tight truncate" style={{textShadow:'0 1px 6px rgba(0,0,0,0.65)'}}>{item.title}</h3>
-                            <span className="font-body text-[9px] font-bold text-gold-light uppercase tracking-wider block" style={{textShadow:'0 1px 4px rgba(0,0,0,0.55)'}}>Daily Co-Curricular</span>
                           </div>
                         </div>
                         <p className="font-body text-xs text-white leading-snug font-medium line-clamp-3" style={{textShadow:'0 1px 5px rgba(0,0,0,0.6)'}}>

@@ -2957,6 +2957,15 @@ export default function App() {
     if (lenisRef.current) {
       lenisRef.current.scrollTo(0, { immediate: true });
     }
+    const pageTitles = {
+      home: "Model Primary School | Bharsare, Bhadaiyan, Sultanpur",
+      about: "About Us | Model Primary School",
+      academics: "Academics & Curriculum | Model Primary School",
+      gallery: "Gallery | Model Primary School",
+      admissions: "Admissions 2026–27 | Model Primary School",
+      contact: "Contact Us | Model Primary School",
+    };
+    document.title = pageTitles[page] || "Model Primary School | Bharsare, Bhadaiyan, Sultanpur";
     setTimeout(() => {
       ScrollTrigger.refresh();
     }, 100);

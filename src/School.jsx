@@ -1804,63 +1804,69 @@ function AcademicsPage({ setPage }) {
           </div>
 
           {/* 📱 MOBILE VIEW: Segmented Stage Switcher & Dynamic Active Stage Canvas (< md) */}
-          <div className="md:hidden">
-            {/* Segmented Stage Switcher Pill Bar */}
-            <div className="flex p-1.5 bg-maroon-dark/95 backdrop-blur-md rounded-full shadow-lg border border-gold-light/40 gap-1.5 mb-6">
-              {curriculumStages.map((stg, idx) => (
-                <button
-                  key={stg.stage}
-                  type="button"
-                  onClick={() => setActiveStageIndex(idx)}
-                  className={`flex-1 py-2.5 px-3 rounded-full font-display font-extrabold text-xs transition-all duration-300 flex items-center justify-center gap-1.5 cursor-pointer ${
-                    activeStageIndex === idx
-                      ? 'bg-gold text-maroon-dark shadow-md scale-102'
-                      : 'text-gold-light hover:bg-white/10'
-                  }`}
-                >
-                  <span>{stg.shortName}</span>
-                </button>
-              ))}
+          <div className="md:hidden flex flex-col gap-4">
+            {/* Mobile Pill Tabs — exact match to Screenshot 2 */}
+            <div className="flex bg-cream3 p-1.5 rounded-full border border-gold-light shadow-inner w-full">
+              {curriculumStages.map((stg, idx) => {
+                const isActive = activeStageIndex === idx;
+                return (
+                  <button
+                    key={stg.stage}
+                    type="button"
+                    onClick={() => setActiveStageIndex(idx)}
+                    className={`flex-1 py-2.5 px-2 rounded-full font-display font-bold text-xs text-center transition-all duration-300 flex items-center justify-center gap-1 cursor-pointer ${
+                      isActive
+                        ? 'bg-maroon text-white shadow-md scale-[1.02]'
+                        : 'text-maroon-dark opacity-75 hover:opacity-100'
+                    }`}
+                  >
+                    <span>{stg.shortName}</span>
+                  </button>
+                );
+              })}
             </div>
 
-            {/* Dynamic Active Stage Canvas Card */}
-            <div key={activeStage.stage} className="bg-maroon-dark text-white rounded-3xl p-6 border-2 border-gold-light/50 shadow-2xl relative overflow-hidden animate-slide-up">
-              {/* Top Pencil Stripe Accent */}
-              <div className="absolute top-0 left-0 w-full h-2 pencil-stripe-thin z-10" />
-
-              {/* Stage Pill & Age */}
-              <div className="flex items-center justify-between gap-2 mb-4">
-                <span className="bg-maroon/90 border border-gold-light/40 text-gold-light font-body text-[11px] font-extrabold px-3.5 py-1 rounded-full shadow-xs">
-                  {activeStage.badge}
-                </span>
-                <span className="text-gold-light font-body font-bold text-xs">
+            {/* Mobile Active Showcase Card — exact match to Screenshot 2 */}
+            <div key={activeStage.stage} className="bg-white rounded-3xl p-5 sm:p-6 shadow-xl border-t-4 border-gold border-x border-b border-gold-light/60 animate-slide-up">
+              {/* Header Row */}
+              <div className="flex items-center justify-between gap-3 mb-4 pb-3 border-b border-cream2">
+                <div className="flex items-center gap-3">
+                  <div className="w-11 h-11 rounded-2xl bg-maroon flex items-center justify-center shrink-0 shadow-md">
+                    <GraduationCap size={22} className="text-gold" strokeWidth={2} />
+                  </div>
+                  <div>
+                    <span className="font-display font-bold uppercase tracking-widest text-[9px] text-gold-dark block">
+                      {activeStage.badge}
+                    </span>
+                    <h3 className="font-display font-extrabold text-xl text-maroon-dark leading-tight">
+                      {activeStage.headline}
+                    </h3>
+                  </div>
+                </div>
+                <span className="bg-gold-light text-maroon-dark font-body text-xs font-bold px-3 py-1 rounded-full border border-gold-light shrink-0">
                   {activeStage.age}
                 </span>
               </div>
 
-              {/* Headline & Description */}
-              <h3 className="font-display font-extrabold text-xl text-white mb-2 leading-tight">
-                {activeStage.headline}
-              </h3>
-              <p className="font-body text-xs text-gold-light-90 leading-relaxed mb-6">
+              <p className="font-body text-xs sm:text-sm text-ink-80 leading-relaxed mb-5 font-medium">
                 {activeStage.desc}
               </p>
 
-              {/* Subject Tag Cloud Grid */}
-              <div className="mb-6">
-                <span className="font-display font-extrabold text-[11px] text-gold uppercase tracking-wider block mb-3">
+              {/* Key Subjects Grid */}
+              <div className="mb-5">
+                <span className="font-display font-bold uppercase tracking-widest text-[9px] text-gold-dark block mb-2.5">
                   Key Subjects & Learning Focus
                 </span>
                 <div className="grid grid-cols-2 gap-2.5">
                   {activeStage.subjects.map((sub) => (
                     <div
                       key={sub.name}
-                      className="bg-white/10 border border-gold-light/30 rounded-2xl p-3 flex items-center gap-2.5 backdrop-blur-xs shadow-xs"
+                      className="flex gap-2.5 items-center p-3 rounded-2xl bg-cream border border-cream2"
                     >
-                      <div className="w-8 h-8 rounded-xl bg-gold text-maroon-dark flex items-center justify-center shrink-0 shadow-sm">
-                        <sub.icon size={16} strokeWidth={2.2} />
+                      <div className="w-8 h-8 rounded-xl bg-maroon flex items-center justify-center shrink-0 shadow-xs">
+                        <sub.icon size={16} className="text-gold" strokeWidth={2} />
                       </div>
-                      <span className="font-display font-bold text-xs text-white leading-tight">
+                      <span className="font-display font-bold text-maroon-dark text-xs leading-snug">
                         {sub.name}
                       </span>
                     </div>
@@ -1869,9 +1875,9 @@ function AcademicsPage({ setPage }) {
               </div>
 
               {/* Outcome Footer */}
-              <div className="pt-4 border-t border-white/20 flex items-center justify-between text-xs font-display font-extrabold text-gold-light">
+              <div className="pt-3.5 border-t border-cream2 flex items-center justify-between text-xs font-display font-extrabold text-maroon-dark">
                 <span>{activeStage.outcome}</span>
-                <Sparkles size={16} className="text-gold animate-pulse" />
+                <Sparkles size={16} className="text-gold fill-gold shrink-0 animate-pulse" />
               </div>
             </div>
           </div>

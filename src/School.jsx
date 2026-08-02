@@ -409,6 +409,42 @@ function Eyebrow({ children, light = false }) {
   );
 }
 
+/* Social Media Icons */
+function InstagramIcon({ size = 20, className = "" }) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className}>
+      <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+      <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+      <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+    </svg>
+  );
+}
+
+function FacebookIcon({ size = 20, className = "" }) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className}>
+      <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
+    </svg>
+  );
+}
+
+function WhatsAppIcon({ size = 20, className = "" }) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className}>
+      <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path>
+    </svg>
+  );
+}
+
+function YouTubeIcon({ size = 20, className = "" }) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className}>
+      <path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z"></path>
+      <polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"></polygon>
+    </svg>
+  );
+}
+
 /* ============================================================
    MASCOTS — simple flat illustrations echoing the school's
    maroon/gold uniform styling
@@ -685,6 +721,33 @@ function Navbar({ page, setPage }) {
    ============================================================ */
 function Footer({ setPage }) {
   const { t } = useLanguage();
+  const socialLinks = [
+    {
+      name: "Instagram",
+      url: "https://www.instagram.com/mpsbharsare?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==",
+      icon: InstagramIcon,
+      hoverBg: "hover:bg-[#E4405F] hover:border-[#E4405F]",
+    },
+    {
+      name: "Facebook",
+      url: "https://www.facebook.com/profile.php?id=61564437598896",
+      icon: FacebookIcon,
+      hoverBg: "hover:bg-[#1877F2] hover:border-[#1877F2]",
+    },
+    {
+      name: "WhatsApp",
+      url: "https://wa.me/919454826921",
+      icon: WhatsAppIcon,
+      hoverBg: "hover:bg-[#25D366] hover:border-[#25D366]",
+    },
+    {
+      name: "YouTube",
+      url: "https://www.youtube.com/@vandanayadav7071",
+      icon: YouTubeIcon,
+      hoverBg: "hover:bg-[#FF0000] hover:border-[#FF0000]",
+    },
+  ];
+
   return (
     <footer className="bg-maroon-dark text-cream relative">
       <PencilDivider />
@@ -694,9 +757,31 @@ function Footer({ setPage }) {
             <Emblem size={44} className="sm:w-[48px] sm:h-[48px]" />
             <span className="font-display font-extrabold text-base sm:text-lg text-white">{t('school.name')}</span>
           </div>
-          <p className="font-body text-xs sm:text-sm text-gold-light-80 max-w-sm leading-relaxed">
+          <p className="font-body text-xs sm:text-sm text-gold-light-80 max-w-sm leading-relaxed mb-5">
             {t('footer.about')}
           </p>
+
+          {/* Social Media Section */}
+          <div className="mt-4">
+            <span className="block font-display font-bold text-gold text-xs uppercase tracking-wider mb-2.5">
+              Follow Us / हमसे जुड़ें
+            </span>
+            <div className="flex items-center gap-3">
+              {socialLinks.map(({ name, url, icon: Icon, hoverBg }) => (
+                <a
+                  key={name}
+                  href={url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={name}
+                  title={name}
+                  className={`w-9 h-9 rounded-full bg-white/10 text-gold-light hover:text-white transition-all duration-300 flex items-center justify-center border border-white/15 shadow-sm hover:scale-110 ${hoverBg}`}
+                >
+                  <Icon size={18} />
+                </a>
+              ))}
+            </div>
+          </div>
         </div>
 
         <div>
@@ -724,6 +809,7 @@ function Footer({ setPage }) {
           <ul className="flex flex-col gap-2.5 font-body text-xs sm:text-sm text-gold-light-85">
             <li className="flex gap-2.5"><MapPin size={16} className="shrink-0 mt-0.5 text-gold" /><span>{t('contact.address')}</span></li>
             <li className="flex gap-2.5"><Phone size={16} className="shrink-0 mt-0.5 text-gold" /><a href="tel:9454826921" className="hover:underline text-gold-light-90 font-semibold">+91 9454826921</a></li>
+            <li className="flex gap-2.5"><WhatsAppIcon size={16} className="shrink-0 mt-0.5 text-gold" /><a href="https://wa.me/919454826921" target="_blank" rel="noopener noreferrer" className="hover:underline text-gold-light-90 font-semibold">+91 9454826921 (WhatsApp)</a></li>
             <li className="flex gap-2.5"><Mail size={16} className="shrink-0 mt-0.5 text-gold" /><a href="mailto:psbharsare@gmail.com" className="hover:underline text-gold-light-90 font-semibold">psbharsare@gmail.com</a></li>
             <li className="flex gap-2.5"><Clock size={16} className="shrink-0 mt-0.5 text-gold" /><span>{t('footer.hours')}</span></li>
           </ul>
@@ -2958,6 +3044,7 @@ function ContactPage() {
               <ul className="flex flex-col gap-4 font-body text-sm text-gold-light-90">
                 <li className="flex gap-3"><MapPin size={20} className="shrink-0" /><span>{t("school.name")}, {t("contact.address")}</span></li>
                 <li className="flex gap-3"><Phone size={20} className="shrink-0 text-gold" /><a href="tel:9454826921" className="hover:underline font-semibold text-white">+91 9454826921</a></li>
+                <li className="flex gap-3"><WhatsAppIcon size={20} className="shrink-0 text-gold" /><a href="https://wa.me/919454826921" target="_blank" rel="noopener noreferrer" className="hover:underline font-semibold text-white">+91 9454826921 (WhatsApp)</a></li>
                 <li className="flex gap-3"><Mail size={20} className="shrink-0 text-gold" /><a href="mailto:psbharsare@gmail.com" className="hover:underline font-semibold text-white">psbharsare@gmail.com</a></li>
                 <li className="flex gap-3"><Clock size={20} className="shrink-0" /><span>{t("contact.hours")}</span></li>
               </ul>

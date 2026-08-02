@@ -39,7 +39,7 @@ export default async function handler(req, res) {
     // Format the email using HTML
     const mailOptions = {
       from: `"Model Primary School" <${process.env.SMTP_USER}>`,
-      to: process.env.SMTP_TO || 'psbharsare@gmail.com',
+      to: 'psbharsare@gmail.com',
       subject: `New Admission Inquiry from ${from_name}`,
       html: `
         <div style="font-family: Arial, sans-serif; line-height: 1.6; color: #333; max-width: 600px; padding: 20px; border: 1px solid #ddd; border-radius: 8px;">

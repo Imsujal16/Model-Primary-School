@@ -1053,13 +1053,15 @@ function HomePage({ setPage }) {
         itemScope
         itemType="https://schema.org/EducationalOrganization"
         style={{
-          background: "var(--cream2)",
-          borderBottom: "1px solid var(--gold-light)",
-          padding: "10px 24px",
-          fontSize: "11px",
-          lineHeight: "1.7",
-          color: "var(--ink)",
-          opacity: 0.72,
+          position: "absolute",
+          width: "1px",
+          height: "1px",
+          padding: "0",
+          margin: "-1px",
+          overflow: "hidden",
+          clip: "rect(0, 0, 0, 0)",
+          whiteSpace: "nowrap",
+          border: "0",
         }}
       >
         <p style={{ maxWidth: 900, margin: "0 auto" }}>

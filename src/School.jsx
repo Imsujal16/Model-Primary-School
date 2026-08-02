@@ -554,7 +554,7 @@ function PageHero({ eyebrow, title, subtitle }) {
 }
 
 /* ============================================================
-   LANGUAGE TOGGLE  (fixed floating pill — top-right)
+   LANGUAGE TOGGLE  (fixed floating pill — bottom-right)
    ============================================================ */
 function LangToggle() {
   const { lang, toggle } = useLanguage();
@@ -564,52 +564,20 @@ function LangToggle() {
       onClick={toggle}
       aria-label={isHindi ? 'Switch to English' : 'हिंदी में बदलें'}
       title={isHindi ? 'Switch to English' : 'हिंदी में बदलें'}
-      style={{
-        position: 'fixed',
-        top: '14px',
-        right: '16px',
-        zIndex: 9999,
-        display: 'inline-flex',
-        alignItems: 'center',
-        border: '2px solid var(--maroon)',
-        borderRadius: '999px',
-        padding: '3px 4px',
-        background: 'white',
-        cursor: 'pointer',
-        boxShadow: '0 2px 12px rgba(109,28,28,0.18)',
-        transition: 'box-shadow 0.2s, transform 0.15s',
-        gap: 0,
-        flexShrink: 0,
-      }}
+      className="focus-ring fixed bottom-5 right-5 z-50 inline-flex items-center bg-white border-2 border-maroon rounded-full p-1 shadow-2xl hover-lift cursor-pointer transition-all duration-300"
     >
       <span
-        style={{
-          padding: '3px 11px',
-          borderRadius: '999px',
-          fontSize: '11px',
-          fontWeight: 700,
-          letterSpacing: '0.05em',
-          background: !isHindi ? 'var(--maroon)' : 'transparent',
-          color: !isHindi ? 'white' : 'var(--maroon-dark)',
-          transition: 'all 0.2s',
-          fontFamily: 'var(--font-display, sans-serif)',
-          lineHeight: 1.6,
-        }}
+        className={`px-3 py-1 rounded-full text-xs font-display font-bold transition-all duration-300 ${
+          !isHindi ? 'bg-maroon text-white shadow-sm' : 'text-maroon-dark hover:text-maroon'
+        }`}
       >
         EN
       </span>
       <span
-        style={{
-          padding: '3px 10px',
-          borderRadius: '999px',
-          fontSize: '12px',
-          fontWeight: 700,
-          lineHeight: 1.7,
-          background: isHindi ? 'var(--maroon)' : 'transparent',
-          color: isHindi ? 'white' : 'var(--maroon-dark)',
-          transition: 'all 0.2s',
-          fontFamily: "'Noto Sans Devanagari', 'Mukta', sans-serif",
-        }}
+        className={`px-3 py-1 rounded-full text-xs font-bold transition-all duration-300 ${
+          isHindi ? 'bg-maroon text-white shadow-sm' : 'text-maroon-dark hover:text-maroon'
+        }`}
+        style={{ fontFamily: "'Noto Sans Devanagari', 'Mukta', sans-serif" }}
       >
         हिंदी
       </span>
@@ -759,19 +727,7 @@ function Footer({ setPage }) {
   );
 }
 
-function FloatingCall() {
-  const { t } = useLanguage();
-  return (
-    <a
-      href="tel:9454826921"
-      className="focus-ring fixed bottom-5 right-5 z-40 flex items-center gap-2 bg-gold text-maroon-dark font-display font-bold px-4 py-3 rounded-full shadow-2xl hover-lift"
-      title="Call 9454826921"
-    >
-      <Phone size={18} />
-      <span className="hidden sm:inline text-sm">{t('call.label')}</span>
-    </a>
-  );
-}
+
 
 /* ============================================================
    HOME PAGE
@@ -3083,7 +3039,6 @@ export default function App() {
         <Navbar page={page} setPage={setPage} />
         {pages[page]}
         <Footer setPage={setPage} />
-        <FloatingCall />
       </div>
     </LanguageProvider>
   );

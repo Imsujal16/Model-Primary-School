@@ -108,14 +108,16 @@ function Bubble({ msg }) {
           fontSize: 13,
           lineHeight: 1.7,
           fontFamily:"'Noto Sans Devanagari', 'Nunito', sans-serif",
-          whiteSpace:"pre-wrap",
           wordBreak:"break-word",
           boxShadow: isUser
             ? "0 2px 10px rgba(122,35,49,0.22)"
             : "0 2px 8px rgba(58,42,30,0.08)",
         }}
       >
-        {msg.text}
+        {isUser
+          ? <span>{msg.display}</span>
+          : <div className="ev-bubble-html" dangerouslySetInnerHTML={{ __html: msg.display }} />
+        }
         <div style={{ fontSize:10, marginTop:4, opacity:0.5, textAlign:"right" }}>
           {msg.time}
         </div>
@@ -178,8 +180,14 @@ export default function EVChatbot() {
   const now = () =>
     new Date().toLocaleTimeString("en-IN", { hour:"2-digit", minute:"2-digit" });
 
-  const addMessage = useCallback((role, text) => {
-    setMessages(prev => [...prev, { id: Date.now() + Math.random(), role, text, time: now() }]);
+  const addMessage = useCallback((role, display, speak) => {
+    setMessages(prev => [...prev, {
+      id: Date.now() + Math.random(),
+      role,
+      display,
+      speak: speak !== undefined ? speak : display,
+      time: now()
+    }]);
   }, []);
 
   // ── Safe Speak Helper ──────────────────────────────────────
@@ -223,10 +231,12 @@ export default function EVChatbot() {
       setIsTyping(true);
       setTimeout(() => {
         setIsTyping(false);
-        const greetText = GREETING[lang] || GREETING.hi;
-        addMessage("bot", greetText);
+        const greetObj = GREETING[lang] || GREETING.hi;
+        const greetDisplay = typeof greetObj === "object" ? greetObj.display : greetObj;
+        const greetSpeak  = typeof greetObj === "object" ? greetObj.speak  : greetObj;
+        addMessage("bot", greetDisplay, greetSpeak);
         setUnread(0);
-        safeSpeak(greetText, lang);
+        safeSpeak(greetSpeak, lang);
       }, 900);
     }
     if (open) setUnread(0);
@@ -238,7 +248,7 @@ export default function EVChatbot() {
 
     // Push user's choice as a message
     if (userLabel) {
-      addMessage("user", userLabel);
+      addMessage("user", userLabel, userLabel);
     }
 
     setIsTyping(true);
@@ -250,10 +260,12 @@ export default function EVChatbot() {
       setCurrentNodeId(nodeId);
       setIsTyping(false);
 
-      const botText = node.text[lang] || node.text.hi;
-      addMessage("bot", botText);
+      const textObj = node.text[lang] || node.text.hi;
+      const display = typeof textObj === "object" ? textObj.display : textObj;
+      const speak   = typeof textObj === "object" ? textObj.speak   : textObj;
+      addMessage("bot", display, speak);
 
-      safeSpeak(botText, lang);
+      safeSpeak(speak, lang);
     }, 600 + Math.random() * 300);
   }, [lang, addMessage, safeSpeak]);
 
@@ -267,15 +279,16 @@ export default function EVChatbot() {
     setTimeout(() => {
       const node = flowData[currentNodeId];
       if (node) {
-        const botText = node.text[newLang] || node.text.hi;
+        const textObj = node.text[newLang] || node.text.hi;
+        const display = typeof textObj === "object" ? textObj.display : textObj;
+        const speak   = typeof textObj === "object" ? textObj.speak   : textObj;
         // Add a "language changed" system message
-        addMessage("bot", newLang === "en"
-          ? "🌐 Switched to English!"
-          : "🌐 हिंदी में बदल दिया!"
+        addMessage("bot",
+          newLang === "en" ? "🌐 Switched to English!" : "🌐 हिंदी में बदल दिया!"
         );
         setTimeout(() => {
-          addMessage("bot", botText);
-          safeSpeak(botText, newLang);
+          addMessage("bot", display, speak);
+          safeSpeak(speak, newLang);
         }, 400);
       }
     }, 100);
@@ -297,6 +310,15 @@ export default function EVChatbot() {
     <>
       {/* ── Global Styles ── */}
       <style>{`
+        /* HTML BUBBLE CONTENT (dangerouslySetInnerHTML) */
+        .ev-bubble-html b { font-weight: 700; }
+        .ev-bubble-html a {
+          text-decoration: underline;
+          transition: opacity 0.15s;
+          word-break: break-all;
+        }
+        .ev-bubble-html a:hover { opacity: 0.72; }
+
         /* FAB */
         .ev-fab {
           position: fixed;

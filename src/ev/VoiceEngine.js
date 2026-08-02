@@ -80,8 +80,10 @@ const cleanTextForSpeech = (raw, lang = "hi") => {
     .replace(EMOJI_REGEX, "")
     // 2. Strip lone ? marks (prevents "Prashnavachak Chinh")
     .replace(/\?/g, "")
-    // 3. Replace dashes between content (e.g., "2026-27" → "2026 से 27" / "2026 to 27")
-    .replace(/-/g, lang === "en" ? " to " : " से ")
+    // 3. Replace ALL dash types (-, –, —) with natural spoken connectors.
+    //    Prevents TTS from reading them as "minus".
+    //    E.g. "LKG – 5" → "LKG से 5" (hi) / "LKG to 5" (en).
+    .replace(/[-\u2013\u2014]/g, lang === "en" ? " to " : " से ")
     // 4. Strip Unicode replacement characters
     .replace(/[\uFFFD\u25A1]/g, "")
     // 5. Replace newlines with pause (comma)

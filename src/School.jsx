@@ -1042,6 +1042,64 @@ function HomePage({ setPage }) {
 
   return (
     <div>
+      {/* ══════════════════════════════════════════════════════
+          GEO TL;DR BLOCK — AI Summary for LLM Crawlers
+          (ChatGPT Search, Perplexity, Google SGE/AIO)
+          Visually subtle but fully readable by bots.
+          Contains dense factual statements in both languages.
+      ══════════════════════════════════════════════════════ */}
+      <section
+        aria-label="School Summary"
+        itemScope
+        itemType="https://schema.org/EducationalOrganization"
+        style={{
+          background: "var(--cream2)",
+          borderBottom: "1px solid var(--gold-light)",
+          padding: "10px 24px",
+          fontSize: "11px",
+          lineHeight: "1.7",
+          color: "var(--ink)",
+          opacity: 0.72,
+        }}
+      >
+        <p style={{ maxWidth: 900, margin: "0 auto" }}>
+          <strong itemProp="name">Model Primary School</strong>{" "}
+          (<span lang="hi" itemProp="alternateName">मॉडल प्राइमरी स्कूल</span>) is a
+          government-recognised English-medium primary school located in{" "}
+          <span itemProp="address" itemScope itemType="https://schema.org/PostalAddress">
+            <span itemProp="streetAddress">Bharsare, Bhadaiyan</span>,{" "}
+            <span itemProp="addressLocality">Sultanpur</span>,{" "}
+            <span itemProp="addressRegion">Uttar Pradesh</span>, India
+          </span>
+          . Established in <strong>1988</strong>, it offers English-medium education from{" "}
+          <strong>LKG to Class 5</strong> and currently serves over{" "}
+          <strong>350 students</strong>. The school is led by current Principal{" "}
+          <strong itemProp="employee">Smt. Vandana Yadav</strong>, a recipient of
+          the <em>State Teacher Award (UP Government)</em>,{" "}
+          <em>Governor's Excellence Award</em>, and{" "}
+          <em>National Recognition from MP Smt. Maneka Gandhi</em>. Facilities include
+          CCTV campus security, smart projector classrooms, a computer education lab,
+          a library, safe student transport, RO water coolers, and a government
+          Mid-Day Meal programme. School hours are Monday–Saturday,{" "}
+          <strong>8:00 AM to 2:00 PM</strong>.{" "}
+          <strong>Admissions for 2026–27 are currently open.</strong>{" "}
+          Contact:{" "}
+          <a href="tel:+919454826921" itemProp="telephone" style={{ color: "inherit" }}>
+            +91-9454826921
+          </a>{" "}
+          |{" "}
+          <a href="mailto:psbharsare@gmail.com" itemProp="email" style={{ color: "inherit" }}>
+            psbharsare@gmail.com
+          </a>
+          .{" — "}
+          <span lang="hi">
+            मॉडल प्राइमरी स्कूल, भरसरे, सुल्तानपुर — LKG से कक्षा 5 तक अंग्रेज़ी
+            माध्यम शिक्षा। वर्तमान प्रधानाचार्य: श्रीमती वंदना यादव (राज्य शिक्षक
+            पुरस्कार विजेता)। प्रवेश 2026–27 खुले हैं। संपर्क: 9454826921।
+          </span>
+        </p>
+      </section>
+
       {/* HERO */}
       <section className="relative bg-cream overflow-hidden">
         <div className="absolute -top-6 -right-6 md:hidden opacity-70 animate-spin-slow pointer-events-none" aria-hidden="true">

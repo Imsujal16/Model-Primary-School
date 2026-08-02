@@ -736,7 +736,7 @@ function Footer({ setPage }) {
     },
     {
       name: "WhatsApp",
-      url: "https://wa.me/919454826921",
+      url: "https://wa.me/919454826921?text=Hello!%20I%20would%20like%20to%20know%20more%20about%20admissions%20%26%20enrollment%20at%20Model%20Primary%20School%2C%20Bharsare.",
       icon: WhatsAppIcon,
       hoverBg: "hover:bg-[#25D366] hover:border-[#25D366]",
     },
@@ -809,7 +809,7 @@ function Footer({ setPage }) {
           <ul className="flex flex-col gap-2.5 font-body text-xs sm:text-sm text-gold-light-85">
             <li className="flex gap-2.5"><MapPin size={16} className="shrink-0 mt-0.5 text-gold" /><span>{t('contact.address')}</span></li>
             <li className="flex gap-2.5"><Phone size={16} className="shrink-0 mt-0.5 text-gold" /><a href="tel:9454826921" className="hover:underline text-gold-light-90 font-semibold">+91 9454826921</a></li>
-            <li className="flex gap-2.5"><WhatsAppIcon size={16} className="shrink-0 mt-0.5 text-gold" /><a href="https://wa.me/919454826921" target="_blank" rel="noopener noreferrer" className="hover:underline text-gold-light-90 font-semibold">+91 9454826921 (WhatsApp)</a></li>
+            <li className="flex gap-2.5"><WhatsAppIcon size={16} className="shrink-0 mt-0.5 text-gold" /><a href="https://wa.me/919454826921?text=Hello!%20I%20would%20like%20to%20know%20more%20about%20admissions%20%26%20enrollment%20at%20Model%20Primary%20School%2C%20Bharsare." target="_blank" rel="noopener noreferrer" className="hover:underline text-gold-light-90 font-semibold">+91 9454826921 (WhatsApp)</a></li>
             <li className="flex gap-2.5"><Mail size={16} className="shrink-0 mt-0.5 text-gold" /><a href="mailto:psbharsare@gmail.com" className="hover:underline text-gold-light-90 font-semibold">psbharsare@gmail.com</a></li>
             <li className="flex gap-2.5"><Clock size={16} className="shrink-0 mt-0.5 text-gold" /><span>{t('footer.hours')}</span></li>
           </ul>
@@ -3044,7 +3044,7 @@ function ContactPage() {
               <ul className="flex flex-col gap-4 font-body text-sm text-gold-light-90">
                 <li className="flex gap-3"><MapPin size={20} className="shrink-0" /><span>{t("school.name")}, {t("contact.address")}</span></li>
                 <li className="flex gap-3"><Phone size={20} className="shrink-0 text-gold" /><a href="tel:9454826921" className="hover:underline font-semibold text-white">+91 9454826921</a></li>
-                <li className="flex gap-3"><WhatsAppIcon size={20} className="shrink-0 text-gold" /><a href="https://wa.me/919454826921" target="_blank" rel="noopener noreferrer" className="hover:underline font-semibold text-white">+91 9454826921 (WhatsApp)</a></li>
+                <li className="flex gap-3"><WhatsAppIcon size={20} className="shrink-0 text-gold" /><a href="https://wa.me/919454826921?text=Hello!%20I%20would%20like%20to%20know%20more%20about%20admissions%20%26%20enrollment%20at%20Model%20Primary%20School%2C%20Bharsare." target="_blank" rel="noopener noreferrer" className="hover:underline font-semibold text-white">+91 9454826921 (WhatsApp)</a></li>
                 <li className="flex gap-3"><Mail size={20} className="shrink-0 text-gold" /><a href="mailto:psbharsare@gmail.com" className="hover:underline font-semibold text-white">psbharsare@gmail.com</a></li>
                 <li className="flex gap-3"><Clock size={20} className="shrink-0" /><span>{t("contact.hours")}</span></li>
               </ul>

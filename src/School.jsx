@@ -611,10 +611,10 @@ function Navbar({ page, setPage }) {
         <button onClick={() => go("home")} className="focus-ring flex items-center gap-2 sm:gap-3 text-left min-w-0 flex-1 lg:flex-initial">
           <Emblem size={38} className="shrink-0 w-9 h-9 sm:w-[46px] sm:h-[46px]" />
           <span className="leading-tight min-w-0">
-            <span className="block font-display font-extrabold text-maroon-dark text-xs sm:text-base md:text-lg truncate max-w-[140px] min-[380px]:max-w-[190px] sm:max-w-none">
+            <span className="block font-display font-extrabold text-maroon-dark text-xs sm:text-base md:text-lg truncate">
               Model Primary School
             </span>
-            <span className="block font-body text-[9px] sm:text-xs text-ink-60 truncate max-w-[140px] min-[380px]:max-w-[190px] sm:max-w-none">
+            <span className="block font-body text-[9px] sm:text-xs text-ink-60 truncate">
               {t('nav.tagline')}
             </span>
           </span>
@@ -643,9 +643,8 @@ function Navbar({ page, setPage }) {
           </CTAButton>
         </div>
 
-        {/* Mobile Header Controls (LangToggle + Hamburger) */}
-        <div className="flex lg:hidden items-center gap-2 shrink-0">
-          <LangToggle />
+        {/* Mobile Header Controls (Hamburger) */}
+        <div className="flex lg:hidden items-center shrink-0">
           <button
             className="focus-ring p-2 rounded-xl bg-white-70 border border-gold-light text-maroon-dark"
             onClick={() => setOpen(!open)}

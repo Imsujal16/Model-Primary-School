@@ -554,9 +554,9 @@ function PageHero({ eyebrow, title, subtitle }) {
 }
 
 /* ============================================================
-   LANGUAGE TOGGLE  (fixed floating pill — bottom-right)
+   LANGUAGE TOGGLE
    ============================================================ */
-function LangToggle() {
+function LangToggle({ className = "" }) {
   const { lang, toggle } = useLanguage();
   const isHindi = lang === 'hi';
   return (
@@ -564,18 +564,18 @@ function LangToggle() {
       onClick={toggle}
       aria-label={isHindi ? 'Switch to English' : 'हिंदी में बदलें'}
       title={isHindi ? 'Switch to English' : 'हिंदी में बदलें'}
-      className="focus-ring fixed bottom-5 right-5 z-50 inline-flex items-center bg-white border-2 border-maroon rounded-full p-1 shadow-2xl hover-lift cursor-pointer transition-all duration-300"
+      className={`focus-ring inline-flex items-center bg-white border-2 border-maroon rounded-full p-0.5 shadow-sm hover:shadow cursor-pointer transition-all duration-200 shrink-0 select-none ${className}`}
     >
       <span
-        className={`px-3 py-1 rounded-full text-xs font-display font-bold transition-all duration-300 ${
-          !isHindi ? 'bg-maroon text-white shadow-sm' : 'text-maroon-dark hover:text-maroon'
+        className={`px-2 py-0.5 rounded-full text-[11px] font-display font-bold transition-all duration-200 ${
+          !isHindi ? 'bg-maroon text-white' : 'text-maroon-dark hover:text-maroon'
         }`}
       >
         EN
       </span>
       <span
-        className={`px-3 py-1 rounded-full text-xs font-bold transition-all duration-300 ${
-          isHindi ? 'bg-maroon text-white shadow-sm' : 'text-maroon-dark hover:text-maroon'
+        className={`px-2 py-0.5 rounded-full text-[11px] font-bold transition-all duration-200 ${
+          isHindi ? 'bg-maroon text-white' : 'text-maroon-dark hover:text-maroon'
         }`}
         style={{ fontFamily: "'Noto Sans Devanagari', 'Mukta', sans-serif" }}
       >
@@ -606,22 +606,27 @@ function Navbar({ page, setPage }) {
   };
   return (
     <header className="sticky top-0 z-50 glass-nav">
-      <nav className="max-w-6xl mx-auto px-5 md:px-6 py-3 flex items-center justify-between">
-        <button onClick={() => go("home")} className="focus-ring flex items-center gap-2 sm:gap-3 text-left min-w-0">
-          <Emblem size={38} className="shrink-0 sm:w-[46px] sm:h-[46px]" />
-          <span className="leading-tight truncate">
-            <span className="block font-display font-extrabold text-maroon-dark text-xs sm:text-base md:text-lg truncate">Model Primary School</span>
-            <span className="block font-body text-[10px] sm:text-xs text-ink-60 truncate">{t('nav.tagline')}</span>
+      <nav className="max-w-6xl mx-auto px-4 sm:px-6 py-2.5 sm:py-3 flex items-center justify-between gap-2">
+        {/* Brand / Logo */}
+        <button onClick={() => go("home")} className="focus-ring flex items-center gap-2 sm:gap-3 text-left min-w-0 flex-1 lg:flex-initial">
+          <Emblem size={38} className="shrink-0 w-9 h-9 sm:w-[46px] sm:h-[46px]" />
+          <span className="leading-tight min-w-0">
+            <span className="block font-display font-extrabold text-maroon-dark text-xs sm:text-base md:text-lg truncate max-w-[140px] min-[380px]:max-w-[190px] sm:max-w-none">
+              Model Primary School
+            </span>
+            <span className="block font-body text-[9px] sm:text-xs text-ink-60 truncate max-w-[140px] min-[380px]:max-w-[190px] sm:max-w-none">
+              {t('nav.tagline')}
+            </span>
           </span>
         </button>
 
-        {/* Desktop nav links */}
+        {/* Desktop Nav Links */}
         <div className="hidden lg:flex items-center gap-1">
           {links.map((l) => (
             <button
               key={l.id}
               onClick={() => go(l.id)}
-              className={`focus-ring font-display font-semibold text-sm px-4 py-2 rounded-full transition-colors ${
+              className={`focus-ring font-display font-semibold text-sm px-3.5 py-2 rounded-full transition-colors ${
                 page === l.id ? "bg-maroon text-white" : "text-maroon-dark nav-link-inactive"
               }`}
             >
@@ -630,30 +635,41 @@ function Navbar({ page, setPage }) {
           ))}
         </div>
 
-        {/* Desktop CTA */}
-        <div className="hidden lg:block">
+        {/* Desktop Controls (LangToggle + CTA) */}
+        <div className="hidden lg:flex items-center gap-3 shrink-0">
+          <LangToggle />
           <CTAButton variant="gold" onClick={() => go("admissions")}>
             {t('nav.enroll')}
           </CTAButton>
         </div>
 
-        {/* Mobile hamburger */}
-        <button
-          className="focus-ring lg:hidden p-2 rounded-xl bg-white-70 border border-gold-light text-maroon-dark"
-          onClick={() => setOpen(!open)}
-          aria-label="Toggle menu"
-        >
-          {open ? <X size={22} /> : <Menu size={22} />}
-        </button>
+        {/* Mobile Header Controls (LangToggle + Hamburger) */}
+        <div className="flex lg:hidden items-center gap-2 shrink-0">
+          <LangToggle />
+          <button
+            className="focus-ring p-2 rounded-xl bg-white-70 border border-gold-light text-maroon-dark"
+            onClick={() => setOpen(!open)}
+            aria-label="Toggle menu"
+          >
+            {open ? <X size={20} /> : <Menu size={20} />}
+          </button>
+        </div>
       </nav>
 
+      {/* Mobile Drawer Menu */}
       {open && (
-        <div className="lg:hidden bg-cream border-t border-gold-light px-5 pb-5 pt-2 flex flex-col gap-1">
+        <div className="lg:hidden bg-cream border-t border-gold-light px-5 pb-5 pt-3 flex flex-col gap-1.5 shadow-xl">
+          {/* Mobile Language Switcher Row */}
+          <div className="flex items-center justify-between px-4 py-2.5 bg-white rounded-2xl mb-1 border border-gold-light/60">
+            <span className="font-display font-bold text-xs text-maroon-dark">Language / भाषा</span>
+            <LangToggle />
+          </div>
+
           {links.map((l) => (
             <button
               key={l.id}
               onClick={() => go(l.id)}
-              className={`focus-ring text-left font-display font-semibold text-sm px-4 py-3 rounded-2xl ${
+              className={`focus-ring text-left font-display font-semibold text-sm px-4 py-2.5 rounded-2xl ${
                 page === l.id ? "bg-maroon text-white" : "text-maroon-dark nav-link-inactive"
               }`}
             >
@@ -3035,7 +3051,6 @@ export default function App() {
     <LanguageProvider>
       <div className="font-body bg-cream min-h-screen">
         <BrandStyles />
-        <LangToggle />
         <Navbar page={page} setPage={setPage} />
         {pages[page]}
         <Footer setPage={setPage} />

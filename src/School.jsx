@@ -1,5 +1,4 @@
 import { useState, useEffect, useRef, Fragment } from "react";
-import emailjs from "@emailjs/browser";
 import Lenis from "lenis";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -3050,15 +3049,24 @@ function ContactPage() {
     e.preventDefault();
     setStatus("sending");
     try {
-      await emailjs.sendForm(
-        import.meta.env.VITE_EMAILJS_SERVICE_ID,
-        import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
-        formRef.current,
-        { publicKey: import.meta.env.VITE_EMAILJS_PUBLIC_KEY }
-      );
+      const formData = new FormData(formRef.current);
+      const data = Object.fromEntries(formData.entries());
+
+      const res = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data),
+      });
+
+      if (!res.ok) {
+        throw new Error('Failed to send');
+      }
+
       setStatus("sent");
     } catch (err) {
-      console.error("EmailJS error:", err);
+      console.error("Contact API error:", err);
       setStatus("error");
     }
   };

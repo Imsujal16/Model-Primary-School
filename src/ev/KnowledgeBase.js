@@ -8,8 +8,8 @@ export const knowledgeBase = [
     id: "greet",
     category: "Greeting",
     keywords: ["hi", "hello", "hey", "नमस्ते", "नमस्कार", "हेलो", "सुनो"],
-    answerHin: "नमस्ते! मैं EV हूँ, मॉडल प्राइमरी स्कूल की डिजिटल असिस्टेंट। मैं आपकी क्या मदद कर सकती हूँ?",
-    answerEng: "Hello! I am EV, the digital assistant for Model Primary School. How can I help you today?"
+    answerHin: "नमस्ते! मैं EVI हूँ, मॉडल प्राइमरी स्कूल की डिजिटल असिस्टेंट। मैं आपकी क्या मदद कर सकती हूँ?",
+    answerEng: "Hello! I am EVI, the digital assistant for Model Primary School. How can I help you today?"
   },
   {
     id: "contact_phone",
@@ -65,8 +65,8 @@ export const knowledgeBase = [
 export const KB = knowledgeBase;
 
 export const GREETING = {
-  hin: "नमस्ते! मैं EV हूँ, मॉडल प्राइमरी स्कूल की डिजिटल असिस्टेंट। मैं आपकी क्या मदद कर सकती हूँ?",
-  eng: "Hello! I am EV, the digital assistant of Model Primary School. How can I help you today?",
+  hin: "नमस्ते! मैं EVI हूँ, मॉडल प्राइमरी स्कूल की डिजिटल असिस्टेंट। मैं आपकी क्या मदद कर सकती हूँ?",
+  eng: "Hello! I am EVI, the digital assistant of Model Primary School. How can I help you today?",
 };
 
 export const FALLBACK = {

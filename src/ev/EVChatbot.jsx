@@ -488,8 +488,8 @@ export default function EVChatbot() {
       <button
         className="ev-fab"
         onClick={() => setOpen(o => !o)}
-        aria-label="Chat with EV"
-        title="Chat with EV — School Assistant"
+        aria-label="Chat with EVI"
+        title="Chat with EVI — School Assistant"
       >
         {open ? <IconClose /> : <IconChat />}
         {!open && unread > 0 && (
@@ -499,14 +499,14 @@ export default function EVChatbot() {
 
       {/* CHAT WINDOW */}
       {open && (
-        <div className="ev-window" role="dialog" aria-label="EV Chat Assistant">
+        <div className="ev-window" role="dialog" aria-label="EVI Chat Assistant">
           {/* Header */}
           <div className="ev-header">
             <div className="ev-header-avatar">
               <IconBot />
             </div>
             <div className="ev-header-info">
-              <div className="ev-header-name">EV &nbsp;•&nbsp; <span style={{fontSize:12,fontWeight:600,opacity:0.8,fontFamily:"'Noto Sans Devanagari',sans-serif"}}>AI असिस्टेंट</span></div>
+              <div className="ev-header-name">EVI &nbsp;•&nbsp; <span style={{fontSize:12,fontWeight:600,opacity:0.8,fontFamily:"'Noto Sans Devanagari',sans-serif"}}>AI असिस्टेंट</span></div>
               <div className="ev-header-sub">मॉडल प्राइमरी स्कूल, भरसरे</div>
             </div>
             <button className="ev-close-btn" onClick={() => setOpen(false)} aria-label="Close chat">
@@ -522,7 +522,7 @@ export default function EVChatbot() {
             {messages.length === 0 && !isTyping && (
               <div className="ev-empty-state">
                 <div style={{fontSize:32, marginBottom:8}}>🙏</div>
-                <div>EV से कुछ भी पूछें...</div>
+                <div>EVI से कुछ भी पूछें...</div>
                 <div style={{fontSize:12, marginTop:4, fontFamily:"'Nunito',sans-serif"}}>Ask anything in Hindi or English</div>
               </div>
             )}
@@ -577,7 +577,7 @@ export default function EVChatbot() {
               <button
                 className={`ev-mic-btn${isListening ? " listening" : ""}`}
                 onClick={handleMic}
-                aria-label={isListening ? "Stop listening" : "Speak to EV"}
+                aria-label={isListening ? "Stop listening" : "Speak to EVI"}
                 title={isListening ? "टैप करके बंद करें" : "बोलकर पूछें"}
               >
                 <IconMic />

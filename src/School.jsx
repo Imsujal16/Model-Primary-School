@@ -554,10 +554,7 @@ function PageHero({ eyebrow, title, subtitle }) {
 }
 
 /* ============================================================
-   NAVBAR
-   ============================================================ */
-/* ============================================================
-   LANGUAGE TOGGLE
+   LANGUAGE TOGGLE  (fixed floating pill — top-right)
    ============================================================ */
 function LangToggle() {
   const { lang, toggle } = useLanguage();
@@ -568,6 +565,10 @@ function LangToggle() {
       aria-label={isHindi ? 'Switch to English' : 'हिंदी में बदलें'}
       title={isHindi ? 'Switch to English' : 'हिंदी में बदलें'}
       style={{
+        position: 'fixed',
+        top: '14px',
+        right: '16px',
+        zIndex: 9999,
         display: 'inline-flex',
         alignItems: 'center',
         border: '2px solid var(--maroon)',
@@ -575,14 +576,15 @@ function LangToggle() {
         padding: '3px 4px',
         background: 'white',
         cursor: 'pointer',
-        transition: 'box-shadow 0.2s',
+        boxShadow: '0 2px 12px rgba(109,28,28,0.18)',
+        transition: 'box-shadow 0.2s, transform 0.15s',
         gap: 0,
         flexShrink: 0,
       }}
     >
       <span
         style={{
-          padding: '2px 9px',
+          padding: '3px 11px',
           borderRadius: '999px',
           fontSize: '11px',
           fontWeight: 700,
@@ -598,7 +600,7 @@ function LangToggle() {
       </span>
       <span
         style={{
-          padding: '2px 9px',
+          padding: '3px 10px',
           borderRadius: '999px',
           fontSize: '12px',
           fontWeight: 700,
@@ -618,6 +620,7 @@ function LangToggle() {
 /* ============================================================
    NAVBAR
    ============================================================ */
+
 function Navbar({ page, setPage }) {
   const [open, setOpen] = useState(false);
   const { t } = useLanguage();
@@ -659,25 +662,21 @@ function Navbar({ page, setPage }) {
           ))}
         </div>
 
-        {/* Desktop: LangToggle + CTA */}
-        <div className="hidden lg:flex items-center gap-3">
-          <LangToggle />
+        {/* Desktop CTA */}
+        <div className="hidden lg:block">
           <CTAButton variant="gold" onClick={() => go("admissions")}>
             {t('nav.enroll')}
           </CTAButton>
         </div>
 
-        {/* Mobile: LangToggle + hamburger */}
-        <div className="flex lg:hidden items-center gap-2">
-          <LangToggle />
-          <button
-            className="focus-ring p-2 rounded-xl bg-white-70 border border-gold-light text-maroon-dark"
-            onClick={() => setOpen(!open)}
-            aria-label="Toggle menu"
-          >
-            {open ? <X size={22} /> : <Menu size={22} />}
-          </button>
-        </div>
+        {/* Mobile hamburger */}
+        <button
+          className="focus-ring lg:hidden p-2 rounded-xl bg-white-70 border border-gold-light text-maroon-dark"
+          onClick={() => setOpen(!open)}
+          aria-label="Toggle menu"
+        >
+          {open ? <X size={22} /> : <Menu size={22} />}
+        </button>
       </nav>
 
       {open && (
@@ -3080,6 +3079,7 @@ export default function App() {
     <LanguageProvider>
       <div className="font-body bg-cream min-h-screen">
         <BrandStyles />
+        <LangToggle />
         <Navbar page={page} setPage={setPage} />
         {pages[page]}
         <Footer setPage={setPage} />

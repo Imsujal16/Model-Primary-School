@@ -611,10 +611,10 @@ function Navbar({ page, setPage }) {
         <button onClick={() => go("home")} className="focus-ring flex items-center gap-2 sm:gap-3 text-left min-w-0 flex-1 lg:flex-initial">
           <Emblem size={38} className="shrink-0 w-9 h-9 sm:w-[46px] sm:h-[46px]" />
           <span className="leading-tight min-w-0">
-            <span className="block font-display font-extrabold text-maroon-dark text-xs sm:text-base md:text-lg truncate">
+            <span className="block font-display font-extrabold text-maroon-dark text-xs sm:text-base md:text-lg truncate max-w-[145px] min-[380px]:max-w-[195px] sm:max-w-none">
               Model Primary School
             </span>
-            <span className="block font-body text-[9px] sm:text-xs text-ink-60 truncate">
+            <span className="block font-body text-[9px] sm:text-xs text-ink-60 truncate max-w-[145px] min-[380px]:max-w-[195px] sm:max-w-none">
               {t('nav.tagline')}
             </span>
           </span>
@@ -643,8 +643,9 @@ function Navbar({ page, setPage }) {
           </CTAButton>
         </div>
 
-        {/* Mobile Header Controls (Hamburger) */}
-        <div className="flex lg:hidden items-center shrink-0">
+        {/* Mobile Header Controls (LangToggle + Hamburger) */}
+        <div className="flex lg:hidden items-center gap-2 shrink-0">
+          <LangToggle />
           <button
             className="focus-ring p-2 rounded-xl bg-white-70 border border-gold-light text-maroon-dark"
             onClick={() => setOpen(!open)}
@@ -658,12 +659,6 @@ function Navbar({ page, setPage }) {
       {/* Mobile Drawer Menu */}
       {open && (
         <div className="lg:hidden bg-cream border-t border-gold-light px-5 pb-5 pt-3 flex flex-col gap-1.5 shadow-xl">
-          {/* Mobile Language Switcher Row */}
-          <div className="flex items-center justify-between px-4 py-2.5 bg-white rounded-2xl mb-1 border border-gold-light/60">
-            <span className="font-display font-bold text-xs text-maroon-dark">Language / भाषा</span>
-            <LangToggle />
-          </div>
-
           {links.map((l) => (
             <button
               key={l.id}

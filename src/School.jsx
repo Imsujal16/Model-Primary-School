@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef, Fragment } from "react";
+import emailjs from "@emailjs/browser";
 import Lenis from "lenis";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -3042,11 +3043,26 @@ function AdmissionsPage({ setPage }) {
    ============================================================ */
 function ContactPage() {
   const { t } = useLanguage();
-  const [sent, setSent] = useState(false);
-  const handleSubmit = (e) => {
+  const formRef = useRef(null);
+  const [status, setStatus] = useState("idle"); // idle | sending | sent | error
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    setSent(true);
+    setStatus("sending");
+    try {
+      await emailjs.sendForm(
+        import.meta.env.VITE_EMAILJS_SERVICE_ID,
+        import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
+        formRef.current,
+        { publicKey: import.meta.env.VITE_EMAILJS_PUBLIC_KEY }
+      );
+      setStatus("sent");
+    } catch (err) {
+      console.error("EmailJS error:", err);
+      setStatus("error");
+    }
   };
+
   return (
     <div>
       <PageHero eyebrow={t("contact.hero.eyebrow")} title={t("contact.hero.title")} subtitle={t("contact.hero.subtitle")} />
@@ -3057,7 +3073,9 @@ function ContactPage() {
           <div className="lg:col-span-3 bg-white rounded-3xl shadow-lg p-6 md:p-8">
             <h2 className="font-display font-extrabold text-2xl text-maroon-dark mb-1">{t("contact.form.h2")}</h2>
             <p className="font-body text-sm text-ink-60 mb-6">{t("contact.form.sub")}</p>
-            {sent ? (
+
+            {/* ── SUCCESS ── */}
+            {status === "sent" ? (
               <div className="bg-green-light border border-green-30 rounded-2xl p-6 flex items-start gap-3">
                 <CheckCircle2 className="text-green shrink-0" size={26} />
                 <div>
@@ -3066,20 +3084,39 @@ function ContactPage() {
                 </div>
               </div>
             ) : (
-              <form onSubmit={handleSubmit} className="flex flex-col gap-4">
+              <form ref={formRef} onSubmit={handleSubmit} className="flex flex-col gap-4">
                 <div className="grid sm:grid-cols-2 gap-4">
                   <div className="flex flex-col gap-1.5">
                     <label className="font-body text-sm font-semibold text-maroon-dark">{t("contact.form.name.label")}</label>
-                    <input required type="text" placeholder={t("contact.form.name.place")} className="focus-ring border-2 border-gold-light rounded-2xl px-4 py-2.5 font-body text-sm outline-none bg-cream-50" />
+                    <input
+                      required
+                      name="from_name"
+                      type="text"
+                      placeholder={t("contact.form.name.place")}
+                      className="focus-ring border-2 border-gold-light rounded-2xl px-4 py-2.5 font-body text-sm outline-none bg-cream-50"
+                      disabled={status === "sending"}
+                    />
                   </div>
                   <div className="flex flex-col gap-1.5">
                     <label className="font-body text-sm font-semibold text-maroon-dark">{t("contact.form.phone.label")}</label>
-                    <input required type="tel" placeholder={t("contact.form.phone.place")} className="focus-ring border-2 border-gold-light rounded-2xl px-4 py-2.5 font-body text-sm outline-none bg-cream-50" />
+                    <input
+                      required
+                      name="phone"
+                      type="tel"
+                      placeholder={t("contact.form.phone.place")}
+                      className="focus-ring border-2 border-gold-light rounded-2xl px-4 py-2.5 font-body text-sm outline-none bg-cream-50"
+                      disabled={status === "sending"}
+                    />
                   </div>
                 </div>
                 <div className="flex flex-col gap-1.5">
                   <label className="font-body text-sm font-semibold text-maroon-dark">{t("contact.form.class.label")}</label>
-                  <select required className="focus-ring border-2 border-gold-light rounded-2xl px-4 py-2.5 font-body text-sm outline-none bg-cream-50">
+                  <select
+                    required
+                    name="class_interest"
+                    className="focus-ring border-2 border-gold-light rounded-2xl px-4 py-2.5 font-body text-sm outline-none bg-cream-50"
+                    disabled={status === "sending"}
+                  >
                     <option value="">{t("contact.form.class.place")}</option>
                     {["LKG", "UKG", "Class 1", "Class 2", "Class 3", "Class 4", "Class 5"].map((c) => (
                       <option key={c} value={c}>{c}</option>
@@ -3088,9 +3125,31 @@ function ContactPage() {
                 </div>
                 <div className="flex flex-col gap-1.5">
                   <label className="font-body text-sm font-semibold text-maroon-dark">{t("contact.form.msg.label")}</label>
-                  <textarea rows={4} placeholder={t("contact.form.msg.place")} className="focus-ring border-2 border-gold-light rounded-2xl px-4 py-2.5 font-body text-sm outline-none bg-cream-50 resize-none" />
+                  <textarea
+                    name="message"
+                    rows={4}
+                    placeholder={t("contact.form.msg.place")}
+                    className="focus-ring border-2 border-gold-light rounded-2xl px-4 py-2.5 font-body text-sm outline-none bg-cream-50 resize-none"
+                    disabled={status === "sending"}
+                  />
                 </div>
-                <CTAButton variant="primary" icon={Send} className="self-start mt-2">{t("contact.form.submit")}</CTAButton>
+
+                {/* ── ERROR BANNER ── */}
+                {status === "error" && (
+                  <div className="rounded-xl bg-red-50 border border-red-200 px-4 py-3 text-sm text-red-700 font-body">
+                    ⚠️ कुछ गड़बड़ हुई / Something went wrong. कृपया दोबारा कोशिश करें या सीधे{" "}
+                    <a href="tel:+919454826921" className="font-bold underline">9454826921</a> पर कॉल करें।
+                  </div>
+                )}
+
+                <CTAButton
+                  variant="primary"
+                  icon={Send}
+                  className="self-start mt-2"
+                  disabled={status === "sending"}
+                >
+                  {status === "sending" ? "भेजा जा रहा है… / Sending…" : t("contact.form.submit")}
+                </CTAButton>
               </form>
             )}
           </div>

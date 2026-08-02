@@ -507,7 +507,7 @@ export default function EVChatbot() {
             </div>
             <div className="ev-header-info">
               <div className="ev-header-name">EV &nbsp;•&nbsp; <span style={{fontSize:12,fontWeight:600,opacity:0.8,fontFamily:"'Noto Sans Devanagari',sans-serif"}}>AI असिस्टेंट</span></div>
-              <div className="ev-header-sub">मॉडल प्राइमरी स्कूल, भसरि</div>
+              <div className="ev-header-sub">मॉडल प्राइमरी स्कूल, भरसरे</div>
             </div>
             <button className="ev-close-btn" onClick={() => setOpen(false)} aria-label="Close chat">
               <IconClose />

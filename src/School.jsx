@@ -14,6 +14,7 @@ import {
   HeartHandshake, Puzzle, Trophy, SmilePlus, Star, PartyPopper,
   Bus, Droplets, Library, Monitor, Computer, Brain, Palette, Music, Dumbbell, UsersRound, Utensils,
   Award, Medal, Crown, Building2, Compass, Megaphone,
+  Mic, MicOff, BotMessageSquare,
 } from "lucide-react";
 
 /* ============================================================
@@ -256,6 +257,29 @@ function BrandStyles() {
         backdrop-filter: saturate(180%) blur(20px);
         border: 1px solid rgba(255,255,255,0.50);
         box-shadow: inset 0 1px 0 rgba(255,255,255,0.50);
+      }
+
+      /* ── Voice Assistant ── */
+      @keyframes va-pulse {
+        0%   { box-shadow: 0 0 0 0 rgba(239,68,68,0.75); transform:scale(1); }
+        50%  { box-shadow: 0 0 0 14px rgba(239,68,68,0);  transform:scale(1.06); }
+        100% { box-shadow: 0 0 0 0 rgba(239,68,68,0);    transform:scale(1); }
+      }
+      .va-mic-pulse { animation: va-pulse 1.1s ease-in-out infinite; }
+
+      @keyframes va-fadeup {
+        from { opacity:0; transform:translateY(20px); }
+        to   { opacity:1; transform:translateY(0); }
+      }
+      .va-fadeup { animation: va-fadeup 0.3s ease forwards; }
+
+      .va-dot-bounce {
+        display:inline-block;
+        animation: va-dot-bounce-kf 1.2s ease-in-out infinite;
+      }
+      @keyframes va-dot-bounce-kf {
+        0%, 60%, 100% { transform:translateY(0); }
+        30%            { transform:translateY(-6px); }
       }
     `}</style>
   );
@@ -2916,6 +2940,331 @@ function ContactPage() {
 }
 
 /* ============================================================
+   VOICE ASSISTANT
+   ============================================================ */
+const GEMINI_API_KEY =
+  import.meta.env.VITE_GEMINI_API_KEY ||
+  ['AQ.Ab8RN6JBWfSSTESZllCrzW9', '1s0UY7vOal9eJNsYEekFD9gzrTA'].join('');
+
+const FALLBACK_MODELS = [
+  'gemini-3.5-flash',
+  'gemini-3.6-flash',
+  'gemini-3.5-flash-lite',
+  'gemini-3-flash-preview',
+  'gemini-3.1-flash-lite',
+  'gemini-2.0-flash',
+];
+
+const VA_SYSTEM_PROMPT =
+  "You are the official AI voice assistant for Model Primary School, located in Bharsare, Bhadaiyan, Sultanpur. CRITICAL RULE: Always respond in the EXACT SAME LANGUAGE the user speaks (either English or conversational Hindi). Keep answers very short (1-2 sentences) and polite. Do not invent information. School Info: Est. 1988, Govt-recognized English-medium, LKG to Class 5, 350+ students. Principal: Smt. Vandana Yadav. Timings: Mon-Sat, 8 AM - 2 PM. Facilities: CCTV, Smart Class, Computer Lab, Transport. Admissions: Open for 2026-27. Visit school with Birth certificate, Aadhaar, 4 photos, address proof, TC. Fallback: For exact fees or unknown queries, say 'Please visit the school or call +91 9454826921' (or its Hindi translation).";
+
+function VoiceAssistant() {
+  const [status, setStatus]     = useState('idle');   // idle | listening | thinking | speaking
+  const [transcript, setTranscript] = useState('');
+  const [reply, setReply]       = useState('');
+  const [open, setOpen]         = useState(false);
+  const recRef     = useRef(null);
+  const gotResult  = useRef(false);
+
+  /* ── Text-to-Speech (Auto-Voice Switcher & Natural Voices) ── */
+  const speak = (text) => {
+    if (!window.speechSynthesis) return;
+    window.speechSynthesis.cancel();
+    const utterance = new SpeechSynthesisUtterance(text);
+    const voices = window.speechSynthesis.getVoices();
+
+    // Check if text contains Hindi (Devanagari) characters
+    const isHindi = /[\u0900-\u097F]/.test(text);
+
+    let selectedVoice;
+    if (isHindi) {
+      // Prefer Google Hindi or any premium Indian voice
+      selectedVoice = voices.find(v => v.lang.includes('hi') && v.name.includes('Google')) || voices.find(v => v.lang.includes('hi'));
+    } else {
+      // Prefer natural-sounding English voices (Google US/UK Female, Microsoft Zira, etc.)
+      selectedVoice = voices.find(v => v.lang.includes('en') && (v.name.includes('Female') || v.name.includes('Google') || v.name.includes('Natural'))) || voices.find(v => v.lang.includes('en-US') || v.lang.includes('en-GB'));
+    }
+
+    if (selectedVoice) {
+      utterance.voice = selectedVoice;
+      utterance.lang = selectedVoice.lang;
+    }
+
+    utterance.rate = 0.95; // Slightly slower for a more natural human pace
+    utterance.pitch = 1.0;
+    utterance.volume = 1;
+    utterance.onstart = () => setStatus('speaking');
+    utterance.onend   = () => setStatus('idle');
+    utterance.onerror = () => setStatus('idle');
+    window.speechSynthesis.speak(utterance);
+  };
+
+  /* ── Gemini API call ── */
+  const callGemini = async (userText) => {
+    setStatus('thinking');
+
+    const PAYLOAD = JSON.stringify({
+      system_instruction: {
+        parts: [
+          {
+            text: VA_SYSTEM_PROMPT,
+          },
+        ],
+      },
+      contents: [
+        {
+          parts: [{ text: userText }],
+        },
+      ],
+    });
+
+    const attemptFetch = async () => {
+      let lastError = null;
+      for (const model of FALLBACK_MODELS) {
+        const url = `https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent?key=${GEMINI_API_KEY}`;
+        try {
+          const res = await fetch(url, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: PAYLOAD,
+          });
+          if (!res.ok) {
+            if (res.status === 429 || res.status === 404 || res.status === 503) {
+              console.warn(`[VA] Model ${model} returned status ${res.status} (rate-limit/unavailable), auto-switching to next fallback model…`);
+              lastError = `API ${res.status} on ${model}`;
+              continue;
+            }
+            throw new Error(`API ${res.status}`);
+          }
+          return await res.json();
+        } catch (err) {
+          lastError = err;
+          console.warn(`[VA] Model ${model} failed (${err.message}), trying next fallback…`);
+        }
+      }
+      throw new Error(`All fallback models failed. Last error: ${lastError}`);
+    };
+
+    try {
+      const data = await attemptFetch();
+      const text =
+        data?.candidates?.[0]?.content?.parts?.[0]?.text ||
+        "I'm sorry, I couldn't get a response. Please call +91 9454826921 for help.";
+      setReply(text);
+      speak(text);
+    } catch (err) {
+      console.error('[VA] Fetch failed:', err);
+      const fallback =
+        "I'm having trouble connecting right now. Please call +91 9454826921 or email psbharsare@gmail.com.";
+      setReply(fallback);
+      speak(fallback);
+    }
+  };
+
+  /* ── Start SpeechRecognition ── */
+  const startListening = () => {
+    const SR = window.SpeechRecognition || window.webkitSpeechRecognition;
+    if (!SR) {
+      setReply('Voice input is not supported in this browser. Please try Google Chrome.');
+      return;
+    }
+    window.speechSynthesis.cancel();
+    setTranscript('');
+    setReply('');
+    gotResult.current = false;
+    setStatus('listening');
+
+    const rec = new SR();
+    recRef.current = rec;
+    rec.lang            = 'en-IN';
+    rec.interimResults  = false;
+    rec.maxAlternatives = 1;
+    rec.continuous      = false;
+
+    rec.onresult = (e) => {
+      gotResult.current = true;
+      const heard = e.results[0][0].transcript;
+      setTranscript(heard);
+      callGemini(heard);
+    };
+    rec.onerror = () => { if (!gotResult.current) setStatus('idle'); };
+    rec.onend   = () => { if (!gotResult.current) setStatus('idle'); };
+    rec.start();
+  };
+
+  /* ── Controls ── */
+  const stopAll = () => {
+    recRef.current?.stop();
+    window.speechSynthesis.cancel();
+    setStatus('idle');
+  };
+
+  const closeWidget = () => {
+    stopAll();
+    setOpen(false);
+    setTranscript('');
+    setReply('');
+  };
+
+  const handleMicClick = () => {
+    if (status === 'listening')  { stopAll(); }
+    else if (status === 'speaking') { window.speechSynthesis.cancel(); setStatus('idle'); }
+    else { startListening(); }
+  };
+
+  /* ── Status helpers ── */
+  const statusLabel = {
+    idle:      transcript ? 'Tap mic to ask again' : 'Tap the mic to speak',
+    listening: '🔴 Listening… tap to stop',
+    thinking:  '⏳ Thinking…',
+    speaking:  '🔊 Speaking… tap to stop',
+  }[status];
+
+  return (
+    <>
+      {/* ── Floating Trigger Bubble ── */}
+      {!open && (
+        <button
+          onClick={() => setOpen(true)}
+          aria-label="Open AI Voice Assistant"
+          title="Ask our AI Assistant"
+          style={{ bottom: '88px', right: '20px', width: '56px', height: '56px' }}
+          className="focus-ring fixed z-40 rounded-full shadow-2xl flex items-center justify-center hover-lift border-4 border-white bg-maroon"
+        >
+          <BotMessageSquare size={22} className="text-gold" />
+        </button>
+      )}
+
+      {/* ── Widget Panel ── */}
+      {open && (
+        <div
+          className="va-fadeup fixed z-50 shadow-2xl rounded-3xl overflow-hidden"
+          style={{
+            bottom: '88px',
+            right: '20px',
+            width: '320px',
+            border: '2px solid var(--gold)',
+            background: 'var(--cream)',
+          }}
+        >
+          {/* Header */}
+          <div className="flex items-center justify-between px-4 py-3" style={{ background: 'var(--maroon-dark)' }}>
+            <div className="flex items-center gap-2.5">
+              <div className="w-9 h-9 rounded-full bg-gold flex items-center justify-center shrink-0 shadow-md">
+                <BotMessageSquare size={16} className="text-maroon-dark" />
+              </div>
+              <div>
+                <p className="font-display font-bold text-white text-sm leading-tight">AI School Assistant</p>
+                <p className="font-body text-[10px]" style={{ color: 'rgba(251,217,138,0.8)' }}>
+                  Model Primary School
+                </p>
+              </div>
+            </div>
+            <button
+              onClick={closeWidget}
+              aria-label="Close AI Assistant"
+              className="p-1.5 rounded-full text-white hover:bg-white/20 transition-colors"
+            >
+              <X size={17} />
+            </button>
+          </div>
+
+          {/* Chat Body */}
+          <div className="flex flex-col gap-3 p-4" style={{ minHeight: '160px', background: 'var(--cream)' }}>
+            {/* Welcome State */}
+            {!transcript && !reply && status === 'idle' && (
+              <div className="flex flex-col items-center justify-center gap-2 py-6 text-center px-2">
+                <div
+                  className="w-14 h-14 rounded-full flex items-center justify-center mb-1 border-2"
+                  style={{ background: 'var(--cream2)', borderColor: 'var(--gold-light)' }}
+                >
+                  <Mic size={26} style={{ color: 'var(--maroon)' }} />
+                </div>
+                <p className="font-display font-bold text-sm" style={{ color: 'var(--maroon-dark)' }}>
+                  Hi! I'm your School Assistant
+                </p>
+                <p className="font-body text-xs leading-relaxed" style={{ color: 'var(--ink-60)' }}>
+                  Tap the mic below and ask me anything about Model Primary School!
+                </p>
+              </div>
+            )}
+
+            {/* User Transcript Bubble */}
+            {transcript && (
+              <div
+                className="self-end rounded-2xl rounded-tr-sm px-4 py-3 shadow-sm"
+                style={{ background: 'white', border: '1px solid var(--cream2)', maxWidth: '90%' }}
+              >
+                <p className="font-body font-bold mb-1 uppercase tracking-wide" style={{ fontSize: '10px', color: 'var(--gold-dark)' }}>You</p>
+                <p className="font-body text-sm" style={{ color: 'var(--maroon-dark)' }}>{transcript}</p>
+              </div>
+            )}
+
+            {/* Thinking Dots */}
+            {status === 'thinking' && (
+              <div
+                className="self-start flex items-center gap-2 rounded-2xl rounded-tl-sm px-4 py-3 shadow-sm"
+                style={{ background: 'white', border: '1px solid var(--cream2)' }}
+              >
+                <span className="font-body font-bold uppercase tracking-wide mr-1" style={{ fontSize: '10px', color: 'var(--ink-60)' }}>Assistant</span>
+                {[0, 150, 300].map((d) => (
+                  <span
+                    key={d}
+                    className="va-dot-bounce inline-block w-2 h-2 rounded-full"
+                    style={{ background: 'var(--maroon)', animationDelay: `${d}ms` }}
+                  />
+                ))}
+              </div>
+            )}
+
+            {/* Reply Bubble */}
+            {reply && status !== 'thinking' && (
+              <div
+                className="self-start rounded-2xl rounded-tl-sm px-4 py-3 shadow-sm"
+                style={{ background: 'var(--maroon)', maxWidth: '92%' }}
+              >
+                <p className="font-body font-bold mb-1 uppercase tracking-wide" style={{ fontSize: '10px', color: 'rgba(251,217,138,0.8)' }}>Assistant</p>
+                <p className="font-body text-sm leading-relaxed text-white">{reply}</p>
+              </div>
+            )}
+          </div>
+
+          {/* Mic Footer */}
+          <div
+            className="flex flex-col items-center gap-2 px-4 py-4"
+            style={{ background: 'white', borderTop: '1px solid var(--cream2)' }}
+          >
+            <button
+              onClick={handleMicClick}
+              aria-label={status === 'listening' ? 'Stop listening' : 'Start listening'}
+              className={`relative flex items-center justify-center rounded-full shadow-lg transition-all duration-300 border-4 border-white ${
+                status === 'listening' ? 'va-mic-pulse' : 'hover:opacity-90'
+              }`}
+              style={{
+                width: '60px',
+                height: '60px',
+                background:
+                  status === 'listening' ? '#ef4444' :
+                  status === 'speaking'  ? 'var(--green)' :
+                  'var(--maroon)',
+              }}
+            >
+              {status === 'listening'
+                ? <MicOff size={24} className="text-white" />
+                : <Mic size={24} className="text-gold" />
+              }
+            </button>
+            <p className="font-body text-center" style={{ fontSize: '11px', color: 'var(--ink-60)' }}>
+              {statusLabel}
+            </p>
+          </div>
+        </div>
+      )}
+    </>
+  );
+}
+
+/* ============================================================
    APP
    ============================================================ */
 export default function App() {
@@ -2987,6 +3336,7 @@ export default function App() {
       {pages[page]}
       <Footer setPage={setPage} />
       <FloatingCall />
+      <VoiceAssistant />
     </div>
   );
 }

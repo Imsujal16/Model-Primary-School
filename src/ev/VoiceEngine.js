@@ -1,118 +1,166 @@
 // ============================================================
-//  EV Voice Engine
-//  SpeechRecognition (STT) + SpeechSynthesis (TTS)
+//  EV Voice Engine — Dynamic TTS for Hindi & English
+//  speakEV(text, lang)  →  reads text in the correct language
+//  Sanitization: strips emojis, dashes, question marks
+//  Number fix: converts every digit to spoken word
 // ============================================================
 
-// ── TEXT-TO-SPEECH ──────────────────────────────────────────
+// ── VOICE SELECTORS ─────────────────────────────────────────
 
 /**
  * getBestHindiVoice
- * Priority 1 → Google Hindi (best humanoid voice on Chrome/Android)
- * Priority 2 → Any available Hindi voice (iOS "Lekha" / system voice)
- * Priority 3 → Fallback to first available system voice
+ * Priority 1 → Google Hindi (best on Chrome/Android)
+ * Priority 2 → Any available Hindi voice (iOS "Lekha", "Microsoft Swara")
+ * Priority 3 → Absolute fallback — first system voice
  */
 export const getBestHindiVoice = () => {
   if (typeof window === "undefined" || !window.speechSynthesis) return null;
-
   const voices = window.speechSynthesis.getVoices();
 
-  // 1. Google Hindi — most humanoid on Chrome & Android
   const googleHindi = voices.find(
     (v) => (v.lang.includes("hi") || v.lang === "hi-IN") && v.name.includes("Google")
   );
   if (googleHindi) return googleHindi;
 
-  // 2. Any Hindi voice (covers iOS "Lekha", "Microsoft Swara", system voices)
   const anyHindi = voices.find(
     (v) => v.lang.includes("hi") || v.lang === "hi-IN"
   );
   if (anyHindi) return anyHindi;
 
-  // 3. Absolute fallback — first system voice
   return voices[0] || null;
 };
 
 /**
- * cleanTextForSpeech
- * Strips corrupted/unrecognised characters before passing text to TTS,
- * preventing the engine from reading out "प्रश्नवाचक चिन्ह" (question mark)
- * for every ??? sequence that results from encoding bugs.
- *
- * Rules applied (in order):
- *  1. Remove sequences of 2+ consecutive question marks (???, ????, …)
- *  2. Remove lone ? characters that are not part of valid Hindi/English punctuation
- *  3. Strip common replacement-character artifacts (U+FFFD and U+25A1)
- *  4. Collapse multiple spaces / blank lines left behind
- *  5. Trim leading/trailing whitespace
+ * getBestEnglishVoice
+ * Priority 1 → Google Indian English (en-IN)
+ * Priority 2 → Any en-IN voice
+ * Priority 3 → Any English voice
+ * Priority 4 → First available voice
  */
-const cleanTextForSpeech = (raw) => {
+export const getBestEnglishVoice = () => {
+  if (typeof window === "undefined" || !window.speechSynthesis) return null;
+  const voices = window.speechSynthesis.getVoices();
+
+  const googleEnIN = voices.find(
+    (v) => v.lang === "en-IN" && v.name.includes("Google")
+  );
+  if (googleEnIN) return googleEnIN;
+
+  const anyEnIN = voices.find((v) => v.lang === "en-IN");
+  if (anyEnIN) return anyEnIN;
+
+  const anyEn = voices.find((v) => v.lang.startsWith("en"));
+  if (anyEn) return anyEn;
+
+  return voices[0] || null;
+};
+
+// ── SANITIZATION ─────────────────────────────────────────────
+
+// Emoji regex — covers the vast majority of emoji unicode ranges
+const EMOJI_REGEX = /[\u{1F000}-\u{1FFFF}\u{2600}-\u{26FF}\u{2700}-\u{27BF}\u{FE00}-\u{FEFF}\u{1F900}-\u{1F9FF}\u{1FA00}-\u{1FA9F}\u{231A}-\u{231B}\u{23E9}-\u{23F3}\u{23F8}-\u{23FA}\u{25AA}-\u{25AB}\u{25B6}\u{25C0}\u{25FB}-\u{25FE}\u{2614}-\u{2615}\u{2648}-\u{2653}\u{267F}\u{2693}\u{26A1}\u{26AA}-\u{26AB}\u{26BD}-\u{26BE}\u{26C4}-\u{26C5}\u{26CE}\u{26D4}\u{26EA}\u{26F2}-\u{26F3}\u{26F5}\u{26FA}\u{26FD}\u{2702}\u{2705}\u{2708}-\u{270D}\u{270F}\u{2712}\u{2714}\u{2716}\u{271D}\u{2721}\u{2728}\u{2733}-\u{2734}\u{2744}\u{2747}\u{274C}\u{274E}\u{2753}-\u{2755}\u{2757}\u{2763}-\u{2764}\u{2795}-\u{2797}\u{27A1}\u{27B0}\u{27BF}\u{2934}-\u{2935}\u{2B05}-\u{2B07}\u{2B1B}-\u{2B1C}\u{2B50}\u{2B55}\u{3030}\u{303D}\u{3297}\u{3299}]/gu;
+
+/**
+ * Hindi digit map — each digit becomes its Hindi spoken word
+ */
+const HINDI_DIGIT_MAP = {
+  "0": "शून्य", "1": "एक", "2": "दो", "3": "तीन", "4": "चार",
+  "5": "पाँच", "6": "छह", "7": "सात", "8": "आठ", "9": "नौ",
+};
+
+/**
+ * English digit map — each digit becomes its English spoken word
+ */
+const ENGLISH_DIGIT_MAP = {
+  "0": "zero", "1": "one", "2": "two", "3": "three", "4": "four",
+  "5": "five", "6": "six", "7": "seven", "8": "eight", "9": "nine",
+};
+
+/**
+ * cleanTextForSpeech
+ * Strips emojis, question marks, dashes, replacement chars.
+ * Converts each digit individually to prevent "Crore/Arab" reads.
+ * @param {string} raw  - raw message text
+ * @param {string} lang - 'hi' | 'en'
+ * @returns {string} cleaned, speakable text
+ */
+const cleanTextForSpeech = (raw, lang = "hi") => {
   if (!raw) return "";
 
+  const digitMap = lang === "en" ? ENGLISH_DIGIT_MAP : HINDI_DIGIT_MAP;
+
   let cleaned = raw
-    // 0. MAGIC JUGAD: Automatically split any consecutive 10-digit numbers into individual digits
-    // Example: "9454826921" -> "9 4 5 4 8 2 6 9 2 1"
-    .replace(/(\d{10})/g, (match) => match.split("").join(" "))
-    // 1. Strip ALL '?' marks so TTS never reads out "Prashnavachak Chinh"
+    // 1. Strip emojis
+    .replace(EMOJI_REGEX, "")
+    // 2. Strip lone ? marks (prevents "Prashnavachak Chinh")
     .replace(/\?/g, "")
-    // 2. Remove Unicode replacement characters & empty-box glyphs
+    // 3. Replace dashes between content (e.g., "2026-27" → "2026 से 27" / "2026 to 27")
+    .replace(/-/g, lang === "en" ? " to " : " से ")
+    // 4. Strip Unicode replacement characters
     .replace(/[\uFFFD\u25A1]/g, "")
-    // 3. Collapse multiple spaces / blank lines left behind
-    .replace(/[\s]{2,}/g, " ")
-    // 4. Trim
+    // 5. Replace newlines with pause (comma)
+    .replace(/\n/g, ", ")
+    // 6. Strip ✅ ★ • type decorative punctuation
+    .replace(/[✅★•✨🏆🥇👑🎖️⭐🚀📌💪🌟]/g, "")
+    // 7. Convert EACH digit individually to its spoken word
+    .replace(/\d/g, (digit) => digitMap[digit] || digit)
+    // 8. Collapse multiple spaces/commas
+    .replace(/[,\s]{2,}/g, ", ")
+    // 9. Trim
     .trim();
 
   return cleaned;
 };
 
 /**
- * isMeaningfulText — returns false when the text is empty or contains
- * ONLY question marks, whitespace, or punctuation (nothing speakable).
+ * isMeaningfulText — guards against speaking empty/punctuation-only strings
  */
 const isMeaningfulText = (text) => {
-  // Remove all punctuation, spaces, question marks; if nothing remains → meaningless
-  const stripped = text.replace(/[\s\p{P}\?]/gu, "");
+  const stripped = text.replace(/[\s,।,.।\p{P}]/gu, "");
   return stripped.length > 0;
 };
 
+// ── PUBLIC API ────────────────────────────────────────────────
+
 /**
- * speakEV — speaks text with EV's warm, human-like Hindi tone.
- * rate 0.9  = slightly relaxed, natural speed
- * pitch 1.05 = soft female tone threshold
+ * speakEV(text, lang)
+ * The primary TTS function.
+ * @param {string} text  - text to speak (may contain emojis, markdown)
+ * @param {string} lang  - 'hi' (default) or 'en'
+ * @param {Function} [onEnd] - optional callback when speech ends
  */
-export const speakEV = (text, onEnd) => {
+export const speakEV = (text, lang = "hi", onEnd) => {
   if (typeof window === "undefined" || !window.speechSynthesis || !text) return;
   window.speechSynthesis.cancel();
 
-  // 1. Markdown ya symbols (jaise `-` minus, `?`) ko hata do taaki "minus" ya "prashnavachak" na bole
-  let cleanText = cleanTextForSpeech(text);
-  cleanText = cleanText.replace(/-/g, " से "); // jaise "2026-27" ban jayega "2026 से 27"
-  cleanText = cleanText.replace(/\?/g, "");
+  const isHindi = lang === "hi" || lang === "hi-IN" || lang.startsWith("hi");
 
-  // 2. Jahaan bhi numbers hain, unke har ek digit ko space dekar alag kar do aur Hindi words me badal do
-  // Ye "Arab/Crore" wali problem ko hamesha ke liye khatam kar dega
-  const digitMap = {
-    "0": "शून्य ", "1": "एक ", "2": "दो ", "3": "तीन ", "4": "चार ",
-    "5": "पाँच ", "6": "छह ", "7": "सात ", "8": "आठ ", "9": "नौ "
-  };
+  const cleanText = cleanTextForSpeech(text, isHindi ? "hi" : "en");
 
-  cleanText = cleanText.replace(/\d/g, (digit) => digitMap[digit] || digit);
-
-  // Guard: if nothing meaningful remains, don't speak (avoids "प्रश्नवाचक चिन्ह")
   if (!cleanText || !isMeaningfulText(cleanText)) return;
 
   const utterance = new SpeechSynthesisUtterance(cleanText);
 
-  // 3. Voice selection logic (Google Hindi)
-  const hindiVoice = getBestHindiVoice();
-  if (hindiVoice) {
-    utterance.voice = hindiVoice;
-    utterance.lang = hindiVoice.lang;
+  if (isHindi) {
+    const hindiVoice = getBestHindiVoice();
+    if (hindiVoice) {
+      utterance.voice = hindiVoice;
+      utterance.lang = hindiVoice.lang;
+    } else {
+      utterance.lang = "hi-IN";
+    }
   } else {
-    utterance.lang = "hi-IN";
+    const engVoice = getBestEnglishVoice();
+    if (engVoice) {
+      utterance.voice = engVoice;
+      utterance.lang = engVoice.lang;
+    } else {
+      utterance.lang = "en-IN";
+    }
   }
 
-  utterance.rate = 0.9;  // Thoda aaram se natural pace me bolegi
-  utterance.pitch = 1.05;
+  utterance.rate  = 0.9;
+  utterance.pitch = isHindi ? 1.05 : 1.0;
   utterance.volume = 1;
 
   if (onEnd) utterance.onend = onEnd;
@@ -120,47 +168,30 @@ export const speakEV = (text, onEnd) => {
 };
 
 /**
- * speakText — backward-compatible wrapper around speakEV.
- * lang param is kept for call-sites that pass 'hi-IN' or 'en-IN';
- * for English we still pick a sensible voice.
+ * speakText — backward-compatible wrapper
+ * @param {string} text
+ * @param {string} lang - 'hi-IN' | 'en-IN' | 'hi' | 'en'
+ * @param {Function} [onEnd]
  */
 export function speakText(text, lang = "hi-IN", onEnd) {
-  if (typeof window === "undefined" || !window.speechSynthesis || !text) return;
-
-  const isHindi = lang === "hi-IN" || lang.startsWith("hi");
-
-  if (isHindi) {
-    speakEV(text, onEnd);
-    return;
-  }
-
-  // English path — sanitize first, then pick an Indian-English voice
-  const cleanedEng = cleanTextForSpeech(text);
-  if (!cleanedEng || !isMeaningfulText(cleanedEng)) return;
-
-  window.speechSynthesis.cancel();
-  const utterance = new SpeechSynthesisUtterance(cleanedEng);
-  const voices = window.speechSynthesis.getVoices();
-  const engVoice =
-    voices.find((v) => v.lang === "en-IN") ||
-    voices.find((v) => v.lang.startsWith("en")) ||
-    null;
-  if (engVoice) utterance.voice = engVoice;
-  utterance.lang   = lang;
-  utterance.rate   = 0.92;
-  utterance.pitch  = 1.0;
-  utterance.volume = 1;
-  if (onEnd) utterance.onend = onEnd;
-  window.speechSynthesis.speak(utterance);
+  const isHindi = lang === "hi-IN" || lang === "hi" || lang.startsWith("hi");
+  speakEV(text, isHindi ? "hi" : "en", onEnd);
 }
 
+/**
+ * stopSpeech — cancels any ongoing TTS utterance
+ */
 export function stopSpeech() {
   if (typeof window !== "undefined" && window.speechSynthesis) {
     window.speechSynthesis.cancel();
   }
 }
 
-// ── SPEECH-TO-TEXT ───────────────────────────────────────────
+// ── SPEECH RECOGNITION (STT) ──────────────────────────────────
+
+/**
+ * createRecognition — creates and configures a SpeechRecognition instance
+ */
 export function createRecognition({ onResult, onListeningChange, onError }) {
   const SpeechRecognition =
     window.SpeechRecognition || window.webkitSpeechRecognition;
@@ -170,7 +201,7 @@ export function createRecognition({ onResult, onListeningChange, onError }) {
   rec.continuous      = false;
   rec.interimResults  = true;
   rec.maxAlternatives = 1;
-  rec.lang            = "hi-IN"; // captures Hindi by default
+  rec.lang            = "hi-IN";
 
   rec.onstart  = () => onListeningChange(true);
   rec.onend    = () => onListeningChange(false);
@@ -192,10 +223,11 @@ export function createRecognition({ onResult, onListeningChange, onError }) {
   return rec;
 }
 
+// ── CAPABILITY CHECKS ─────────────────────────────────────────
+
 export const isSpeechSupported = () =>
   typeof window !== "undefined" &&
   !!(window.SpeechRecognition || window.webkitSpeechRecognition);
 
 export const isTTSSupported = () =>
   typeof window !== "undefined" && !!window.speechSynthesis;
-

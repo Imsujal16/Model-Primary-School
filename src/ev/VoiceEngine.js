@@ -91,9 +91,14 @@ const cleanTextForSpeech = (raw, lang = "hi") => {
     // 7. Only split 10-digit phone numbers into spaced digits so TTS reads them digit-by-digit.
     //    Smaller numbers like "1988", "350", "Class 5" are left untouched for natural reading.
     .replace(/\b\d{10}\b/g, (match) => match.split("").join(" "))
-    // 8. Collapse multiple spaces/commas
+    // 8. Fix time reading: strip :00 so "8:00" → "8" (prevents TTS auto-appending "baje" again).
+    //    E.g. "8:00 बजे" → "8 बजे" (not "आठ बजे बजे").
+    .replace(/:00/g, "")
+    // 9. Collapse any accidental double "बजे बजे" → "बजे" (safety net).
+    .replace(/बजे\s*बजे/g, "बजे")
+    // 10. Collapse multiple spaces/commas
     .replace(/[,\s]{2,}/g, ", ")
-    // 9. Trim
+    // 11. Trim
     .trim();
 
   return cleaned;

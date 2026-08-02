@@ -81,29 +81,38 @@ const isMeaningfulText = (text) => {
  */
 export const speakEV = (text, onEnd) => {
   if (typeof window === "undefined" || !window.speechSynthesis || !text) return;
-
-  // ── Sanitize: strip encoding garbage before speaking ──
-  const cleaned = cleanTextForSpeech(text);
-
-  // Guard: if nothing meaningful remains, don't speak (avoids "प्रश्नवाचक चिन्ह")
-  if (!cleaned || !isMeaningfulText(cleaned)) return;
-
-  // Cancel anything currently being spoken
   window.speechSynthesis.cancel();
 
-  const utterance = new SpeechSynthesisUtterance(cleaned);
-  const hindiVoice = getBestHindiVoice();
+  // 1. Markdown ya symbols (jaise `-` minus, `?`) ko hata do taaki "minus" ya "prashnavachak" na bole
+  let cleanText = cleanTextForSpeech(text);
+  cleanText = cleanText.replace(/-/g, " से "); // jaise "2026-27" ban jayega "2026 से 27"
+  cleanText = cleanText.replace(/\?/g, "");
 
+  // 2. Jahaan bhi numbers hain, unke har ek digit ko space dekar alag kar do aur Hindi words me badal do
+  // Ye "Arab/Crore" wali problem ko hamesha ke liye khatam kar dega
+  const digitMap = {
+    "0": "शून्य ", "1": "एक ", "2": "दो ", "3": "तीन ", "4": "चार ",
+    "5": "पाँच ", "6": "छह ", "7": "सात ", "8": "आठ ", "9": "नौ "
+  };
+
+  cleanText = cleanText.replace(/\d/g, (digit) => digitMap[digit] || digit);
+
+  // Guard: if nothing meaningful remains, don't speak (avoids "प्रश्नवाचक चिन्ह")
+  if (!cleanText || !isMeaningfulText(cleanText)) return;
+
+  const utterance = new SpeechSynthesisUtterance(cleanText);
+
+  // 3. Voice selection logic (Google Hindi)
+  const hindiVoice = getBestHindiVoice();
   if (hindiVoice) {
     utterance.voice = hindiVoice;
-    utterance.lang  = hindiVoice.lang;
+    utterance.lang = hindiVoice.lang;
   } else {
     utterance.lang = "hi-IN";
   }
 
-  // EV's human-like tone settings
-  utterance.rate   = 0.9;   // aaram se bolegi — natural speed
-  utterance.pitch  = 1.05;  // soft female tone threshold
+  utterance.rate = 0.9;  // Thoda aaram se natural pace me bolegi
+  utterance.pitch = 1.05;
   utterance.volume = 1;
 
   if (onEnd) utterance.onend = onEnd;

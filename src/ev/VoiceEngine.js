@@ -49,16 +49,16 @@ const cleanTextForSpeech = (raw) => {
   if (!raw) return "";
 
   let cleaned = raw
-    // 1. Remove runs of 2+ question marks (encoding garbage)
-    .replace(/\?{2,}/g, "")
-    // 2. Remove isolated ? that are surrounded by spaces or at string edges
-    //    (keeps valid "?" at end of real English questions)
-    .replace(/(^|\s)\?(\s|$)/g, " ")
-    // 3. Remove Unicode replacement characters & empty-box glyphs
+    // 0. MAGIC JUGAD: Automatically split any consecutive 10-digit numbers into individual digits
+    // Example: "9454826921" -> "9 4 5 4 8 2 6 9 2 1"
+    .replace(/(\d{10})/g, (match) => match.split("").join(" "))
+    // 1. Strip ALL '?' marks so TTS never reads out "Prashnavachak Chinh"
+    .replace(/\?/g, "")
+    // 2. Remove Unicode replacement characters & empty-box glyphs
     .replace(/[\uFFFD\u25A1]/g, "")
-    // 4. Collapse 3+ consecutive whitespace/newlines into a single space
-    .replace(/[\s]{3,}/g, " ")
-    // 5. Trim
+    // 3. Collapse multiple spaces / blank lines left behind
+    .replace(/[\s]{2,}/g, " ")
+    // 4. Trim
     .trim();
 
   return cleaned;

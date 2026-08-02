@@ -612,7 +612,7 @@ function Navbar({ page, setPage }) {
           <Emblem size={38} className="shrink-0 w-9 h-9 sm:w-[46px] sm:h-[46px]" />
           <span className="leading-tight min-w-0">
             <span className="block font-display font-extrabold text-maroon-dark text-xs sm:text-base md:text-lg truncate max-w-[145px] min-[380px]:max-w-[195px] sm:max-w-none">
-              Model Primary School
+              {t('school.name')}
             </span>
             <span className="block font-body text-[9px] sm:text-xs text-ink-60 truncate max-w-[145px] min-[380px]:max-w-[195px] sm:max-w-none">
               {t('nav.tagline')}
@@ -692,7 +692,7 @@ function Footer({ setPage }) {
         <div className="sm:col-span-2 md:col-span-2">
           <div className="flex items-center gap-3 mb-3 md:mb-4">
             <Emblem size={44} className="sm:w-[48px] sm:h-[48px]" />
-            <span className="font-display font-extrabold text-base sm:text-lg text-white">Model Primary School</span>
+            <span className="font-display font-extrabold text-base sm:text-lg text-white">{t('school.name')}</span>
           </div>
           <p className="font-body text-xs sm:text-sm text-gold-light-80 max-w-sm leading-relaxed">
             {t('footer.about')}
@@ -742,105 +742,96 @@ function Footer({ setPage }) {
 /* ============================================================
    HOME PAGE
    ============================================================ */
-const whyChooseUsTabs = [
-  {
-    id: 'academics',
-    label: 'Academics & Teachers',
-    icon: GraduationCap,
-    features: [
-      { icon: Languages,    title: 'English Medium Education',         desc: 'Structured English-medium instruction that builds strong communication skills from the very first year.' },
-      { icon: HeartHandshake, title: 'Caring & Experienced Teachers',  desc: 'Warm, experienced teachers who know each child by name and nurture them like their own.' },
-      { icon: Puzzle,       title: 'Activity-Based & Joyful Learning', desc: 'Lessons built around hands-on activities, so children learn by doing, not just by listening.' },
-      { icon: Compass,      title: 'Educational Tour Trips',           desc: 'Guided educational field excursions to historical, cultural and nature sites for experiential learning.' },
-      { icon: Megaphone,    title: 'Village Awareness Programmes',    desc: 'Student & staff rallies raising community awareness on health, sanitation, literacy and environment in local villages.' },
-    ],
-  },
-  {
-    id: 'safety',
-    label: 'Campus Safety',
-    icon: ShieldCheck,
-    features: [
-      { icon: ShieldCheck,  title: 'Government Recognized Institution', desc: 'A fully government-recognized school, so your child\'s early education stands on solid, certified ground.' },
-      { icon: Video,        title: 'Safe & Secure Campus with CCTV',    desc: 'The full campus is monitored with CCTV surveillance, giving parents complete peace of mind through the school day.' },
-      { icon: Bus,          title: 'Safe & Reliable Transport',          desc: 'Convenient transport facilities available for students to ensure a safe and comfortable commute every day.' },
-      { icon: SmilePlus,    title: 'Discipline with a Friendly Environment', desc: 'A gently disciplined, friendly campus where children feel secure enough to be themselves.' },
-    ],
-  },
-  {
-    id: 'infrastructure',
-    label: 'Infrastructure',
-    icon: Library,
-    features: [
-      { icon: TreePine,     title: 'Dedicated Outdoor Play Area',       desc: 'A generous, green outdoor play area where children run, climb and play every single day.' },
-      { icon: Droplets,     title: 'Health & Hygiene First',            desc: '24/7 running water supply and RO water coolers on campus to keep children hydrated and healthy.' },
-      { icon: Library,      title: 'Well-Stocked Reading Library',      desc: 'A curated knowledge hub library with books that spark curiosity and instill a love of reading from an early age.' },
-    ],
-  },
-];
-
-const classLevels = [
-  { level: "LKG", age: "3 – 4 yrs", focus: "Rhymes, play-based learning, motor skills" },
-  { level: "UKG", age: "4 – 5 yrs", focus: "Phonics, pre-writing, number sense" },
-  { level: "Class 1", age: "5 – 6 yrs", focus: "Foundational English, Hindi & Maths" },
-  { level: "Class 2", age: "6 – 7 yrs", focus: "Reading fluency, EVS, basic science" },
-  { level: "Class 3", age: "7 – 8 yrs", focus: "Grammar, applied Maths, GK" },
-  { level: "Class 4", age: "8 – 9 yrs", focus: "Composition, EVS projects, mental Maths" },
-  { level: "Class 5", age: "9 – 10 yrs", focus: "Exam readiness for upper primary" },
-];
-
-const whyChooseUsPillars = [
-  {
-    icon: GraduationCap,
-    title: "Academic Excellence",
-    tagline: "Foundations for Bright Futures",
-    color: "bg-maroon",
-    highlights: [
-      "Structured English Medium Curriculum",
-      "Caring & Experienced Faculty",
-      "Activity-Based & Joyful Learning",
-      "GK Enrichment & Remedial Support",
-    ],
-  },
-  {
-    icon: ShieldCheck,
-    title: "Campus Safety & Care",
-    tagline: "Zero Compromise Security",
-    color: "bg-gold",
-    highlights: [
-      "24/7 CCTV Campus Monitoring",
-      "Gated Entry & Visitor Verification",
-      "Trained & Verified Support Staff",
-      "First-Aid & Emergency Readiness",
-    ],
-  },
-  {
-    icon: Building2,
-    title: "Modern Infrastructure",
-    tagline: "Equipped for Modern Learning",
-    color: "bg-maroon",
-    highlights: [
-      "Smart Projector Classrooms",
-      "Computer Education Lab",
-      "Safe Outdoor Swing & Play Area",
-      "Clean & Hygienic Sanitation",
-    ],
-  },
-  {
-    icon: Award,
-    title: "Holistic Growth",
-    tagline: "Nurturing Beyond Textbooks",
-    color: "bg-gold",
-    highlights: [
-      "Art, Craft & Creative Expression",
-      "Educational Tour Trips & Excursions",
-      "Village Community Awareness Rallies",
-      "Daily Sports & Athletic Games",
-    ],
-  },
-];
-
 function WhyTabs({ light = false }) {
+  const { t } = useLanguage();
   const [activeMobileTab, setActiveMobileTab] = useState('academics');
+
+  const whyChooseUsTabs = [
+    {
+      id: 'academics',
+      label: t("why.tab.academics.label"),
+      icon: GraduationCap,
+      features: [
+        { icon: Languages,    title: t("why.tab.academics.f1.title"), desc: t("why.tab.academics.f1.desc") },
+        { icon: HeartHandshake, title: t("why.tab.academics.f2.title"), desc: t("why.tab.academics.f2.desc") },
+        { icon: Puzzle,       title: t("why.tab.academics.f3.title"), desc: t("why.tab.academics.f3.desc") },
+        { icon: Compass,      title: t("why.tab.academics.f4.title"), desc: t("why.tab.academics.f4.desc") },
+        { icon: Megaphone,    title: t("why.tab.academics.f5.title"), desc: t("why.tab.academics.f5.desc") },
+      ],
+    },
+    {
+      id: 'safety',
+      label: t("why.tab.safety.label"),
+      icon: ShieldCheck,
+      features: [
+        { icon: ShieldCheck,  title: t("why.tab.safety.f1.title"), desc: t("why.tab.safety.f1.desc") },
+        { icon: Video,        title: t("why.tab.safety.f2.title"), desc: t("why.tab.safety.f2.desc") },
+        { icon: Bus,          title: t("why.tab.safety.f3.title"), desc: t("why.tab.safety.f3.desc") },
+        { icon: SmilePlus,    title: t("why.tab.safety.f4.title"), desc: t("why.tab.safety.f4.desc") },
+      ],
+    },
+    {
+      id: 'infrastructure',
+      label: t("why.tab.infra.label"),
+      icon: Library,
+      features: [
+        { icon: TreePine,     title: t("why.tab.infra.f1.title"), desc: t("why.tab.infra.f1.desc") },
+        { icon: Droplets,     title: t("why.tab.infra.f2.title"), desc: t("why.tab.infra.f2.desc") },
+        { icon: Library,      title: t("why.tab.infra.f3.title"), desc: t("why.tab.infra.f3.desc") },
+      ],
+    },
+  ];
+
+  const whyChooseUsPillars = [
+    {
+      icon: GraduationCap,
+      title: t("why.p1.title"),
+      tagline: t("why.p1.tagline"),
+      color: "bg-maroon",
+      highlights: [
+        t("why.p1.h1"),
+        t("why.p1.h2"),
+        t("why.p1.h3"),
+        t("why.p1.h4"),
+      ],
+    },
+    {
+      icon: ShieldCheck,
+      title: t("why.p2.title"),
+      tagline: t("why.p2.tagline"),
+      color: "bg-gold",
+      highlights: [
+        t("why.p2.h1"),
+        t("why.p2.h2"),
+        t("why.p2.h3"),
+        t("why.p2.h4"),
+      ],
+    },
+    {
+      icon: Building2,
+      title: t("why.p3.title"),
+      tagline: t("why.p3.tagline"),
+      color: "bg-maroon",
+      highlights: [
+        t("why.p3.h1"),
+        t("why.p3.h2"),
+        t("why.p3.h3"),
+        t("why.p3.h4"),
+      ],
+    },
+    {
+      icon: Award,
+      title: t("why.p4.title"),
+      tagline: t("why.p4.tagline"),
+      color: "bg-gold",
+      highlights: [
+        t("why.p4.h1"),
+        t("why.p4.h2"),
+        t("why.p4.h3"),
+        t("why.p4.h4"),
+      ],
+    },
+  ];
 
   return (
     <div>
@@ -877,7 +868,7 @@ function WhyTabs({ light = false }) {
                   <tab.icon size={22} className="text-gold" strokeWidth={2} />
                 </div>
                 <div>
-                  <span className="font-display font-bold uppercase tracking-widest text-[9px] text-gold-dark block">Pillar Category</span>
+                  <span className="font-display font-bold uppercase tracking-widest text-[9px] text-gold-dark block">{t("why.pillarCategory")}</span>
                   <h3 className="font-display font-extrabold text-xl text-maroon-dark">{tab.label}</h3>
                 </div>
               </div>
@@ -917,7 +908,7 @@ function WhyTabs({ light = false }) {
                     <Icon size={26} className={isGoldHeader ? "text-maroon-dark" : "text-gold"} strokeWidth={2} />
                   </div>
                   <span className="bg-cream2 text-maroon-dark font-body text-[10px] font-bold px-2.5 py-1 rounded-full border border-gold-light">
-                    Pillar
+                    {t("why.pillar")}
                   </span>
                 </div>
                 <h3 className="font-display font-extrabold text-xl text-maroon-dark leading-tight">{p.title}</h3>
@@ -938,7 +929,7 @@ function WhyTabs({ light = false }) {
 
               {/* Footer Assurance */}
               <div className="mt-6 pt-3 border-t border-cream2 flex items-center justify-between text-[11px] font-display font-bold text-maroon-dark">
-                <span>Model School Standard</span>
+                <span>{t("why.standard")}</span>
                 <Star size={14} className="text-gold fill-gold shrink-0" />
               </div>
             </div>
@@ -953,6 +944,16 @@ function WhyTabs({ light = false }) {
 
 function HomePage({ setPage }) {
   const { t } = useLanguage();
+  const classLevels = [
+    { level: "LKG", age: "3 – 4 yrs", focus: t("classes.lkg.focus") },
+    { level: "UKG", age: "4 – 5 yrs", focus: t("classes.ukg.focus") },
+    { level: "Class 1", age: "5 – 6 yrs", focus: t("classes.c1.focus") },
+    { level: "Class 2", age: "6 – 7 yrs", focus: t("classes.c2.focus") },
+    { level: "Class 3", age: "7 – 8 yrs", focus: t("classes.c3.focus") },
+    { level: "Class 4", age: "8 – 9 yrs", focus: t("classes.c4.focus") },
+    { level: "Class 5", age: "9 – 10 yrs", focus: t("classes.c5.focus") },
+  ];
+
   return (
     <div>
       {/* HERO */}
@@ -1040,9 +1041,9 @@ function HomePage({ setPage }) {
       <section className="bg-cream py-16 md:py-20">
         <div className="max-w-4xl mx-auto px-6">
           <div className="text-center max-w-2xl mx-auto mb-16">
-            <div className="flex justify-center"><Eyebrow>Classes We Offer</Eyebrow></div>
-            <h2 className="font-display font-extrabold text-3xl md:text-4xl text-maroon-dark">LKG to Class 5</h2>
-            <p className="font-body text-ink-60 mt-3 text-sm">A clear learning journey from early play-based discovery to exam-ready foundations.</p>
+            <div className="flex justify-center"><Eyebrow>{t('classes.eyebrow')}</Eyebrow></div>
+            <h2 className="font-display font-extrabold text-3xl md:text-4xl text-maroon-dark">{t('classes.h2')}</h2>
+            <p className="font-body text-ink-60 mt-3 text-sm">{t('classes.body')}</p>
           </div>
           {/* 📱 MOBILE VIEW: Premium Left-Aligned Vertical Educational Stepper (< md) */}
           <div className="md:hidden relative pl-2 pr-1">
@@ -1073,7 +1074,7 @@ function HomePage({ setPage }) {
                       <div className="flex items-center justify-between gap-2 mb-2">
                         <div>
                           <span className="font-display font-bold uppercase tracking-widest text-[9px] text-gold-dark block">
-                            Stage {i + 1} of 7
+                            {t('classes.stage')} {i + 1} {t('classes.of')} 7
                           </span>
                           <h3 className="font-display font-extrabold text-xl text-maroon-dark">{c.level}</h3>
                         </div>
@@ -1130,14 +1131,12 @@ function HomePage({ setPage }) {
         <div className="max-w-6xl mx-auto px-6 grid md:grid-cols-2 gap-10 items-center relative">
           <ImagePlaceholder src="/students_assembly.png" label="Morning assembly" caption="Students in maroon & pink uniforms" tone="pink" ratio="5 / 4" />
           <div>
-            <Eyebrow light>About Our School</Eyebrow>
-            <h2 className="font-display font-extrabold text-3xl md:text-4xl text-white leading-tight">Where Every Child Learns, Plays & Grows</h2>
+            <Eyebrow light>{t('home.about.eyebrow')}</Eyebrow>
+            <h2 className="font-display font-extrabold text-3xl md:text-4xl text-white leading-tight">{t('home.about.h2')}</h2>
             <p className="font-body text-gold-light-85 mt-4 leading-relaxed">
-              Model Primary School has been a trusted name for early education in Bharsare and the surrounding
-              Bhadaiyan community, offering a government-recognized, English medium curriculum from LKG to Class 5
-              in a safe, joyful and disciplined environment.
+              {t('home.about.body')}
             </p>
-            <CTAButton variant="gold" onClick={() => setPage("about")} className="mt-6">Read Our Story</CTAButton>
+            <CTAButton variant="gold" onClick={() => setPage("about")} className="mt-6">{t('home.about.btn')}</CTAButton>
           </div>
         </div>
       </section>
@@ -1149,17 +1148,17 @@ function HomePage({ setPage }) {
         <div className="max-w-6xl mx-auto px-6">
           <div className="flex items-end justify-between flex-wrap gap-4">
             <div>
-              <Eyebrow>Life at School</Eyebrow>
-              <h2 className="font-display font-extrabold text-3xl md:text-4xl text-maroon-dark">Event Highlights</h2>
+              <Eyebrow>{t('home.events.eyebrow')}</Eyebrow>
+              <h2 className="font-display font-extrabold text-3xl md:text-4xl text-maroon-dark">{t('home.events.h2')}</h2>
             </div>
             <button onClick={() => setPage("gallery")} className="focus-ring font-display font-bold link-arrow flex items-center gap-1">
-              View Full Gallery <ChevronRight size={18} />
+              {t('home.events.btn')} <ChevronRight size={18} />
             </button>
           </div>
           <div className="grid sm:grid-cols-3 gap-6 mt-10">
-            <ImagePlaceholder src="/annual_event.png" label="Prize Distribution" caption="Annual event under the tent canopy" />
-            <ImagePlaceholder src="/outdoor_fun.png" label="Outdoor Group Activity" caption="Games on the school ground" tone="green" />
-            <ImagePlaceholder src="/tour.png" label="Educational Tour" caption="Outing & school excursion" tone="pink" />
+            <ImagePlaceholder src="/annual_event.png" label={t('home.events.e1.label')} caption={t('home.events.e1.caption')} />
+            <ImagePlaceholder src="/outdoor_fun.png" label={t('home.events.e2.label')} caption={t('home.events.e2.caption')} tone="green" />
+            <ImagePlaceholder src="/tour.png" label={t('home.events.e3.label')} caption={t('home.events.e3.caption')} tone="pink" />
           </div>
         </div>
       </section>
@@ -1170,9 +1169,9 @@ function HomePage({ setPage }) {
       <section className="bg-gold py-14">
         <div className="max-w-4xl mx-auto px-6 text-center">
           <PartyPopper className="mx-auto text-maroon-dark mb-3" size={34} />
-          <h2 className="font-display font-extrabold text-2xl md:text-3xl text-maroon-dark">Admissions 2026-27 Open — Limited Seats Available</h2>
-          <p className="font-body text-maroon-dark-80 mt-2">Secure your child's seat at Model Primary School today.</p>
-          <CTAButton variant="primary" onClick={() => setPage("admissions")} className="mt-6">Start Admission Process</CTAButton>
+          <h2 className="font-display font-extrabold text-2xl md:text-3xl text-maroon-dark">{t('home.cta.h2')}</h2>
+          <p className="font-body text-maroon-dark-80 mt-2">{t('home.cta.body')}</p>
+          <CTAButton variant="primary" onClick={() => setPage("admissions")} className="mt-6">{t('home.cta.btn')}</CTAButton>
         </div>
       </section>
     </div>
@@ -1183,15 +1182,16 @@ function HomePage({ setPage }) {
    VISION & MISSION COMPONENT (Mobile-Optimized)
    ============================================================ */
 function VisionMissionSection() {
+  const { t } = useLanguage();
   const [activeTab, setActiveTab] = useState("vision");
 
   return (
     <section className="bg-cream2 py-16 md:py-28 relative overflow-hidden">
       <div className="max-w-6xl mx-auto px-6">
         <div className="text-center max-w-2xl mx-auto mb-8 md:mb-16">
-          <div className="flex justify-center"><Eyebrow>Our Purpose</Eyebrow></div>
-          <h2 className="font-display font-extrabold text-3xl md:text-4xl text-maroon-dark">Vision &amp; Mission</h2>
-          <p className="font-body text-ink-60 text-sm mt-2 hidden md:block">The guiding principles behind everything we do at Model Primary School.</p>
+          <div className="flex justify-center"><Eyebrow>{t('vm.eyebrow')}</Eyebrow></div>
+          <h2 className="font-display font-extrabold text-3xl md:text-4xl text-maroon-dark">{t('vm.h2')}</h2>
+          <p className="font-body text-ink-60 text-sm mt-2 hidden md:block">{t('vm.sub')}</p>
         </div>
 
         {/* 📱 MOBILE VIEW: Interactive Segmented Control & Rich Card Deck */}
@@ -1207,7 +1207,7 @@ function VisionMissionSection() {
               }`}
             >
               <Star size={18} className={activeTab === "vision" ? "text-gold" : "text-maroon"} strokeWidth={2.2} />
-              Our Vision
+              {t('vm.tab.vision')}
             </button>
             <button
               onClick={() => setActiveTab("mission")}
@@ -1218,7 +1218,7 @@ function VisionMissionSection() {
               }`}
             >
               <HeartHandshake size={18} className="text-maroon-dark" strokeWidth={2.2} />
-              Our Mission
+              {t('vm.tab.mission')}
             </button>
           </div>
 
@@ -1236,28 +1236,26 @@ function VisionMissionSection() {
                       <Star size={22} className="text-gold" strokeWidth={2.2} />
                     </div>
                     <div>
-                      <span className="font-display font-bold uppercase tracking-widest text-[10px] text-gold-dark">Destination</span>
-                      <h3 className="font-display font-extrabold text-xl text-maroon-dark">Our Vision</h3>
+                      <span className="font-display font-bold uppercase tracking-widest text-[10px] text-gold-dark">{t('vm.dest')}</span>
+                      <h3 className="font-display font-extrabold text-xl text-maroon-dark">{t('vm.tab.vision')}</h3>
                     </div>
                   </div>
                   <span className="bg-cream2 border border-gold-light text-maroon-dark font-body text-xs font-bold px-3 py-1 rounded-full relative z-10 shadow-xs shrink-0">
-                    Future-Focused
+                    {t('vm.future')}
                   </span>
                 </div>
 
                 <p className="font-body text-ink-80 text-sm leading-relaxed mb-5">
-                  To be the most trusted primary school in Sultanpur — a place where every child from Bharsare,
-                  Bhadaiyan and the surrounding villages can access quality English-medium education and grow
-                  into a confident, curious and responsible individual.
+                  {t('vm.vision.body')}
                 </p>
 
                 {/* Scannable Pillars */}
                 <div className="pt-4 border-t border-cream3 space-y-2">
-                  <span className="font-display font-bold text-[11px] uppercase tracking-wider text-ink-50 block mb-1.5">Key Vision Pillars:</span>
+                  <span className="font-display font-bold text-[11px] uppercase tracking-wider text-ink-50 block mb-1.5">{t('vm.vision.pillars')}</span>
                   {[
-                    { icon: Sparkles, text: "Quality English-Medium Access in Rural UP" },
-                    { icon: Users, text: "Serving Children from Bharsare & Bhadaiyan" },
-                    { icon: GraduationCap, text: "Building Confident, Curious Individuals" }
+                    { icon: Sparkles, text: t('vm.vision.p1') },
+                    { icon: Users, text: t('vm.vision.p2') },
+                    { icon: GraduationCap, text: t('vm.vision.p3') }
                   ].map((p, i) => (
                     <div key={i} className="flex items-center gap-2.5 bg-cream px-3 py-2 rounded-xl border border-cream2">
                       <p.icon size={15} className="text-maroon shrink-0" strokeWidth={2} />
@@ -1278,28 +1276,26 @@ function VisionMissionSection() {
                       <HeartHandshake size={22} className="text-maroon-dark" strokeWidth={2.2} />
                     </div>
                     <div>
-                      <span className="font-display font-bold uppercase tracking-widest text-[10px] text-gold-dark">Our Commitment</span>
-                      <h3 className="font-display font-extrabold text-xl text-maroon-dark">Our Mission</h3>
+                      <span className="font-display font-bold uppercase tracking-widest text-[10px] text-gold-dark">{t('vm.commit')}</span>
+                      <h3 className="font-display font-extrabold text-xl text-maroon-dark">{t('vm.tab.mission')}</h3>
                     </div>
                   </div>
                   <span className="bg-gold-light border border-gold text-maroon-dark font-body text-xs font-bold px-3 py-1 rounded-full relative z-10 shadow-xs shrink-0">
-                    Action-Driven
+                    {t('vm.action')}
                   </span>
                 </div>
 
                 <p className="font-body text-ink-80 text-sm leading-relaxed mb-5">
-                  To nurture every child's potential through joyful, activity-based learning in a safe, disciplined
-                  and loving environment — building strong academic foundations while celebrating each child's
-                  unique strengths.
+                  {t('vm.mission.body')}
                 </p>
 
                 {/* Scannable Pillars */}
                 <div className="pt-4 border-t border-cream3 space-y-2">
-                  <span className="font-display font-bold text-[11px] uppercase tracking-wider text-ink-50 block mb-1.5">Key Mission Pillars:</span>
+                  <span className="font-display font-bold text-[11px] uppercase tracking-wider text-ink-50 block mb-1.5">{t('vm.mission.pillars')}</span>
                   {[
-                    { icon: Puzzle, text: "Joyful & Activity-Based Learning" },
-                    { icon: ShieldCheck, text: "Safe, Loving & Disciplined Campus" },
-                    { icon: Trophy, text: "Nurturing Unique Individual Potential" }
+                    { icon: Puzzle, text: t('vm.mission.p1') },
+                    { icon: ShieldCheck, text: t('vm.mission.p2') },
+                    { icon: Trophy, text: t('vm.mission.p3') }
                   ].map((p, i) => (
                     <div key={i} className="flex items-center gap-2.5 bg-cream px-3 py-2 rounded-xl border border-cream2">
                       <p.icon size={15} className="text-gold-dark shrink-0" strokeWidth={2} />
@@ -1328,24 +1324,22 @@ function VisionMissionSection() {
                     <Star size={22} className="text-gold" strokeWidth={2.2} />
                   </div>
                   <div>
-                    <span className="font-display font-bold uppercase tracking-widest text-[10px] text-gold-dark block">Destination</span>
-                    <h3 className="font-display font-bold text-xl text-maroon-dark">Our Vision</h3>
+                    <span className="font-display font-bold uppercase tracking-widest text-[10px] text-gold-dark block">{t('vm.dest')}</span>
+                    <h3 className="font-display font-bold text-xl text-maroon-dark">{t('vm.tab.vision')}</h3>
                   </div>
                 </div>
                 <span className="bg-cream2 border border-gold-light text-maroon-dark font-body text-xs font-bold px-3 py-1 rounded-full relative z-10 shadow-xs shrink-0">
-                  Future-Focused
+                  {t('vm.future')}
                 </span>
               </div>
               <p className="font-body text-ink-70 leading-relaxed mb-6">
-                To be the most trusted primary school in Sultanpur — a place where every child from Bharsare,
-                Bhadaiyan and the surrounding villages can access quality English-medium education and grow
-                into a confident, curious and responsible individual.
+                {t('vm.vision.body')}
               </p>
               <div className="pt-4 border-t border-cream3 space-y-2">
                 {[
-                  { icon: Sparkles, text: "Quality English-Medium Access in Rural UP" },
-                  { icon: Users, text: "Serving Children from Bharsare & Bhadaiyan" },
-                  { icon: GraduationCap, text: "Building Confident, Curious Individuals" }
+                  { icon: Sparkles, text: t('vm.vision.p1') },
+                  { icon: Users, text: t('vm.vision.p2') },
+                  { icon: GraduationCap, text: t('vm.vision.p3') }
                 ].map((p, i) => (
                   <div key={i} className="flex items-center gap-2.5 bg-cream px-3.5 py-2 rounded-xl border border-cream2">
                     <p.icon size={15} className="text-maroon shrink-0" strokeWidth={2} />
@@ -1362,24 +1356,22 @@ function VisionMissionSection() {
                     <HeartHandshake size={22} className="text-maroon-dark" strokeWidth={2.2} />
                   </div>
                   <div>
-                    <span className="font-display font-bold uppercase tracking-widest text-[10px] text-gold-dark block">Our Commitment</span>
-                    <h3 className="font-display font-bold text-xl text-maroon-dark">Our Mission</h3>
+                    <span className="font-display font-bold uppercase tracking-widest text-[10px] text-gold-dark block">{t('vm.commit')}</span>
+                    <h3 className="font-display font-bold text-xl text-maroon-dark">{t('vm.tab.mission')}</h3>
                   </div>
                 </div>
                 <span className="bg-gold-light border border-gold text-maroon-dark font-body text-xs font-bold px-3 py-1 rounded-full relative z-10 shadow-xs shrink-0">
-                  Action-Driven
+                  {t('vm.action')}
                 </span>
               </div>
               <p className="font-body text-ink-70 leading-relaxed mb-6">
-                To nurture every child's potential through joyful, activity-based learning in a safe, disciplined
-                and loving environment — building strong academic foundations while celebrating each child's
-                unique strengths.
+                {t('vm.mission.body')}
               </p>
               <div className="pt-4 border-t border-cream3 space-y-2">
                 {[
-                  { icon: Puzzle, text: "Joyful & Activity-Based Learning" },
-                  { icon: ShieldCheck, text: "Safe, Loving & Disciplined Campus" },
-                  { icon: Trophy, text: "Nurturing Unique Individual Potential" }
+                  { icon: Puzzle, text: t('vm.mission.p1') },
+                  { icon: ShieldCheck, text: t('vm.mission.p2') },
+                  { icon: Trophy, text: t('vm.mission.p3') }
                 ].map((p, i) => (
                   <div key={i} className="flex items-center gap-2.5 bg-cream px-3.5 py-2 rounded-xl border border-cream2">
                     <p.icon size={15} className="text-gold-dark shrink-0" strokeWidth={2} />
@@ -1399,6 +1391,8 @@ function VisionMissionSection() {
    ABOUT US PAGE
    ============================================================ */
 function AboutPage({ setPage }) {
+  const { t } = useLanguage();
+
   /* ── Count-up hooks (all fire together via one section ref) ── */
   const [statsRef, statsInView] = useInView(0.25);
   const c38  = useCountUp(38,  '+', 1600, statsInView);
@@ -1407,40 +1401,40 @@ function AboutPage({ setPage }) {
   const c7   = useCountUp(7,   '',  1000, statsInView);
 
   const statsData = [
-    { num: c38,  label: 'Years of Trust',     sub: 'Est. 1988',        icon: BookOpen      },
-    { num: c350, label: 'Happy Students',     sub: '& growing',        icon: Users         },
-    { num: c4,   label: 'Dedicated Teachers', sub: 'Expert educators', icon: GraduationCap },
-    { num: c7,   label: 'Grade Levels',       sub: 'LKG to Class 5',   icon: Star          },
+    { num: c38,  label: t('about.stat.years'),     sub: t('about.stat.years.sub'),        icon: BookOpen      },
+    { num: c350, label: t('about.stat.students'),  sub: t('about.stat.students.sub'),     icon: Users         },
+    { num: c4,   label: t('about.stat.teachers'),  sub: t('about.stat.teachers.sub'),     icon: GraduationCap },
+    { num: c7,   label: t('about.stat.classes'),   sub: t('about.stat.classes.sub'),      icon: Star          },
   ];
 
   /* ── Stagger for Why Choose Us ── */
   const [whyRef, whyVisible] = useInView(0.15);
 
   const features = [
-    { icon: Languages,   title: 'English Medium',    desc: 'Structured English-medium instruction building strong communication from day one.' },
-    { icon: ShieldCheck, title: 'Govt. Recognized',  desc: "Fully government-recognized, so your child's early education stands on certified ground." },
-    { icon: Video,       title: 'CCTV Campus',       desc: 'Full campus CCTV surveillance giving parents peace of mind throughout the school day.' },
-    { icon: TreePine,    title: 'Outdoor Play Area', desc: 'A generous green outdoor play area where children run, climb and play every single day.' },
-    { icon: Bus,         title: 'Safe Transport',    desc: 'Reliable transport facilities ensuring a safe and comfortable daily commute for every student.' },
-    { icon: Droplets,    title: 'Health & Hygiene',  desc: '24/7 running water and RO water coolers on campus keep children hydrated and healthy all day.' },
-    { icon: Library,     title: 'Knowledge Hub',     desc: 'A well-stocked reading library that nurtures curiosity and builds a lifelong love of reading.' },
+    { icon: Languages,   title: t('why.tab.academics.f1.title'),    desc: t('why.tab.academics.f1.desc') },
+    { icon: ShieldCheck, title: t('why.tab.safety.f1.title'),       desc: t('why.tab.safety.f1.desc') },
+    { icon: Video,       title: t('why.tab.safety.f2.title'),       desc: t('why.tab.safety.f2.desc') },
+    { icon: TreePine,    title: t('why.tab.infra.f1.title'),        desc: t('why.tab.infra.f1.desc') },
+    { icon: Bus,         title: t('why.tab.safety.f3.title'),       desc: t('why.tab.safety.f3.desc') },
+    { icon: Droplets,    title: t('why.tab.infra.f2.title'),        desc: t('why.tab.infra.f2.desc') },
+    { icon: Library,     title: t('why.tab.infra.f3.title'),        desc: t('why.tab.infra.f3.desc') },
   ];
 
   const teachers = [
     {
       name: 'Diksha Shrivastav',
-      role: 'Assistant Teacher',
-      award: 'State ICT Awarded ★',
+      role: t('about.faculty.role1'),
+      award: t('about.faculty.award1'),
       src: '/teacher-1.png',
     },
     {
       name: 'Sunil Singh',
-      role: 'Assistant Teacher',
+      role: t('about.faculty.role2'),
       src: '/teacher-2.png',
     },
     {
       name: 'Janki Devi',
-      role: 'Shiksha Mitra',
+      role: t('about.faculty.role3'),
       src: '/teacher-3.png',
     },
   ];
@@ -1448,35 +1442,29 @@ function AboutPage({ setPage }) {
   return (
     <div>
       <PageHero
-        eyebrow="About Us"
-        title="Model in Education — for the Children of Bharsare"
-        subtitle="A government-recognized English medium school proudly serving Bharsare, Bhadaiyan & Sultanpur since 1988."
+        eyebrow={t('nav.about')}
+        title={t('about.hero.title')}
+        subtitle={t('about.hero.subtitle')}
       />
 
       {/* HISTORY */}
       <section className="bg-cream py-16 md:py-20">
         <div className="max-w-6xl mx-auto px-6 grid md:grid-cols-2 gap-10 items-center">
           <div>
-            <Eyebrow>Our Story</Eyebrow>
-            <h2 className="font-display font-extrabold text-3xl md:text-4xl text-maroon-dark">Serving Bharsare &amp; Bhadaiyan Since 1988</h2>
+            <Eyebrow>{t('about.story.eyebrow')}</Eyebrow>
+            <h2 className="font-display font-extrabold text-3xl md:text-4xl text-maroon-dark">{t('about.story.h2')}</h2>
             <p className="font-body text-ink-70 mt-4 leading-relaxed">
-              Model Primary School was founded with a simple purpose: to give the children of Bharsare, Bhadaiyan and
-              the wider Sultanpur area access to quality, English-medium primary education close to home. What began
-              as a small neighbourhood school has grown into a trusted name for early learning in the community.
+              {t('about.story.p1')}
             </p>
             <p className="font-body text-ink-70 mt-4 leading-relaxed">
-              Today the school is a fully government-recognized institution, combining a structured academic
-              curriculum with a warm, activity-driven classroom culture — because young children learn best when
-              they are curious, active and cared for.
+              {t('about.story.p2')}
             </p>
             <p className="font-body text-ink-70 mt-4 leading-relaxed">
-              Since our establishment in 1988, we have grown from a small neighborhood initiative into a trusted
-              educational hub. Today, we proudly stand as one of the leading primary schools in the Sultanpur
-              district, trusted by over 350 families for their children's foundational years.
+              {t('about.story.p3')}
             </p>
             <div className="mt-6 flex items-center gap-3 bg-green-light rounded-2xl p-4 border border-green-30">
               <ShieldCheck className="text-green shrink-0" size={30} />
-              <p className="font-body text-sm text-ink-80"><strong className="text-maroon-dark">Government-Recognized Institution</strong> — verified and compliant with state education norms.</p>
+              <p className="font-body text-sm text-ink-80"><strong className="text-maroon-dark">{t('about.story.badge.title')}</strong>{t('about.story.badge.desc')}</p>
             </div>
           </div>
           <ImagePlaceholder src="/entrance_gate.png" label="Entrance Gate &amp; Signage" caption="Model Primary School main entrance" ratio="4 / 5" />
@@ -1489,10 +1477,10 @@ function AboutPage({ setPage }) {
       <section className="bg-cream2 py-16 md:py-20">
         <div className="max-w-6xl mx-auto px-6">
           <div className="text-center max-w-2xl mx-auto mb-12">
-            <div className="flex justify-center"><Eyebrow>By the Numbers</Eyebrow></div>
-            <h2 className="font-display font-extrabold text-3xl md:text-4xl text-maroon-dark">Model at a Glance</h2>
+            <div className="flex justify-center"><Eyebrow>{t('about.glance.eyebrow')}</Eyebrow></div>
+            <h2 className="font-display font-extrabold text-3xl md:text-4xl text-maroon-dark">{t('about.glance.h2')}</h2>
             <p className="font-body mt-3 text-base" style={{ color: 'var(--gold-dark)' }}>
-              Numbers that reflect our 38-year commitment to quality education in Bharsare.
+              {t('about.glance.sub')}
             </p>
           </div>
           <div ref={statsRef} className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -1535,25 +1523,21 @@ function AboutPage({ setPage }) {
           </div>
           <div>
             <span className="font-display font-bold uppercase tracking-widest text-xs md:text-sm" style={{ color: "var(--gold)" }}>
-              Leadership
+              {t('about.principal.eyebrow')}
             </span>
             <h2 className="font-display font-extrabold text-3xl md:text-4xl text-white mt-3 mb-5">
-              A Message from Our Principal
+              {t('about.principal.h2')}
             </h2>
             <p className="font-body leading-relaxed" style={{ color: "rgba(251,217,138,0.9)" }}>
-              Welcome to Model Primary School. When we started this journey in 1988, our vision was simple: to
-              provide high-quality, English-medium education to the children of Bharsare and Bhadaiyan. Today, I
-              am incredibly proud to say that we are the first and most trusted primary school in the Sultanpur
-              district to educate and nurture over 350 students simultaneously.
+              {t('about.principal.p1')}
             </p>
             <p className="font-body leading-relaxed mt-4" style={{ color: "rgba(251,217,138,0.9)" }}>
-              This milestone is a testament to the unwavering trust of our community and the hard work of our
-              dedicated staff. We don't just teach; we build strong foundations for a bright future.
+              {t('about.principal.p2')}
             </p>
             <div className="mt-8 flex items-center gap-4">
               <div className="w-12 h-0.5 bg-gold rounded-full" />
               <p className="font-body italic text-white text-base">
-                Smt. Vandana Yadav, <span style={{ color: "var(--gold-light)" }}>Principal</span>
+                {t('about.principal.name')}<span style={{ color: "var(--gold-light)" }}>{t('about.principal.title')}</span>
               </p>
             </div>
           </div>
@@ -1567,10 +1551,10 @@ function AboutPage({ setPage }) {
         <div className="max-w-6xl mx-auto px-6">
           {/* Section heading */}
           <div className="text-center max-w-2xl mx-auto mb-12">
-            <div className="flex justify-center"><Eyebrow>Honours & Awards</Eyebrow></div>
-            <h2 className="font-display font-extrabold text-3xl md:text-4xl text-maroon-dark">Awards &amp; Recognitions</h2>
+            <div className="flex justify-center"><Eyebrow>{t('about.awards.eyebrow')}</Eyebrow></div>
+            <h2 className="font-display font-extrabold text-3xl md:text-4xl text-maroon-dark">{t('about.awards.h2')}</h2>
             <p className="font-body text-maroon-dark font-semibold mt-3 text-sm md:text-base">
-              Prestige and national honours conferred upon our Principal, <span className="text-gold-dark font-bold underline decoration-gold">Smt. Vandana Yadav</span>, for decades of educational excellence.
+              {t('about.awards.sub.pre')}<span className="text-gold-dark font-bold underline decoration-gold">{t('about.awards.sub.name')}</span>{t('about.awards.sub.post')}
             </p>
           </div>
 
@@ -1581,25 +1565,25 @@ function AboutPage({ setPage }) {
                 icon: Trophy,
                 color: 'bg-gold',
                 textColor: 'text-maroon-dark',
-                title: 'State Teacher Award',
-                body: 'Conferred upon Principal Smt. Vandana Yadav by the Uttar Pradesh Government for outstanding contribution to primary education.',
-                ribbon: 'UP Government',
+                title: t('about.award.1.title'),
+                body: t('about.award.1.body'),
+                ribbon: t('about.award.1.ribbon'),
               },
               {
                 icon: Crown,
                 color: 'bg-maroon',
                 textColor: 'text-white',
-                title: "Governor's Excellence",
-                body: 'Conferred upon Principal Smt. Vandana Yadav by the Governor of Uttar Pradesh for excellence in educational leadership.',
-                ribbon: 'Governor of UP',
+                title: t('about.award.2.title'),
+                body: t('about.award.2.body'),
+                ribbon: t('about.award.2.ribbon'),
               },
               {
                 icon: Award,
                 color: 'bg-gold',
                 textColor: 'text-maroon-dark',
-                title: 'National Recognition',
-                body: 'Conferred upon Principal Smt. Vandana Yadav by Smt. Maneka Gandhi, MP, for exemplary service to child education.',
-                ribbon: 'MP Smt. Maneka Gandhi',
+                title: t('about.award.3.title'),
+                body: t('about.award.3.body'),
+                ribbon: t('about.award.3.ribbon'),
               },
             ].map((award) => (
               <div key={award.title} className="hover-lift relative bg-white rounded-3xl p-7 shadow-lg border-t-4 border-gold flex flex-col items-center text-center gap-4 overflow-hidden">
@@ -1626,7 +1610,7 @@ function AboutPage({ setPage }) {
             <div className="flex items-center gap-3 px-5 py-3 border-b border-white-20">
               <Star size={16} className="text-gold shrink-0" strokeWidth={2} />
               <span className="font-display font-bold text-xs tracking-widest uppercase" style={{ color: 'var(--gold)' }}>
-                District &amp; Local Honours Conferred Upon Principal Smt. Vandana Yadav
+                {t('about.awards.marquee')}
               </span>
             </div>
             <div className="py-4 px-3 overflow-hidden">
@@ -1670,12 +1654,12 @@ function AboutPage({ setPage }) {
       <section className="bg-cream py-16 md:py-24">
         <div className="max-w-6xl mx-auto px-6">
           <div className="text-center max-w-2xl mx-auto mb-16">
-            <div className="flex justify-center"><Eyebrow>Our Faculty Team</Eyebrow></div>
+            <div className="flex justify-center"><Eyebrow>{t('about.faculty.eyebrow')}</Eyebrow></div>
             <h2 className="font-display font-extrabold text-3xl md:text-4xl text-maroon-dark mt-2">
-              The Pillars of Model Primary School
+              {t('about.faculty.h2')}
             </h2>
             <p className="font-body text-ink-70 mt-3 text-sm md:text-base">
-              Our dedicated team of 3 expert educators ensuring personal care and quality learning for every child.
+              {t('about.faculty.sub')}
             </p>
           </div>
 
@@ -1693,7 +1677,7 @@ function AboutPage({ setPage }) {
                   ) : (
                     <>
                       <Camera size={44} className="text-maroon-dark-50 mb-2" strokeWidth={1.5} />
-                      <span className="font-display font-bold text-sm text-maroon-dark-60 uppercase tracking-wider">Teacher Photo</span>
+                      <span className="font-display font-bold text-sm text-maroon-dark-60 uppercase tracking-wider">{t('about.faculty.photo')}</span>
                     </>
                   )}
                   <div className="absolute top-3 right-3 bg-maroon text-white font-display text-[10px] font-bold px-3 py-1 rounded-full shadow-md border border-gold">
@@ -1730,8 +1714,8 @@ function AboutPage({ setPage }) {
           <Emblem size={320} ring={false} />
         </div>
         <div className="max-w-6xl mx-auto px-6 relative">
-          <Eyebrow light>Why Families Choose Us</Eyebrow>
-          <h2 className="font-display font-extrabold text-3xl md:text-4xl text-white mb-10">What Makes Model Primary School Different</h2>
+          <Eyebrow light>{t('about.why.eyebrow')}</Eyebrow>
+          <h2 className="font-display font-extrabold text-3xl md:text-4xl text-white mb-10">{t('about.why.h2')}</h2>
           <div ref={whyRef} className="flex flex-wrap justify-center items-stretch gap-3.5 sm:gap-5">
             {features.map((f, i) => (
               <div
@@ -1758,10 +1742,10 @@ function AboutPage({ setPage }) {
       {/* CTA to Academics */}
       <section className="bg-cream py-14">
         <div className="max-w-4xl mx-auto px-6 text-center">
-          <div className="flex justify-center mb-4"><Eyebrow>Explore Further</Eyebrow></div>
-          <h2 className="font-display font-extrabold text-2xl md:text-3xl text-maroon-dark">Curious About What We Teach?</h2>
-          <p className="font-body text-ink-70 mt-2">Visit our Academics page to explore the full curriculum, daily schedule and teaching methodology.</p>
-          <CTAButton variant="primary" onClick={() => setPage("academics")} className="mt-6">View Academics</CTAButton>
+          <div className="flex justify-center mb-4"><Eyebrow>{t('about.cta.eyebrow')}</Eyebrow></div>
+          <h2 className="font-display font-extrabold text-2xl md:text-3xl text-maroon-dark">{t('about.cta.h2')}</h2>
+          <p className="font-body text-ink-70 mt-2">{t('about.cta.body')}</p>
+          <CTAButton variant="primary" onClick={() => setPage("academics")} className="mt-6">{t('about.cta.btn')}</CTAButton>
         </div>
       </section>
     </div>
@@ -1771,100 +1755,115 @@ function AboutPage({ setPage }) {
 /* ============================================================
    ACADEMICS PAGE
    ============================================================ */
-const curriculumStages = [
-  {
-    stage: 'LKG – UKG',
-    shortName: 'LKG – UKG',
-    badge: 'Stage 01 • Pre-Primary',
-    age: 'Ages 3 – 5 Years',
-    headline: 'Foundational Play, Phonics & Pre-Writing',
-    desc: 'A joyful, activity-based introduction to school life focusing on language development, motor skills, and creative play.',
-    outcome: '✨ 100% Activity & Story-Based Foundation',
-    subjects: [
-      { name: 'Rhymes & Stories', icon: Music },
-      { name: 'Phonics & Speech', icon: BookOpen },
-      { name: 'Pre-Writing Skills', icon: Sparkles },
-      { name: 'Number Sense', icon: Brain },
-      { name: 'Art & Craft', icon: Palette },
-      { name: 'Free Play & Games', icon: SmilePlus },
-    ],
-  },
-  {
-    stage: 'Class 1 – 2',
-    shortName: 'Class 1 – 2',
-    badge: 'Stage 02 • Primary I',
-    age: 'Ages 6 – 7 Years',
-    headline: 'Core Literacy, Numeracy & General Knowledge',
-    desc: 'Building confident reading, structured writing, basic mathematics, and environmental curiosity in young learners.',
-    outcome: '📚 Strong Academic Reading & Math Habits',
-    subjects: [
-      { name: 'English Literature', icon: BookOpen },
-      { name: 'Hindi Language', icon: Languages },
-      { name: 'Mathematics', icon: Brain },
-      { name: 'Environmental Studies', icon: TreePine },
-      { name: 'General Knowledge', icon: Sparkles },
-      { name: 'Art & Physical Ed', icon: Palette },
-    ],
-  },
-  {
-    stage: 'Class 3 – 5',
-    shortName: 'Class 3 – 5',
-    badge: 'Stage 03 • Primary II',
-    age: 'Ages 8 – 10 Years',
-    headline: 'Advanced Concepts, Science & Computer Basics',
-    desc: 'Preparing students for middle school with structured science, computer education, analytical math, and leadership.',
-    outcome: '🚀 Computer-Ready & Exam-Prepared Minds',
-    subjects: [
-      { name: 'English Grammar', icon: BookOpen },
-      { name: 'Hindi Literature', icon: Languages },
-      { name: 'Advanced Mathematics', icon: Brain },
-      { name: 'EVS / Science', icon: TreePine },
-      { name: 'Computer Basics', icon: Computer },
-      { name: 'GK, Art & Sports', icon: Trophy },
-    ],
-  },
-];
-
-const dailyRoutine = [
-  { time: "8:00 AM", activity: "Morning Assembly & Prayer" },
-  { time: "8:20 AM", activity: "First Teaching Period" },
-  { time: "9:50 AM", activity: "Short Break" },
-  { time: "10:00 AM", activity: "Core Subject Periods" },
-  { time: "12:00 PM", activity: "Lunch & Outdoor Play" },
-  { time: "12:40 PM", activity: "Activity / Co-Curricular Period" },
-  { time: "1:30 PM", activity: "Closing Assembly & Dismissal" },
-];
-
-const methodologyPillars = [
-  { icon: Puzzle, title: "Activity-Based Learning", desc: "Concepts introduced through hands-on activities, stories and play rather than rote memorization." },
-  { icon: HeartHandshake, title: "Individual Attention", desc: "Small, manageable class sizes so every child gets noticed, encouraged and gently corrected." },
-  { icon: Trophy, title: "Co-Curricular Balance", desc: "Sports, art and cultural events treated as seriously as textbook learning." },
-  { icon: SmilePlus, title: "Friendly Discipline", desc: "Clear routines and gentle discipline that build good habits without fear." },
-];
-
 function AcademicsPage({ setPage }) {
+  const { t } = useLanguage();
   const [selectedClass, setSelectedClass] = useState(null);
   const [activeStageIndex, setActiveStageIndex] = useState(0);
-  const activeStage = curriculumStages[activeStageIndex];
+
+  const curriculumStages = [
+    {
+      stage: t('acad.curr.s1.stage'),
+      shortName: t('acad.curr.s1.stage'),
+      badge: t('acad.curr.s1.badge'),
+      age: t('acad.curr.s1.age'),
+      headline: t('acad.curr.s1.headline'),
+      desc: t('acad.curr.s1.desc'),
+      outcome: t('acad.curr.s1.outcome'),
+      subjects: [
+        { name: t('acad.curr.s1.sub.1'), icon: Music },
+        { name: t('acad.curr.s1.sub.2'), icon: BookOpen },
+        { name: t('acad.curr.s1.sub.3'), icon: Sparkles },
+        { name: t('acad.curr.s1.sub.4'), icon: Brain },
+        { name: t('acad.curr.s1.sub.5'), icon: Palette },
+        { name: t('acad.curr.s1.sub.6'), icon: SmilePlus },
+      ],
+      subjectsStr: t('acad.curr.s1.subjects_str'),
+    },
+    {
+      stage: t('acad.curr.s2.stage'),
+      shortName: t('acad.curr.s2.stage'),
+      badge: t('acad.curr.s2.badge'),
+      age: t('acad.curr.s2.age'),
+      headline: t('acad.curr.s2.headline'),
+      desc: t('acad.curr.s2.desc'),
+      outcome: t('acad.curr.s2.outcome'),
+      subjects: [
+        { name: t('acad.curr.s2.sub.1'), icon: BookOpen },
+        { name: t('acad.curr.s2.sub.2'), icon: Languages },
+        { name: t('acad.curr.s2.sub.3'), icon: Brain },
+        { name: t('acad.curr.s2.sub.4'), icon: TreePine },
+        { name: t('acad.curr.s2.sub.5'), icon: Sparkles },
+        { name: t('acad.curr.s2.sub.6'), icon: Palette },
+      ],
+      subjectsStr: t('acad.curr.s2.subjects_str'),
+    },
+    {
+      stage: t('acad.curr.s3.stage'),
+      shortName: t('acad.curr.s3.stage'),
+      badge: t('acad.curr.s3.badge'),
+      age: t('acad.curr.s3.age'),
+      headline: t('acad.curr.s3.headline'),
+      desc: t('acad.curr.s3.desc'),
+      outcome: t('acad.curr.s3.outcome'),
+      subjects: [
+        { name: t('acad.curr.s3.sub.1'), icon: BookOpen },
+        { name: t('acad.curr.s3.sub.2'), icon: Languages },
+        { name: t('acad.curr.s3.sub.3'), icon: Brain },
+        { name: t('acad.curr.s3.sub.4'), icon: TreePine },
+        { name: t('acad.curr.s3.sub.5'), icon: Computer },
+        { name: t('acad.curr.s3.sub.6'), icon: Trophy },
+      ],
+      subjectsStr: t('acad.curr.s3.subjects_str'),
+    },
+  ];
+
+  const classLevels = [
+    { level: "LKG", age: "3 – 4 yrs", focus: t("classes.lkg.focus") },
+    { level: "UKG", age: "4 – 5 yrs", focus: t("classes.ukg.focus") },
+    { level: "Class 1", age: "5 – 6 yrs", focus: t("classes.c1.focus") },
+    { level: "Class 2", age: "6 – 7 yrs", focus: t("classes.c2.focus") },
+    { level: "Class 3", age: "7 – 8 yrs", focus: t("classes.c3.focus") },
+    { level: "Class 4", age: "8 – 9 yrs", focus: t("classes.c4.focus") },
+    { level: "Class 5", age: "9 – 10 yrs", focus: t("classes.c5.focus") },
+  ];
+
+  const dailyRoutine = [
+    { time: t('acad.routine.r1.time'), activity: t('acad.routine.r1.act') },
+    { time: t('acad.routine.r2.time'), activity: t('acad.routine.r2.act') },
+    { time: t('acad.routine.r3.time'), activity: t('acad.routine.r3.act') },
+    { time: t('acad.routine.r4.time'), activity: t('acad.routine.r4.act') },
+    { time: t('acad.routine.r5.time'), activity: t('acad.routine.r5.act') },
+    { time: t('acad.routine.r6.time'), activity: t('acad.routine.r6.act') },
+    { time: t('acad.routine.r7.time'), activity: t('acad.routine.r7.act') },
+  ];
+
+  const methodologyPillars = [
+    { icon: Puzzle, title: t('acad.method.m1.title'), desc: t('acad.method.m1.desc') },
+    { icon: HeartHandshake, title: t('acad.method.m2.title'), desc: t('acad.method.m2.desc') },
+    { icon: Trophy, title: t('acad.method.m3.title'), desc: t('acad.method.m3.desc') },
+    { icon: SmilePlus, title: t('acad.method.m4.title'), desc: t('acad.method.m4.desc') },
+  ];
+
+  const activeStage = curriculumStages[activeStageIndex] || curriculumStages[0];
 
   return (
     <div>
       <PageHero
-        eyebrow="Academics"
-        title="A Curriculum Built for Curious Young Minds"
-        subtitle="From playful phonics in LKG to exam-ready foundations in Class 5 — every stage is purposefully designed."
+        eyebrow={t('acad.hero.eyebrow')}
+        title={t('acad.hero.title')}
+        subtitle={t('acad.hero.subtitle')}
       />
 
       {/* CURRICULUM — Concept 1: Interactive Segmented Stage Switcher & Dynamic Canvas */}
       <section className="bg-cream py-14 md:py-24 w-full overflow-hidden">
         <div className="max-w-6xl mx-auto px-5 sm:px-8 md:px-10">
           <div className="text-center max-w-2xl mx-auto mb-8 md:mb-12">
-            <div className="flex justify-center"><Eyebrow>Curriculum</Eyebrow></div>
+            <div className="flex justify-center"><Eyebrow>{t('acad.curr.eyebrow')}</Eyebrow></div>
             <h2 className="font-display font-extrabold text-3xl sm:text-4xl md:text-5xl text-maroon-dark mt-2 mb-3">
-              What Children Learn, Stage by Stage
+              {t('acad.curr.h2')}
             </h2>
             <p className="font-body text-ink-70 text-xs sm:text-sm md:text-base leading-relaxed">
-              Our curriculum follows government-prescribed syllabi, enriched with activity-based learning at every level.
+              {t('acad.curr.sub')}
             </p>
           </div>
 
@@ -1920,12 +1919,12 @@ function AcademicsPage({ setPage }) {
               {/* Key Subjects Grid */}
               <div className="mb-5">
                 <span className="font-display font-bold uppercase tracking-widest text-[9px] text-gold-dark block mb-2.5">
-                  Key Subjects & Learning Focus
+                  {t('acad.curr.keysubjects')}
                 </span>
                 <div className="grid grid-cols-2 gap-2.5">
-                  {activeStage.subjects.map((sub) => (
+                  {activeStage.subjects.map((sub, sIdx) => (
                     <div
-                      key={sub.name}
+                      key={sIdx}
                       className="flex gap-2.5 items-center p-3 rounded-2xl bg-cream border border-cream2"
                     >
                       <div className="w-8 h-8 rounded-xl bg-maroon flex items-center justify-center shrink-0 shadow-xs">
@@ -1949,14 +1948,10 @@ function AcademicsPage({ setPage }) {
 
           {/* 💻 DESKTOP VIEW: 100% Original Layout Restored (>= md) */}
           <div className="hidden md:grid gap-3.5 sm:gap-5">
-            {[
-              { stage: "LKG – UKG", subjects: "Rhymes & Stories, Phonics, Pre-Writing, Number Sense, Art & Craft, Free Play" },
-              { stage: "Class 1 – 2", subjects: "English, Hindi, Mathematics, EVS, GK, Art & Craft, Physical Education" },
-              { stage: "Class 3 – 5", subjects: "English, Hindi, Mathematics, EVS/Science, GK, Computer Basics, Art, Physical Education" },
-            ].map((c) => (
+            {curriculumStages.map((c) => (
               <div key={c.stage} className="bg-white rounded-2xl sm:rounded-3xl p-4 sm:p-6 md:p-7 shadow-md flex flex-col md:flex-row md:items-center gap-2 sm:gap-3 md:gap-8 border-l-4 border-gold">
                 <span className="font-display font-extrabold text-maroon-dark text-base sm:text-lg md:w-40 shrink-0">{c.stage}</span>
-                <p className="font-body text-ink-70 text-xs sm:text-sm md:text-base leading-relaxed">{c.subjects}</p>
+                <p className="font-body text-ink-70 text-xs sm:text-sm md:text-base leading-relaxed">{c.subjectsStr}</p>
               </div>
             ))}
           </div>
@@ -1969,8 +1964,8 @@ function AcademicsPage({ setPage }) {
       <section className="bg-cream2 py-12 md:py-20">
         <div className="max-w-6xl mx-auto px-5 sm:px-6">
           <div className="text-center max-w-2xl mx-auto mb-8 md:mb-12">
-            <div className="flex justify-center"><Eyebrow>Classes We Offer</Eyebrow></div>
-            <h2 className="font-display font-extrabold text-2xl sm:text-3xl md:text-4xl text-maroon-dark">LKG to Class 5</h2>
+            <div className="flex justify-center"><Eyebrow>{t('acad.classes.eyebrow')}</Eyebrow></div>
+            <h2 className="font-display font-extrabold text-2xl sm:text-3xl md:text-4xl text-maroon-dark">{t('acad.classes.h2')}</h2>
           </div>
           {/* 📱 MOBILE VIEW: 2-Column App Icon Grid (< md) with Full-Width 7th Item */}
           <div className="grid grid-cols-2 gap-3 md:hidden">
@@ -2029,7 +2024,7 @@ function AcademicsPage({ setPage }) {
                     </div>
                     <div>
                       <span className="font-display font-bold uppercase tracking-wider text-[10px] text-gold-dark block">
-                        Class Details
+                        {t('acad.modal.details')}
                       </span>
                       <h3 className="font-display font-extrabold text-2xl text-maroon-dark leading-tight">{selectedClass.level}</h3>
                     </div>
@@ -2047,7 +2042,7 @@ function AcademicsPage({ setPage }) {
 
                 <div className="mt-4 space-y-3.5">
                   <div className="flex items-center justify-between bg-cream2 p-3.5 rounded-2xl border border-gold-light/60">
-                    <span className="font-display font-bold text-xs text-maroon-dark uppercase tracking-wide">Age Group</span>
+                    <span className="font-display font-bold text-xs text-maroon-dark uppercase tracking-wide">{t('acad.modal.age')}</span>
                     <span className="bg-white border border-gold text-maroon-dark font-body text-xs font-extrabold px-3 py-1 rounded-full shadow-xs">
                       {selectedClass.age}
                     </span>
@@ -2055,7 +2050,7 @@ function AcademicsPage({ setPage }) {
 
                   <div>
                     <span className="font-display font-bold text-xs text-gold-dark uppercase tracking-wider block mb-1.5">
-                      Learning & Activity Focus
+                      {t('acad.modal.focus')}
                     </span>
                     <div className="bg-cream p-4 rounded-2xl border border-cream2">
                       <p className="font-body text-xs sm:text-sm text-ink-80 leading-relaxed font-medium">{selectedClass.focus}</p>
@@ -2068,7 +2063,7 @@ function AcademicsPage({ setPage }) {
                   onClick={() => setSelectedClass(null)}
                   className="w-full mt-5 py-3 bg-maroon hover:bg-maroon-dark text-white font-display font-bold text-sm rounded-2xl shadow-md transition-colors"
                 >
-                  Close Details
+                  {t('acad.modal.close')}
                 </button>
               </div>
             </div>
@@ -2101,12 +2096,12 @@ function AcademicsPage({ setPage }) {
           <div className="flex flex-col md:flex-row items-center gap-8 md:gap-12 lg:gap-14 w-full min-w-0">
             {/* Left Timeline Column (40% width) */}
             <div className="w-full md:w-[40%] lg:w-[38%] shrink-0 min-w-0">
-              <Eyebrow>A Day at School</Eyebrow>
-              <h2 className="font-display font-extrabold text-2xl sm:text-3xl md:text-4xl text-maroon-dark mb-2">Daily Routine</h2>
-              <p className="font-body text-ink-60 text-xs sm:text-sm mb-6 sm:mb-8">Sample schedule — actual timings may vary by class.</p>
+              <Eyebrow>{t('acad.routine.eyebrow')}</Eyebrow>
+              <h2 className="font-display font-extrabold text-2xl sm:text-3xl md:text-4xl text-maroon-dark mb-2">{t('acad.routine.h2')}</h2>
+              <p className="font-body text-ink-60 text-xs sm:text-sm mb-6 sm:mb-8">{t('acad.routine.sub')}</p>
               <ol className="relative border-l-2 border-gold-light ml-3 sm:ml-4 pl-6 flex flex-col gap-6 w-full min-w-0">
-                {dailyRoutine.map((r) => (
-                  <li key={r.time} className="relative">
+                {dailyRoutine.map((r, rIdx) => (
+                  <li key={rIdx} className="relative">
                     <span className="absolute -left-8 top-1 w-4 h-4 rounded-full bg-maroon border-2 border-cream shrink-0" />
                     <span className="font-display font-bold text-gold-dark text-xs sm:text-sm block">{r.time}</span>
                     <p className="font-body text-ink-80 text-sm md:text-base mt-0.5">{r.activity}</p>
@@ -2127,10 +2122,10 @@ function AcademicsPage({ setPage }) {
                   className="w-full routine-swiper"
                 >
                   {[
-                    { src: '/outdoor_fun.png', label: 'Outdoor Activities & Playground' },
-                    { src: '/yoga_activity.png', label: 'Morning Yoga & Physical Exercises' },
-                    { src: '/students_assembly.png', label: 'Morning Assembly & Prayer' },
-                    { src: '/tour.png', label: 'Co-Curricular Learning Tours' },
+                    { src: '/outdoor_fun.png', label: t('acad.routine.img1') },
+                    { src: '/yoga_activity.png', label: t('acad.routine.img2') },
+                    { src: '/students_assembly.png', label: t('acad.routine.img3') },
+                    { src: '/tour.png', label: t('acad.routine.img4') },
                   ].map((img, i) => (
                     <SwiperSlide key={i}>
                       <div className="relative aspect-[4/3] w-full overflow-hidden">
@@ -2157,17 +2152,17 @@ function AcademicsPage({ setPage }) {
           <div className="flex flex-col md:flex-row items-center gap-8 md:gap-12 lg:gap-14 w-full min-w-0">
             {/* Left Column: Text & 2x2 Cards Grid */}
             <div className="w-full md:w-[48%] lg:w-[46%] shrink-0 min-w-0">
-              <Eyebrow>Modern Learning</Eyebrow>
-              <h2 className="font-display font-extrabold text-2xl sm:text-3xl md:text-4xl text-maroon-dark mt-1.5 md:mt-2 mb-4 md:mb-6">A Future-Ready Classroom Experience</h2>
-              <p className="font-body text-ink-70 text-xs sm:text-sm md:text-base mb-6 md:mb-8">We combine time-tested teaching with modern infrastructure to give every student the best of both worlds.</p>
+              <Eyebrow>{t('acad.modern.eyebrow')}</Eyebrow>
+              <h2 className="font-display font-extrabold text-2xl sm:text-3xl md:text-4xl text-maroon-dark mt-1.5 md:mt-2 mb-4 md:mb-6">{t('acad.modern.h2')}</h2>
+              <p className="font-body text-ink-70 text-xs sm:text-sm md:text-base mb-6 md:mb-8">{t('acad.modern.sub')}</p>
               <div className="grid sm:grid-cols-2 gap-3.5 sm:gap-4 w-full min-w-0">
                 {[
-                  { icon: Monitor,  title: 'Smart Classrooms',  desc: 'Projector-enabled interactive learning that makes every lesson vivid and engaging.' },
-                  { icon: Computer, title: 'Computer Education', desc: 'Dedicated tech-ready labs to introduce students to computers from an early age.' },
-                  { icon: Brain,    title: 'GK & Remedial Classes', desc: 'Specialized GK enrichment and remedial support so no child is ever left behind.' },
-                  { icon: Star,     title: '360° Holistic Development', desc: 'Equal focus on academics, arts, sports and character for complete student growth.' },
-                ].map((item) => (
-                  <div key={item.title} className="flex gap-3 bg-white rounded-2xl p-3.5 sm:p-4 shadow-sm border-l-4 border-gold items-start w-full min-w-0">
+                  { icon: Monitor,  title: t('acad.modern.i1.title'), desc: t('acad.modern.i1.desc') },
+                  { icon: Computer, title: t('acad.modern.i2.title'), desc: t('acad.modern.i2.desc') },
+                  { icon: Brain,    title: t('acad.modern.i3.title'), desc: t('acad.modern.i3.desc') },
+                  { icon: Star,     title: t('acad.modern.i4.title'), desc: t('acad.modern.i4.desc') },
+                ].map((item, idx) => (
+                  <div key={idx} className="flex gap-3 bg-white rounded-2xl p-3.5 sm:p-4 shadow-sm border-l-4 border-gold items-start w-full min-w-0">
                     <div className="w-10 h-10 rounded-xl bg-maroon flex items-center justify-center shrink-0">
                       <item.icon size={18} className="text-gold" strokeWidth={2} />
                     </div>
@@ -2183,7 +2178,7 @@ function AcademicsPage({ setPage }) {
             {/* Right Column: Image - Directly Beside Left Column */}
             <div className="w-full md:w-[52%] lg:w-[54%] min-w-0 mt-6 md:mt-0">
               <div className="w-full relative rounded-2xl sm:rounded-3xl overflow-hidden shadow-xl border-2 sm:border-4 border-white bg-cream3">
-                <ImagePlaceholder src="/Smart-classroom.png" label="Smart Classroom" caption="Projector-enabled interactive class" ratio="4 / 3" tone="gold" />
+                <ImagePlaceholder src="/Smart-classroom.png" label={t('acad.modern.i1.title')} caption="Projector-enabled interactive class" ratio="4 / 3" tone="gold" />
               </div>
             </div>
           </div>
@@ -2195,13 +2190,13 @@ function AcademicsPage({ setPage }) {
       {/* METHODOLOGY */}
       <section className="bg-maroon py-16 md:py-20">
         <div className="max-w-6xl mx-auto px-6">
-          <Eyebrow light>Teaching Methodology</Eyebrow>
-          <h2 className="font-display font-extrabold text-3xl md:text-4xl text-white">Joyful Learning, Real Habits</h2>
+          <Eyebrow light>{t('acad.method.eyebrow')}</Eyebrow>
+          <h2 className="font-display font-extrabold text-3xl md:text-4xl text-white">{t('acad.method.h2')}</h2>
           {/* 📱 MOBILE VIEW: Glassmorphic Translucent 2x2 Cards (< md) */}
           <div className="grid grid-cols-2 gap-3.5 sm:gap-4 mt-8 md:hidden text-center">
-            {methodologyPillars.map((m) => (
+            {methodologyPillars.map((m, idx) => (
               <div
-                key={m.title}
+                key={idx}
                 className="bg-maroon-dark/45 border border-gold-light/30 rounded-2xl p-4 sm:p-5 shadow-md flex flex-col items-center justify-between text-center relative overflow-hidden backdrop-blur-xs"
               >
                 {/* Top subtle golden accent bar */}
@@ -2223,8 +2218,8 @@ function AcademicsPage({ setPage }) {
 
           {/* 💻 DESKTOP VIEW: 4-Card Grid (>= md) - 100% Original Layout Restored */}
           <div className="hidden md:grid sm:grid-cols-2 lg:grid-cols-4 gap-5 mt-10">
-            {methodologyPillars.map((m) => (
-              <div key={m.title} className="hover-lift bg-white-95 rounded-3xl p-6 shadow-lg">
+            {methodologyPillars.map((m, idx) => (
+              <div key={idx} className="hover-lift bg-white-95 rounded-3xl p-6 shadow-lg">
                 <div className="w-11 h-11 rounded-2xl bg-gold flex items-center justify-center mb-3">
                   <m.icon size={20} className="text-maroon-dark" />
                 </div>
@@ -2242,10 +2237,10 @@ function AcademicsPage({ setPage }) {
       <section className="bg-cream2 py-16 md:py-24 w-full overflow-hidden">
         <div className="max-w-6xl mx-auto px-5 sm:px-8 md:px-10">
           <div className="text-center max-w-2xl mx-auto mb-10 md:mb-14">
-            <div className="flex justify-center"><Eyebrow>Student Life</Eyebrow></div>
-            <h2 className="font-display font-extrabold text-3xl sm:text-4xl md:text-5xl text-maroon-dark mt-2 mb-3">Beyond the Books</h2>
+            <div className="flex justify-center"><Eyebrow>{t('acad.beyond.eyebrow')}</Eyebrow></div>
+            <h2 className="font-display font-extrabold text-3xl sm:text-4xl md:text-5xl text-maroon-dark mt-2 mb-3">{t('acad.beyond.h2')}</h2>
             <p className="font-body text-ink-70 text-xs sm:text-sm md:text-base leading-relaxed">
-              Every child at Model Primary School gets to explore, create, move and perform — every single day.
+              {t('acad.beyond.sub')}
             </p>
           </div>
 
@@ -2254,9 +2249,9 @@ function AcademicsPage({ setPage }) {
             const studentLifeItems = [
               {
                 icon: Palette,
-                title: 'Art & Craft',
-                tag: '🎨 Creative Expression',
-                desc: 'Dedicated creative sessions where children express themselves through drawing, painting, and handcrafting.',
+                title: t('acad.beyond.i1.title'),
+                tag: t('acad.beyond.i1.tag'),
+                desc: t('acad.beyond.i1.desc'),
                 images: [
                   '/art_craft_gallery_1.jpg',
                   '/art_craft_gallery_2.jpg',
@@ -2266,9 +2261,9 @@ function AcademicsPage({ setPage }) {
               },
               {
                 icon: Music,
-                title: 'Dance & Cultural Arts',
-                tag: '🎭 Stage Performance',
-                desc: 'Vibrant dance and cultural performances that build confidence and celebrate expression on stage.',
+                title: t('acad.beyond.i2.title'),
+                tag: t('acad.beyond.i2.tag'),
+                desc: t('acad.beyond.i2.desc'),
                 images: [
                   '/dance_cultural_1.jpg',
                   '/dance_cultural_2.jpg',
@@ -2278,9 +2273,9 @@ function AcademicsPage({ setPage }) {
               },
               {
                 icon: Dumbbell,
-                title: 'Sports & PE',
-                tag: '⚽ Fitness & Athletics',
-                desc: 'Daily games, sports activities, and outdoor swing areas that build fitness, teamwork and resilience.',
+                title: t('acad.beyond.i3.title'),
+                tag: t('acad.beyond.i3.tag'),
+                desc: t('acad.beyond.i3.desc'),
                 images: [
                   '/yoga_activity.png',
                   '/outdoor_fun.png',
@@ -2290,9 +2285,9 @@ function AcademicsPage({ setPage }) {
               },
               {
                 icon: Compass,
-                title: 'Tours & Village Awareness',
-                tag: '🚌 Outdoor Discovery & Community Outreach',
-                desc: 'Educational field trips to cultural sites, alongside student-led community awareness rallies for local village residents.',
+                title: t('acad.beyond.i4.title'),
+                tag: t('acad.beyond.i4.tag'),
+                desc: t('acad.beyond.i4.desc'),
                 images: [
                   '/tour_trip_1.jpg',
                   '/tour_trip_2.jpg',
@@ -2308,7 +2303,7 @@ function AcademicsPage({ setPage }) {
                 <div className="flex overflow-x-auto snap-x snap-mandatory gap-4 -mx-5 px-5 hide-scrollbar md:hidden pb-4">
                   {studentLifeItems.map((item, cardIdx) => (
                     <div
-                      key={item.title}
+                      key={cardIdx}
                       className="flex-none w-[84vw] snap-center aspect-[4/5] rounded-3xl overflow-hidden shadow-xl relative border-2 border-white bg-cream3 group"
                     >
                       {/* Inner 4-Image Slideshow */}
@@ -2364,7 +2359,7 @@ function AcademicsPage({ setPage }) {
                 <div className="hidden md:grid md:grid-cols-2 lg:grid-cols-4 gap-5 lg:gap-6">
                   {studentLifeItems.map((item, cardIdx) => (
                     <div
-                      key={item.title}
+                      key={cardIdx}
                       className="h-[480px] lg:h-[500px] rounded-3xl overflow-hidden shadow-xl relative group border-4 border-white bg-cream3 cursor-pointer"
                     >
                       {/* Inner 4-Image Slideshow */}
@@ -2427,9 +2422,9 @@ function AcademicsPage({ setPage }) {
       <section className="bg-gold py-14">
         <div className="max-w-4xl mx-auto px-6 text-center">
           <PartyPopper className="mx-auto text-maroon-dark mb-3" size={34} />
-          <h2 className="font-display font-extrabold text-2xl md:text-3xl text-maroon-dark">Ready to Enroll Your Child?</h2>
-          <p className="font-body text-maroon-dark-80 mt-2">Admissions for 2026–27 are open. Secure your child's seat today.</p>
-          <CTAButton variant="primary" onClick={() => setPage("admissions")} className="mt-6">Start Admission Process</CTAButton>
+          <h2 className="font-display font-extrabold text-2xl md:text-3xl text-maroon-dark">{t('acad.cta.h2')}</h2>
+          <p className="font-body text-maroon-dark-80 mt-2">{t('acad.cta.sub')}</p>
+          <CTAButton variant="primary" onClick={() => setPage("admissions")} className="mt-6">{t('acad.cta.btn')}</CTAButton>
         </div>
       </section>
     </div>
@@ -2583,6 +2578,7 @@ const galleryItems = [
 ];
 
 function GalleryPage() {
+  const { t } = useLanguage();
   const cats = ["All", "Awards & Recognition", "Tours & Trips", "Village Awareness", "Art & Craft", "Events", "Campus"];
   const [filter, setFilter] = useState("All");
   const [selectedIdx, setSelectedIdx] = useState(null);
@@ -2636,7 +2632,7 @@ function GalleryPage() {
 
   return (
     <div>
-      <PageHero eyebrow="Gallery" title="Life at Model Primary School" subtitle="Tap any photo to view in full screen. Swipe left or right to switch images." />
+      <PageHero eyebrow={t('gallery.hero.eyebrow')} title={t('gallery.hero.title')} subtitle={t('gallery.hero.subtitle')} />
       <section className="bg-cream py-14 md:py-20">
         <div className="max-w-6xl mx-auto px-6">
           <div className="flex flex-wrap gap-2 mb-10 justify-center">
@@ -2651,7 +2647,7 @@ function GalleryPage() {
                   filter === c ? "bg-maroon border-maroon text-white" : "bg-white border-gold-light text-maroon-dark filter-btn-inactive"
                 }`}
               >
-                {c}
+                {t('gallery.filter.' + c) || c}
               </button>
             ))}
           </div>
@@ -2672,7 +2668,7 @@ function GalleryPage() {
                 {/* Hover / Tap to View Overlay */}
                 <div className="absolute inset-0 bg-maroon-dark/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-2xl sm:rounded-3xl flex items-center justify-center pointer-events-none">
                   <span className="bg-maroon text-white font-display font-bold text-xs px-3.5 py-1.5 rounded-full shadow-lg flex items-center gap-1.5">
-                    <Camera size={14} className="text-gold" /> Tap to View
+                    <Camera size={14} className="text-gold" /> {t('gallery.tap')}
                   </span>
                 </div>
               </div>
@@ -2690,7 +2686,7 @@ function GalleryPage() {
           {/* Top Bar: Counter & Close Button */}
           <div className="w-full max-w-5xl flex items-center justify-between z-20 text-white pt-2">
             <span className="font-display font-bold text-xs sm:text-sm bg-white/10 border border-white/20 px-3.5 py-1.5 rounded-full">
-              Photo {selectedIdx + 1} of {items.length} (Swipe ↔)
+              {t('gallery.photo')} {selectedIdx + 1} {t('gallery.of')} {items.length} {t('gallery.swipe')}
             </span>
             <button
               onClick={() => setSelectedIdx(null)}
@@ -2757,43 +2753,45 @@ function GalleryPage() {
 /* ============================================================
    ADMISSIONS PAGE
    ============================================================ */
-const admissionSteps = [
-  { title: "Visit & Enquire", desc: "Visit the school office in Bharsare or call to enquire about seat availability." },
-  { title: "Collect the Form", desc: "Collect the admission application form from the school reception." },
-  { title: "Submit Form & Documents", desc: "Fill out the form and submit it along with the required documents." },
-  { title: "Meet & Greet", desc: "A short, friendly interaction with the child and parents at the school." },
-  { title: "Confirm the Seat", desc: "Complete admission formalities and fee payment to confirm the seat." },
-];
-
-const eligibility = [
-  { level: "LKG", age: "3+ years as of intake" },
-  { level: "UKG", age: "4+ years as of intake" },
-  { level: "Class 1", age: "5+ years as of intake" },
-  { level: "Class 2", age: "6+ years as of intake" },
-  { level: "Class 3", age: "7+ years as of intake" },
-  { level: "Class 4", age: "8+ years as of intake" },
-  { level: "Class 5", age: "9+ years as of intake" },
-];
-
-const requiredDocs = [
-  "Child's birth certificate (original + photocopy)",
-  "4 recent passport-size photographs of the child",
-  "Aadhar card copy — child and parent/guardian",
-  "Address proof of parent/guardian",
-  "Transfer Certificate (for admission to Class 1 and above, if applicable)",
-  "Previous school report card, if applicable",
-];
-
 function AdmissionsPage({ setPage }) {
+  const { t } = useLanguage();
+
+  const admissionSteps = [
+    { title: t("adm.s1.title"), desc: t("adm.s1.desc") },
+    { title: t("adm.s2.title"), desc: t("adm.s2.desc") },
+    { title: t("adm.s3.title"), desc: t("adm.s3.desc") },
+    { title: t("adm.s4.title"), desc: t("adm.s4.desc") },
+    { title: t("adm.s5.title"), desc: t("adm.s5.desc") },
+  ];
+
+  const eligibility = [
+    { level: "LKG", age: t("adm.elig.lkg") },
+    { level: "UKG", age: t("adm.elig.ukg") },
+    { level: "Class 1", age: t("adm.elig.c1") },
+    { level: "Class 2", age: t("adm.elig.c2") },
+    { level: "Class 3", age: t("adm.elig.c3") },
+    { level: "Class 4", age: t("adm.elig.c4") },
+    { level: "Class 5", age: t("adm.elig.c5") },
+  ];
+
+  const requiredDocs = [
+    t("adm.doc.1"),
+    t("adm.doc.2"),
+    t("adm.doc.3"),
+    t("adm.doc.4"),
+    t("adm.doc.5"),
+    t("adm.doc.6"),
+  ];
+
   return (
     <div>
-      <PageHero eyebrow="Admissions 2026–27" title="Begin Your Child's Journey With Us" subtitle="A simple, guided admission process for LKG to Class 5." />
+      <PageHero eyebrow={t("adm.hero.eyebrow")} title={t("adm.h1")} subtitle={t("adm.body")} />
 
       {/* LIMITED SEATS NOTICE */}
       <section className="bg-gold">
         <div className="max-w-6xl mx-auto px-6 py-4 flex flex-wrap items-center justify-center gap-3 text-center">
           <Sparkles size={20} className="text-maroon-dark" />
-          <p className="font-display font-bold text-maroon-dark text-sm md:text-base">Limited Seats Available for Session 2026-27 — Enquire Early to Avoid Disappointment</p>
+          <p className="font-display font-bold text-maroon-dark text-sm md:text-base">{t("adm.notice")}</p>
         </div>
       </section>
 
@@ -2802,11 +2800,11 @@ function AdmissionsPage({ setPage }) {
       {/* STEPS */}
       <section className="bg-cream py-16 md:py-20">
         <div className="max-w-6xl mx-auto px-6">
-          <Eyebrow>Application Process</Eyebrow>
-          <h2 className="font-display font-extrabold text-3xl md:text-4xl text-maroon-dark mb-10">5 Simple Steps to Enroll</h2>
+          <Eyebrow>{t("adm.steps.eyebrow")}</Eyebrow>
+          <h2 className="font-display font-extrabold text-3xl md:text-4xl text-maroon-dark mb-10">{t("adm.steps.h2")}</h2>
           <div className="grid md:grid-cols-5 gap-5">
             {admissionSteps.map((s, i) => (
-              <div key={s.title} className="hover-lift bg-white rounded-3xl p-6 shadow-md relative">
+              <div key={s.title + i} className="hover-lift bg-white rounded-3xl p-6 shadow-md relative">
                 <span className="font-display font-extrabold text-4xl text-gold-light">{String(i + 1).padStart(2, "0")}</span>
                 <h3 className="font-display font-bold text-maroon-dark mt-2">{s.title}</h3>
                 <p className="font-body text-sm text-ink-60 mt-2">{s.desc}</p>
@@ -2825,8 +2823,8 @@ function AdmissionsPage({ setPage }) {
       <section className="bg-cream2 py-16 md:py-20">
         <div className="max-w-6xl mx-auto px-6 grid lg:grid-cols-2 gap-10">
           <div>
-            <Eyebrow>Age Eligibility</Eyebrow>
-            <h2 className="font-display font-extrabold text-2xl md:text-3xl text-maroon-dark mb-6">Eligibility by Class</h2>
+            <Eyebrow>{t("adm.elig.eyebrow")}</Eyebrow>
+            <h2 className="font-display font-extrabold text-2xl md:text-3xl text-maroon-dark mb-6">{t("adm.elig.h2")}</h2>
             <div className="bg-white rounded-3xl shadow-md overflow-hidden">
               {eligibility.map((e, i) => (
                 <div key={e.level} className={`flex items-center justify-between px-6 py-3.5 ${i % 2 === 0 ? "bg-cream-60" : ""}`}>
@@ -2837,11 +2835,11 @@ function AdmissionsPage({ setPage }) {
             </div>
           </div>
           <div>
-            <Eyebrow>Documents Checklist</Eyebrow>
-            <h2 className="font-display font-extrabold text-2xl md:text-3xl text-maroon-dark mb-6">Required Documents</h2>
+            <Eyebrow>{t("adm.docs.eyebrow")}</Eyebrow>
+            <h2 className="font-display font-extrabold text-2xl md:text-3xl text-maroon-dark mb-6">{t("adm.docs.h2")}</h2>
             <ul className="bg-white rounded-3xl shadow-md p-6 flex flex-col gap-4">
-              {requiredDocs.map((d) => (
-                <li key={d} className="flex items-start gap-3 font-body text-sm text-ink-75">
+              {requiredDocs.map((d, index) => (
+                <li key={index} className="flex items-start gap-3 font-body text-sm text-ink-75">
                   <FileText size={18} className="text-maroon shrink-0 mt-0.5" />
                   {d}
                 </li>
@@ -2857,16 +2855,16 @@ function AdmissionsPage({ setPage }) {
       <section className="bg-cream2 py-16 md:py-20">
         <div className="max-w-6xl mx-auto px-6">
           <div className="text-center max-w-2xl mx-auto mb-12">
-            <div className="flex justify-center"><Eyebrow>Parent Partnership</Eyebrow></div>
-            <h2 className="font-display font-extrabold text-3xl md:text-4xl text-maroon-dark">A Community That Cares Together</h2>
-            <p className="font-body text-ink-70 mt-3">We believe the best education happens when school and family work hand in hand.</p>
+            <div className="flex justify-center"><Eyebrow>{t("adm.parent.eyebrow")}</Eyebrow></div>
+            <h2 className="font-display font-extrabold text-3xl md:text-4xl text-maroon-dark">{t("adm.parent.h2")}</h2>
+            <p className="font-body text-ink-70 mt-3">{t("adm.parent.sub")}</p>
           </div>
           <div className="grid sm:grid-cols-2 gap-6 max-w-3xl mx-auto">
             {[
-              { icon: UsersRound, title: 'PTM & MTA Meetings',    desc: 'Regular Parent-Teacher Meetings (PTM) and Mother-Teacher Association (MTA) sessions keep families closely involved in their child\'s progress.' },
-              { icon: Utensils,   title: 'Mid-Day Meal Programme', desc: 'Government-supported, nutritious Mid-Day Meals (MDM) provided daily to ensure every child is nourished and energized to learn.' },
-            ].map((item) => (
-              <div key={item.title} className="hover-lift bg-white rounded-3xl p-7 shadow-md border-l-4 border-maroon flex gap-5 items-start">
+              { icon: UsersRound, title: t("adm.parent.i1.title"), desc: t("adm.parent.i1.desc") },
+              { icon: Utensils,   title: t("adm.parent.i2.title"), desc: t("adm.parent.i2.desc") },
+            ].map((item, index) => (
+              <div key={index} className="hover-lift bg-white rounded-3xl p-7 shadow-md border-l-4 border-maroon flex gap-5 items-start">
                 <div className="w-14 h-14 rounded-2xl bg-maroon flex items-center justify-center shrink-0">
                   <item.icon size={26} className="text-gold" strokeWidth={1.8} />
                 </div>
@@ -2886,9 +2884,9 @@ function AdmissionsPage({ setPage }) {
       <section className="bg-maroon py-16">
         <div className="max-w-3xl mx-auto px-6 text-center">
           <CalendarCheck className="mx-auto text-gold mb-3" size={34} />
-          <h2 className="font-display font-extrabold text-2xl md:text-3xl text-white">Ready to Enroll for 2026-27?</h2>
-          <p className="font-body text-gold-light-85 mt-2">Reach out to the school office and we'll guide you through every step.</p>
-          <CTAButton variant="gold" onClick={() => setPage("contact")} className="mt-6">Contact the School</CTAButton>
+          <h2 className="font-display font-extrabold text-2xl md:text-3xl text-white">{t("adm.cta.h2")}</h2>
+          <p className="font-body text-gold-light-85 mt-2">{t("adm.cta.sub")}</p>
+          <CTAButton variant="gold" onClick={() => setPage("contact")} className="mt-6">{t("adm.cta.btn")}</CTAButton>
         </div>
       </section>
     </div>
@@ -2899,6 +2897,7 @@ function AdmissionsPage({ setPage }) {
    CONTACT PAGE
    ============================================================ */
 function ContactPage() {
+  const { t } = useLanguage();
   const [sent, setSent] = useState(false);
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -2906,48 +2905,48 @@ function ContactPage() {
   };
   return (
     <div>
-      <PageHero eyebrow="Contact Us" title="We'd Love to Hear From You" subtitle="Questions about admissions, academics or a school visit — reach out anytime." />
+      <PageHero eyebrow={t("contact.hero.eyebrow")} title={t("contact.hero.title")} subtitle={t("contact.hero.subtitle")} />
 
       <section className="bg-cream py-16 md:py-20">
         <div className="max-w-6xl mx-auto px-6 grid lg:grid-cols-5 gap-10">
           {/* FORM */}
           <div className="lg:col-span-3 bg-white rounded-3xl shadow-lg p-6 md:p-8">
-            <h2 className="font-display font-extrabold text-2xl text-maroon-dark mb-1">Send an Enquiry</h2>
-            <p className="font-body text-sm text-ink-60 mb-6">We usually respond within a school day.</p>
+            <h2 className="font-display font-extrabold text-2xl text-maroon-dark mb-1">{t("contact.form.h2")}</h2>
+            <p className="font-body text-sm text-ink-60 mb-6">{t("contact.form.sub")}</p>
             {sent ? (
               <div className="bg-green-light border border-green-30 rounded-2xl p-6 flex items-start gap-3">
                 <CheckCircle2 className="text-green shrink-0" size={26} />
                 <div>
-                  <p className="font-display font-bold text-maroon-dark">Enquiry sent</p>
-                  <p className="font-body text-sm text-ink-70 mt-1">Thank you — the school office will get back to you shortly.</p>
+                  <p className="font-display font-bold text-maroon-dark">{t("contact.form.sent.title")}</p>
+                  <p className="font-body text-sm text-ink-70 mt-1">{t("contact.form.sent.sub")}</p>
                 </div>
               </div>
             ) : (
               <form onSubmit={handleSubmit} className="flex flex-col gap-4">
                 <div className="grid sm:grid-cols-2 gap-4">
                   <div className="flex flex-col gap-1.5">
-                    <label className="font-body text-sm font-semibold text-maroon-dark">Parent's Name</label>
-                    <input required type="text" placeholder="Your full name" className="focus-ring border-2 border-gold-light rounded-2xl px-4 py-2.5 font-body text-sm outline-none bg-cream-50" />
+                    <label className="font-body text-sm font-semibold text-maroon-dark">{t("contact.form.name.label")}</label>
+                    <input required type="text" placeholder={t("contact.form.name.place")} className="focus-ring border-2 border-gold-light rounded-2xl px-4 py-2.5 font-body text-sm outline-none bg-cream-50" />
                   </div>
                   <div className="flex flex-col gap-1.5">
-                    <label className="font-body text-sm font-semibold text-maroon-dark">Phone Number</label>
-                    <input required type="tel" placeholder="10-digit mobile number" className="focus-ring border-2 border-gold-light rounded-2xl px-4 py-2.5 font-body text-sm outline-none bg-cream-50" />
+                    <label className="font-body text-sm font-semibold text-maroon-dark">{t("contact.form.phone.label")}</label>
+                    <input required type="tel" placeholder={t("contact.form.phone.place")} className="focus-ring border-2 border-gold-light rounded-2xl px-4 py-2.5 font-body text-sm outline-none bg-cream-50" />
                   </div>
                 </div>
                 <div className="flex flex-col gap-1.5">
-                  <label className="font-body text-sm font-semibold text-maroon-dark">Class Interested In</label>
+                  <label className="font-body text-sm font-semibold text-maroon-dark">{t("contact.form.class.label")}</label>
                   <select required className="focus-ring border-2 border-gold-light rounded-2xl px-4 py-2.5 font-body text-sm outline-none bg-cream-50">
-                    <option value="">Select a class</option>
+                    <option value="">{t("contact.form.class.place")}</option>
                     {["LKG", "UKG", "Class 1", "Class 2", "Class 3", "Class 4", "Class 5"].map((c) => (
                       <option key={c} value={c}>{c}</option>
                     ))}
                   </select>
                 </div>
                 <div className="flex flex-col gap-1.5">
-                  <label className="font-body text-sm font-semibold text-maroon-dark">Message</label>
-                  <textarea rows={4} placeholder="Tell us a little about your enquiry" className="focus-ring border-2 border-gold-light rounded-2xl px-4 py-2.5 font-body text-sm outline-none bg-cream-50 resize-none" />
+                  <label className="font-body text-sm font-semibold text-maroon-dark">{t("contact.form.msg.label")}</label>
+                  <textarea rows={4} placeholder={t("contact.form.msg.place")} className="focus-ring border-2 border-gold-light rounded-2xl px-4 py-2.5 font-body text-sm outline-none bg-cream-50 resize-none" />
                 </div>
-                <CTAButton variant="primary" icon={Send} className="self-start mt-2">Send Enquiry</CTAButton>
+                <CTAButton variant="primary" icon={Send} className="self-start mt-2">{t("contact.form.submit")}</CTAButton>
               </form>
             )}
           </div>
@@ -2955,18 +2954,18 @@ function ContactPage() {
           {/* INFO */}
           <div className="lg:col-span-2 flex flex-col gap-5">
             <div className="bg-maroon rounded-3xl p-6 text-white">
-              <h3 className="font-display font-bold text-lg mb-4 flex items-center gap-2"><Emblem size={30} ring={false} /> School Details</h3>
+              <h3 className="font-display font-bold text-lg mb-4 flex items-center gap-2"><Emblem size={30} ring={false} /> {t("contact.info.h3")}</h3>
               <ul className="flex flex-col gap-4 font-body text-sm text-gold-light-90">
-                <li className="flex gap-3"><MapPin size={20} className="shrink-0" /><span>Model Primary School, Bharsare, Bhadaiyan, Sultanpur, Uttar Pradesh</span></li>
+                <li className="flex gap-3"><MapPin size={20} className="shrink-0" /><span>{t("school.name")}, {t("contact.address")}</span></li>
                 <li className="flex gap-3"><Phone size={20} className="shrink-0 text-gold" /><a href="tel:9454826921" className="hover:underline font-semibold text-white">+91 9454826921</a></li>
                 <li className="flex gap-3"><Mail size={20} className="shrink-0 text-gold" /><a href="mailto:psbharsare@gmail.com" className="hover:underline font-semibold text-white">psbharsare@gmail.com</a></li>
-                <li className="flex gap-3"><Clock size={20} className="shrink-0" /><span>Mon – Sat, 8:00 AM – 2:00 PM</span></li>
+                <li className="flex gap-3"><Clock size={20} className="shrink-0" /><span>{t("contact.hours")}</span></li>
               </ul>
             </div>
             <div className="relative rounded-3xl overflow-hidden shadow-md border-4 border-white bg-cream3 flex flex-col items-center justify-center gap-2" style={{ aspectRatio: "4 / 3" }}>
               <MapPin size={30} className="text-maroon-dark-50" />
-              <span className="font-display font-bold text-maroon-dark-70 text-sm">Map — Bharsare, Bhadaiyan, Sultanpur</span>
-              <span className="font-body text-xs text-maroon-dark-50">Embed Google Map here</span>
+              <span className="font-display font-bold text-maroon-dark-70 text-sm">{t("contact.info.map.title")}</span>
+              <span className="font-body text-xs text-maroon-dark-50">{t("contact.info.map.place")}</span>
               <div className="absolute top-0 left-0 w-full h-2 pencil-stripe-thin" />
             </div>
           </div>

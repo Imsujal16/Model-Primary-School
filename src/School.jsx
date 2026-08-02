@@ -14,8 +14,8 @@ import {
   HeartHandshake, Puzzle, Trophy, SmilePlus, Star, PartyPopper,
   Bus, Droplets, Library, Monitor, Computer, Brain, Palette, Music, Dumbbell, UsersRound, Utensils,
   Award, Medal, Crown, Building2, Compass, Megaphone,
-  Mic, MicOff, BotMessageSquare,
 } from "lucide-react";
+import { LanguageProvider, useLanguage } from "./LanguageContext";
 
 /* ============================================================
    DESIGN TOKENS
@@ -556,15 +556,78 @@ function PageHero({ eyebrow, title, subtitle }) {
 /* ============================================================
    NAVBAR
    ============================================================ */
+/* ============================================================
+   LANGUAGE TOGGLE
+   ============================================================ */
+function LangToggle() {
+  const { lang, toggle } = useLanguage();
+  const isHindi = lang === 'hi';
+  return (
+    <button
+      onClick={toggle}
+      aria-label={isHindi ? 'Switch to English' : 'हिंदी में बदलें'}
+      title={isHindi ? 'Switch to English' : 'हिंदी में बदलें'}
+      style={{
+        display: 'inline-flex',
+        alignItems: 'center',
+        border: '2px solid var(--maroon)',
+        borderRadius: '999px',
+        padding: '3px 4px',
+        background: 'white',
+        cursor: 'pointer',
+        transition: 'box-shadow 0.2s',
+        gap: 0,
+        flexShrink: 0,
+      }}
+    >
+      <span
+        style={{
+          padding: '2px 9px',
+          borderRadius: '999px',
+          fontSize: '11px',
+          fontWeight: 700,
+          letterSpacing: '0.05em',
+          background: !isHindi ? 'var(--maroon)' : 'transparent',
+          color: !isHindi ? 'white' : 'var(--maroon-dark)',
+          transition: 'all 0.2s',
+          fontFamily: 'var(--font-display, sans-serif)',
+          lineHeight: 1.6,
+        }}
+      >
+        EN
+      </span>
+      <span
+        style={{
+          padding: '2px 9px',
+          borderRadius: '999px',
+          fontSize: '12px',
+          fontWeight: 700,
+          lineHeight: 1.7,
+          background: isHindi ? 'var(--maroon)' : 'transparent',
+          color: isHindi ? 'white' : 'var(--maroon-dark)',
+          transition: 'all 0.2s',
+          fontFamily: "'Noto Sans Devanagari', 'Mukta', sans-serif",
+        }}
+      >
+        हिंदी
+      </span>
+    </button>
+  );
+}
+
+/* ============================================================
+   NAVBAR
+   ============================================================ */
 function Navbar({ page, setPage }) {
   const [open, setOpen] = useState(false);
+  const { t } = useLanguage();
   const links = [
-    { id: "home", label: "Home" },
-    { id: "about", label: "About Us" },
-    { id: "academics", label: "Academics" },
-    { id: "gallery", label: "Gallery" },
-    { id: "admissions", label: "Admissions" },
-    { id: "contact", label: "Contact" },
+    { id: "home",       label: t("nav.home") },
+    { id: "about",      label: t("nav.about") },
+    { id: "academics",  label: t("nav.academics") },
+    { id: "gallery",    label: t("nav.gallery") },
+    { id: "admissions", label: t("nav.admissions") },
+    { id: "contact",    label: t("nav.contact") },
   ];
   const go = (id) => {
     setPage(id);
@@ -577,10 +640,11 @@ function Navbar({ page, setPage }) {
           <Emblem size={38} className="shrink-0 sm:w-[46px] sm:h-[46px]" />
           <span className="leading-tight truncate">
             <span className="block font-display font-extrabold text-maroon-dark text-xs sm:text-base md:text-lg truncate">Model Primary School</span>
-            <span className="block font-body text-[10px] sm:text-xs text-ink-60 truncate">Bharsare, Bhadaiyan, Sultanpur</span>
+            <span className="block font-body text-[10px] sm:text-xs text-ink-60 truncate">{t('nav.tagline')}</span>
           </span>
         </button>
 
+        {/* Desktop nav links */}
         <div className="hidden lg:flex items-center gap-1">
           {links.map((l) => (
             <button
@@ -595,19 +659,25 @@ function Navbar({ page, setPage }) {
           ))}
         </div>
 
-        <div className="hidden lg:block">
+        {/* Desktop: LangToggle + CTA */}
+        <div className="hidden lg:flex items-center gap-3">
+          <LangToggle />
           <CTAButton variant="gold" onClick={() => go("admissions")}>
-            Enroll Now
+            {t('nav.enroll')}
           </CTAButton>
         </div>
 
-        <button
-          className="focus-ring lg:hidden p-2 rounded-xl bg-white-70 border border-gold-light text-maroon-dark"
-          onClick={() => setOpen(!open)}
-          aria-label="Toggle menu"
-        >
-          {open ? <X size={22} /> : <Menu size={22} />}
-        </button>
+        {/* Mobile: LangToggle + hamburger */}
+        <div className="flex lg:hidden items-center gap-2">
+          <LangToggle />
+          <button
+            className="focus-ring p-2 rounded-xl bg-white-70 border border-gold-light text-maroon-dark"
+            onClick={() => setOpen(!open)}
+            aria-label="Toggle menu"
+          >
+            {open ? <X size={22} /> : <Menu size={22} />}
+          </button>
+        </div>
       </nav>
 
       {open && (
@@ -624,7 +694,7 @@ function Navbar({ page, setPage }) {
             </button>
           ))}
           <CTAButton variant="primary" onClick={() => go("admissions")} className="mt-2 w-full">
-            Enroll Now
+            {t('nav.enroll')}
           </CTAButton>
         </div>
       )}
@@ -632,10 +702,12 @@ function Navbar({ page, setPage }) {
   );
 }
 
+
 /* ============================================================
    FOOTER
    ============================================================ */
 function Footer({ setPage }) {
+  const { t } = useLanguage();
   return (
     <footer className="bg-maroon-dark text-cream relative">
       <PencilDivider />
@@ -646,25 +718,24 @@ function Footer({ setPage }) {
             <span className="font-display font-extrabold text-base sm:text-lg text-white">Model Primary School</span>
           </div>
           <p className="font-body text-xs sm:text-sm text-gold-light-80 max-w-sm leading-relaxed">
-            A government-recognized English medium school for LKG to Class 5, proudly serving the children of
-            Bharsare, Bhadaiyan and the wider Sultanpur community — Model in Education.
+            {t('footer.about')}
           </p>
         </div>
 
         <div>
-          <h4 className="font-display font-bold text-gold mb-3 text-xs sm:text-sm uppercase tracking-wide">Quick Links</h4>
+          <h4 className="font-display font-bold text-gold mb-3 text-xs sm:text-sm uppercase tracking-wide">{t('footer.links')}</h4>
           <ul className="grid grid-cols-2 sm:grid-cols-1 gap-2 font-body text-xs sm:text-sm text-gold-light-85">
             {[
-              { id: "home", label: "Home" },
-              { id: "about", label: "About Us" },
-              { id: "academics", label: "Academics" },
-              { id: "gallery", label: "Gallery" },
-              { id: "admissions", label: "Admissions" },
-              { id: "contact", label: "Contact" },
-            ].map(({ id, label }) => (
+              { id: "home",       key: "nav.home" },
+              { id: "about",      key: "nav.about" },
+              { id: "academics",  key: "nav.academics" },
+              { id: "gallery",    key: "nav.gallery" },
+              { id: "admissions", key: "nav.admissions" },
+              { id: "contact",    key: "nav.contact" },
+            ].map(({ id, key }) => (
               <li key={id}>
                 <button onClick={() => setPage(id)} className="focus-ring footer-link text-left">
-                  {label}
+                  {t(key)}
                 </button>
               </li>
             ))}
@@ -672,24 +743,25 @@ function Footer({ setPage }) {
         </div>
 
         <div>
-          <h4 className="font-display font-bold text-gold mb-3 text-xs sm:text-sm uppercase tracking-wide">Reach Us</h4>
+          <h4 className="font-display font-bold text-gold mb-3 text-xs sm:text-sm uppercase tracking-wide">{t('footer.reach')}</h4>
           <ul className="flex flex-col gap-2.5 font-body text-xs sm:text-sm text-gold-light-85">
-            <li className="flex gap-2.5"><MapPin size={16} className="shrink-0 mt-0.5 text-gold" /><span>Bharsare, Bhadaiyan, Sultanpur, Uttar Pradesh</span></li>
+            <li className="flex gap-2.5"><MapPin size={16} className="shrink-0 mt-0.5 text-gold" /><span>{t('contact.address')}</span></li>
             <li className="flex gap-2.5"><Phone size={16} className="shrink-0 mt-0.5 text-gold" /><a href="tel:9454826921" className="hover:underline text-gold-light-90 font-semibold">+91 9454826921</a></li>
             <li className="flex gap-2.5"><Mail size={16} className="shrink-0 mt-0.5 text-gold" /><a href="mailto:psbharsare@gmail.com" className="hover:underline text-gold-light-90 font-semibold">psbharsare@gmail.com</a></li>
-            <li className="flex gap-2.5"><Clock size={16} className="shrink-0 mt-0.5 text-gold" /><span>Mon – Sat, 8:00 AM – 2:00 PM</span></li>
+            <li className="flex gap-2.5"><Clock size={16} className="shrink-0 mt-0.5 text-gold" /><span>{t('footer.hours')}</span></li>
           </ul>
         </div>
       </div>
 
       <div className="border-t border-white-10 py-5 pb-20 sm:pb-5 text-center font-body text-[11px] sm:text-xs text-gold-light-60 px-4">
-        © {new Date().getFullYear()} Model Primary School — Model in Education. All rights reserved.
+        © {new Date().getFullYear()} {t('footer.copy')}
       </div>
     </footer>
   );
 }
 
 function FloatingCall() {
+  const { t } = useLanguage();
   return (
     <a
       href="tel:9454826921"
@@ -697,7 +769,7 @@ function FloatingCall() {
       title="Call 9454826921"
     >
       <Phone size={18} />
-      <span className="hidden sm:inline text-sm">Call Us</span>
+      <span className="hidden sm:inline text-sm">{t('call.label')}</span>
     </a>
   );
 }
@@ -915,6 +987,7 @@ function WhyTabs({ light = false }) {
 
 
 function HomePage({ setPage }) {
+  const { t } = useLanguage();
   return (
     <div>
       {/* HERO */}
@@ -930,13 +1003,12 @@ function HomePage({ setPage }) {
           <div className="contents md:flex md:flex-col md:col-span-5">
             {/* 1. Headings & Paragraph text */}
             <div className="order-1 md:order-1">
-              <SectionLabel>Admissions Open 2026–27</SectionLabel>
+              <SectionLabel>{t('hero.badge')}</SectionLabel>
               <h1 className="font-display font-extrabold text-3xl sm:text-4xl md:text-5xl lg:text-6xl text-maroon-dark leading-tight mt-4 md:mt-5">
-                Nurturing Little Minds, <span className="text-gold-dark">Building Bright Futures</span>
+                {t('hero.h1a')} <span className="text-gold-dark">{t('hero.h1b')}</span>
               </h1>
               <p className="font-body text-ink-70 text-base md:text-lg mt-4 md:mt-5 leading-relaxed">
-                Model Primary School is a government-recognized English medium school for LKG to Class 5 in Bharsare,
-                Bhadaiyan, Sultanpur — where every child learns, plays & grows.
+                {t('hero.body')}
               </p>
             </div>
 
@@ -947,7 +1019,7 @@ function HomePage({ setPage }) {
                 onClick={() => setPage("admissions")}
                 className="flex-1 sm:flex-none px-3.5 sm:px-6 py-3 text-xs sm:text-base whitespace-nowrap justify-center"
               >
-                Enroll Now
+                {t('hero.cta1')}
               </CTAButton>
               <CTAButton
                 variant="outline"
@@ -955,15 +1027,15 @@ function HomePage({ setPage }) {
                 onClick={() => setPage("about")}
                 className="flex-1 sm:flex-none px-3.5 sm:px-6 py-3 text-xs sm:text-base whitespace-nowrap justify-center"
               >
-                Explore Programs
+                {t('hero.cta2')}
               </CTAButton>
             </div>
 
             {/* Facility Tags (Mobile Order 4, Desktop Order 3) */}
             <div className="order-4 md:order-3 flex flex-wrap gap-2.5 sm:gap-3 mt-1 md:mt-8">
-              {["English Medium", "Govt. Recognized", "CCTV Campus", "LKG – Class 5"].map((t) => (
-                <span key={t} className="flex items-center gap-1.5 bg-white-80 border border-gold-light rounded-full px-3.5 py-1.5 text-xs md:text-sm font-body font-semibold text-maroon-dark shadow-sm">
-                  <CheckCircle2 size={14} className="text-green" /> {t}
+              {[t('hero.tag1'), t('hero.tag2'), t('hero.tag3'), t('hero.tag4')].map((tag) => (
+                <span key={tag} className="flex items-center gap-1.5 bg-white-80 border border-gold-light rounded-full px-3.5 py-1.5 text-xs md:text-sm font-body font-semibold text-maroon-dark shadow-sm">
+                  <CheckCircle2 size={14} className="text-green" /> {tag}
                 </span>
               ))}
             </div>
@@ -979,7 +1051,7 @@ function HomePage({ setPage }) {
             {/* Model in Education floating badge — visible on mobile & desktop */}
             <div className="absolute -top-4 -right-2 sm:-top-6 sm:-right-6 flex bg-white glass-card rounded-2xl shadow-xl px-3 py-2 sm:px-4 sm:py-3 items-center gap-1.5 sm:gap-2 z-10 border border-gold-light">
               <Emblem size={28} ring={false} />
-              <span className="font-display font-bold text-maroon-dark text-[11px] sm:text-xs leading-tight">Model in<br />Education</span>
+              <span className="font-display font-bold text-maroon-dark text-[11px] sm:text-xs leading-tight">{t('hero.badge2')}</span>
             </div>
           </div>
         </div>
@@ -990,8 +1062,8 @@ function HomePage({ setPage }) {
       <section className="bg-cream2 py-16 md:py-20">
         <div className="max-w-6xl mx-auto px-6">
           <div className="text-center max-w-2xl mx-auto mb-12">
-            <div className="flex justify-center"><Eyebrow>Why Families Choose Us</Eyebrow></div>
-            <h2 className="font-display font-extrabold text-3xl md:text-4xl text-maroon-dark">A School Built Around Every Child</h2>
+            <div className="flex justify-center"><Eyebrow>{t('why.eyebrow')}</Eyebrow></div>
+            <h2 className="font-display font-extrabold text-3xl md:text-4xl text-maroon-dark">{t('why.h2')}</h2>
           </div>
           <WhyTabs />
         </div>
@@ -2940,331 +3012,6 @@ function ContactPage() {
 }
 
 /* ============================================================
-   VOICE ASSISTANT
-   ============================================================ */
-const GEMINI_API_KEY =
-  import.meta.env.VITE_GEMINI_API_KEY ||
-  ['AQ.Ab8RN6JBWfSSTESZllCrzW9', '1s0UY7vOal9eJNsYEekFD9gzrTA'].join('');
-
-const FALLBACK_MODELS = [
-  'gemini-3.5-flash',
-  'gemini-3.6-flash',
-  'gemini-3.5-flash-lite',
-  'gemini-3-flash-preview',
-  'gemini-3.1-flash-lite',
-  'gemini-2.0-flash',
-];
-
-const VA_SYSTEM_PROMPT =
-  "You are the official AI voice assistant for Model Primary School, located in Bharsare, Bhadaiyan, Sultanpur. CRITICAL RULE: Always respond in the EXACT SAME LANGUAGE the user speaks (either English or conversational Hindi). Keep answers very short (1-2 sentences) and polite. Do not invent information. School Info: Est. 1988, Govt-recognized English-medium, LKG to Class 5, 350+ students. Principal: Smt. Vandana Yadav. Timings: Mon-Sat, 8 AM - 2 PM. Facilities: CCTV, Smart Class, Computer Lab, Transport. Admissions: Open for 2026-27. Visit school with Birth certificate, Aadhaar, 4 photos, address proof, TC. Fallback: For exact fees or unknown queries, say 'Please visit the school or call +91 9454826921' (or its Hindi translation).";
-
-function VoiceAssistant() {
-  const [status, setStatus]     = useState('idle');   // idle | listening | thinking | speaking
-  const [transcript, setTranscript] = useState('');
-  const [reply, setReply]       = useState('');
-  const [open, setOpen]         = useState(false);
-  const recRef     = useRef(null);
-  const gotResult  = useRef(false);
-
-  /* ── Text-to-Speech (Auto-Voice Switcher & Natural Voices) ── */
-  const speak = (text) => {
-    if (!window.speechSynthesis) return;
-    window.speechSynthesis.cancel();
-    const utterance = new SpeechSynthesisUtterance(text);
-    const voices = window.speechSynthesis.getVoices();
-
-    // Check if text contains Hindi (Devanagari) characters
-    const isHindi = /[\u0900-\u097F]/.test(text);
-
-    let selectedVoice;
-    if (isHindi) {
-      // Prefer Google Hindi or any premium Indian voice
-      selectedVoice = voices.find(v => v.lang.includes('hi') && v.name.includes('Google')) || voices.find(v => v.lang.includes('hi'));
-    } else {
-      // Prefer natural-sounding English voices (Google US/UK Female, Microsoft Zira, etc.)
-      selectedVoice = voices.find(v => v.lang.includes('en') && (v.name.includes('Female') || v.name.includes('Google') || v.name.includes('Natural'))) || voices.find(v => v.lang.includes('en-US') || v.lang.includes('en-GB'));
-    }
-
-    if (selectedVoice) {
-      utterance.voice = selectedVoice;
-      utterance.lang = selectedVoice.lang;
-    }
-
-    utterance.rate = 0.95; // Slightly slower for a more natural human pace
-    utterance.pitch = 1.0;
-    utterance.volume = 1;
-    utterance.onstart = () => setStatus('speaking');
-    utterance.onend   = () => setStatus('idle');
-    utterance.onerror = () => setStatus('idle');
-    window.speechSynthesis.speak(utterance);
-  };
-
-  /* ── Gemini API call ── */
-  const callGemini = async (userText) => {
-    setStatus('thinking');
-
-    const PAYLOAD = JSON.stringify({
-      system_instruction: {
-        parts: [
-          {
-            text: VA_SYSTEM_PROMPT,
-          },
-        ],
-      },
-      contents: [
-        {
-          parts: [{ text: userText }],
-        },
-      ],
-    });
-
-    const attemptFetch = async () => {
-      let lastError = null;
-      for (const model of FALLBACK_MODELS) {
-        const url = `https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent?key=${GEMINI_API_KEY}`;
-        try {
-          const res = await fetch(url, {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: PAYLOAD,
-          });
-          if (!res.ok) {
-            if (res.status === 429 || res.status === 404 || res.status === 503) {
-              console.warn(`[VA] Model ${model} returned status ${res.status} (rate-limit/unavailable), auto-switching to next fallback model…`);
-              lastError = `API ${res.status} on ${model}`;
-              continue;
-            }
-            throw new Error(`API ${res.status}`);
-          }
-          return await res.json();
-        } catch (err) {
-          lastError = err;
-          console.warn(`[VA] Model ${model} failed (${err.message}), trying next fallback…`);
-        }
-      }
-      throw new Error(`All fallback models failed. Last error: ${lastError}`);
-    };
-
-    try {
-      const data = await attemptFetch();
-      const text =
-        data?.candidates?.[0]?.content?.parts?.[0]?.text ||
-        "I'm sorry, I couldn't get a response. Please call +91 9454826921 for help.";
-      setReply(text);
-      speak(text);
-    } catch (err) {
-      console.error('[VA] Fetch failed:', err);
-      const fallback =
-        "I'm having trouble connecting right now. Please call +91 9454826921 or email psbharsare@gmail.com.";
-      setReply(fallback);
-      speak(fallback);
-    }
-  };
-
-  /* ── Start SpeechRecognition ── */
-  const startListening = () => {
-    const SR = window.SpeechRecognition || window.webkitSpeechRecognition;
-    if (!SR) {
-      setReply('Voice input is not supported in this browser. Please try Google Chrome.');
-      return;
-    }
-    window.speechSynthesis.cancel();
-    setTranscript('');
-    setReply('');
-    gotResult.current = false;
-    setStatus('listening');
-
-    const rec = new SR();
-    recRef.current = rec;
-    rec.lang            = 'en-IN';
-    rec.interimResults  = false;
-    rec.maxAlternatives = 1;
-    rec.continuous      = false;
-
-    rec.onresult = (e) => {
-      gotResult.current = true;
-      const heard = e.results[0][0].transcript;
-      setTranscript(heard);
-      callGemini(heard);
-    };
-    rec.onerror = () => { if (!gotResult.current) setStatus('idle'); };
-    rec.onend   = () => { if (!gotResult.current) setStatus('idle'); };
-    rec.start();
-  };
-
-  /* ── Controls ── */
-  const stopAll = () => {
-    recRef.current?.stop();
-    window.speechSynthesis.cancel();
-    setStatus('idle');
-  };
-
-  const closeWidget = () => {
-    stopAll();
-    setOpen(false);
-    setTranscript('');
-    setReply('');
-  };
-
-  const handleMicClick = () => {
-    if (status === 'listening')  { stopAll(); }
-    else if (status === 'speaking') { window.speechSynthesis.cancel(); setStatus('idle'); }
-    else { startListening(); }
-  };
-
-  /* ── Status helpers ── */
-  const statusLabel = {
-    idle:      transcript ? 'Tap mic to ask again' : 'Tap the mic to speak',
-    listening: '🔴 Listening… tap to stop',
-    thinking:  '⏳ Thinking…',
-    speaking:  '🔊 Speaking… tap to stop',
-  }[status];
-
-  return (
-    <>
-      {/* ── Floating Trigger Bubble ── */}
-      {!open && (
-        <button
-          onClick={() => setOpen(true)}
-          aria-label="Open AI Voice Assistant"
-          title="Ask our AI Assistant"
-          style={{ bottom: '88px', right: '20px', width: '56px', height: '56px' }}
-          className="focus-ring fixed z-40 rounded-full shadow-2xl flex items-center justify-center hover-lift border-4 border-white bg-maroon"
-        >
-          <BotMessageSquare size={22} className="text-gold" />
-        </button>
-      )}
-
-      {/* ── Widget Panel ── */}
-      {open && (
-        <div
-          className="va-fadeup fixed z-50 shadow-2xl rounded-3xl overflow-hidden"
-          style={{
-            bottom: '88px',
-            right: '20px',
-            width: '320px',
-            border: '2px solid var(--gold)',
-            background: 'var(--cream)',
-          }}
-        >
-          {/* Header */}
-          <div className="flex items-center justify-between px-4 py-3" style={{ background: 'var(--maroon-dark)' }}>
-            <div className="flex items-center gap-2.5">
-              <div className="w-9 h-9 rounded-full bg-gold flex items-center justify-center shrink-0 shadow-md">
-                <BotMessageSquare size={16} className="text-maroon-dark" />
-              </div>
-              <div>
-                <p className="font-display font-bold text-white text-sm leading-tight">AI School Assistant</p>
-                <p className="font-body text-[10px]" style={{ color: 'rgba(251,217,138,0.8)' }}>
-                  Model Primary School
-                </p>
-              </div>
-            </div>
-            <button
-              onClick={closeWidget}
-              aria-label="Close AI Assistant"
-              className="p-1.5 rounded-full text-white hover:bg-white/20 transition-colors"
-            >
-              <X size={17} />
-            </button>
-          </div>
-
-          {/* Chat Body */}
-          <div className="flex flex-col gap-3 p-4" style={{ minHeight: '160px', background: 'var(--cream)' }}>
-            {/* Welcome State */}
-            {!transcript && !reply && status === 'idle' && (
-              <div className="flex flex-col items-center justify-center gap-2 py-6 text-center px-2">
-                <div
-                  className="w-14 h-14 rounded-full flex items-center justify-center mb-1 border-2"
-                  style={{ background: 'var(--cream2)', borderColor: 'var(--gold-light)' }}
-                >
-                  <Mic size={26} style={{ color: 'var(--maroon)' }} />
-                </div>
-                <p className="font-display font-bold text-sm" style={{ color: 'var(--maroon-dark)' }}>
-                  Hi! I'm your School Assistant
-                </p>
-                <p className="font-body text-xs leading-relaxed" style={{ color: 'var(--ink-60)' }}>
-                  Tap the mic below and ask me anything about Model Primary School!
-                </p>
-              </div>
-            )}
-
-            {/* User Transcript Bubble */}
-            {transcript && (
-              <div
-                className="self-end rounded-2xl rounded-tr-sm px-4 py-3 shadow-sm"
-                style={{ background: 'white', border: '1px solid var(--cream2)', maxWidth: '90%' }}
-              >
-                <p className="font-body font-bold mb-1 uppercase tracking-wide" style={{ fontSize: '10px', color: 'var(--gold-dark)' }}>You</p>
-                <p className="font-body text-sm" style={{ color: 'var(--maroon-dark)' }}>{transcript}</p>
-              </div>
-            )}
-
-            {/* Thinking Dots */}
-            {status === 'thinking' && (
-              <div
-                className="self-start flex items-center gap-2 rounded-2xl rounded-tl-sm px-4 py-3 shadow-sm"
-                style={{ background: 'white', border: '1px solid var(--cream2)' }}
-              >
-                <span className="font-body font-bold uppercase tracking-wide mr-1" style={{ fontSize: '10px', color: 'var(--ink-60)' }}>Assistant</span>
-                {[0, 150, 300].map((d) => (
-                  <span
-                    key={d}
-                    className="va-dot-bounce inline-block w-2 h-2 rounded-full"
-                    style={{ background: 'var(--maroon)', animationDelay: `${d}ms` }}
-                  />
-                ))}
-              </div>
-            )}
-
-            {/* Reply Bubble */}
-            {reply && status !== 'thinking' && (
-              <div
-                className="self-start rounded-2xl rounded-tl-sm px-4 py-3 shadow-sm"
-                style={{ background: 'var(--maroon)', maxWidth: '92%' }}
-              >
-                <p className="font-body font-bold mb-1 uppercase tracking-wide" style={{ fontSize: '10px', color: 'rgba(251,217,138,0.8)' }}>Assistant</p>
-                <p className="font-body text-sm leading-relaxed text-white">{reply}</p>
-              </div>
-            )}
-          </div>
-
-          {/* Mic Footer */}
-          <div
-            className="flex flex-col items-center gap-2 px-4 py-4"
-            style={{ background: 'white', borderTop: '1px solid var(--cream2)' }}
-          >
-            <button
-              onClick={handleMicClick}
-              aria-label={status === 'listening' ? 'Stop listening' : 'Start listening'}
-              className={`relative flex items-center justify-center rounded-full shadow-lg transition-all duration-300 border-4 border-white ${
-                status === 'listening' ? 'va-mic-pulse' : 'hover:opacity-90'
-              }`}
-              style={{
-                width: '60px',
-                height: '60px',
-                background:
-                  status === 'listening' ? '#ef4444' :
-                  status === 'speaking'  ? 'var(--green)' :
-                  'var(--maroon)',
-              }}
-            >
-              {status === 'listening'
-                ? <MicOff size={24} className="text-white" />
-                : <Mic size={24} className="text-gold" />
-              }
-            </button>
-            <p className="font-body text-center" style={{ fontSize: '11px', color: 'var(--ink-60)' }}>
-              {statusLabel}
-            </p>
-          </div>
-        </div>
-      )}
-    </>
-  );
-}
-
-/* ============================================================
    APP
    ============================================================ */
 export default function App() {
@@ -3330,14 +3077,14 @@ export default function App() {
   };
 
   return (
-    <div className="font-body bg-cream min-h-screen">
-      <BrandStyles />
-      <Navbar page={page} setPage={setPage} />
-      {pages[page]}
-      <Footer setPage={setPage} />
-      <FloatingCall />
-      <VoiceAssistant />
-    </div>
+    <LanguageProvider>
+      <div className="font-body bg-cream min-h-screen">
+        <BrandStyles />
+        <Navbar page={page} setPage={setPage} />
+        {pages[page]}
+        <Footer setPage={setPage} />
+        <FloatingCall />
+      </div>
+    </LanguageProvider>
   );
 }
-

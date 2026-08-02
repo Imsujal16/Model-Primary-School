@@ -33,6 +33,48 @@ export const getBestHindiVoice = () => {
 };
 
 /**
+ * cleanTextForSpeech
+ * Strips corrupted/unrecognised characters before passing text to TTS,
+ * preventing the engine from reading out "प्रश्नवाचक चिन्ह" (question mark)
+ * for every ??? sequence that results from encoding bugs.
+ *
+ * Rules applied (in order):
+ *  1. Remove sequences of 2+ consecutive question marks (???, ????, …)
+ *  2. Remove lone ? characters that are not part of valid Hindi/English punctuation
+ *  3. Strip common replacement-character artifacts (U+FFFD and U+25A1)
+ *  4. Collapse multiple spaces / blank lines left behind
+ *  5. Trim leading/trailing whitespace
+ */
+const cleanTextForSpeech = (raw) => {
+  if (!raw) return "";
+
+  let cleaned = raw
+    // 1. Remove runs of 2+ question marks (encoding garbage)
+    .replace(/\?{2,}/g, "")
+    // 2. Remove isolated ? that are surrounded by spaces or at string edges
+    //    (keeps valid "?" at end of real English questions)
+    .replace(/(^|\s)\?(\s|$)/g, " ")
+    // 3. Remove Unicode replacement characters & empty-box glyphs
+    .replace(/[\uFFFD\u25A1]/g, "")
+    // 4. Collapse 3+ consecutive whitespace/newlines into a single space
+    .replace(/[\s]{3,}/g, " ")
+    // 5. Trim
+    .trim();
+
+  return cleaned;
+};
+
+/**
+ * isMeaningfulText — returns false when the text is empty or contains
+ * ONLY question marks, whitespace, or punctuation (nothing speakable).
+ */
+const isMeaningfulText = (text) => {
+  // Remove all punctuation, spaces, question marks; if nothing remains → meaningless
+  const stripped = text.replace(/[\s\p{P}\?]/gu, "");
+  return stripped.length > 0;
+};
+
+/**
  * speakEV — speaks text with EV's warm, human-like Hindi tone.
  * rate 0.9  = slightly relaxed, natural speed
  * pitch 1.05 = soft female tone threshold
@@ -40,10 +82,16 @@ export const getBestHindiVoice = () => {
 export const speakEV = (text, onEnd) => {
   if (typeof window === "undefined" || !window.speechSynthesis || !text) return;
 
+  // ── Sanitize: strip encoding garbage before speaking ──
+  const cleaned = cleanTextForSpeech(text);
+
+  // Guard: if nothing meaningful remains, don't speak (avoids "प्रश्नवाचक चिन्ह")
+  if (!cleaned || !isMeaningfulText(cleaned)) return;
+
   // Cancel anything currently being spoken
   window.speechSynthesis.cancel();
 
-  const utterance = new SpeechSynthesisUtterance(text);
+  const utterance = new SpeechSynthesisUtterance(cleaned);
   const hindiVoice = getBestHindiVoice();
 
   if (hindiVoice) {
@@ -77,9 +125,12 @@ export function speakText(text, lang = "hi-IN", onEnd) {
     return;
   }
 
-  // English path — pick an Indian-English voice if available
+  // English path — sanitize first, then pick an Indian-English voice
+  const cleanedEng = cleanTextForSpeech(text);
+  if (!cleanedEng || !isMeaningfulText(cleanedEng)) return;
+
   window.speechSynthesis.cancel();
-  const utterance = new SpeechSynthesisUtterance(text);
+  const utterance = new SpeechSynthesisUtterance(cleanedEng);
   const voices = window.speechSynthesis.getVoices();
   const engVoice =
     voices.find((v) => v.lang === "en-IN") ||

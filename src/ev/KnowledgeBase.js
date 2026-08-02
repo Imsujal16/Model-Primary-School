@@ -602,24 +602,24 @@ Stage 03: Primary II<br/><br/>
   PRINCIPAL: {
     text: {
       hi: {
-        display: `<b>👩‍💼 श्रीमती वंदना यादव — प्रधानाचार्य</b><br/><br/>
-1988 से विद्यालय की प्रधानाचार्य। उनके मार्गदर्शन में स्कूल सुल्तानपुर के सबसे भरोसेमंद विद्यालयों में से एक बन चुका है।<br/><br/>
+        display: `<b>👩‍💼 श्रीमती वंदना यादव — वर्तमान प्रधानाचार्य</b><br/><br/>
+मॉडल प्राइमरी स्कूल (स्थापना 1988) की वर्तमान प्रधानाचार्य। उनके उत्कृष्ट मार्गदर्शन में स्कूल सुल्तानपुर के सबसे भरोसेमंद विद्यालयों में से एक बन चुका है।<br/><br/>
 <b>🏆 प्रमुख पुरस्कार:</b><br/>
 🥇 राज्य शिक्षक पुरस्कार — UP सरकार<br/>
 👑 राज्यपाल उत्कृष्टता सम्मान<br/>
 🎖️ राष्ट्रीय सम्मान — सांसद श्रीमती मेनका गांधी<br/>
 ⭐ नारी सशक्तिकरण पुरस्कार`,
-        speak: "श्रीमती वंदना यादव 1988 से प्रधानाचार्य हैं। उन्हें राज्य शिक्षक पुरस्कार, राज्यपाल उत्कृष्टता सम्मान और सांसद मेनका गांधी द्वारा राष्ट्रीय सम्मान मिल चुका है।",
+        speak: "श्रीमती वंदना यादव विद्यालय की वर्तमान प्रधानाचार्य हैं। उनके मार्गदर्शन में स्कूल निरंतर प्रगति कर रहा है। उन्हें राज्य शिक्षक पुरस्कार, राज्यपाल उत्कृष्टता सम्मान और सांसद मेनका गांधी द्वारा राष्ट्रीय सम्मान मिल चुका है।",
       },
       en: {
-        display: `<b>👩‍💼 Smt. Vandana Yadav — Principal</b><br/><br/>
-A visionary leader since the school's founding in 1988. Under her guidance, the school has become one of the most trusted institutions in Sultanpur.<br/><br/>
+        display: `<b>👩‍💼 Smt. Vandana Yadav — Current Principal</b><br/><br/>
+Current Principal of Model Primary School (Est. 1988). Under her visionary leadership, the school has become one of the most trusted institutions in Sultanpur.<br/><br/>
 <b>🏆 Key Awards:</b><br/>
 🥇 State Teacher Award — UP Government<br/>
 👑 Governor's Excellence Award<br/>
 🎖️ National Recognition — MP Smt. Maneka Gandhi<br/>
 ⭐ Nari Sashaktikaran Award`,
-        speak: "Smt. Vandana Yadav has been the Principal since 1988. She has received the State Teacher Award, the Governor's Excellence Award, and national recognition from MP Maneka Gandhi.",
+        speak: "Smt. Vandana Yadav is the current Principal of Model Primary School. She has received the State Teacher Award, the Governor's Excellence Award, and national recognition from MP Maneka Gandhi.",
       },
     },
     options: [

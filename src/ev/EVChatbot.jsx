@@ -93,8 +93,8 @@ function Bubble({ msg }) {
           background: isUser ? "var(--maroon)" : "var(--cream2)",
           color: isUser ? "#fff" : "var(--ink)",
           fontSize: 13.5,
-          lineHeight: 1.6,
-          fontFamily:"'Nunito', sans-serif",
+          lineHeight: 1.65,
+          fontFamily:"'Noto Sans Devanagari', 'Nunito', sans-serif",
           whiteSpace:"pre-wrap",
           wordBreak:"break-word",
           boxShadow: isUser
@@ -261,7 +261,7 @@ export default function EVChatbot() {
           display: flex;
           align-items: center;
           justify-content: center;
-          font-family: 'Quicksand', sans-serif;
+          font-family: 'Quicksand', 'Noto Sans Devanagari', sans-serif;
           border: 2px solid #fff;
         }
 
@@ -309,14 +309,14 @@ export default function EVChatbot() {
 
         .ev-header-info { flex: 1; min-width: 0; }
         .ev-header-name {
-          font-family: 'Quicksand', sans-serif;
+          font-family: 'Quicksand', 'Noto Sans Devanagari', sans-serif;
           font-weight: 800;
           font-size: 16px;
           color: #fff;
           line-height: 1.2;
         }
         .ev-header-sub {
-          font-family: 'Nunito', sans-serif;
+          font-family: 'Noto Sans Devanagari', 'Nunito', sans-serif;
           font-size: 11.5px;
           color: rgba(251,217,138,0.85);
           margin-top: 1px;
@@ -371,7 +371,7 @@ export default function EVChatbot() {
           border-radius: 24px;
           padding: 9px 16px;
           font-size: 14px;
-          font-family: 'Nunito', sans-serif;
+          font-family: 'Noto Sans Devanagari', 'Nunito', sans-serif;
           color: var(--ink);
           background: var(--cream);
           outline: none;
@@ -430,6 +430,14 @@ export default function EVChatbot() {
           padding: 4px 0 2px;
         }
 
+        .ev-empty-state {
+          text-align: center;
+          padding: 24px 16px;
+          color: rgba(58,42,30,0.4);
+          font-family: 'Noto Sans Devanagari', 'Nunito', sans-serif;
+          font-size: 13px;
+        }
+
         .ev-listening-chip {
           display: flex;
           align-items: center;
@@ -439,7 +447,7 @@ export default function EVChatbot() {
           border-radius: 20px;
           padding: 4px 12px;
           font-size: 12px;
-          font-family: 'Nunito', sans-serif;
+          font-family: 'Noto Sans Devanagari', 'Nunito', sans-serif;
           color: #ef4444;
           font-weight: 700;
           margin: 0 14px 8px;
@@ -482,8 +490,8 @@ export default function EVChatbot() {
               <IconBot />
             </div>
             <div className="ev-header-info">
-              <div className="ev-header-name">EV &nbsp;•&nbsp; <span style={{fontSize:12,fontWeight:600,opacity:0.8}}>AI ?????????</span></div>
-              <div className="ev-header-sub">???? ???????? ?????, ?????</div>
+              <div className="ev-header-name">EV &nbsp;•&nbsp; <span style={{fontSize:12,fontWeight:600,opacity:0.8,fontFamily:"'Noto Sans Devanagari',sans-serif"}}>AI असिस्टेंट</span></div>
+              <div className="ev-header-sub">मॉडल प्राइमरी स्कूल, भरसरे</div>
             </div>
             <button className="ev-close-btn" onClick={() => setOpen(false)} aria-label="Close chat">
               <IconClose />
@@ -496,15 +504,10 @@ export default function EVChatbot() {
           {/* Messages */}
           <div className="ev-messages">
             {messages.length === 0 && !isTyping && (
-              <div style={{
-                textAlign:"center", padding:"24px 16px",
-                color:"rgba(58,42,30,0.4)",
-                fontFamily:"'Nunito', sans-serif",
-                fontSize:13,
-              }}>
-                <div style={{fontSize:32, marginBottom:8}}>??</div>
-                <div>EV ?? ??? ?? ?????...</div>
-                <div style={{fontSize:12, marginTop:4}}>Ask anything in Hindi or English</div>
+              <div className="ev-empty-state">
+                <div style={{fontSize:32, marginBottom:8}}>🙏</div>
+                <div>EV से कुछ भी पूछें...</div>
+                <div style={{fontSize:12, marginTop:4, fontFamily:"'Nunito',sans-serif"}}>Ask anything in Hindi or English</div>
               </div>
             )}
             {messages.map(msg => <Bubble key={msg.id} msg={msg} />)}
@@ -521,7 +524,7 @@ export default function EVChatbot() {
           {isListening && (
             <div className="ev-listening-chip">
               <div className="ev-listening-dot" />
-              ??? ??? ???… (Listening…)
+              सुन रही हूँ… (Listening…)
             </div>
           )}
 
@@ -530,7 +533,7 @@ export default function EVChatbot() {
             <textarea
               ref={inputRef}
               className="ev-input"
-              placeholder="???? ???? ????… / Type here…"
+              placeholder="यहाँ टाइप करें… / Type here…"
               value={input}
               rows={1}
               onChange={e => {
@@ -559,7 +562,7 @@ export default function EVChatbot() {
                 className={`ev-mic-btn${isListening ? " listening" : ""}`}
                 onClick={handleMic}
                 aria-label={isListening ? "Stop listening" : "Speak to EV"}
-                title={isListening ? "??? ???? ??? ????" : "????? ?????"}
+                title={isListening ? "टैप करके बंद करें" : "बोलकर पूछें"}
               >
                 <IconMic />
               </button>
@@ -567,7 +570,7 @@ export default function EVChatbot() {
           </div>
 
           {!isSpeechSupported() && (
-            <div className="ev-no-voice">?? Voice not supported in this browser</div>
+            <div className="ev-no-voice">🎤 Voice not supported in this browser</div>
           )}
         </div>
       )}

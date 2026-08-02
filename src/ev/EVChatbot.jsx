@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef, useCallback } from "react";
 import { findAnswer, detectLang } from "./SearchEngine";
-import { speakText, stopSpeech, createRecognition, isSpeechSupported, isTTSSupported } from "./VoiceEngine";
+import { speakText, speakEV, stopSpeech, createRecognition, isSpeechSupported, isTTSSupported } from "./VoiceEngine";
 import { GREETING } from "./KnowledgeBase";
 
 // -- ICONS ----------------------------------------------------
@@ -147,10 +147,8 @@ export default function EVChatbot() {
         const greetText = GREETING.hin;
         addMessage("bot", greetText);
         setUnread(0);
-        // Attempt auto-speak (may be blocked by browser policy on first load)
-        if (isTTSSupported()) {
-          speakText(greetText, "hi-IN");
-        }
+        // speakEV uses getBestHindiVoice internally for best humanoid voice
+        if (isTTSSupported()) speakEV(greetText);
       }, 900);
     }
     if (open) {
@@ -176,6 +174,24 @@ export default function EVChatbot() {
       },
     });
     return () => stopSpeech();
+  }, []);
+
+  // ── Voice preload listener (Chrome loads voices asynchronously) ──
+  // Must be set in useEffect so the app is ready the moment browser
+  // finishes loading the voice list.
+  useEffect(() => {
+    if (typeof window === "undefined" || !window.speechSynthesis) return;
+
+    const loadVoices = () => {
+      window.speechSynthesis.getVoices(); // triggers internal cache update
+    };
+
+    loadVoices(); // try to populate immediately (Safari/Firefox)
+
+    // Chrome fires onvoiceschanged once voices are async-loaded
+    if (window.speechSynthesis.onvoiceschanged !== undefined) {
+      window.speechSynthesis.onvoiceschanged = loadVoices;
+    }
   }, []);
 
   const handleSend = useCallback((text) => {

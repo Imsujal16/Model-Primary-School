@@ -2663,6 +2663,9 @@ export function AcademicsPage() {
    GALLERY PAGE
    ============================================================ */
 const galleryItems = [
+  // Featured Priority Award
+  { cat: "Awards & Recognition", label: "State Teacher Award & Official Honors", caption: "Prestigious recognition and official honors awarded to Principal Smt. Vandana Yadav & Model Primary School", tone: "gold", src: "/awards2priority.png" },
+
   // Art & Craft Category
   { cat: "Art & Craft", label: "Creative Handcraft", caption: "Students expressing themselves through art", tone: "gold", src: "/art_craft_gallery_1.jpg" },
   { cat: "Art & Craft", label: "Paper Craft & Origami", caption: "Hands-on creative paper folding activity", tone: "pink", src: "/art_craft_gallery_2.jpg" },

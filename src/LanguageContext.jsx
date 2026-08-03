@@ -16,7 +16,7 @@ export function LanguageProvider({ children }) {
     localStorage.setItem("mps_lang", lang);
   }, [lang]);
 
-  // Translation helper — falls back: current lang → English → raw key
+  // Translation helper - falls back: current lang → English → raw key
   const t = (key) =>
     translations[lang]?.[key] ?? translations["en"]?.[key] ?? key;
 

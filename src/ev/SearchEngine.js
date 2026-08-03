@@ -1,5 +1,5 @@
 // ============================================================
-//  SearchEngine.js — Legacy file (kept for backward compatibility)
+//  SearchEngine.js - Legacy file (kept for backward compatibility)
 //  The new menu-driven EVChatbot no longer uses this.
 //  Safe to ignore.
 // ============================================================

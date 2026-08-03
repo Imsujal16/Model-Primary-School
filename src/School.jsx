@@ -172,7 +172,7 @@ function BrandStyles() {
       .hover-lift{ transition:transform .25s ease, box-shadow .25s ease; }
       .hover-lift:hover{ transform:translateY(-6px); box-shadow:0 20px 40px -12px rgba(122,35,49,0.25); }
 
-      /* Interactive states written as real :hover rules — Tailwind's hover: prefix
+      /* Interactive states written as real :hover rules - Tailwind's hover: prefix
          needs a compiler to generate variants for custom (non-core) classes, which
          this static-stylesheet environment doesn't have. */
       .btn-primary{ background:var(--maroon); color:#fff; transition:background-color .2s ease, transform .2s ease; }
@@ -342,7 +342,7 @@ function useParallax(speed = 0.2) {
 }
 
 /* ============================================================
-   SIGNATURE ELEMENT — Emblem (sunburst over open book)
+   SIGNATURE ELEMENT - Emblem (sunburst over open book)
    Reused as the nav logo, hero crest, section-eyebrow badge,
    and footer mark: the one motif that ties every page together.
    ============================================================ */
@@ -384,7 +384,7 @@ function Emblem({ size = 56, ring = true, className = "" }) {
   );
 }
 
-/* Diagonal pencil-stripe divider — used between major sections on every page */
+/* Diagonal pencil-stripe divider - used between major sections on every page */
 function PencilDivider({ thin = false, className = "" }) {
   return (
     <div
@@ -448,7 +448,7 @@ function YouTubeIcon({ size = 20, className = "" }) {
 }
 
 /* ============================================================
-   MASCOTS — simple flat illustrations echoing the school's
+   MASCOTS - simple flat illustrations echoing the school's
    maroon/gold uniform styling
    ============================================================ */
 function Mascot({ variant = "girl", size = 140, className = "" }) {
@@ -529,7 +529,7 @@ function FeatureCard({ icon: Icon, title, desc, className = "" }) {
   );
 }
 
-/* Reusable placeholder for a real photo — sized/composed like the actual shot would be.
+/* Reusable placeholder for a real photo - sized/composed like the actual shot would be.
    Uses an inline aspectRatio style rather than a Tailwind aspect-[] class, since this
    environment has no JIT compiler to generate arbitrary-value utility classes. */
 function ImagePlaceholder({ src, label, caption, ratio = "4 / 3", tone = "gold", className = "" }) {
@@ -1040,13 +1040,13 @@ export function HomePage() {
   const { t } = useLanguage();
   const navigate = useNavigate();
   const classLevels = [
-    { level: "LKG", age: "3 – 4 yrs", focus: t("classes.lkg.focus") },
-    { level: "UKG", age: "4 – 5 yrs", focus: t("classes.ukg.focus") },
-    { level: "Class 1", age: "5 – 6 yrs", focus: t("classes.c1.focus") },
-    { level: "Class 2", age: "6 – 7 yrs", focus: t("classes.c2.focus") },
-    { level: "Class 3", age: "7 – 8 yrs", focus: t("classes.c3.focus") },
-    { level: "Class 4", age: "8 – 9 yrs", focus: t("classes.c4.focus") },
-    { level: "Class 5", age: "9 – 10 yrs", focus: t("classes.c5.focus") },
+    { level: "LKG", age: "3 - 4 yrs", focus: t("classes.lkg.focus") },
+    { level: "UKG", age: "4 - 5 yrs", focus: t("classes.ukg.focus") },
+    { level: "Class 1", age: "5 - 6 yrs", focus: t("classes.c1.focus") },
+    { level: "Class 2", age: "6 - 7 yrs", focus: t("classes.c2.focus") },
+    { level: "Class 3", age: "7 - 8 yrs", focus: t("classes.c3.focus") },
+    { level: "Class 4", age: "8 - 9 yrs", focus: t("classes.c4.focus") },
+    { level: "Class 5", age: "9 - 10 yrs", focus: t("classes.c5.focus") },
   ];
 
   return (
@@ -1095,7 +1095,7 @@ export function HomePage() {
         `}</script>
       </Helmet>
       {/* ══════════════════════════════════════════════════════
-          GEO TL;DR BLOCK — AI Summary for LLM Crawlers
+          GEO TL;DR BLOCK - AI Summary for LLM Crawlers
           (ChatGPT Search, Perplexity, Google SGE/AIO)
           Visually subtle but fully readable by bots.
           Contains dense factual statements in both languages.
@@ -1134,9 +1134,9 @@ export function HomePage() {
           <em>National Recognition from MP Smt. Maneka Gandhi</em>. Facilities include
           CCTV campus security, smart projector classrooms, a computer education lab,
           a library, safe student transport, RO water coolers, and a government
-          Mid-Day Meal programme. School hours are Monday–Saturday,{" "}
+          Mid-Day Meal programme. School hours are Monday-Saturday,{" "}
           <strong>8:00 AM to 2:00 PM</strong>.{" "}
-          <strong>Admissions for 2026–27 are currently open.</strong>{" "}
+          <strong>Admissions for 2026-27 are currently open.</strong>{" "}
           Contact:{" "}
           <a href="tel:+919454826921" itemProp="telephone" style={{ color: "inherit" }}>
             +91-9454826921
@@ -1145,11 +1145,11 @@ export function HomePage() {
           <a href="mailto:psbharsare@gmail.com" itemProp="email" style={{ color: "inherit" }}>
             psbharsare@gmail.com
           </a>
-          .{" — "}
+          .{" - "}
           <span lang="hi">
-            मॉडल प्राइमरी स्कूल, भरसारे, सुल्तानपुर — LKG से कक्षा 5 तक अंग्रेज़ी
+            मॉडल प्राइमरी स्कूल, भरसारे, सुल्तानपुर - LKG से कक्षा 5 तक अंग्रेज़ी
             माध्यम शिक्षा। वर्तमान प्रधानाचार्य: श्रीमती वंदना यादव (राज्य शिक्षक
-            पुरस्कार विजेता)। प्रवेश 2026–27 खुले हैं। संपर्क: 9454826921।
+            पुरस्कार विजेता)। प्रवेश 2026-27 खुले हैं। संपर्क: 9454826921।
           </span>
         </p>
       </section>
@@ -1208,11 +1208,11 @@ export function HomePage() {
           {/* 2. School Image (Mobile Order 2, Desktop Right Column) */}
           <div className="order-2 md:order-none md:col-span-7 relative w-full my-2 md:my-0">
             <ImagePlaceholder src="/hero_home.png" label="School building & entrance" caption="Pencil-and-book branded exterior" ratio="4 / 3" className="w-full shadow-2xl" />
-            {/* Mascot illustration — visible on mobile & desktop */}
+            {/* Mascot illustration - visible on mobile & desktop */}
             <div className="absolute -bottom-4 -left-3 sm:-bottom-8 sm:-left-8 z-10 animate-bob">
               <Mascot variant="girl" size={90} className="w-20 sm:w-28" />
             </div>
-            {/* Model in Education floating badge — visible on mobile & desktop */}
+            {/* Model in Education floating badge - visible on mobile & desktop */}
             <div className="absolute -top-4 -right-2 sm:-top-6 sm:-right-6 flex bg-white glass-card rounded-2xl shadow-xl px-3 py-2 sm:px-4 sm:py-3 items-center gap-1.5 sm:gap-2 z-10 border border-gold-light">
               <Emblem size={28} ring={false} />
               <span className="font-display font-bold text-maroon-dark text-[11px] sm:text-xs leading-tight">{t('hero.badge2')}</span>
@@ -1222,7 +1222,7 @@ export function HomePage() {
         <PencilDivider />
       </section>
 
-      {/* WHY CHOOSE US — Interactive Tabs */}
+      {/* WHY CHOOSE US - Interactive Tabs */}
       <section className="bg-cream2 py-16 md:py-20">
         <div className="max-w-6xl mx-auto px-6">
           <div className="text-center max-w-2xl mx-auto mb-12">
@@ -1235,7 +1235,7 @@ export function HomePage() {
 
       <PencilDivider thin />
 
-      {/* CLASSES WE OFFER — Vertical Timeline */}
+      {/* CLASSES WE OFFER - Vertical Timeline */}
       <section className="bg-cream py-16 md:py-20">
         <div className="max-w-4xl mx-auto px-6">
           <div className="text-center max-w-2xl mx-auto mb-16">
@@ -1514,7 +1514,7 @@ function VisionMissionSection() {
             aria-hidden="true"
           />
           <div className="grid md:grid-cols-2 gap-8 items-start relative" style={{ zIndex: 1 }}>
-            {/* Vision — shifted UP */}
+            {/* Vision - shifted UP */}
             <div className="vision-card bg-white rounded-3xl p-8 shadow-xl border-t-4 border-maroon relative overflow-hidden" style={{ marginTop: 0 }}>
               <div className="flex items-center justify-between mb-4 relative z-10">
                 <div className="flex items-center gap-3">
@@ -1546,7 +1546,7 @@ function VisionMissionSection() {
                 ))}
               </div>
             </div>
-            {/* Mission — shifted DOWN for asymmetric feel */}
+            {/* Mission - shifted DOWN for asymmetric feel */}
             <div className="mission-card bg-white rounded-3xl p-8 shadow-xl border-t-4 border-gold md:mt-16 relative overflow-hidden">
               <div className="flex items-center justify-between mb-4 relative z-10">
                 <div className="flex items-center gap-3">
@@ -1734,7 +1734,7 @@ export function AboutPage() {
           <div>
             <ImagePlaceholder
               src="/principal.png"
-              label="Smt. Vandana Yadav — Principal"
+              label="Smt. Vandana Yadav - Principal"
               caption="Principal of Model Primary School"
               ratio="4 / 5"
               tone="pink"
@@ -1870,7 +1870,7 @@ export function AboutPage() {
 
       <PencilDivider thin />
 
-      {/* 3 ─ MEET OUR FACULTY — Portrait Photo Spotlight (5 Staff Members) */}
+      {/* 3 ─ MEET OUR FACULTY - Portrait Photo Spotlight (5 Staff Members) */}
       <section className="bg-cream py-16 md:py-24">
         <div className="max-w-6xl mx-auto px-6">
           <div className="text-center max-w-2xl mx-auto mb-16">
@@ -1883,7 +1883,7 @@ export function AboutPage() {
             </p>
           </div>
 
-          {/* 5 Photo Portrait Cards — 3 top row + 2 centered bottom row */}
+          {/* 5 Photo Portrait Cards - 3 top row + 2 centered bottom row */}
           <div className="flex flex-wrap justify-center gap-8 max-w-6xl mx-auto">
             {teachers.map((teacher, idx) => (
               <div
@@ -1923,12 +1923,12 @@ export function AboutPage() {
 
       <PencilDivider thin />
 
-      {/* 4 ─ VISION & MISSION — interactive mobile tab switcher + desktop asymmetric layout */}
+      {/* 4 ─ VISION & MISSION - interactive mobile tab switcher + desktop asymmetric layout */}
       <VisionMissionSection />
 
       <PencilDivider />
 
-      {/* 5 ─ WHY CHOOSE US — staggered entrance animation */}
+      {/* 5 ─ WHY CHOOSE US - staggered entrance animation */}
       <section className="bg-maroon py-16 md:py-20 relative overflow-hidden">
         <div className="absolute -right-16 -top-16 opacity-10 animate-spin-slow" aria-hidden="true">
           <Emblem size={320} ring={false} />
@@ -2039,13 +2039,13 @@ export function AcademicsPage() {
   ];
 
   const classLevels = [
-    { level: "LKG", age: "3 – 4 yrs", focus: t("classes.lkg.focus") },
-    { level: "UKG", age: "4 – 5 yrs", focus: t("classes.ukg.focus") },
-    { level: "Class 1", age: "5 – 6 yrs", focus: t("classes.c1.focus") },
-    { level: "Class 2", age: "6 – 7 yrs", focus: t("classes.c2.focus") },
-    { level: "Class 3", age: "7 – 8 yrs", focus: t("classes.c3.focus") },
-    { level: "Class 4", age: "8 – 9 yrs", focus: t("classes.c4.focus") },
-    { level: "Class 5", age: "9 – 10 yrs", focus: t("classes.c5.focus") },
+    { level: "LKG", age: "3 - 4 yrs", focus: t("classes.lkg.focus") },
+    { level: "UKG", age: "4 - 5 yrs", focus: t("classes.ukg.focus") },
+    { level: "Class 1", age: "5 - 6 yrs", focus: t("classes.c1.focus") },
+    { level: "Class 2", age: "6 - 7 yrs", focus: t("classes.c2.focus") },
+    { level: "Class 3", age: "7 - 8 yrs", focus: t("classes.c3.focus") },
+    { level: "Class 4", age: "8 - 9 yrs", focus: t("classes.c4.focus") },
+    { level: "Class 5", age: "9 - 10 yrs", focus: t("classes.c5.focus") },
   ];
 
   const dailyRoutine = [
@@ -2082,7 +2082,7 @@ export function AcademicsPage() {
         subtitle={t('acad.hero.subtitle')}
       />
 
-      {/* CURRICULUM — Concept 1: Interactive Segmented Stage Switcher & Dynamic Canvas */}
+      {/* CURRICULUM - Concept 1: Interactive Segmented Stage Switcher & Dynamic Canvas */}
       <section className="bg-cream py-14 md:py-24 w-full overflow-hidden">
         <div className="max-w-6xl mx-auto px-5 sm:px-8 md:px-10">
           <div className="text-center max-w-2xl mx-auto mb-8 md:mb-12">
@@ -2097,7 +2097,7 @@ export function AcademicsPage() {
 
           {/* 📱 MOBILE VIEW: Segmented Stage Switcher & Dynamic Active Stage Canvas (< md) */}
           <div className="md:hidden flex flex-col gap-4">
-            {/* Mobile Pill Tabs — exact match to Screenshot 2 */}
+            {/* Mobile Pill Tabs - exact match to Screenshot 2 */}
             <div className="flex bg-cream3 p-1.5 rounded-full border border-gold-light shadow-inner w-full">
               {curriculumStages.map((stg, idx) => {
                 const isActive = activeStageIndex === idx;
@@ -2118,7 +2118,7 @@ export function AcademicsPage() {
               })}
             </div>
 
-            {/* Mobile Active Showcase Card — exact match to Screenshot 2 */}
+            {/* Mobile Active Showcase Card - exact match to Screenshot 2 */}
             <div key={activeStage.stage} className="bg-white rounded-3xl p-5 sm:p-6 shadow-xl border-t-4 border-gold border-x border-b border-gold-light/60 animate-slide-up">
               {/* Header Row */}
               <div className="flex items-center justify-between gap-3 mb-4 pb-3 border-b border-cream2">
@@ -2461,7 +2461,7 @@ export function AcademicsPage() {
 
       <PencilDivider thin />
 
-      {/* BEYOND THE BOOKS — Concept 1: Full-Bleed Photo Cards with Floating Glass Drawers */}
+      {/* BEYOND THE BOOKS - Concept 1: Full-Bleed Photo Cards with Floating Glass Drawers */}
       <section className="bg-cream2 py-16 md:py-24 w-full overflow-hidden">
         <div className="max-w-6xl mx-auto px-5 sm:px-8 md:px-10">
           <div className="text-center max-w-2xl mx-auto mb-10 md:mb-14">
@@ -2555,7 +2555,7 @@ export function AcademicsPage() {
                         ))}
                       </Swiper>
 
-                      {/* NO full overlay — keep photo bright and vivid */}
+                      {/* NO full overlay - keep photo bright and vivid */}
                       <div className="absolute top-0 left-0 w-full h-1.5 pencil-stripe-thin z-10 pointer-events-none" />
 
                       {/* Liquid Glass Pill Badge */}
@@ -2611,7 +2611,7 @@ export function AcademicsPage() {
                         ))}
                       </Swiper>
 
-                      {/* NO full overlay — keep photo bright and vivid */}
+                      {/* NO full overlay - keep photo bright and vivid */}
                       <div className="absolute top-0 left-0 w-full h-2 pencil-stripe-thin z-10 pointer-events-none" />
 
                       {/* Liquid Glass Pill Badge */}
@@ -3375,7 +3375,7 @@ export function ContactPage() {
 }
 
 /* ============================================================
-   LAYOUT — persistent shell (Navbar + page content + Footer)
+   LAYOUT - persistent shell (Navbar + page content + Footer)
    Lenis smooth scroll lives here so it persists across routes.
    EVChatbot is mounted in App.jsx OUTSIDE <Routes> so it also
    never re-mounts on navigation.

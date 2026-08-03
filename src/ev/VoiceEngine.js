@@ -1,5 +1,5 @@
 // ============================================================
-//  EV Voice Engine — Dynamic TTS for Hindi & English
+//  EV Voice Engine - Dynamic TTS for Hindi & English
 //  speakEV(text, lang)  →  reads text in the correct language
 //  Sanitization: strips emojis, dashes, question marks
 //  Number fix: converts every digit to spoken word
@@ -68,10 +68,10 @@ export const getBestEnglishVoice = () => {
 
 // ── SANITIZATION ─────────────────────────────────────────────
 
-// Emoji regex — covers the vast majority of emoji unicode ranges
+// Emoji regex - covers the vast majority of emoji unicode ranges
 const EMOJI_REGEX = /[\u{1F000}-\u{1FFFF}\u{2600}-\u{26FF}\u{2700}-\u{27BF}\u{FE00}-\u{FEFF}\u{1F900}-\u{1F9FF}\u{1FA00}-\u{1FA9F}\u{231A}-\u{231B}\u{23E9}-\u{23F3}\u{23F8}-\u{23FA}\u{25AA}-\u{25AB}\u{25B6}\u{25C0}\u{25FB}-\u{25FE}\u{2614}-\u{2615}\u{2648}-\u{2653}\u{267F}\u{2693}\u{26A1}\u{26AA}-\u{26AB}\u{26BD}-\u{26BE}\u{26C4}-\u{26C5}\u{26CE}\u{26D4}\u{26EA}\u{26F2}-\u{26F3}\u{26F5}\u{26FA}\u{26FD}\u{2702}\u{2705}\u{2708}-\u{270D}\u{270F}\u{2712}\u{2714}\u{2716}\u{271D}\u{2721}\u{2728}\u{2733}-\u{2734}\u{2744}\u{2747}\u{274C}\u{274E}\u{2753}-\u{2755}\u{2757}\u{2763}-\u{2764}\u{2795}-\u{2797}\u{27A1}\u{27B0}\u{27BF}\u{2934}-\u{2935}\u{2B05}-\u{2B07}\u{2B1B}-\u{2B1C}\u{2B50}\u{2B55}\u{3030}\u{303D}\u{3297}\u{3299}]/gu;
 
-// NOTE: No digit word maps needed — smaller numbers (1988, 350, etc.)
+// NOTE: No digit word maps needed - smaller numbers (1988, 350, etc.)
 // are left intact for natural TTS reading. Only phone numbers are handled.
 
 /**
@@ -91,9 +91,9 @@ const cleanTextForSpeech = (raw, lang = "hi") => {
     .replace(EMOJI_REGEX, "")
     // 2. Strip lone ? marks (prevents "Prashnavachak Chinh")
     .replace(/\?/g, "")
-    // 3. Replace ALL dash types (-, –, —) with natural spoken connectors.
+    // 3. Replace ALL dash types (-, -, -) with natural spoken connectors.
     //    Prevents TTS from reading them as "minus".
-    //    E.g. "LKG – 5" → "LKG से 5" (hi) / "LKG to 5" (en).
+    //    E.g. "LKG - 5" → "LKG से 5" (hi) / "LKG to 5" (en).
     .replace(/[-\u2013\u2014]/g, lang === "en" ? " to " : " से ")
     // 4. Strip Unicode replacement characters
     .replace(/[\uFFFD\u25A1]/g, "")
@@ -118,7 +118,7 @@ const cleanTextForSpeech = (raw, lang = "hi") => {
 };
 
 /**
- * isMeaningfulText — guards against speaking empty/punctuation-only strings
+ * isMeaningfulText - guards against speaking empty/punctuation-only strings
  */
 const isMeaningfulText = (text) => {
   const stripped = text.replace(/[\s,।,.।\p{P}]/gu, "");
@@ -173,7 +173,7 @@ export const speakEV = (text, lang = "hi", onEnd) => {
 };
 
 /**
- * speakText — backward-compatible wrapper
+ * speakText - backward-compatible wrapper
  * @param {string} text
  * @param {string} lang - 'hi-IN' | 'en-IN' | 'hi' | 'en'
  * @param {Function} [onEnd]
@@ -184,7 +184,7 @@ export function speakText(text, lang = "hi-IN", onEnd) {
 }
 
 /**
- * stopSpeech — cancels any ongoing TTS utterance
+ * stopSpeech - cancels any ongoing TTS utterance
  */
 export function stopSpeech() {
   if (typeof window !== "undefined" && window.speechSynthesis) {
@@ -195,7 +195,7 @@ export function stopSpeech() {
 // ── SPEECH RECOGNITION (STT) ──────────────────────────────────
 
 /**
- * createRecognition — creates and configures a SpeechRecognition instance
+ * createRecognition - creates and configures a SpeechRecognition instance
  */
 export function createRecognition({ onResult, onListeningChange, onError }) {
   const SpeechRecognition =

@@ -619,7 +619,7 @@ export default function EVChatbot() {
         className="ev-fab"
         onClick={handleFABClick}
         aria-label="Chat with EVI"
-        title="Chat with EVI — School Assistant"
+        title="Chat with EVI - School Assistant"
       >
         {open ? <IconClose /> : <IconChat />}
         {!open && unread > 0 && (

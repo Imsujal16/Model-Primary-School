@@ -26,7 +26,7 @@ export const CONTACT_NODE = {
 💬 <b>WhatsApp:</b> <a href="https://wa.me/919454826921" target="_blank" rel="noopener" style="${S.wa}">WhatsApp पर लिखें</a><br/>
 📧 <b>ईमेल:</b> <a href="mailto:psbharsare@gmail.com" style="${S.email}">psbharsare@gmail.com</a><br/>
 📍 <b>पता:</b> भरसारे, भदैयाँ, सुल्तानपुर, उत्तर प्रदेश<br/>
-⏰ <b>समय:</b> सोम–शनि, सुबह 8 बजे से दोपहर 2 बजे<br/><br/>
+⏰ <b>समय:</b> सोम-शनि, सुबह 8 बजे से दोपहर 2 बजे<br/><br/>
 🌐 <b>सोशल मीडिया:</b><br/>
 📸 <a href="https://instagram.com/mpsbharsare" target="_blank" rel="noopener" style="${S.ig}">Instagram: @mpsbharsare</a><br/>
 👍 <a href="https://www.facebook.com/profile.php?id=61564437598896" target="_blank" rel="noopener" style="${S.fb}">Facebook: Model Primary School</a><br/>
@@ -39,7 +39,7 @@ export const CONTACT_NODE = {
 💬 <b>WhatsApp:</b> <a href="https://wa.me/919454826921" target="_blank" rel="noopener" style="${S.wa}">Message on WhatsApp</a><br/>
 📧 <b>Email:</b> <a href="mailto:psbharsare@gmail.com" style="${S.email}">psbharsare@gmail.com</a><br/>
 📍 <b>Address:</b> Bharsare, Bhadaiyan, Sultanpur, Uttar Pradesh<br/>
-⏰ <b>Hours:</b> Mon–Sat, 8 AM to 2 PM<br/><br/>
+⏰ <b>Hours:</b> Mon-Sat, 8 AM to 2 PM<br/><br/>
 🌐 <b>Social Media:</b><br/>
 📸 <a href="https://instagram.com/mpsbharsare" target="_blank" rel="noopener" style="${S.ig}">Instagram: @mpsbharsare</a><br/>
 👍 <a href="https://www.facebook.com/profile.php?id=61564437598896" target="_blank" rel="noopener" style="${S.fb}">Facebook: Model Primary School</a><br/>
@@ -107,13 +107,13 @@ What would you like to know?`,
     text: {
       hi: {
         display: `<b>📜 हमारी कहानी</b><br/><br/>
-मॉडल प्राइमरी स्कूल की स्थापना 1988 में हुई — भरसारे और भदैयाँ के बच्चों को घर के पास गुणवत्तापूर्ण अंग्रेज़ी-माध्यम शिक्षा देने के उद्देश्य से।<br/><br/>
-आज यह सुल्तानपुर जिले का सबसे भरोसेमंद प्राथमिक विद्यालय है — 350 से अधिक परिवारों के विश्वास का केंद्र।`,
+मॉडल प्राइमरी स्कूल की स्थापना 1988 में हुई - भरसारे और भदैयाँ के बच्चों को घर के पास गुणवत्तापूर्ण अंग्रेज़ी-माध्यम शिक्षा देने के उद्देश्य से।<br/><br/>
+आज यह सुल्तानपुर जिले का सबसे भरोसेमंद प्राथमिक विद्यालय है - 350 से अधिक परिवारों के विश्वास का केंद्र।`,
         speak: "मॉडल प्राइमरी स्कूल की शुरुआत 1988 में हुई, भरसारे और भदैयाँ के बच्चों को घर के पास गुणवत्तापूर्ण शिक्षा देने के लिए। आज यह सुल्तानपुर जिले का सबसे भरोसेमंद प्राथमिक विद्यालय है।",
       },
       en: {
         display: `<b>📜 Our Story</b><br/><br/>
-Model Primary School was founded in 1988 with a simple purpose — to give children of Bharsare and Bhadaiyan access to quality English-medium education close to home.<br/><br/>
+Model Primary School was founded in 1988 with a simple purpose - to give children of Bharsare and Bhadaiyan access to quality English-medium education close to home.<br/><br/>
 From a small neighbourhood school, we have grown into the most trusted primary school in Sultanpur district, trusted by 350+ families.`,
         speak: "Model Primary School was founded in 1988 to give children of Bharsare and Bhadaiyan quality English-medium education close to home. Today we are the most trusted primary school in Sultanpur district.",
       },
@@ -130,9 +130,9 @@ From a small neighbourhood school, we have grown into the most trusted primary s
       hi: {
         display: `<b>🏆 पुरस्कार एवं सम्मान</b><br/><br/>
 हमारी प्रधानाचार्य <b>श्रीमती वंदना यादव</b> जी को:<br/><br/>
-🥇 राज्य शिक्षक पुरस्कार — उत्तर प्रदेश सरकार<br/>
-👑 राज्यपाल उत्कृष्टता सम्मान — माननीय राज्यपाल (UP)<br/>
-🎖️ राष्ट्रीय सम्मान — सांसद श्रीमती मेनका गांधी<br/>
+🥇 राज्य शिक्षक पुरस्कार - उत्तर प्रदेश सरकार<br/>
+👑 राज्यपाल उत्कृष्टता सम्मान - माननीय राज्यपाल (UP)<br/>
+🎖️ राष्ट्रीय सम्मान - सांसद श्रीमती मेनका गांधी<br/>
 ⭐ DM C. Indumati, DM Ravish Gupta, DM Kritika Jyotsna द्वारा सम्मानित<br/>
 ⭐ नारी सशक्तिकरण पुरस्कार<br/>
 ⭐ Amar Ujala द्वारा मान्यता प्राप्त<br/><br/>
@@ -142,9 +142,9 @@ From a small neighbourhood school, we have grown into the most trusted primary s
       en: {
         display: `<b>🏆 Awards & Recognition</b><br/><br/>
 Our Principal <b>Smt. Vandana Yadav</b> has received:<br/><br/>
-🥇 State Teacher Award — UP Government<br/>
-👑 Governor's Excellence Award — Governor of Uttar Pradesh<br/>
-🎖️ National Recognition — MP Smt. Maneka Gandhi<br/>
+🥇 State Teacher Award - UP Government<br/>
+👑 Governor's Excellence Award - Governor of Uttar Pradesh<br/>
+🎖️ National Recognition - MP Smt. Maneka Gandhi<br/>
 ⭐ Honoured by DM C. Indumati, DM Ravish Gupta, DM Kritika Jyotsna<br/>
 ⭐ Nari Sashaktikaran Award<br/>
 ⭐ Recognised by Team Amar Ujala<br/><br/>
@@ -166,13 +166,13 @@ Teacher <b>Diksha Shrivastav</b> is a State ICT Award winner.`,
 🌟 <b>हमारी दृष्टि:</b><br/>
 सुल्तानपुर का सबसे भरोसेमंद प्राथमिक विद्यालय बनना, जहाँ भरसारे और आसपास के गाँवों के हर बच्चे को उच्च गुणवत्ता वाली अंग्रेज़ी शिक्षा मिले।<br/><br/>
 💪 <b>हमारा मिशन:</b><br/>
-आनंदमयी, गतिविधि-आधारित शिक्षा के माध्यम से हर बच्चे की क्षमता निखारना — एक सुरक्षित, अनुशासित और प्रेमपूर्ण वातावरण में।`,
+आनंदमयी, गतिविधि-आधारित शिक्षा के माध्यम से हर बच्चे की क्षमता निखारना - एक सुरक्षित, अनुशासित और प्रेमपूर्ण वातावरण में।`,
         speak: "हमारी दृष्टि है कि सुल्तानपुर का हर बच्चा गुणवत्तापूर्ण अंग्रेज़ी शिक्षा पाए। हमारा मिशन है आनंदमयी और गतिविधि आधारित शिक्षा के माध्यम से हर बच्चे की क्षमता निखारना।",
       },
       en: {
         display: `<b>🎯 Vision & Mission</b><br/><br/>
 🌟 <b>Our Vision:</b><br/>
-To be the most trusted primary school in Sultanpur — where every child from Bharsare and surrounding villages can access quality English-medium education.<br/><br/>
+To be the most trusted primary school in Sultanpur - where every child from Bharsare and surrounding villages can access quality English-medium education.<br/><br/>
 💪 <b>Our Mission:</b><br/>
 To nurture every child's potential through joyful, activity-based learning in a safe, disciplined and loving environment.`,
         speak: "Our vision is to be the most trusted primary school in Sultanpur. Our mission is to nurture every child's potential through joyful, activity-based learning in a safe and loving environment.",
@@ -220,11 +220,11 @@ To nurture every child's potential through joyful, activity-based learning in a 
   ADMISSIONS: {
     text: {
       hi: {
-        display: "<b>📚 प्रवेश 2026-27 — अभी खुले हैं!</b><br/><br/>सीमित सीटें उपलब्ध हैं। आप क्या जानना चाहते हैं?",
+        display: "<b>📚 प्रवेश 2026-27 - अभी खुले हैं!</b><br/><br/>सीमित सीटें उपलब्ध हैं। आप क्या जानना चाहते हैं?",
         speak: "प्रवेश 2026-27 के लिए अभी खुले हैं। सीमित सीटें हैं, जल्दी करें। आप क्या जानना चाहते हैं?",
       },
       en: {
-        display: "<b>📚 Admissions 2026-27 — Now Open!</b><br/><br/>Limited seats available. What would you like to know?",
+        display: "<b>📚 Admissions 2026-27 - Now Open!</b><br/><br/>Limited seats available. What would you like to know?",
         speak: "Admissions for 2026-27 are now open with limited seats available. What would you like to know?",
       },
     },
@@ -284,7 +284,7 @@ Complete formalities and fee payment to confirm.`,
 ✅ बच्चे की 4 पासपोर्ट साइज़ फ़ोटो<br/>
 ✅ बच्चे और माता-पिता का आधार कार्ड<br/>
 ✅ माता-पिता का पता प्रमाण<br/>
-✅ स्थानांतरण प्रमाण पत्र (TC) — यदि लागू हो<br/>
+✅ स्थानांतरण प्रमाण पत्र (TC) - यदि लागू हो<br/>
 ✅ पिछले स्कूल की रिपोर्ट कार्ड, यदि उपलब्ध हो`,
         speak: "प्रवेश के लिए बच्चे का जन्म प्रमाण पत्र, चार पासपोर्ट फ़ोटो, आधार कार्ड, पते का प्रमाण और यदि पहले किसी स्कूल में थे तो ट्रांसफर सर्टिफिकेट की ज़रूरत होगी।",
       },
@@ -292,9 +292,9 @@ Complete formalities and fee payment to confirm.`,
         display: `<b>📄 Required Documents for Admission</b><br/><br/>
 ✅ Child's birth certificate (original + photocopy)<br/>
 ✅ 4 recent passport-size photographs of the child<br/>
-✅ Aadhar card — child and parent/guardian<br/>
+✅ Aadhar card - child and parent/guardian<br/>
 ✅ Address proof of parent/guardian<br/>
-✅ Transfer Certificate (TC) — if applicable<br/>
+✅ Transfer Certificate (TC) - if applicable<br/>
 ✅ Previous school report card, if available`,
         speak: "For admission you will need the child's birth certificate, four passport-size photos, Aadhar cards for child and parent, address proof, and a Transfer Certificate if applicable.",
       },
@@ -310,24 +310,24 @@ Complete formalities and fee payment to confirm.`,
     text: {
       hi: {
         display: `<b>🎂 आयु पात्रता (प्रवेश के समय)</b><br/><br/>
-🌱 <b>LKG</b> — 3+ वर्ष<br/>
-🌿 <b>UKG</b> — 4+ वर्ष<br/>
-📖 <b>कक्षा 1</b> — 5+ वर्ष<br/>
-📗 <b>कक्षा 2</b> — 6+ वर्ष<br/>
-📘 <b>कक्षा 3</b> — 7+ वर्ष<br/>
-📙 <b>कक्षा 4</b> — 8+ वर्ष<br/>
-📕 <b>कक्षा 5</b> — 9+ वर्ष`,
+🌱 <b>LKG</b> - 3+ वर्ष<br/>
+🌿 <b>UKG</b> - 4+ वर्ष<br/>
+📖 <b>कक्षा 1</b> - 5+ वर्ष<br/>
+📗 <b>कक्षा 2</b> - 6+ वर्ष<br/>
+📘 <b>कक्षा 3</b> - 7+ वर्ष<br/>
+📙 <b>कक्षा 4</b> - 8+ वर्ष<br/>
+📕 <b>कक्षा 5</b> - 9+ वर्ष`,
         speak: "एल.के.जी. के लिए 3 वर्ष, यू.के.जी. के लिए 4 वर्ष, कक्षा 1 के लिए 5 वर्ष, और आगे की कक्षाओं के लिए एक-एक वर्ष अधिक।",
       },
       en: {
         display: `<b>🎂 Age Eligibility (as of intake date)</b><br/><br/>
-🌱 <b>LKG</b> — 3+ years<br/>
-🌿 <b>UKG</b> — 4+ years<br/>
-📖 <b>Class 1</b> — 5+ years<br/>
-📗 <b>Class 2</b> — 6+ years<br/>
-📘 <b>Class 3</b> — 7+ years<br/>
-📙 <b>Class 4</b> — 8+ years<br/>
-📕 <b>Class 5</b> — 9+ years`,
+🌱 <b>LKG</b> - 3+ years<br/>
+🌿 <b>UKG</b> - 4+ years<br/>
+📖 <b>Class 1</b> - 5+ years<br/>
+📗 <b>Class 2</b> - 6+ years<br/>
+📘 <b>Class 3</b> - 7+ years<br/>
+📙 <b>Class 4</b> - 8+ years<br/>
+📕 <b>Class 5</b> - 9+ years`,
         speak: "LKG requires age 3 or above, UKG requires 4 or above, Class 1 requires 5 or above, and one additional year for each higher class.",
       },
     },
@@ -373,7 +373,7 @@ For detailed fee and admission information, please contact the school directly:<
 👩‍👧 <b>MTA (Mother-Teacher Association):</b><br/>
 माँ और शिक्षक मिलकर बच्चे के विकास की योजना बनाते हैं।<br/><br/>
 🍱 <b>Mid-Day Meal (MDM):</b><br/>
-सरकार द्वारा समर्थित पौष्टिक भोजन — हर दिन।`,
+सरकार द्वारा समर्थित पौष्टिक भोजन - हर दिन।`,
         speak: "हम नियमित पैरेंट-टीचर मीटिंग और मदर-टीचर असोसिएशन के माध्यम से अभिभावकों को जोड़ते हैं। मध्याह्न भोजन कार्यक्रम में प्रतिदिन पौष्टिक भोजन दिया जाता है।",
       },
       en: {
@@ -407,9 +407,9 @@ Government-supported nutritious meals provided daily.`,
       },
     },
     options: [
-      { label: { hi: "🌱 LKG–UKG (3–5 वर्ष)", en: "🌱 LKG–UKG (Ages 3–5)" }, next: "CLASS_PREPRIMARY" },
-      { label: { hi: "📖 कक्षा 1–2 (6–7 वर्ष)", en: "📖 Class 1–2 (Ages 6–7)" }, next: "CLASS_PRIMARY1" },
-      { label: { hi: "📚 कक्षा 3–5 (8–10 वर्ष)", en: "📚 Class 3–5 (Ages 8–10)" }, next: "CLASS_PRIMARY2" },
+      { label: { hi: "🌱 LKG-UKG (3-5 वर्ष)", en: "🌱 LKG-UKG (Ages 3-5)" }, next: "CLASS_PREPRIMARY" },
+      { label: { hi: "📖 कक्षा 1-2 (6-7 वर्ष)", en: "📖 Class 1-2 (Ages 6-7)" }, next: "CLASS_PRIMARY1" },
+      { label: { hi: "📚 कक्षा 3-5 (8-10 वर्ष)", en: "📚 Class 3-5 (Ages 8-10)" }, next: "CLASS_PRIMARY2" },
       { label: { hi: "⏰ दैनिक दिनचर्या", en: "⏰ Daily Routine" }, next: "DAILY_ROUTINE" },
       { label: { hi: "🎨 पाठ्येतर गतिविधियाँ", en: "🎨 Co-Curricular Activities" }, next: "EXTRACURRICULAR" },
       { label: { hi: "🏠 मुख्य मेनू", en: "🏠 Main Menu" }, next: "ROOT" },
@@ -419,7 +419,7 @@ Government-supported nutritious meals provided daily.`,
   CLASS_PREPRIMARY: {
     text: {
       hi: {
-        display: `<b>🌱 LKG – UKG (आयु 3–5 वर्ष)</b><br/><br/>
+        display: `<b>🌱 LKG - UKG (आयु 3-5 वर्ष)</b><br/><br/>
 चरण 01: प्री-प्राइमरी<br/><br/>
 <b>विषय:</b><br/>
 • कविताएँ और कहानियाँ<br/>
@@ -432,7 +432,7 @@ Government-supported nutritious meals provided daily.`,
         speak: "एल.के.जी. और यू.के.जी. में खेल, फ़ोनिक्स, कविताएँ, कला और प्रारंभिक लेखन सिखाया जाता है। यह पूरी तरह गतिविधि-आधारित शुरुआत है।",
       },
       en: {
-        display: `<b>🌱 LKG – UKG (Ages 3–5 Years)</b><br/><br/>
+        display: `<b>🌱 LKG - UKG (Ages 3-5 Years)</b><br/><br/>
 Stage 01: Pre-Primary<br/><br/>
 <b>Subjects:</b><br/>
 • Rhymes & Stories<br/>
@@ -455,7 +455,7 @@ Stage 01: Pre-Primary<br/><br/>
   CLASS_PRIMARY1: {
     text: {
       hi: {
-        display: `<b>📖 कक्षा 1 – 2 (आयु 6–7 वर्ष)</b><br/><br/>
+        display: `<b>📖 कक्षा 1 - 2 (आयु 6-7 वर्ष)</b><br/><br/>
 चरण 02: प्राइमरी I<br/><br/>
 <b>विषय:</b><br/>
 • अंग्रेज़ी साहित्य<br/>
@@ -467,7 +467,7 @@ Stage 01: Pre-Primary<br/><br/>
         speak: "कक्षा 1 और 2 में अंग्रेज़ी साहित्य, हिंदी, गणित, पर्यावरण अध्ययन, सामान्य ज्ञान और शारीरिक शिक्षा पढ़ाई जाती है।",
       },
       en: {
-        display: `<b>📖 Class 1 – 2 (Ages 6–7 Years)</b><br/><br/>
+        display: `<b>📖 Class 1 - 2 (Ages 6-7 Years)</b><br/><br/>
 Stage 02: Primary I<br/><br/>
 <b>Subjects:</b><br/>
 • English Literature<br/>
@@ -489,7 +489,7 @@ Stage 02: Primary I<br/><br/>
   CLASS_PRIMARY2: {
     text: {
       hi: {
-        display: `<b>📚 कक्षा 3 – 5 (आयु 8–10 वर्ष)</b><br/><br/>
+        display: `<b>📚 कक्षा 3 - 5 (आयु 8-10 वर्ष)</b><br/><br/>
 चरण 03: प्राइमरी II<br/><br/>
 <b>विषय:</b><br/>
 • अंग्रेज़ी व्याकरण<br/>
@@ -501,7 +501,7 @@ Stage 02: Primary I<br/><br/>
         speak: "कक्षा 3 से 5 में अंग्रेज़ी व्याकरण, हिंदी साहित्य, उन्नत गणित, विज्ञान और कंप्यूटर बेसिक्स सिखाए जाते हैं।",
       },
       en: {
-        display: `<b>📚 Class 3 – 5 (Ages 8–10 Years)</b><br/><br/>
+        display: `<b>📚 Class 3 - 5 (Ages 8-10 Years)</b><br/><br/>
 Stage 03: Primary II<br/><br/>
 <b>Subjects:</b><br/>
 • English Grammar<br/>
@@ -524,26 +524,26 @@ Stage 03: Primary II<br/><br/>
     text: {
       hi: {
         display: `<b>⏰ स्कूल की दैनिक दिनचर्या</b><br/><br/>
-सुबह 8 बजे — प्रातः कालीन प्रार्थना सभा<br/>
-सुबह 8 बज कर 20 मिनट — पहली शिक्षण अवधि<br/>
-सुबह 9 बज कर 50 मिनट — लघु अवकाश<br/>
-सुबह 10 बजे — मुख्य विषयों की कक्षाएं<br/>
-दोपहर 12 बजे — भोजन और मैदान खेल<br/>
-दोपहर 12 बज कर 40 मिनट — गतिविधि / सह-पाठ्यक्रम<br/>
-दोपहर 1 बज कर 30 मिनट — समापन प्रार्थना और विसर्जन<br/><br/>
+सुबह 8 बजे - प्रातः कालीन प्रार्थना सभा<br/>
+सुबह 8 बज कर 20 मिनट - पहली शिक्षण अवधि<br/>
+सुबह 9 बज कर 50 मिनट - लघु अवकाश<br/>
+सुबह 10 बजे - मुख्य विषयों की कक्षाएं<br/>
+दोपहर 12 बजे - भोजन और मैदान खेल<br/>
+दोपहर 12 बज कर 40 मिनट - गतिविधि / सह-पाठ्यक्रम<br/>
+दोपहर 1 बज कर 30 मिनट - समापन प्रार्थना और विसर्जन<br/><br/>
 <i>(यह एक नमूना कार्यक्रम है, वास्तविक समय कक्षा के अनुसार भिन्न हो सकता है।)</i>`,
         speak: "स्कूल सुबह 8 बजे प्रार्थना सभा से शुरू होता है। फिर पढ़ाई, दोपहर को भोजन और खेल, गतिविधि अवधि और दोपहर डेढ़ बजे छुट्टी होती है।",
       },
       en: {
         display: `<b>⏰ Daily School Routine</b><br/><br/>
-8:00 AM — Morning Assembly & Prayer<br/>
-8:20 AM — First Teaching Period<br/>
-9:50 AM — Short Break<br/>
-10:00 AM — Core Subject Periods<br/>
-12:00 PM — Lunch & Outdoor Play<br/>
-12:40 PM — Activity / Co-Curricular Period<br/>
-1:30 PM — Closing Assembly & Dismissal<br/><br/>
-<i>(Sample schedule — actual timings may vary by class.)</i>`,
+8:00 AM - Morning Assembly & Prayer<br/>
+8:20 AM - First Teaching Period<br/>
+9:50 AM - Short Break<br/>
+10:00 AM - Core Subject Periods<br/>
+12:00 PM - Lunch & Outdoor Play<br/>
+12:40 PM - Activity / Co-Curricular Period<br/>
+1:30 PM - Closing Assembly & Dismissal<br/><br/>
+<i>(Sample schedule - actual timings may vary by class.)</i>`,
         speak: "School starts with morning assembly at 8 AM, followed by teaching periods, a short break, core subjects, lunch and outdoor play at noon, activity time, and dismissal at 1:30 PM.",
       },
     },
@@ -591,12 +591,12 @@ Stage 03: Primary II<br/><br/>
       },
     },
     options: [
-      { label: { hi: "👩‍💼 प्रिंसिपल — श्रीमती वंदना यादव", en: "👩‍💼 Principal — Smt. Vandana Yadav" }, next: "PRINCIPAL" },
+      { label: { hi: "👩‍💼 प्रिंसिपल - श्रीमती वंदना यादव", en: "👩‍💼 Principal - Smt. Vandana Yadav" }, next: "PRINCIPAL" },
       { label: { hi: "👩‍🏫 दीक्षा श्रीवास्तव (ICT Award)", en: "👩‍🏫 Diksha Shrivastav (ICT Award)" }, next: "TEACHER_DIKSHA" },
       { label: { hi: "👨‍🏫 सुनील सिंह", en: "👨‍🏫 Sunil Singh" }, next: "TEACHER_SUNIL" },
       { label: { hi: "👩‍🏫 जानकी देवी", en: "👩‍🏫 Janki Devi" }, next: "TEACHER_JANKI" },
       { label: { hi: "👨‍🏫 प्रदीप कुमार", en: "👨‍🏫 Pradeep Kumar" }, next: "TEACHER_PRADEEP" },
-      { label: { hi: "🎨 डॉ. अशोक कुमार वर्मा — डिज़ाइनर", en: "🎨 Dr. Ashok Kumar Verma — Designer" }, next: "TEACHER_DESIGNER" },
+      { label: { hi: "🎨 डॉ. अशोक कुमार वर्मा - डिज़ाइनर", en: "🎨 Dr. Ashok Kumar Verma - Designer" }, next: "TEACHER_DESIGNER" },
       { label: { hi: "🏠 मुख्य मेनू", en: "🏠 Main Menu" }, next: "ROOT" },
     ],
   },
@@ -604,22 +604,22 @@ Stage 03: Primary II<br/><br/>
   PRINCIPAL: {
     text: {
       hi: {
-        display: `<b>👩‍💼 श्रीमती वंदना यादव — वर्तमान प्रधानाचार्य</b><br/><br/>
+        display: `<b>👩‍💼 श्रीमती वंदना यादव - वर्तमान प्रधानाचार्य</b><br/><br/>
 मॉडल प्राइमरी स्कूल (स्थापना 1988) की वर्तमान प्रधानाचार्य। उनके उत्कृष्ट मार्गदर्शन में स्कूल सुल्तानपुर के सबसे भरोसेमंद विद्यालयों में से एक बन चुका है।<br/><br/>
 <b>🏆 प्रमुख पुरस्कार:</b><br/>
-🥇 राज्य शिक्षक पुरस्कार — UP सरकार<br/>
+🥇 राज्य शिक्षक पुरस्कार - UP सरकार<br/>
 👑 राज्यपाल उत्कृष्टता सम्मान<br/>
-🎖️ राष्ट्रीय सम्मान — सांसद श्रीमती मेनका गांधी<br/>
+🎖️ राष्ट्रीय सम्मान - सांसद श्रीमती मेनका गांधी<br/>
 ⭐ नारी सशक्तिकरण पुरस्कार`,
         speak: "श्रीमती वंदना यादव विद्यालय की वर्तमान प्रधानाचार्य हैं। उनके मार्गदर्शन में स्कूल निरंतर प्रगति कर रहा है। उन्हें राज्य शिक्षक पुरस्कार, राज्यपाल उत्कृष्टता सम्मान और सांसद मेनका गांधी द्वारा राष्ट्रीय सम्मान मिल चुका है।",
       },
       en: {
-        display: `<b>👩‍💼 Smt. Vandana Yadav — Current Principal</b><br/><br/>
+        display: `<b>👩‍💼 Smt. Vandana Yadav - Current Principal</b><br/><br/>
 Current Principal of Model Primary School (Est. 1988). Under her visionary leadership, the school has become one of the most trusted institutions in Sultanpur.<br/><br/>
 <b>🏆 Key Awards:</b><br/>
-🥇 State Teacher Award — UP Government<br/>
+🥇 State Teacher Award - UP Government<br/>
 👑 Governor's Excellence Award<br/>
-🎖️ National Recognition — MP Smt. Maneka Gandhi<br/>
+🎖️ National Recognition - MP Smt. Maneka Gandhi<br/>
 ⭐ Nari Sashaktikaran Award`,
         speak: "Smt. Vandana Yadav is the current Principal of Model Primary School. She has received the State Teacher Award, the Governor's Excellence Award, and national recognition from MP Maneka Gandhi.",
       },
@@ -773,7 +773,7 @@ Dr. Ashok Kumar Verma plays a key role in shaping the school's digital identity,
     text: {
       hi: {
         display: `<b>📹 CCTV सुरक्षा</b><br/><br/>
-🛡️ हमारा पूरा कैंपस CCTV कैमरों की निगरानी में है — माता-पिता को पूर्ण निश्चिंतता।<br/><br/>
+🛡️ हमारा पूरा कैंपस CCTV कैमरों की निगरानी में है - माता-पिता को पूर्ण निश्चिंतता।<br/><br/>
 🚪 सुरक्षित मुख्य द्वार व आगंतुक सत्यापन<br/>
 👮 प्रशिक्षित और सत्यापित सहयोगी स्टाफ<br/>
 🏥 प्राथमिक चिकित्सा और आपातकालीन तैयारी`,
@@ -781,7 +781,7 @@ Dr. Ashok Kumar Verma plays a key role in shaping the school's digital identity,
       },
       en: {
         display: `<b>📹 CCTV Security</b><br/><br/>
-🛡️ Our entire campus is under CCTV surveillance — complete peace of mind for parents.<br/><br/>
+🛡️ Our entire campus is under CCTV surveillance - complete peace of mind for parents.<br/><br/>
 🚪 Gated entry & visitor verification<br/>
 👮 Trained & verified support staff<br/>
 🏥 First-aid & emergency readiness`,
@@ -799,11 +799,11 @@ Dr. Ashok Kumar Verma plays a key role in shaping the school's digital identity,
       hi: {
         display: `<b>💻 स्मार्ट क्लास और कंप्यूटर लैब</b><br/><br/>
 🖥️ <b>स्मार्ट प्रोजेक्टर कक्षाएं:</b><br/>
-प्रोजेक्टर-सक्षम इंटरेक्टिव शिक्षा — हर पाठ रोचक और जीवंत।<br/><br/>
+प्रोजेक्टर-सक्षम इंटरेक्टिव शिक्षा - हर पाठ रोचक और जीवंत।<br/><br/>
 💻 <b>कंप्यूटर शिक्षा लैब:</b><br/>
 बच्चों को शुरू से ही कंप्यूटर का परिचय देने वाली तकनीकी लैब।<br/><br/>
 🧠 <b>GK और विशेष कक्षाएं:</b><br/>
-विशेष GK और रेमेडियल सपोर्ट — कोई बच्चा पीछे न रहे।`,
+विशेष GK और रेमेडियल सपोर्ट - कोई बच्चा पीछे न रहे।`,
         speak: "हमारे यहाँ प्रोजेक्टर-सक्षम स्मार्ट क्लास और कंप्यूटर शिक्षा लैब उपलब्ध हैं। विशेष जी.के. और रेमेडियल कक्षाएं भी आयोजित होती हैं।",
       },
       en: {
@@ -900,12 +900,12 @@ The health and hygiene of our children is our top priority.`,
     text: {
       hi: {
         display: `<b>📚 पुस्तकालय</b><br/><br/>
-ज्ञान का एक समृद्ध केंद्र — हमारा पुस्तकालय बच्चों में जिज्ञासा और पढ़ने के प्रति प्रेम जगाता है। विविध पुस्तकें और संसाधन हर उम्र और रुचि के लिए उपलब्ध हैं।`,
+ज्ञान का एक समृद्ध केंद्र - हमारा पुस्तकालय बच्चों में जिज्ञासा और पढ़ने के प्रति प्रेम जगाता है। विविध पुस्तकें और संसाधन हर उम्र और रुचि के लिए उपलब्ध हैं।`,
         speak: "हमारा पुस्तकालय बच्चों में जिज्ञासा और पढ़ने का प्रेम जगाता है।",
       },
       en: {
         display: `<b>📚 Library</b><br/><br/>
-A curated knowledge hub — our library sparks curiosity and instills a love of reading from an early age. A wide range of books and resources are available for every age and interest.`,
+A curated knowledge hub - our library sparks curiosity and instills a love of reading from an early age. A wide range of books and resources are available for every age and interest.`,
         speak: "Our curated library sparks curiosity and instills a love of reading from an early age.",
       },
     },
@@ -919,7 +919,7 @@ A curated knowledge hub — our library sparks curiosity and instills a love of 
     text: {
       hi: {
         display: `<b>🍱 मध्याह्न भोजन (Mid-Day Meal)</b><br/><br/>
-सरकार द्वारा समर्थित पौष्टिक भोजन — हर दिन हर बच्चे को ऊर्जावान और स्वस्थ रखने के लिए प्रदान किया जाता है।`,
+सरकार द्वारा समर्थित पौष्टिक भोजन - हर दिन हर बच्चे को ऊर्जावान और स्वस्थ रखने के लिए प्रदान किया जाता है।`,
         speak: "सरकार द्वारा समर्थित मध्याह्न भोजन कार्यक्रम हर दिन बच्चों को पौष्टिक भोजन प्रदान करता है।",
       },
       en: {
@@ -942,7 +942,7 @@ Government-supported, nutritious meals provided daily to ensure every child is n
 📅 <b>सोमवार से शनिवार</b><br/>
 ⏰ सुबह 8 बजे से दोपहर 2 बजे तक<br/><br/>
 🏫 <b>स्कूल कार्यालय का समय:</b><br/>
-सोम–शनि, सुबह 8 बजे से दोपहर 2 बजे तक<br/><br/>
+सोम-शनि, सुबह 8 बजे से दोपहर 2 बजे तक<br/><br/>
 📱 किसी भी प्रश्न के लिए: <a href="tel:+919454826921" style="${S.phone}">9454826921</a><br/><br/>
 <i>रविवार और सरकारी छुट्टियों पर स्कूल बंद रहता है।</i>`,
         speak: "स्कूल सोमवार से शनिवार सुबह 8 बजे से दोपहर 2 बजे तक खुला रहता है। रविवार और सरकारी छुट्टियों पर बंद रहता है।",
@@ -952,7 +952,7 @@ Government-supported, nutritious meals provided daily to ensure every child is n
 📅 <b>Monday to Saturday</b><br/>
 ⏰ 8:00 AM to 2:00 PM<br/><br/>
 🏫 <b>School Office Hours:</b><br/>
-Mon–Sat, 8:00 AM to 2:00 PM<br/><br/>
+Mon-Sat, 8:00 AM to 2:00 PM<br/><br/>
 📱 For any queries: <a href="tel:+919454826921" style="${S.phone}">9454826921</a><br/><br/>
 <i>School is closed on Sundays and government holidays.</i>`,
         speak: "School is open Monday to Saturday from 8 AM to 2 PM. School is closed on Sundays and government holidays.",
@@ -1000,11 +1000,11 @@ Follow us for school updates and activities!`,
 // ── GREETING ─────────────────────────────────────────────────
 export const GREETING = {
   hi: {
-    display: "🙏 नमस्ते! मैं <b>EVI</b> हूँ — मॉडल प्राइमरी स्कूल, भरसारे की डिजिटल सहायक। नीचे दिए गए बटनों से मुझसे कुछ भी पूछें!",
+    display: "🙏 नमस्ते! मैं <b>EVI</b> हूँ - मॉडल प्राइमरी स्कूल, भरसारे की डिजिटल सहायक। नीचे दिए गए बटनों से मुझसे कुछ भी पूछें!",
     speak: "नमस्ते! मैं एव्ही हूँ, मॉडल प्राइमरी स्कूल भरसारे की डिजिटल सहायक। नीचे दिए बटनों से मुझसे कुछ भी पूछें।",
   },
   en: {
-    display: "🙏 Hello! I'm <b>EVI</b> — the digital assistant of Model Primary School, Bharsare. Tap any button below to get started!",
+    display: "🙏 Hello! I'm <b>EVI</b> - the digital assistant of Model Primary School, Bharsare. Tap any button below to get started!",
     speak: "Hello! I am EVI, the digital assistant of Model Primary School, Bharsare. Tap any button below to get started.",
   },
 };

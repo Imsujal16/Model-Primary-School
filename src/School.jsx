@@ -2791,6 +2791,7 @@ const galleryItems = [
   { cat: "Campus", label: "Morning Yoga & Exercises", caption: "Daily fitness and mindfulness session", tone: "green", src: "/yoga_activity.png" },
 
   // Awards & Recognition Category
+  { cat: "Awards & Recognition", label: "State Teacher Award & Recognitions", caption: "Honors and awards presented to Principal Smt. Vandana Yadav & Model Primary School", tone: "gold", src: "/awards.png" },
   { cat: "Awards & Recognition", label: "Best School Leadership Honor", caption: "Principal receiving prestige leadership award for educational excellence", tone: "gold", src: "/principal_award_1.jpg" },
   { cat: "Awards & Recognition", label: "District Educational Excellence Award", caption: "Honored by district education officials for outstanding academic contribution", tone: "pink", src: "/principal_award_2.jpg" },
   { cat: "Awards & Recognition", label: "Model Educator Felicitation", caption: "Special recognition for innovative primary teaching methodologies", tone: "green", src: "/principal_award_3.jpg" },

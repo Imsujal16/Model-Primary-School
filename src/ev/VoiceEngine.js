@@ -9,18 +9,20 @@
 
 /**
  * getBestHindiVoice
- * Priority 1 → Google Hindi (best on Chrome/Android)
- * Priority 2 → Any available Hindi voice (iOS "Lekha", "Microsoft Swara")
- * Priority 3 → Absolute fallback — first system voice
+ * Priority 1 → Known Female Hindi Voices (Swara, Lekha, Aditi, Google हिन्दी)
+ * Priority 2 → Any available Hindi voice
+ * Priority 3 → Absolute fallback
  */
 export const getBestHindiVoice = () => {
   if (typeof window === "undefined" || !window.speechSynthesis) return null;
   const voices = window.speechSynthesis.getVoices();
 
-  const googleHindi = voices.find(
-    (v) => (v.lang.includes("hi") || v.lang === "hi-IN") && v.name.includes("Google")
+  // Try to find explicitly female Indian/Hindi voices first
+  const femaleHindi = voices.find(
+    (v) => (v.lang.includes("hi") || v.lang === "hi-IN") && 
+           (v.name.includes("Swara") || v.name.includes("Lekha") || v.name.includes("Aditi") || v.name.includes("Google"))
   );
-  if (googleHindi) return googleHindi;
+  if (femaleHindi) return femaleHindi;
 
   const anyHindi = voices.find(
     (v) => v.lang.includes("hi") || v.lang === "hi-IN"
@@ -32,19 +34,28 @@ export const getBestHindiVoice = () => {
 
 /**
  * getBestEnglishVoice
- * Priority 1 → Google Indian English (en-IN)
- * Priority 2 → Any en-IN voice
- * Priority 3 → Any English voice
- * Priority 4 → First available voice
+ * Priority 1 → Known Female Indian English (Neerja, Raveena, Aditi, Google)
+ * Priority 2 → Known Female Global English (Zira, Samantha, Victoria, Female)
+ * Priority 3 → Any en-IN voice
+ * Priority 4 → Any English voice
  */
 export const getBestEnglishVoice = () => {
   if (typeof window === "undefined" || !window.speechSynthesis) return null;
   const voices = window.speechSynthesis.getVoices();
 
-  const googleEnIN = voices.find(
-    (v) => v.lang === "en-IN" && v.name.includes("Google")
+  // 1. Female Indian English
+  const femaleEnIN = voices.find(
+    (v) => v.lang === "en-IN" && 
+           (v.name.includes("Neerja") || v.name.includes("Raveena") || v.name.includes("Aditi") || v.name.includes("Google"))
   );
-  if (googleEnIN) return googleEnIN;
+  if (femaleEnIN) return femaleEnIN;
+
+  // 2. Any Female English (Global)
+  const femaleEnGlobal = voices.find(
+    (v) => v.lang.startsWith("en") && 
+           (v.name.includes("Zira") || v.name.includes("Samantha") || v.name.includes("Victoria") || v.name.toLowerCase().includes("female"))
+  );
+  if (femaleEnGlobal) return femaleEnGlobal;
 
   const anyEnIN = voices.find((v) => v.lang === "en-IN");
   if (anyEnIN) return anyEnIN;

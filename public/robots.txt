@@ -1,11 +1,35 @@
+# ============================================================
+# robots.txt — Model Primary School, Bharsare
+# Domain: https://modelprimaryschool.in
+# ============================================================
+
+# ── Standard Search Engine Crawlers ────────────────────────
 User-agent: *
 Allow: /
+Disallow: /dist/
+Disallow: /node_modules/
 
-# Explicitly Allow AI & LLM Search Crawlers (GEO)
+# ── Google ─────────────────────────────────────────────────
+User-agent: Googlebot
+Allow: /
+
+User-agent: Googlebot-Image
+Allow: /
+
+# ── Bing ───────────────────────────────────────────────────
+User-agent: Bingbot
+Allow: /
+
+# ── GEO: AI & LLM Search Crawlers ──────────────────────────
+# Allow all AI engines to crawl for Generative Engine Optimization
+
 User-agent: GPTBot
 Allow: /
 
 User-agent: ChatGPT-User
+Allow: /
+
+User-agent: OAI-SearchBot
 Allow: /
 
 User-agent: PerplexityBot
@@ -14,10 +38,14 @@ Allow: /
 User-agent: ClaudeBot
 Allow: /
 
-User-agent: Googlebot
+User-agent: anthropic-ai
 Allow: /
 
-User-agent: Bingbot
+User-agent: cohere-ai
 Allow: /
 
+User-agent: Googlebot-Extended
+Allow: /
+
+# ── Sitemap Location ───────────────────────────────────────
 Sitemap: https://modelprimaryschool.in/sitemap.xml

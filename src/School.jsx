@@ -1054,17 +1054,17 @@ export function HomePage() {
       <Helmet>
         <title>Model Primary School, Bharsare | Best School in Sultanpur</title>
         <meta name="description" content="Top English-medium primary school (LKG to Class 5) in Bharsare, Bhadaiyan, Sultanpur. Led by State Award winner Smt. Vandana Yadav. CCTV, Smart Classes, Transport. Admissions open 2026-27." />
-        <link rel="canonical" href="https://mpsbharsare.in/" />
+        <link rel="canonical" href="https://modelprimaryschool.in/" />
         <meta property="og:title" content="Model Primary School, Bharsare | Best School in Sultanpur" />
         <meta property="og:description" content="Top English-medium primary school in Bharsare, Sultanpur. Admissions open for 2026-27." />
-        <meta property="og:url" content="https://mpsbharsare.in/" />
+        <meta property="og:url" content="https://modelprimaryschool.in/" />
         <script type="application/ld+json">{`
           {
             "@context": "https://schema.org",
             "@type": "EducationalOrganization",
             "name": "Model Primary School, Bharsare",
-            "url": "https://mpsbharsare.in",
-            "logo": "https://mpsbharsare.in/school_logo.png",
+            "url": "https://modelprimaryschool.in",
+            "logo": "https://modelprimaryschool.in/school_logo.png",
             "description": "English-medium primary school (LKG to Class 5) located in Bharsare, Sultanpur, Uttar Pradesh. Led by State Teacher Awardee Smt. Vandana Yadav.",
             "address": {
               "@type": "PostalAddress",
@@ -1643,9 +1643,9 @@ export function AboutPage() {
       <Helmet>
         <title>About Our Faculty | Model Primary School Bharsare</title>
         <meta name="description" content="Meet our experienced staff led by State Teacher Awardee Smt. Vandana Yadav. Faculty includes ICT Award winner Diksha Shrivastav, Pradeep Kumar and our Designer & Coordinator." />
-        <link rel="canonical" href="https://mpsbharsare.in/about" />
+        <link rel="canonical" href="https://modelprimaryschool.in/about" />
         <meta property="og:title" content="About Our Faculty | Model Primary School" />
-        <meta property="og:url" content="https://mpsbharsare.in/about" />
+        <meta property="og:url" content="https://modelprimaryschool.in/about" />
       </Helmet>
       <PageHero
         eyebrow={t('nav.about')}
@@ -2058,9 +2058,9 @@ export function AcademicsPage() {
       <Helmet>
         <title>Academics &amp; Curriculum | Model Primary School Bharsare</title>
         <meta name="description" content="Full curriculum from LKG to Class 5 at Model Primary School, Bharsare. Smart Classes, Computer Lab, co-curricular activities and personalised learning." />
-        <link rel="canonical" href="https://mpsbharsare.in/academics" />
+        <link rel="canonical" href="https://modelprimaryschool.in/academics" />
         <meta property="og:title" content="Academics & Curriculum | Model Primary School" />
-        <meta property="og:url" content="https://mpsbharsare.in/academics" />
+        <meta property="og:url" content="https://modelprimaryschool.in/academics" />
       </Helmet>
       <PageHero
         eyebrow={t('acad.hero.eyebrow')}
@@ -2849,9 +2849,9 @@ export function GalleryPage() {
       <Helmet>
         <title>Gallery | Model Primary School Bharsare</title>
         <meta name="description" content="Browse photos from events, campus life, cultural programs, tours, village awareness drives and award ceremonies at Model Primary School, Bharsare." />
-        <link rel="canonical" href="https://mpsbharsare.in/gallery" />
+        <link rel="canonical" href="https://modelprimaryschool.in/gallery" />
         <meta property="og:title" content="Gallery | Model Primary School" />
-        <meta property="og:url" content="https://mpsbharsare.in/gallery" />
+        <meta property="og:url" content="https://modelprimaryschool.in/gallery" />
       </Helmet>
     <div>
       <PageHero eyebrow={t('gallery.hero.eyebrow')} title={t('gallery.hero.title')} subtitle={t('gallery.hero.subtitle')} />
@@ -3012,9 +3012,9 @@ export function AdmissionsPage() {
       <Helmet>
         <title>Admissions 2026-27 | Model Primary School Bharsare</title>
         <meta name="description" content="Apply now for LKG to Class 5 at Model Primary School, Bharsare, Sultanpur. Limited seats. Secure your child's future today." />
-        <link rel="canonical" href="https://mpsbharsare.in/admissions" />
+        <link rel="canonical" href="https://modelprimaryschool.in/admissions" />
         <meta property="og:title" content="Admissions 2026-27 | Model Primary School Bharsare" />
-        <meta property="og:url" content="https://mpsbharsare.in/admissions" />
+        <meta property="og:url" content="https://modelprimaryschool.in/admissions" />
         <script type="application/ld+json">{`
           {
             "@context": "https://schema.org",
@@ -3212,9 +3212,9 @@ export function ContactPage() {
       <Helmet>
         <title>Contact Us | Model Primary School Bharsare, Sultanpur</title>
         <meta name="description" content="Contact Model Primary School, Bharsare. Call or WhatsApp: +91-9454826921. Email: psbharsare@gmail.com. Located in Bharsare, Bhadaiyan, Sultanpur, UP." />
-        <link rel="canonical" href="https://mpsbharsare.in/contact" />
+        <link rel="canonical" href="https://modelprimaryschool.in/contact" />
         <meta property="og:title" content="Contact Us | Model Primary School Bharsare" />
-        <meta property="og:url" content="https://mpsbharsare.in/contact" />
+        <meta property="og:url" content="https://modelprimaryschool.in/contact" />
       </Helmet>
     <div>
       <PageHero eyebrow={t("contact.hero.eyebrow")} title={t("contact.hero.title")} subtitle={t("contact.hero.subtitle")} />

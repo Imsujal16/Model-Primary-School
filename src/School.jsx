@@ -1,4 +1,6 @@
 import { useState, useEffect, useRef, Fragment } from "react";
+import { useNavigate, useLocation, NavLink, Link, Outlet } from "react-router-dom";
+import { Helmet } from "react-helmet-async";
 import Lenis from "lenis";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -625,26 +627,31 @@ function LangToggle({ className = "" }) {
    NAVBAR
    ============================================================ */
 
-function Navbar({ page, setPage }) {
+function Navbar() {
   const [open, setOpen] = useState(false);
   const { t } = useLanguage();
+  const navigate = useNavigate();
+  const location = useLocation();
   const links = [
-    { id: "home",       label: t("nav.home") },
-    { id: "about",      label: t("nav.about") },
-    { id: "academics",  label: t("nav.academics") },
-    { id: "gallery",    label: t("nav.gallery") },
-    { id: "admissions", label: t("nav.admissions") },
-    { id: "contact",    label: t("nav.contact") },
+    { id: "home",       path: "/",           label: t("nav.home") },
+    { id: "about",      path: "/about",       label: t("nav.about") },
+    { id: "academics",  path: "/academics",   label: t("nav.academics") },
+    { id: "gallery",    path: "/gallery",     label: t("nav.gallery") },
+    { id: "admissions", path: "/admissions",  label: t("nav.admissions") },
+    { id: "contact",    path: "/contact",     label: t("nav.contact") },
   ];
-  const go = (id) => {
-    setPage(id);
+  const go = (path) => {
+    navigate(path);
     setOpen(false);
   };
+  const isActive = (path) =>
+    path === "/" ? location.pathname === "/" : location.pathname.startsWith(path);
+
   return (
     <header className="sticky top-0 z-50 glass-nav">
       <nav className="max-w-6xl mx-auto px-4 sm:px-6 py-2.5 sm:py-3 flex items-center justify-between gap-2">
         {/* Brand / Logo */}
-        <button onClick={() => go("home")} className="focus-ring flex items-center gap-2 sm:gap-3 text-left min-w-0 flex-1 lg:flex-initial">
+        <button onClick={() => go("/")} className="focus-ring flex items-center gap-2 sm:gap-3 text-left min-w-0 flex-1 lg:flex-initial">
           <Emblem size={38} className="shrink-0 w-9 h-9 sm:w-[46px] sm:h-[46px]" />
           <span className="leading-tight min-w-0">
             <span className="block font-display font-extrabold text-maroon-dark text-xs sm:text-base md:text-lg truncate max-w-[145px] min-[380px]:max-w-[195px] sm:max-w-none">
@@ -661,9 +668,9 @@ function Navbar({ page, setPage }) {
           {links.map((l) => (
             <button
               key={l.id}
-              onClick={() => go(l.id)}
+              onClick={() => go(l.path)}
               className={`focus-ring font-display font-semibold text-sm px-3.5 py-2 rounded-full transition-colors ${
-                page === l.id ? "bg-maroon text-white" : "text-maroon-dark nav-link-inactive"
+                isActive(l.path) ? "bg-maroon text-white" : "text-maroon-dark nav-link-inactive"
               }`}
             >
               {l.label}
@@ -674,7 +681,7 @@ function Navbar({ page, setPage }) {
         {/* Desktop Controls (LangToggle + CTA) */}
         <div className="hidden lg:flex items-center gap-3 shrink-0">
           <LangToggle />
-          <CTAButton variant="gold" onClick={() => go("admissions")}>
+          <CTAButton variant="gold" onClick={() => go("/admissions")}>
             {t('nav.enroll')}
           </CTAButton>
         </div>
@@ -698,15 +705,15 @@ function Navbar({ page, setPage }) {
           {links.map((l) => (
             <button
               key={l.id}
-              onClick={() => go(l.id)}
+              onClick={() => go(l.path)}
               className={`focus-ring text-left font-display font-semibold text-sm px-4 py-2.5 rounded-2xl ${
-                page === l.id ? "bg-maroon text-white" : "text-maroon-dark nav-link-inactive"
+                isActive(l.path) ? "bg-maroon text-white" : "text-maroon-dark nav-link-inactive"
               }`}
             >
               {l.label}
             </button>
           ))}
-          <CTAButton variant="primary" onClick={() => go("admissions")} className="mt-2 w-full">
+          <CTAButton variant="primary" onClick={() => go("/admissions")} className="mt-2 w-full">
             {t('nav.enroll')}
           </CTAButton>
         </div>
@@ -719,8 +726,9 @@ function Navbar({ page, setPage }) {
 /* ============================================================
    FOOTER
    ============================================================ */
-function Footer({ setPage }) {
+function Footer() {
   const { t } = useLanguage();
+  const navigate = useNavigate();
   const socialLinks = [
     {
       name: "Instagram",
@@ -788,15 +796,15 @@ function Footer({ setPage }) {
           <h4 className="font-display font-bold text-gold mb-3 text-xs sm:text-sm uppercase tracking-wide">{t('footer.links')}</h4>
           <ul className="grid grid-cols-2 sm:grid-cols-1 gap-2 font-body text-xs sm:text-sm text-gold-light-85">
             {[
-              { id: "home",       key: "nav.home" },
-              { id: "about",      key: "nav.about" },
-              { id: "academics",  key: "nav.academics" },
-              { id: "gallery",    key: "nav.gallery" },
-              { id: "admissions", key: "nav.admissions" },
-              { id: "contact",    key: "nav.contact" },
-            ].map(({ id, key }) => (
-              <li key={id}>
-                <button onClick={() => setPage(id)} className="focus-ring footer-link text-left">
+              { path: "/",           key: "nav.home" },
+              { path: "/about",      key: "nav.about" },
+              { path: "/academics",  key: "nav.academics" },
+              { path: "/gallery",    key: "nav.gallery" },
+              { path: "/admissions", key: "nav.admissions" },
+              { path: "/contact",    key: "nav.contact" },
+            ].map(({ path, key }) => (
+              <li key={path}>
+                <button onClick={() => navigate(path)} className="focus-ring footer-link text-left">
                   {t(key)}
                 </button>
               </li>
@@ -1028,8 +1036,9 @@ function WhyTabs({ light = false }) {
 
 
 
-function HomePage({ setPage }) {
+export function HomePage() {
   const { t } = useLanguage();
+  const navigate = useNavigate();
   const classLevels = [
     { level: "LKG", age: "3 – 4 yrs", focus: t("classes.lkg.focus") },
     { level: "UKG", age: "4 – 5 yrs", focus: t("classes.ukg.focus") },
@@ -1041,7 +1050,40 @@ function HomePage({ setPage }) {
   ];
 
   return (
-    <div>
+    <article aria-label="Model Primary School Home Page">
+      <Helmet>
+        <title>Model Primary School, Bharsare | Best School in Sultanpur</title>
+        <meta name="description" content="Top English-medium primary school (LKG to Class 5) in Bharsare, Bhadaiyan, Sultanpur. Led by State Award winner Smt. Vandana Yadav. CCTV, Smart Classes, Transport. Admissions open 2026-27." />
+        <link rel="canonical" href="https://mpsbharsare.in/" />
+        <meta property="og:title" content="Model Primary School, Bharsare | Best School in Sultanpur" />
+        <meta property="og:description" content="Top English-medium primary school in Bharsare, Sultanpur. Admissions open for 2026-27." />
+        <meta property="og:url" content="https://mpsbharsare.in/" />
+        <script type="application/ld+json">{`
+          {
+            "@context": "https://schema.org",
+            "@type": "EducationalOrganization",
+            "name": "Model Primary School, Bharsare",
+            "url": "https://mpsbharsare.in",
+            "logo": "https://mpsbharsare.in/school_logo.png",
+            "description": "English-medium primary school (LKG to Class 5) located in Bharsare, Sultanpur, Uttar Pradesh. Led by State Teacher Awardee Smt. Vandana Yadav.",
+            "address": {
+              "@type": "PostalAddress",
+              "streetAddress": "Bharsare, Bhadaiyan",
+              "addressLocality": "Sultanpur",
+              "addressRegion": "Uttar Pradesh",
+              "postalCode": "228001",
+              "addressCountry": "IN"
+            },
+            "telephone": "+91-9454826921",
+            "email": "psbharsare@gmail.com",
+            "sameAs": [
+              "https://www.instagram.com/mpsbharsare",
+              "https://www.facebook.com/profile.php?id=61564437598896",
+              "https://www.youtube.com/@vandanayadav7071"
+            ]
+          }
+        `}</script>
+      </Helmet>
       {/* ══════════════════════════════════════════════════════
           GEO TL;DR BLOCK — AI Summary for LLM Crawlers
           (ChatGPT Search, Perplexity, Google SGE/AIO)
@@ -1128,7 +1170,7 @@ function HomePage({ setPage }) {
             <div className="order-3 md:order-2 flex flex-row items-center gap-2.5 sm:gap-4 mt-3 md:mt-8 w-full">
               <CTAButton
                 variant="primary"
-                onClick={() => setPage("admissions")}
+                onClick={() => navigate("/admissions")}
                 className="flex-1 sm:flex-none px-3.5 sm:px-6 py-3 text-xs sm:text-base whitespace-nowrap justify-center"
               >
                 {t('hero.cta1')}
@@ -1136,7 +1178,7 @@ function HomePage({ setPage }) {
               <CTAButton
                 variant="outline"
                 icon={ChevronRight}
-                onClick={() => setPage("about")}
+                onClick={() => navigate("/about")}
                 className="flex-1 sm:flex-none px-3.5 sm:px-6 py-3 text-xs sm:text-base whitespace-nowrap justify-center"
               >
                 {t('hero.cta2')}
@@ -1282,7 +1324,7 @@ function HomePage({ setPage }) {
             <p className="font-body text-gold-light-85 mt-4 leading-relaxed">
               {t('home.about.body')}
             </p>
-            <CTAButton variant="gold" onClick={() => setPage("about")} className="mt-6">{t('home.about.btn')}</CTAButton>
+            <CTAButton variant="gold" onClick={() => navigate("/about")} className="mt-6">{t('home.about.btn')}</CTAButton>
           </div>
         </div>
       </section>
@@ -1297,7 +1339,7 @@ function HomePage({ setPage }) {
               <Eyebrow>{t('home.events.eyebrow')}</Eyebrow>
               <h2 className="font-display font-extrabold text-3xl md:text-4xl text-maroon-dark">{t('home.events.h2')}</h2>
             </div>
-            <button onClick={() => setPage("gallery")} className="focus-ring font-display font-bold link-arrow flex items-center gap-1">
+            <button onClick={() => navigate("/gallery")} className="focus-ring font-display font-bold link-arrow flex items-center gap-1">
               {t('home.events.btn')} <ChevronRight size={18} />
             </button>
           </div>
@@ -1317,10 +1359,10 @@ function HomePage({ setPage }) {
           <PartyPopper className="mx-auto text-maroon-dark mb-3" size={34} />
           <h2 className="font-display font-extrabold text-2xl md:text-3xl text-maroon-dark">{t('home.cta.h2')}</h2>
           <p className="font-body text-maroon-dark-80 mt-2">{t('home.cta.body')}</p>
-          <CTAButton variant="primary" onClick={() => setPage("admissions")} className="mt-6">{t('home.cta.btn')}</CTAButton>
+          <CTAButton variant="primary" onClick={() => navigate("/admissions")} className="mt-6">{t('home.cta.btn')}</CTAButton>
         </div>
       </section>
-    </div>
+    </article>
   );
 }
 
@@ -1536,8 +1578,9 @@ function VisionMissionSection() {
 /* ============================================================
    ABOUT US PAGE
    ============================================================ */
-function AboutPage({ setPage }) {
+export function AboutPage() {
   const { t } = useLanguage();
+  const navigate = useNavigate();
 
   /* ── Count-up hooks (all fire together via one section ref) ── */
   const [statsRef, statsInView] = useInView(0.25);
@@ -1596,7 +1639,14 @@ function AboutPage({ setPage }) {
   ];
 
   return (
-    <div>
+    <article aria-label="About Model Primary School">
+      <Helmet>
+        <title>About Our Faculty | Model Primary School Bharsare</title>
+        <meta name="description" content="Meet our experienced staff led by State Teacher Awardee Smt. Vandana Yadav. Faculty includes ICT Award winner Diksha Shrivastav, Pradeep Kumar and our Designer & Coordinator." />
+        <link rel="canonical" href="https://mpsbharsare.in/about" />
+        <meta property="og:title" content="About Our Faculty | Model Primary School" />
+        <meta property="og:url" content="https://mpsbharsare.in/about" />
+      </Helmet>
       <PageHero
         eyebrow={t('nav.about')}
         title={t('about.hero.title')}
@@ -1901,18 +1951,19 @@ function AboutPage({ setPage }) {
           <div className="flex justify-center mb-4"><Eyebrow>{t('about.cta.eyebrow')}</Eyebrow></div>
           <h2 className="font-display font-extrabold text-2xl md:text-3xl text-maroon-dark">{t('about.cta.h2')}</h2>
           <p className="font-body text-ink-70 mt-2">{t('about.cta.body')}</p>
-          <CTAButton variant="primary" onClick={() => setPage("academics")} className="mt-6">{t('about.cta.btn')}</CTAButton>
+          <CTAButton variant="primary" onClick={() => navigate("/academics")} className="mt-6">{t('about.cta.btn')}</CTAButton>
         </div>
       </section>
-    </div>
+    </article>
   );
 }
 
 /* ============================================================
    ACADEMICS PAGE
    ============================================================ */
-function AcademicsPage({ setPage }) {
+export function AcademicsPage() {
   const { t } = useLanguage();
+  const navigate = useNavigate();
   const [selectedClass, setSelectedClass] = useState(null);
   const [activeStageIndex, setActiveStageIndex] = useState(0);
 
@@ -2003,7 +2054,14 @@ function AcademicsPage({ setPage }) {
   const activeStage = curriculumStages[activeStageIndex] || curriculumStages[0];
 
   return (
-    <div>
+    <article aria-label="Academics and Curriculum">
+      <Helmet>
+        <title>Academics &amp; Curriculum | Model Primary School Bharsare</title>
+        <meta name="description" content="Full curriculum from LKG to Class 5 at Model Primary School, Bharsare. Smart Classes, Computer Lab, co-curricular activities and personalised learning." />
+        <link rel="canonical" href="https://mpsbharsare.in/academics" />
+        <meta property="og:title" content="Academics & Curriculum | Model Primary School" />
+        <meta property="og:url" content="https://mpsbharsare.in/academics" />
+      </Helmet>
       <PageHero
         eyebrow={t('acad.hero.eyebrow')}
         title={t('acad.hero.title')}
@@ -2580,10 +2638,10 @@ function AcademicsPage({ setPage }) {
           <PartyPopper className="mx-auto text-maroon-dark mb-3" size={34} />
           <h2 className="font-display font-extrabold text-2xl md:text-3xl text-maroon-dark">{t('acad.cta.h2')}</h2>
           <p className="font-body text-maroon-dark-80 mt-2">{t('acad.cta.sub')}</p>
-          <CTAButton variant="primary" onClick={() => setPage("admissions")} className="mt-6">{t('acad.cta.btn')}</CTAButton>
+          <CTAButton variant="primary" onClick={() => navigate("/admissions")} className="mt-6">{t('acad.cta.btn')}</CTAButton>
         </div>
       </section>
-    </div>
+    </article>
   );
 }
 
@@ -2733,7 +2791,7 @@ const galleryItems = [
   { cat: "Awards & Recognition", label: "Distinguished Principal Felicitation", caption: "Honoring years of selfless service in rural education", tone: "green", src: "/principal_award_12.jpg" },
 ];
 
-function GalleryPage() {
+export function GalleryPage() {
   const { t } = useLanguage();
   const cats = ["All", "Awards & Recognition", "Tours & Trips", "Village Awareness", "Art & Craft", "Events", "Campus"];
   const [filter, setFilter] = useState("All");
@@ -2787,6 +2845,14 @@ function GalleryPage() {
   }, [selectedIdx, items.length]);
 
   return (
+    <article aria-label="School Gallery">
+      <Helmet>
+        <title>Gallery | Model Primary School Bharsare</title>
+        <meta name="description" content="Browse photos from events, campus life, cultural programs, tours, village awareness drives and award ceremonies at Model Primary School, Bharsare." />
+        <link rel="canonical" href="https://mpsbharsare.in/gallery" />
+        <meta property="og:title" content="Gallery | Model Primary School" />
+        <meta property="og:url" content="https://mpsbharsare.in/gallery" />
+      </Helmet>
     <div>
       <PageHero eyebrow={t('gallery.hero.eyebrow')} title={t('gallery.hero.title')} subtitle={t('gallery.hero.subtitle')} />
       <section className="bg-cream py-14 md:py-20">
@@ -2903,14 +2969,16 @@ function GalleryPage() {
         </div>
       )}
     </div>
+    </article>
   );
 }
 
 /* ============================================================
    ADMISSIONS PAGE
    ============================================================ */
-function AdmissionsPage({ setPage }) {
+export function AdmissionsPage() {
   const { t } = useLanguage();
+  const navigate = useNavigate();
 
   const admissionSteps = [
     { title: t("adm.s1.title"), desc: t("adm.s1.desc") },
@@ -2940,6 +3008,47 @@ function AdmissionsPage({ setPage }) {
   ];
 
   return (
+    <article aria-label="Admissions Information">
+      <Helmet>
+        <title>Admissions 2026-27 | Model Primary School Bharsare</title>
+        <meta name="description" content="Apply now for LKG to Class 5 at Model Primary School, Bharsare, Sultanpur. Limited seats. Secure your child's future today." />
+        <link rel="canonical" href="https://mpsbharsare.in/admissions" />
+        <meta property="og:title" content="Admissions 2026-27 | Model Primary School Bharsare" />
+        <meta property="og:url" content="https://mpsbharsare.in/admissions" />
+        <script type="application/ld+json">{`
+          {
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            "mainEntity": [
+              {
+                "@type": "Question",
+                "name": "When do admissions open at Model Primary School Bharsare?",
+                "acceptedAnswer": { "@type": "Answer", "text": "Admissions are open for the academic year 2026-27. Contact us at +91-9454826921 to confirm seat availability." }
+              },
+              {
+                "@type": "Question",
+                "name": "What are the school timings at Model Primary School Bharsare?",
+                "acceptedAnswer": { "@type": "Answer", "text": "School timings are Monday to Saturday, 7:30 AM to 1:30 PM." }
+              },
+              {
+                "@type": "Question",
+                "name": "Which classes are available at Model Primary School Bharsare?",
+                "acceptedAnswer": { "@type": "Answer", "text": "We offer classes from LKG (Lower Kindergarten) to Class 5." }
+              },
+              {
+                "@type": "Question",
+                "name": "What documents are required for admission?",
+                "acceptedAnswer": { "@type": "Answer", "text": "Required documents include: child's birth certificate, 4 passport-size photographs, Aadhar card (child and parent), address proof, Transfer Certificate (for Class 1 and above, if applicable), and previous school report card." }
+              },
+              {
+                "@type": "Question",
+                "name": "What is the minimum age for LKG admission?",
+                "acceptedAnswer": { "@type": "Answer", "text": "The minimum age for LKG admission is 3+ years as of the date of intake." }
+              }
+            ]
+          }
+        `}</script>
+      </Helmet>
     <div>
       <PageHero eyebrow={t("adm.hero.eyebrow")} title={t("adm.h1")} subtitle={t("adm.body")} />
 
@@ -3056,17 +3165,18 @@ function AdmissionsPage({ setPage }) {
           <CalendarCheck className="mx-auto text-gold mb-3" size={34} />
           <h2 className="font-display font-extrabold text-2xl md:text-3xl text-white">{t("adm.cta.h2")}</h2>
           <p className="font-body text-gold-light-85 mt-2">{t("adm.cta.sub")}</p>
-          <CTAButton variant="gold" onClick={() => setPage("contact")} className="mt-6">{t("adm.cta.btn")}</CTAButton>
+          <CTAButton variant="gold" onClick={() => navigate("/contact")} className="mt-6">{t("adm.cta.btn")}</CTAButton>
         </div>
       </section>
     </div>
+    </article>
   );
 }
 
 /* ============================================================
    CONTACT PAGE
    ============================================================ */
-function ContactPage() {
+export function ContactPage() {
   const { t } = useLanguage();
   const formRef = useRef(null);
   const [status, setStatus] = useState("idle"); // idle | sending | sent | error
@@ -3098,6 +3208,14 @@ function ContactPage() {
   };
 
   return (
+    <article aria-label="Contact Model Primary School">
+      <Helmet>
+        <title>Contact Us | Model Primary School Bharsare, Sultanpur</title>
+        <meta name="description" content="Contact Model Primary School, Bharsare. Call or WhatsApp: +91-9454826921. Email: psbharsare@gmail.com. Located in Bharsare, Bhadaiyan, Sultanpur, UP." />
+        <link rel="canonical" href="https://mpsbharsare.in/contact" />
+        <meta property="og:title" content="Contact Us | Model Primary School Bharsare" />
+        <meta property="og:url" content="https://mpsbharsare.in/contact" />
+      </Helmet>
     <div>
       <PageHero eyebrow={t("contact.hero.eyebrow")} title={t("contact.hero.title")} subtitle={t("contact.hero.subtitle")} />
 
@@ -3210,16 +3328,21 @@ function ContactPage() {
         </div>
       </section>
     </div>
+    </article>
   );
 }
 
 /* ============================================================
-   APP
+   LAYOUT — persistent shell (Navbar + page content + Footer)
+   Lenis smooth scroll lives here so it persists across routes.
+   EVChatbot is mounted in App.jsx OUTSIDE <Routes> so it also
+   never re-mounts on navigation.
    ============================================================ */
-export default function App() {
-  const [page, setPage] = useState("home");
+export function Layout() {
   const lenisRef = useRef(null);
+  const location = useLocation();
 
+  // ── Lenis smooth scroll init (once) ──────────────────────
   useEffect(() => {
     gsap.registerPlugin(ScrollTrigger);
 
@@ -3250,41 +3373,26 @@ export default function App() {
     };
   }, []);
 
+  // ── Scroll to top + refresh ScrollTrigger on route change ─
   useEffect(() => {
     window.scrollTo(0, 0);
     if (lenisRef.current) {
       lenisRef.current.scrollTo(0, { immediate: true });
     }
-    const pageTitles = {
-      home: "Model Primary School | Bharsare, Bhadaiyan, Sultanpur",
-      about: "About Us | Model Primary School",
-      academics: "Academics & Curriculum | Model Primary School",
-      gallery: "Gallery | Model Primary School",
-      admissions: "Admissions 2026–27 | Model Primary School",
-      contact: "Contact Us | Model Primary School",
-    };
-    document.title = pageTitles[page] || "Model Primary School | Bharsare, Bhadaiyan, Sultanpur";
     setTimeout(() => {
       ScrollTrigger.refresh();
     }, 100);
-  }, [page]);
-
-  const pages = {
-    home: <HomePage setPage={setPage} />,
-    about: <AboutPage setPage={setPage} />,
-    academics: <AcademicsPage setPage={setPage} />,
-    gallery: <GalleryPage />,
-    admissions: <AdmissionsPage setPage={setPage} />,
-    contact: <ContactPage />,
-  };
+  }, [location.pathname]);
 
   return (
     <LanguageProvider>
       <div className="font-body bg-cream min-h-screen">
         <BrandStyles />
-        <Navbar page={page} setPage={setPage} />
-        {pages[page]}
-        <Footer setPage={setPage} />
+        <Navbar />
+        <main>
+          <Outlet />
+        </main>
+        <Footer />
       </div>
     </LanguageProvider>
   );

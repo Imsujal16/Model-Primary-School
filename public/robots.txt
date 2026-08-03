@@ -48,4 +48,4 @@ User-agent: Googlebot-Extended
 Allow: /
 
 # ── Sitemap Location ───────────────────────────────────────
-Sitemap: https://modelprimaryschool.in/sitemap.xml
+Sitemap: https://www.modelprimaryschool.in/sitemap.xml

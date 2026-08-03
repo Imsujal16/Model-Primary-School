@@ -1052,20 +1052,30 @@ export function HomePage() {
   return (
     <article aria-label="Model Primary School Home Page">
       <Helmet>
-        <title>Model Primary School, Bharsare | Best School in Sultanpur</title>
-        <meta name="description" content="Top English-medium primary school (LKG to Class 5) in Bharsare, Bhadaiyan, Sultanpur. Led by State Award winner Smt. Vandana Yadav. CCTV, Smart Classes, Transport. Admissions open 2026-27." />
+        <title>Model Primary School, Bharsare | मॉडल प्राइमरी स्कूल भरसरे</title>
+        <meta name="description" content="Model Primary School in Bharsare, Sultanpur (LKG to Class 5). सुल्तानपुर का सर्वश्रेष्ठ इंग्लिश मीडियम प्राइमरी स्कूल। Admissions open 2026-27." />
+        <meta name="keywords" content="Model Primary School Bharsare, मॉडल प्राइमरी स्कूल भरसरे, सुल्तानपुर में प्राइमरी स्कूल, best school in Sultanpur, बच्चों का स्कूल भदैयां, LKG admission, प्राइमरी स्कूल सुल्तानपुर" />
         <link rel="canonical" href="https://modelprimaryschool.in/" />
-        <meta property="og:title" content="Model Primary School, Bharsare | Best School in Sultanpur" />
-        <meta property="og:description" content="Top English-medium primary school in Bharsare, Sultanpur. Admissions open for 2026-27." />
+        <meta property="og:title" content="मॉडल प्राइमरी स्कूल भरसरे | Model Primary School" />
+        <meta property="og:description" content="LKG से कक्षा 5 तक के लिए एडमिशन खुले हैं। आज ही संपर्क करें: 9454826921" />
         <meta property="og:url" content="https://modelprimaryschool.in/" />
+        <meta property="og:locale" content="hi_IN" />
+        <meta property="og:locale:alternate" content="en_IN" />
+        <meta property="og:type" content="website" />
+        <meta property="og:image" content="https://modelprimaryschool.in/og-cover.jpg" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Model Primary School, Bharsare | मॉडल प्राइमरी स्कूल भरसरे" />
+        <meta name="twitter:description" content="सुल्तानपुर का सर्वश्रेष्ठ इंग्लिश मीडियम प्राइमरी स्कूल। LKG to Class 5. Admissions open 2026-27." />
+        <meta name="twitter:image" content="https://modelprimaryschool.in/og-cover.jpg" />
         <script type="application/ld+json">{`
           {
             "@context": "https://schema.org",
             "@type": "EducationalOrganization",
-            "name": "Model Primary School, Bharsare",
+            "name": "Model Primary School",
+            "alternateName": "मॉडल प्राइमरी स्कूल",
+            "description": "Top primary school in Bharsare, Sultanpur. सुल्तानपुर का सर्वश्रेष्ठ प्राइमरी स्कूल।",
             "url": "https://modelprimaryschool.in",
-            "logo": "https://modelprimaryschool.in/school_logo.png",
-            "description": "English-medium primary school (LKG to Class 5) located in Bharsare, Sultanpur, Uttar Pradesh. Led by State Teacher Awardee Smt. Vandana Yadav.",
+            "logo": "https://modelprimaryschool.in/favicon.svg",
             "address": {
               "@type": "PostalAddress",
               "streetAddress": "Bharsare, Bhadaiyan",
@@ -1641,11 +1651,15 @@ export function AboutPage() {
   return (
     <article aria-label="About Model Primary School">
       <Helmet>
-        <title>About Our Faculty | Model Primary School Bharsare</title>
-        <meta name="description" content="Meet our experienced staff led by State Teacher Awardee Smt. Vandana Yadav. Faculty includes ICT Award winner Diksha Shrivastav, Pradeep Kumar and our Designer & Coordinator." />
+        <title>मॉडल प्राइमरी स्कूल शिक्षक | About Our Faculty | Model Primary School Bharsare</title>
+        <meta name="description" content="Meet our dedicated faculty led by State Awardee Smt. Vandana Yadav. मॉडल प्राइमरी स्कूल भरसरे की समर्पित शिक्षिकाएं एवं स्टाफ।" />
+        <meta name="keywords" content="Vandana Yadav, श्रीमती वंदना यादव प्रधानाचार्या, Diksha Shrivastav ICT award, Pradeep Kumar teacher, MPS Bharsare faculty, मॉडल स्कूल शिक्षक" />
         <link rel="canonical" href="https://modelprimaryschool.in/about" />
-        <meta property="og:title" content="About Our Faculty | Model Primary School" />
+        <meta property="og:title" content="मॉडल प्राइमरी स्कूल भरसरे - हमारे शिक्षक | About Our Faculty" />
+        <meta property="og:description" content="समर्पित शिक्षिकाओं की टीम जो बच्चों का भविष्य संवारती हैं। Led by State Teacher Awardee Smt. Vandana Yadav." />
         <meta property="og:url" content="https://modelprimaryschool.in/about" />
+        <meta property="og:locale" content="hi_IN" />
+        <meta property="og:locale:alternate" content="en_IN" />
       </Helmet>
       <PageHero
         eyebrow={t('nav.about')}
@@ -3010,11 +3024,16 @@ export function AdmissionsPage() {
   return (
     <article aria-label="Admissions Information">
       <Helmet>
-        <title>Admissions 2026-27 | Model Primary School Bharsare</title>
-        <meta name="description" content="Apply now for LKG to Class 5 at Model Primary School, Bharsare, Sultanpur. Limited seats. Secure your child's future today." />
+        <title>Admissions Open 2026-27 | दाखिला शुरू | Model Primary School</title>
+        <meta name="description" content="Apply for LKG to Class 5 at Model Primary School. 2026-27 के लिए बच्चों के एडमिशन (दाखिले) खुले हैं। सीमित सीटें उपलब्ध।" />
+        <meta name="keywords" content="मॉडल प्राइमरी स्कूल प्रवेश, दाखिला 2026-27, LKG admission Sultanpur, primary school admission Bharsare, school registration Sultanpur, सुल्तानपुर स्कूल दाखिला" />
         <link rel="canonical" href="https://modelprimaryschool.in/admissions" />
-        <meta property="og:title" content="Admissions 2026-27 | Model Primary School Bharsare" />
+        <meta property="og:title" content="दाखिला शुरू 2026-27 | Admissions Open | Model Primary School Bharsare" />
+        <meta property="og:description" content="2026-27 के लिए अभी आवेदन करें। LKG से कक्षा 5 तक। सीमित सीटें उपलब्ध। संपर्क: 9454826921" />
         <meta property="og:url" content="https://modelprimaryschool.in/admissions" />
+        <meta property="og:locale" content="hi_IN" />
+        <meta property="og:locale:alternate" content="en_IN" />
+        <meta property="og:image" content="https://modelprimaryschool.in/og-cover.jpg" />
         <script type="application/ld+json">{`
           {
             "@context": "https://schema.org",
@@ -3027,8 +3046,18 @@ export function AdmissionsPage() {
               },
               {
                 "@type": "Question",
+                "name": "मॉडल प्राइमरी स्कूल भरसरे में दाखिला कब होता है?",
+                "acceptedAnswer": { "@type": "Answer", "text": "मॉडल प्राइमरी स्कूल भरसरे में 2026-27 सत्र के लिए दाखिला खुले हैं। LKG से कक्षा 5 तक सीमित सीटें उपलब्ध हैं। संपर्क: 9454826921" }
+              },
+              {
+                "@type": "Question",
                 "name": "What are the school timings at Model Primary School Bharsare?",
                 "acceptedAnswer": { "@type": "Answer", "text": "School timings are Monday to Saturday, 7:30 AM to 1:30 PM." }
+              },
+              {
+                "@type": "Question",
+                "name": "मॉडल प्राइमरी स्कूल का समय क्या है?",
+                "acceptedAnswer": { "@type": "Answer", "text": "सोमवार से शनिवार सुबह 7:30 बजे से दोपहर 1:30 बजे तक।" }
               },
               {
                 "@type": "Question",
@@ -3039,6 +3068,11 @@ export function AdmissionsPage() {
                 "@type": "Question",
                 "name": "What documents are required for admission?",
                 "acceptedAnswer": { "@type": "Answer", "text": "Required documents include: child's birth certificate, 4 passport-size photographs, Aadhar card (child and parent), address proof, Transfer Certificate (for Class 1 and above, if applicable), and previous school report card." }
+              },
+              {
+                "@type": "Question",
+                "name": "दाखिले के लिए कौन से दस्तावेज़ चाहिए?",
+                "acceptedAnswer": { "@type": "Answer", "text": "जन्म प्रमाण पत्र, 4 पासपोर्ट फोटो, आधार कार्ड (बच्चे और माता-पिता दोनों का), निवास प्रमाण, TC (कक्षा 1 से ऊपर के लिए)।" }
               },
               {
                 "@type": "Question",
@@ -3210,11 +3244,15 @@ export function ContactPage() {
   return (
     <article aria-label="Contact Model Primary School">
       <Helmet>
-        <title>Contact Us | Model Primary School Bharsare, Sultanpur</title>
-        <meta name="description" content="Contact Model Primary School, Bharsare. Call or WhatsApp: +91-9454826921. Email: psbharsare@gmail.com. Located in Bharsare, Bhadaiyan, Sultanpur, UP." />
+        <title>संपर्क करें | Contact Model Primary School Bharsare, Sultanpur</title>
+        <meta name="description" content="Contact Model Primary School, Bharsare. Call or WhatsApp: +91-9454826921. | मॉडल प्राइमरी स्कूल से संपर्क करें। फोन / WhatsApp: 9454826921" />
+        <meta name="keywords" content="मॉडल प्राइमरी स्कूल संपर्क, Model Primary School contact, school phone Bharsare, psbharsare@gmail.com, 9454826921" />
         <link rel="canonical" href="https://modelprimaryschool.in/contact" />
-        <meta property="og:title" content="Contact Us | Model Primary School Bharsare" />
+        <meta property="og:title" content="संपर्क करें | Contact Model Primary School Bharsare" />
+        <meta property="og:description" content="फोन / WhatsApp: 9454826921 | Email: psbharsare@gmail.com | सुल्तानपुर, उत्तर प्रदेश" />
         <meta property="og:url" content="https://modelprimaryschool.in/contact" />
+        <meta property="og:locale" content="hi_IN" />
+        <meta property="og:locale:alternate" content="en_IN" />
       </Helmet>
     <div>
       <PageHero eyebrow={t("contact.hero.eyebrow")} title={t("contact.hero.title")} subtitle={t("contact.hero.subtitle")} />

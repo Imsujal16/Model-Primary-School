@@ -1583,6 +1583,16 @@ function AboutPage({ setPage }) {
       role: t('about.faculty.role3'),
       src: '/teacher-3.png',
     },
+    {
+      name: 'Pradeep Kumar',
+      role: t('about.faculty.role4'),
+      src: '/teacher-4.png',
+    },
+    {
+      name: t('about.faculty.name5'),
+      role: t('about.faculty.role5'),
+      src: '/teacher-5.png',
+    },
   ];
 
   return (
@@ -1796,7 +1806,7 @@ function AboutPage({ setPage }) {
 
       <PencilDivider thin />
 
-      {/* 3 ─ MEET OUR FACULTY — Portrait Photo Spotlight (3 Teachers) */}
+      {/* 3 ─ MEET OUR FACULTY — Portrait Photo Spotlight (5 Staff Members) */}
       <section className="bg-cream py-16 md:py-24">
         <div className="max-w-6xl mx-auto px-6">
           <div className="text-center max-w-2xl mx-auto mb-16">
@@ -1809,8 +1819,8 @@ function AboutPage({ setPage }) {
             </p>
           </div>
 
-          {/* 3 Photo Portrait Cards Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 items-stretch max-w-5xl mx-auto">
+          {/* 5 Photo Portrait Cards Grid — 3 top row + 2 centred bottom row */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 items-stretch max-w-6xl mx-auto">
             {teachers.map((teacher, idx) => (
               <div
                 key={idx}

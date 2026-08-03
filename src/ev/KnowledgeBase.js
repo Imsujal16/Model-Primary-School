@@ -582,12 +582,12 @@ Stage 03: Primary II<br/><br/>
   FACULTY: {
     text: {
       hi: {
-        display: "<b>👨‍🏫 प्रिंसिपल और शिक्षक दल</b><br/><br/>आप किनके बारे में जानना चाहते हैं?",
-        speak: "आप हमारी प्रधानाचार्य या किसी भी शिक्षक के बारे में जानना चाहते हैं?",
+        display: "<b>👨‍🏫 प्रिंसिपल और शिक्षक दल</b><br/><br/>हमारे स्कूल में बहुत ही अनुभवी स्टाफ है। आप किनके बारे में जानना चाहते हैं?",
+        speak: "हमारे स्कूल में बहुत ही अनुभवी स्टाफ है। प्रिंसिपल श्रीमती वंदना यादव जी के नेतृत्व में दीक्षा श्रीवास्तव, सुनील सिंह, जानकी देवी, और प्रदीप कुमार असिस्टेंट टीचर शामिल हैं। हमारे पास एक डिज़ाइनर और कोऑर्डिनेटर भी हैं।",
       },
       en: {
-        display: "<b>👨‍🏫 Principal & Faculty Team</b><br/><br/>Who would you like to know about?",
-        speak: "Who would you like to know about — our Principal or one of our teachers?",
+        display: "<b>👨‍🏫 Principal &amp; Faculty Team</b><br/><br/>We have a highly experienced staff. Who would you like to know about?",
+        speak: "We have a highly experienced staff led by Principal Smt. Vandana Yadav. Our faculty includes Diksha Shrivastav, Sunil Singh, Janki Devi, Pradeep Kumar Assistant Teacher, and our Designer and Coordinator.",
       },
     },
     options: [
@@ -595,6 +595,8 @@ Stage 03: Primary II<br/><br/>
       { label: { hi: "👩‍🏫 दीक्षा श्रीवास्तव (ICT Award)", en: "👩‍🏫 Diksha Shrivastav (ICT Award)" }, next: "TEACHER_DIKSHA" },
       { label: { hi: "👨‍🏫 सुनील सिंह", en: "👨‍🏫 Sunil Singh" }, next: "TEACHER_SUNIL" },
       { label: { hi: "👩‍🏫 जानकी देवी", en: "👩‍🏫 Janki Devi" }, next: "TEACHER_JANKI" },
+      { label: { hi: "👨‍🏫 प्रदीप कुमार", en: "👨‍🏫 Pradeep Kumar" }, next: "TEACHER_PRADEEP" },
+      { label: { hi: "🎨 डिज़ाइनर और कोऑर्डिनेटर", en: "🎨 Designer & Coordinator" }, next: "TEACHER_DESIGNER" },
       { label: { hi: "🏠 मुख्य मेनू", en: "🏠 Main Menu" }, next: "ROOT" },
     ],
   },
@@ -694,6 +696,51 @@ Janki Devi serves as a Shiksha Mitra at our school. She plays a vital role in ho
     options: [
       { label: { hi: "👩‍🏫 दीक्षा श्रीवास्तव के बारे में", en: "👩‍🏫 About Diksha Shrivastav" }, next: "TEACHER_DIKSHA" },
       { label: { hi: "👨‍🏫 सुनील सिंह के बारे में", en: "👨‍🏫 About Sunil Singh" }, next: "TEACHER_SUNIL" },
+      { label: { hi: "👨‍🏫 प्रदीप कुमार के बारे में", en: "👨‍🏫 About Pradeep Kumar" }, next: "TEACHER_PRADEEP" },
+      { label: { hi: "🏠 मुख्य मेनू", en: "🏠 Main Menu" }, next: "ROOT" },
+    ],
+  },
+
+  TEACHER_PRADEEP: {
+    text: {
+      hi: {
+        display: `<b>👨‍🏫 प्रदीप कुमार</b><br/><br/>
+🎖️ <b>पद:</b> सहायक अध्यापक<br/><br/>
+प्रदीप कुमार जी हमारे विद्यालय के समर्पित सहायक अध्यापक हैं। वे बच्चों को बेहतर शिक्षा और व्यक्तिगत ध्यान देने के लिए पूरे उत्साह से कार्य करते हैं।`,
+        speak: "प्रदीप कुमार जी हमारे विद्यालय के सहायक अध्यापक हैं। वे बच्चों को व्यक्तिगत ध्यान और बेहतरीन शिक्षा देने के लिए समर्पित हैं।",
+      },
+      en: {
+        display: `<b>👨‍🏫 Pradeep Kumar</b><br/><br/>
+🎖️ <b>Role:</b> Assistant Teacher<br/><br/>
+Pradeep Kumar is a dedicated Assistant Teacher at our school. He works with great enthusiasm to provide quality education and personal attention to every child.`,
+        speak: "Pradeep Kumar is a dedicated Assistant Teacher at Model Primary School, committed to providing quality education and personal attention to every child.",
+      },
+    },
+    options: [
+      { label: { hi: "🎨 डिज़ाइनर और कोऑर्डिनेटर के बारे में", en: "🎨 About Designer & Coordinator" }, next: "TEACHER_DESIGNER" },
+      { label: { hi: "👩‍🏫 शिक्षक दल देखें", en: "👩‍🏫 See Full Faculty" }, next: "FACULTY" },
+      { label: { hi: "🏠 मुख्य मेनू", en: "🏠 Main Menu" }, next: "ROOT" },
+    ],
+  },
+
+  TEACHER_DESIGNER: {
+    text: {
+      hi: {
+        display: `<b>🎨 डिज़ाइनर और कोऑर्डिनेटर</b><br/><br/>
+🎖️ <b>पद:</b> डिज़ाइनर और कोऑर्डिनेटर<br/><br/>
+हमारे विद्यालय के डिज़ाइनर और कोऑर्डिनेटर स्कूल की डिजिटल पहचान, सोशल मीडिया और सभी सांस्कृतिक कार्यक्रमों के समन्वय में अहम भूमिका निभाते हैं।`,
+        speak: "हमारे डिज़ाइनर और कोऑर्डिनेटर स्कूल की डिजिटल पहचान और सांस्कृतिक कार्यक्रमों के समन्वय में महत्वपूर्ण योगदान देते हैं।",
+      },
+      en: {
+        display: `<b>🎨 Designer &amp; Coordinator</b><br/><br/>
+🎖️ <b>Role:</b> Designer &amp; Coordinator<br/><br/>
+Our Designer and Coordinator plays a key role in shaping the school's digital identity, managing social media presence, and coordinating all cultural events and activities.`,
+        speak: "Our Designer and Coordinator plays a key role in the school's digital identity, social media, and coordinating all cultural events and activities.",
+      },
+    },
+    options: [
+      { label: { hi: "👨‍🏫 प्रदीप कुमार के बारे में", en: "👨‍🏫 About Pradeep Kumar" }, next: "TEACHER_PRADEEP" },
+      { label: { hi: "👩‍🏫 शिक्षक दल देखें", en: "👩‍🏫 See Full Faculty" }, next: "FACULTY" },
       { label: { hi: "🏠 मुख्य मेनू", en: "🏠 Main Menu" }, next: "ROOT" },
     ],
   },

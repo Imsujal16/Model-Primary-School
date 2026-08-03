@@ -2977,30 +2977,44 @@ function AdmissionsPage({ setPage }) {
 
       {/* ELIGIBILITY + DOCS */}
       <section className="bg-cream2 py-16 md:py-20">
-        <div className="max-w-6xl mx-auto px-6 grid lg:grid-cols-2 gap-10">
-          <div>
-            <Eyebrow>{t("adm.elig.eyebrow")}</Eyebrow>
-            <h2 className="font-display font-extrabold text-2xl md:text-3xl text-maroon-dark mb-6">{t("adm.elig.h2")}</h2>
-            <div className="bg-white rounded-3xl shadow-md overflow-hidden">
-              {eligibility.map((e, i) => (
-                <div key={e.level} className={`flex items-center justify-between px-6 py-3.5 ${i % 2 === 0 ? "bg-cream-60" : ""}`}>
-                  <span className="font-display font-bold text-maroon-dark">{e.level}</span>
-                  <span className="font-body text-sm text-ink-70">{e.age}</span>
-                </div>
-              ))}
-            </div>
+        <div className="max-w-5xl mx-auto px-6">
+          <div className="text-center mb-12">
+            <div className="flex justify-center"><Eyebrow>{t("adm.elig.eyebrow")} &amp; {t("adm.docs.eyebrow")}</Eyebrow></div>
+            <h2 className="font-display font-extrabold text-3xl md:text-4xl text-maroon-dark mt-2">{t("adm.elig.h2")} &amp; {t("adm.docs.h2")}</h2>
           </div>
-          <div>
-            <Eyebrow>{t("adm.docs.eyebrow")}</Eyebrow>
-            <h2 className="font-display font-extrabold text-2xl md:text-3xl text-maroon-dark mb-6">{t("adm.docs.h2")}</h2>
-            <ul className="bg-white rounded-3xl shadow-md p-6 flex flex-col gap-4">
-              {requiredDocs.map((d, index) => (
-                <li key={index} className="flex items-start gap-3 font-body text-sm text-ink-75">
-                  <FileText size={18} className="text-maroon shrink-0 mt-0.5" />
-                  {d}
-                </li>
-              ))}
-            </ul>
+          <div className="grid lg:grid-cols-2 gap-8 items-start">
+            {/* Eligibility */}
+            <div className="bg-white rounded-3xl shadow-lg overflow-hidden border border-gold-light/40">
+              <div className="flex items-center gap-3 px-6 py-4 bg-maroon">
+                <GraduationCap size={20} className="text-gold" />
+                <span className="font-display font-bold text-white text-sm uppercase tracking-widest">{t("adm.elig.eyebrow")}</span>
+              </div>
+              <div className="p-2">
+                {eligibility.map((e, i) => (
+                  <div key={e.level} className={`flex items-center justify-between px-5 py-3.5 rounded-xl ${i % 2 === 0 ? "bg-cream" : "bg-white"}`}>
+                    <span className="font-display font-bold text-maroon-dark">{e.level}</span>
+                    <span className="font-body text-sm text-ink-70 bg-cream2 px-3 py-1 rounded-full border border-gold-light">{e.age}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+            {/* Documents */}
+            <div className="bg-white rounded-3xl shadow-lg overflow-hidden border border-gold-light/40">
+              <div className="flex items-center gap-3 px-6 py-4 bg-maroon">
+                <FileText size={20} className="text-gold" />
+                <span className="font-display font-bold text-white text-sm uppercase tracking-widest">{t("adm.docs.eyebrow")}</span>
+              </div>
+              <ul className="p-6 flex flex-col gap-4">
+                {requiredDocs.map((d, index) => (
+                  <li key={index} className="flex items-start gap-3 font-body text-sm text-ink-75">
+                    <div className="w-6 h-6 rounded-full bg-maroon flex items-center justify-center shrink-0 mt-0.5">
+                      <FileText size={12} className="text-gold" />
+                    </div>
+                    {d}
+                  </li>
+                ))}
+              </ul>
+            </div>
           </div>
         </div>
       </section>

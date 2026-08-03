@@ -1819,12 +1819,12 @@ function AboutPage({ setPage }) {
             </p>
           </div>
 
-          {/* 5 Photo Portrait Cards Grid — 3 top row + 2 centred bottom row */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 items-stretch max-w-6xl mx-auto">
+          {/* 5 Photo Portrait Cards — 3 top row + 2 centered bottom row */}
+          <div className="flex flex-wrap justify-center gap-8 max-w-6xl mx-auto">
             {teachers.map((teacher, idx) => (
               <div
                 key={idx}
-                className="hover-lift bg-white rounded-3xl p-4 sm:p-5 shadow-xl border-2 border-gold-light/60 hover:border-gold hover:shadow-2xl transition-all duration-300 flex flex-col justify-between group"
+                className="w-full sm:w-[calc(50%-1rem)] md:w-[calc(33.333%-1.35rem)] max-w-[350px] hover-lift bg-white rounded-3xl p-4 sm:p-5 shadow-xl border-2 border-gold-light/60 hover:border-gold hover:shadow-2xl transition-all duration-300 flex flex-col justify-between group"
               >
                 {/* Large Portrait Photo Container */}
                 <div className="relative w-full aspect-[4/5] rounded-2xl overflow-hidden shadow-md bg-cream3 border-2 border-gold-light flex flex-col items-center justify-center group-hover:scale-[1.02] transition-transform duration-300">

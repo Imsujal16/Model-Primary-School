@@ -3360,11 +3360,18 @@ export function ContactPage() {
                 <li className="flex gap-3"><Clock size={20} className="shrink-0" /><span>{t("contact.hours")}</span></li>
               </ul>
             </div>
-            <div className="relative rounded-3xl overflow-hidden shadow-md border-4 border-white bg-cream3 flex flex-col items-center justify-center gap-2" style={{ aspectRatio: "4 / 3" }}>
-              <MapPin size={30} className="text-maroon-dark-50" />
-              <span className="font-display font-bold text-maroon-dark-70 text-sm">{t("contact.info.map.title")}</span>
-              <span className="font-body text-xs text-maroon-dark-50">{t("contact.info.map.place")}</span>
-              <div className="absolute top-0 left-0 w-full h-2 pencil-stripe-thin" />
+            <div className="w-full h-64 md:h-80 rounded-2xl overflow-hidden border-2 border-yellow-700/20 shadow-sm relative">
+              <iframe
+                src="https://maps.google.com/maps?width=100%25&amp;height=600&amp;hl=en&amp;q=Bharsare,%20Bhadaiyan,%20Sultanpur+(Model%20Primary%20School)&amp;t=&amp;z=14&amp;ie=UTF8&amp;iwloc=B&amp;output=embed"
+                width="100%"
+                height="100%"
+                style={{ border: 0 }}
+                allowFullScreen={true}
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+                className="absolute inset-0"
+                title="Model Primary School, Bharsare, Sultanpur — Google Maps"
+              ></iframe>
             </div>
           </div>
         </div>

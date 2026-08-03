@@ -3362,7 +3362,7 @@ export function ContactPage() {
             </div>
             <div className="w-full h-64 md:h-80 rounded-2xl overflow-hidden border-2 border-yellow-700/20 shadow-sm relative">
               <iframe
-                src="https://maps.google.com/maps?width=100%25&amp;height=600&amp;hl=en&amp;q=Bharsare,%20Bhadaiyan,%20Sultanpur+(Model%20Primary%20School)&amp;t=&amp;z=14&amp;ie=UTF8&amp;iwloc=B&amp;output=embed"
+                src="https://maps.google.com/maps?q=26.134750,82.142278+(🏫+Model+Primary+School,+Bharsare)&z=17&output=embed"
                 width="100%"
                 height="100%"
                 style={{ border: 0 }}

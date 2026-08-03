@@ -1653,7 +1653,7 @@ export function AboutPage() {
       <Helmet>
         <title>मॉडल प्राइमरी स्कूल शिक्षक | About Our Faculty | Model Primary School Bharsare</title>
         <meta name="description" content="Meet our dedicated faculty led by State Awardee Smt. Vandana Yadav. मॉडल प्राइमरी स्कूल भरसरे की समर्पित शिक्षिकाएं एवं स्टाफ।" />
-        <meta name="keywords" content="Vandana Yadav, श्रीमती वंदना यादव प्रधानाचार्या, Diksha Shrivastav ICT award, Pradeep Kumar teacher, MPS Bharsare faculty, मॉडल स्कूल शिक्षक" />
+        <meta name="keywords" content="Vandana Yadav, श्रीमती वंदना यादव प्रधानाचार्या, Diksha Shrivastav ICT award, Pradeep Kumar teacher, Dr. Ashok Kumar Verma designer, MPS Bharsare faculty, मॉडल स्कूल शिक्षक" />
         <link rel="canonical" href="https://modelprimaryschool.in/about" />
         <meta property="og:title" content="मॉडल प्राइमरी स्कूल भरसरे - हमारे शिक्षक | About Our Faculty" />
         <meta property="og:description" content="समर्पित शिक्षिकाओं की टीम जो बच्चों का भविष्य संवारती हैं। Led by State Teacher Awardee Smt. Vandana Yadav." />

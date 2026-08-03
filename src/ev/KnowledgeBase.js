@@ -583,11 +583,11 @@ Stage 03: Primary II<br/><br/>
     text: {
       hi: {
         display: "<b>👨‍🏫 प्रिंसिपल और शिक्षक दल</b><br/><br/>हमारे स्कूल में बहुत ही अनुभवी स्टाफ है। आप किनके बारे में जानना चाहते हैं?",
-        speak: "हमारे स्कूल में बहुत ही अनुभवी स्टाफ है। प्रिंसिपल श्रीमती वंदना यादव जी के नेतृत्व में दीक्षा श्रीवास्तव, सुनील सिंह, जानकी देवी, और प्रदीप कुमार असिस्टेंट टीचर शामिल हैं। हमारे पास एक डिज़ाइनर और कोऑर्डिनेटर भी हैं।",
+        speak: "हमारे स्कूल में बहुत ही अनुभवी स्टाफ है। प्रिंसिपल श्रीमती वंदना यादव जी के नेतृत्व में दीक्षा श्रीवास्तव, सुनील सिंह, जानकी देवी, प्रदीप कुमार असिस्टेंट टीचर और डॉ. अशोक कुमार वर्मा (डिज़ाइनर एवं कोऑर्डिनेटर) शामिल हैं।",
       },
       en: {
         display: "<b>👨‍🏫 Principal &amp; Faculty Team</b><br/><br/>We have a highly experienced staff. Who would you like to know about?",
-        speak: "We have a highly experienced staff led by Principal Smt. Vandana Yadav. Our faculty includes Diksha Shrivastav, Sunil Singh, Janki Devi, Pradeep Kumar Assistant Teacher, and our Designer and Coordinator.",
+        speak: "We have a highly experienced staff led by Principal Smt. Vandana Yadav. Our faculty includes Diksha Shrivastav, Sunil Singh, Janki Devi, Pradeep Kumar Assistant Teacher, and Dr. Ashok Kumar Verma as our Designer and Coordinator.",
       },
     },
     options: [
@@ -596,7 +596,7 @@ Stage 03: Primary II<br/><br/>
       { label: { hi: "👨‍🏫 सुनील सिंह", en: "👨‍🏫 Sunil Singh" }, next: "TEACHER_SUNIL" },
       { label: { hi: "👩‍🏫 जानकी देवी", en: "👩‍🏫 Janki Devi" }, next: "TEACHER_JANKI" },
       { label: { hi: "👨‍🏫 प्रदीप कुमार", en: "👨‍🏫 Pradeep Kumar" }, next: "TEACHER_PRADEEP" },
-      { label: { hi: "🎨 डिज़ाइनर और कोऑर्डिनेटर", en: "🎨 Designer & Coordinator" }, next: "TEACHER_DESIGNER" },
+      { label: { hi: "🎨 डॉ. अशोक कुमार वर्मा — डिज़ाइनर", en: "🎨 Dr. Ashok Kumar Verma — Designer" }, next: "TEACHER_DESIGNER" },
       { label: { hi: "🏠 मुख्य मेनू", en: "🏠 Main Menu" }, next: "ROOT" },
     ],
   },
@@ -717,7 +717,7 @@ Pradeep Kumar is a dedicated Assistant Teacher at our school. He works with grea
       },
     },
     options: [
-      { label: { hi: "🎨 डिज़ाइनर और कोऑर्डिनेटर के बारे में", en: "🎨 About Designer & Coordinator" }, next: "TEACHER_DESIGNER" },
+      { label: { hi: "🎨 डॉ. अशोक कुमार वर्मा के बारे में", en: "🎨 About Dr. Ashok Kumar Verma" }, next: "TEACHER_DESIGNER" },
       { label: { hi: "👩‍🏫 शिक्षक दल देखें", en: "👩‍🏫 See Full Faculty" }, next: "FACULTY" },
       { label: { hi: "🏠 मुख्य मेनू", en: "🏠 Main Menu" }, next: "ROOT" },
     ],
@@ -726,16 +726,16 @@ Pradeep Kumar is a dedicated Assistant Teacher at our school. He works with grea
   TEACHER_DESIGNER: {
     text: {
       hi: {
-        display: `<b>🎨 डिज़ाइनर और कोऑर्डिनेटर</b><br/><br/>
+        display: `<b>🎨 डॉ. अशोक कुमार वर्मा</b><br/><br/>
 🎖️ <b>पद:</b> डिज़ाइनर और कोऑर्डिनेटर<br/><br/>
-हमारे विद्यालय के डिज़ाइनर और कोऑर्डिनेटर स्कूल की डिजिटल पहचान, सोशल मीडिया और सभी सांस्कृतिक कार्यक्रमों के समन्वय में अहम भूमिका निभाते हैं।`,
-        speak: "हमारे डिज़ाइनर और कोऑर्डिनेटर स्कूल की डिजिटल पहचान और सांस्कृतिक कार्यक्रमों के समन्वय में महत्वपूर्ण योगदान देते हैं।",
+डॉ. अशोक कुमार वर्मा जी हमारे विद्यालय के डिज़ाइनर और कोऑर्डिनेटर हैं। वे स्कूल की डिजिटल पहचान, सोशल मीडिया और सभी सांस्कृतिक कार्यक्रमों के समन्वय में अहम भूमिका निभाते हैं।`,
+        speak: "डॉ. अशोक कुमार वर्मा जी हमारे विद्यालय के डिज़ाइनर और कोऑर्डिनेटर हैं। वे स्कूल की डिजिटल पहचान और सांस्कृतिक कार्यक्रमों के समन्वय में महत्वपूर्ण योगदान देते हैं।",
       },
       en: {
-        display: `<b>🎨 Designer &amp; Coordinator</b><br/><br/>
+        display: `<b>🎨 Dr. Ashok Kumar Verma</b><br/><br/>
 🎖️ <b>Role:</b> Designer &amp; Coordinator<br/><br/>
-Our Designer and Coordinator plays a key role in shaping the school's digital identity, managing social media presence, and coordinating all cultural events and activities.`,
-        speak: "Our Designer and Coordinator plays a key role in the school's digital identity, social media, and coordinating all cultural events and activities.",
+Dr. Ashok Kumar Verma plays a key role in shaping the school's digital identity, managing social media presence, and coordinating all cultural events and activities.`,
+        speak: "Dr. Ashok Kumar Verma is our Designer and Coordinator. He plays a key role in the school's digital identity, social media, and coordinating all cultural events and activities.",
       },
     },
     options: [

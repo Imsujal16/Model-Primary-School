@@ -1052,11 +1052,11 @@ export function HomePage() {
   return (
     <article aria-label="Model Primary School Home Page">
       <Helmet>
-        <title>Model Primary School, Bharsare | मॉडल प्राइमरी स्कूल भरसरे</title>
+        <title>Model Primary School, Bharsare | मॉडल प्राइमरी स्कूल भरसारे</title>
         <meta name="description" content="Model Primary School in Bharsare, Sultanpur (LKG to Class 5). सुल्तानपुर का सर्वश्रेष्ठ इंग्लिश मीडियम प्राइमरी स्कूल। Admissions open 2026-27." />
-        <meta name="keywords" content="Model Primary School Bharsare, मॉडल प्राइमरी स्कूल भरसरे, सुल्तानपुर में प्राइमरी स्कूल, best school in Sultanpur, बच्चों का स्कूल भदैयां, LKG admission, प्राइमरी स्कूल सुल्तानपुर" />
+        <meta name="keywords" content="Model Primary School Bharsare, मॉडल प्राइमरी स्कूल भरसारे, सुल्तानपुर में प्राइमरी स्कूल, best school in Sultanpur, बच्चों का स्कूल भदैयां, LKG admission, प्राइमरी स्कूल सुल्तानपुर" />
         <link rel="canonical" href="https://modelprimaryschool.in/" />
-        <meta property="og:title" content="मॉडल प्राइमरी स्कूल भरसरे | Model Primary School" />
+        <meta property="og:title" content="मॉडल प्राइमरी स्कूल भरसारे | Model Primary School" />
         <meta property="og:description" content="LKG से कक्षा 5 तक के लिए एडमिशन खुले हैं। आज ही संपर्क करें: 9454826921" />
         <meta property="og:url" content="https://modelprimaryschool.in/" />
         <meta property="og:locale" content="hi_IN" />
@@ -1064,7 +1064,7 @@ export function HomePage() {
         <meta property="og:type" content="website" />
         <meta property="og:image" content="https://modelprimaryschool.in/og-cover.jpg" />
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Model Primary School, Bharsare | मॉडल प्राइमरी स्कूल भरसरे" />
+        <meta name="twitter:title" content="Model Primary School, Bharsare | मॉडल प्राइमरी स्कूल भरसारे" />
         <meta name="twitter:description" content="सुल्तानपुर का सर्वश्रेष्ठ इंग्लिश मीडियम प्राइमरी स्कूल। LKG to Class 5. Admissions open 2026-27." />
         <meta name="twitter:image" content="https://modelprimaryschool.in/og-cover.jpg" />
         <script type="application/ld+json">{`
@@ -1147,7 +1147,7 @@ export function HomePage() {
           </a>
           .{" — "}
           <span lang="hi">
-            मॉडल प्राइमरी स्कूल, भरसरे, सुल्तानपुर — LKG से कक्षा 5 तक अंग्रेज़ी
+            मॉडल प्राइमरी स्कूल, भरसारे, सुल्तानपुर — LKG से कक्षा 5 तक अंग्रेज़ी
             माध्यम शिक्षा। वर्तमान प्रधानाचार्य: श्रीमती वंदना यादव (राज्य शिक्षक
             पुरस्कार विजेता)। प्रवेश 2026–27 खुले हैं। संपर्क: 9454826921।
           </span>
@@ -1652,10 +1652,10 @@ export function AboutPage() {
     <article aria-label="About Model Primary School">
       <Helmet>
         <title>मॉडल प्राइमरी स्कूल शिक्षक | About Our Faculty | Model Primary School Bharsare</title>
-        <meta name="description" content="Meet our dedicated faculty led by State Awardee Smt. Vandana Yadav. मॉडल प्राइमरी स्कूल भरसरे की समर्पित शिक्षिकाएं एवं स्टाफ।" />
+        <meta name="description" content="Meet our dedicated faculty led by State Awardee Smt. Vandana Yadav. मॉडल प्राइमरी स्कूल भरसारे की समर्पित शिक्षिकाएं एवं स्टाफ।" />
         <meta name="keywords" content="Vandana Yadav, श्रीमती वंदना यादव प्रधानाचार्या, Diksha Shrivastav ICT award, Pradeep Kumar teacher, Dr. Ashok Kumar Verma designer, MPS Bharsare faculty, मॉडल स्कूल शिक्षक" />
         <link rel="canonical" href="https://modelprimaryschool.in/about" />
-        <meta property="og:title" content="मॉडल प्राइमरी स्कूल भरसरे - हमारे शिक्षक | About Our Faculty" />
+        <meta property="og:title" content="मॉडल प्राइमरी स्कूल भरसारे - हमारे शिक्षक | About Our Faculty" />
         <meta property="og:description" content="समर्पित शिक्षिकाओं की टीम जो बच्चों का भविष्य संवारती हैं। Led by State Teacher Awardee Smt. Vandana Yadav." />
         <meta property="og:url" content="https://modelprimaryschool.in/about" />
         <meta property="og:locale" content="hi_IN" />
@@ -3050,8 +3050,8 @@ export function AdmissionsPage() {
               },
               {
                 "@type": "Question",
-                "name": "मॉडल प्राइमरी स्कूल भरसरे में दाखिला कब होता है?",
-                "acceptedAnswer": { "@type": "Answer", "text": "मॉडल प्राइमरी स्कूल भरसरे में 2026-27 सत्र के लिए दाखिला खुले हैं। LKG से कक्षा 5 तक सीमित सीटें उपलब्ध हैं। संपर्क: 9454826921" }
+                "name": "मॉडल प्राइमरी स्कूल भरसारे में दाखिला कब होता है?",
+                "acceptedAnswer": { "@type": "Answer", "text": "मॉडल प्राइमरी स्कूल भरसारे में 2026-27 सत्र के लिए दाखिला खुले हैं। LKG से कक्षा 5 तक सीमित सीटें उपलब्ध हैं। संपर्क: 9454826921" }
               },
               {
                 "@type": "Question",

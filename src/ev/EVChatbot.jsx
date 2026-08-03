@@ -643,7 +643,7 @@ export default function EVChatbot() {
                   AI असिस्टेंट
                 </span>
               </div>
-              <div className="ev-header-sub">मॉडल प्राइमरी स्कूल, भरसरे</div>
+              <div className="ev-header-sub">मॉडल प्राइमरी स्कूल, भरसारे</div>
             </div>
 
             {/* Mute Button */}
